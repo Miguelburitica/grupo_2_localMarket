@@ -4,6 +4,7 @@
 ## Contexto o problema a solucionar
 
 ## Productos o servicios
+Evidenciado el problema, la plataforma propuesta ofrecerá los productos que se comercializan en los mercados campesinos de Medellín, esta fue una iniciativa de la Alcaldía en la que los pequeños productores semanalmente se ubican en algunos puntos estratégicos de la ciudad con sus productos. Desde nuestra perspectiva, será un marketplace que conecte a estos productores de verduras, hortalizas, frutas y otros productos de la canasta familiar, con cualquier persona interesada que esté en Medellín y prefiere consumir productos locales. De esta forma, damos una mayor visualización no solo a los productos, sino también a los agricultores y emprendedores. El objetivo principal será conectar a través de una plataforma compacta y funcional a aquellos que gustan de consumir y compartir localmente, para esto, la plataforma notificará a los consumidores cuando y donde estarán disponibles estos mercados, y cuáles productos lo estarán, siempre y cuando reporten de manera oportuna aquellos que ofertan sus productos. Asumiendo esto, los consumidores podrán preordenar, apartar o pedir sus productos a domicilio, así se podrá dar forma a una herramienta estable y práctica, y quién sabe, quizás popular en un futuro.
 
 ## Mercado objetivo
 
@@ -67,3 +68,5 @@
   * Verticalización del Home, diseño de edificio de varias plantas donde cada planta puede ser un categoría distinta de productos y la exploración entre estas categorías podría hacerse elemento a elemento horizontalmente tipo carrusel, integrando bastante contenido en un mismo home vertical.
 
   * www.alafut.qc.ca/en/
+
+  ## Integrantes del equipo
