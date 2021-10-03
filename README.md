@@ -74,3 +74,6 @@ Evidenciado el problema, la plataforma propuesta ofrecerá los productos que se 
   * www.alafut.qc.ca/en/
 
   ## Integrantes del equipo
+* *Diana Melisa Domínguez:* Ingeniera Física, FullStack dev. en proceso.
+* *Miguel Buriticá:* Desarrollador FullStack en formación, estudiante de Física y estudiante de ingeniería de sistemas.
+* *Daniela Zapata:* Ingeniera Industrial de profesión y aprendiz de Desarrollo web FullStack
