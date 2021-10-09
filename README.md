@@ -62,3 +62,6 @@ Evidenciado el problema, la plataforma propuesta ofrecerá los productos que se 
 * *<a href="https://www.linkedin.com/in/diana-melisa-dom%C3%ADnguez-g%C3%B3mez-aa956659/">Diana Melisa Domínguez:</a>* Ingeniera Física, FullStack dev. en proceso.
 * *<a href="https://www.linkedin.com/in/miguel-antonio-buritica-vargas-74693a219/" >Miguel Buriticá:</a>* Desarrollador FullStack en formación, estudiante de Física y estudiante de ingeniería de sistemas.
 * *<a href="https://www.linkedin.com/in/danielazapatasosa/" >Daniela Zapata:</a>* Ingeniera Industrial de profesión y aprendiz de Desarrollo web FullStack
+
+## Enlace tablero de trabajo Trello
+* *<a href="https://trello.com/b/OCkDLuqw/grupo-2-guava-market">Tablero de trabajo Trello grupo_2_guavaMarket</a>*
