@@ -1,6 +1,6 @@
 # Retrospectiva sprint 1
 
-## Comenzar a hacer: 
+## Comenzar a hacer:
 
 * Cambiar el horario de la reunión de los viernes de acuerdo a la disponibilidad de cada uno que no sea tan tarde.
 * Concertar al inicio de cada sprint el trabajo conjunto y el trabajo individual.
@@ -22,5 +22,3 @@
 ## Dejar de hacer:
 
 * Para este sprint no tenemos ninguna reflexión respecto a este item.
-
-
