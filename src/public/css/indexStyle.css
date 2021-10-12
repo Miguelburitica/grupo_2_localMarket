@@ -1,0 +1,113 @@
+*{
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+}
+
+header .headercontent {
+    width: 100vw;
+    height: 11vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #78c3a5;
+}
+
+header .headercontent .burger-menu {
+    order: -1;
+    width: 20vw;
+    text-align: center;
+    font-size: calc(10px + 6vw);
+}
+
+header .headercontent .logo {
+    height: inherit;
+    width: 40vw;
+}
+
+header .headercontent .logo img {
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
+
+header .headercontent .centrales .busqueda {
+    display: flex;
+    width: 40vw;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+header .headercontent .centrales .busqueda i {
+    font-size: calc(10px + 6vw);
+}
+
+header .headercontent .centrales .navbar {
+    display: none;
+}
+
+header .headercontent .formularios {
+    display: none;
+}
+
+@media (min-width: 1200px){
+    
+    /* Inicio Header Desktop */
+
+    header{
+        background-color: #78c3a5;
+        height: 10vh;
+    }
+
+    header .headercontent{
+        width: 80%;
+        margin: auto;
+        max-width: 1115px;
+        height: inherit;
+        display: grid;
+        grid-template-columns: 2fr 3fr 1fr;
+    }
+
+    header .headercontent .logo{
+        text-align: center;
+        height: inherit;
+    }
+
+    header .headercontent .logo img{
+        max-height: 100%;
+    }
+
+    header .headercontent .centrales{
+        display: grid;
+        grid-template-rows: max-content;
+    }
+
+    header .headercontent .centrales .navbar{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    header .headercontent .burger-menu {
+        display: none;
+    }
+
+    /* header .headercontent .centrales .busqueda{
+    } */
+
+    header .headercontent .formularios{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    header .headercontent .formularios p{
+        margin-top: 0%;
+        margin-bottom: 0%;
+    }
+    /* Final Header Desktop */
+}
+
+
