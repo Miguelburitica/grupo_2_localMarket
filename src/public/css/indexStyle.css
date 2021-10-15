@@ -1,7 +1,11 @@
 *{
     box-sizing: border-box;
+    font-family: "Mulish";
     margin: 0%;
     padding: 0%;
+}
+h1{
+    font-family: "Monserrat";
 }
 
 header .headercontent {
@@ -12,6 +16,7 @@ header .headercontent {
     align-items: center;
     background-color: #78c3a5;
 }
+
 
 header .headercontent .burger-menu {
     order: -1;
@@ -56,19 +61,45 @@ header .headercontent .formularios {
 
 @media (min-width: 1280px){ 
     header .headercontent{
+        display: flex;
         height: 18vh;
+    }
+    header .headercontent .logo{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 30%;
+    }
+    header .headercontent .logo h2{
+        font-size: 80px;
+    }
+    header .headercontent .logo img{
+        max-height: 100%;
+        display: block;
+        margin: auto;
     }
     header .headercontent .burger-menu {
         display: none;
     }
     header .headercontent .centrales{
-        height: 60%;
+        height: 100%;
+        width: 40%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
         padding: 10px;
     }
+    header .headercontent .centrales .centrales-busqueda-carrito{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    /* header .headercontent .centrales .centrales-busqueda-carrito .items {
+        display: inline-block;
+        background-color: white;
+        
+    } */
     header .headercontent .centrales .navbar{
         display: flex;
         justify-content: space-around;
@@ -85,6 +116,7 @@ header .headercontent .formularios {
         display: flex;
         justify-content: space-around;
         flex-direction: column;
+        width: 30%;
     }
     header .headercontent .centrales .busqueda {
         display: flex;
