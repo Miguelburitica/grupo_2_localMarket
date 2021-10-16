@@ -12,47 +12,52 @@
     <title>LocalMarket site</title>
 </head>
 <body>
-    <header>
-        <div class="headercontent">
-            <div class="logo">
-                <img src="./images/logoGuavaMarket.jpg" alt="Logo GuavaMarket">
-                <h2>LocalMarket</h2>
-            </div>
+    <header class="main-header">
+        <div class="content">
             
-            <div class="centrales">
-                <div class="busqueda">
-                    <input class="barra" type="search">
-                    <i class="fas fa-search"></i>
-                    <div class="centrales-busqueda-carrito">
-                        <div class="items">
-                            # de ítems
-                        </div>
-                        <i class="fas fa-shopping-basket"></i>
-                        <div class="items">
-                           $0.0 
-                        </div>
-                    </div>
-                </div>
-                <nav class="navbar">
-                    <ul class="navbar-options">
-                        <li>Inicio</li>
-                        <li>|</li>
-                        <li>Productos</li>
-                        <li>|</li>
-                        <li>Agricultores</li>
-                        <li>|</li>
-                        <li>Encuéntranos</li>
-                    </ul>
-                </nav>
-            </div>
-
             <div class="burger-menu">
                 <i class="fas fa-bars"></i>
             </div>
 
-            <div class="formularios">
-                <p>regístrate <i class="fas fa-sign-in-alt"></i></p>
-                <p>Loguéate <i class="far fa-id-card"></i> </p>
+            <div class="logo">
+                <img src="./images/logolocalmarket.png" alt="Logo LocalMarket">
+                <h2>LocalMarket</h2>
+            </div>
+
+            <div class="site-search">
+                <form class="search-bar">
+                    <input class="q" type="search" name="q" placeholder="Busqueda...">
+                    <button class="search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="site-shopping">
+                <div class="items">
+                    #
+                </div>
+                <a href="/shopping"><i class="fas fa-shopping-basket"></i></a>
+                <div class="current-bill">
+                    $0.0 
+                </div>
+            </div>
+
+            <nav class="nav-bar">
+                <ul class="options">
+                    <li>Inicio</li>
+                    <li>|</li>
+                    <li>Productos</li>
+                    <li>|</li>
+                    <li>Agricultores</li>
+                    <li>|</li>
+                    <li>Encuéntranos</li>
+                </ul>
+            </nav>
+            
+            <div class="forms">
+                <a class="sign-in">regístrate <i class="fas fa-sign-in-alt"></i></a>
+                <a class="log-in">Loguéate <i class="far fa-id-card"></i></a>
             </div>
         </div>
     </header>    

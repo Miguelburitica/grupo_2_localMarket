@@ -4,7 +4,9 @@
   "description": "An ecommerce that try about make a connection and show more the rural commerce for the common Medellín citizen",
   "main": "./src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js"
+
   },
   "repository": {
     "type": "git",
