@@ -173,19 +173,29 @@ i {
         border: solid #fff;
     }
 
+    .main-header .content .site-search .search-bar .q:focus {
+        outline: 0;
+        box-shadow: none;
+        background-color: #efefef;
+        border-radius: 6px;
+        padding-left: 6px;
+    } 
+    
     .main-header .content .site-search .search-bar .search{
         border-radius: 0 6px 6px 0;
         background-color: #fff;
         height: 26px;
+        width: 30px;
     }
 
     .main-header .content .site-search .search-bar .search:hover {
-        background-color: #ddd;
+        background-color: #efefef;
     }
 
 
     .main-header .content .site-search .search-bar .search i{
         display: block;
+        font-size: 16px;
     }
 
 
@@ -217,17 +227,37 @@ i {
 
     .main-header .content .nav-bar .options{
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         padding: 0;
         list-style: none;
-        gap: 25px;
         font-size: 30px;
     }
+
+    .main-header .content .nav-bar .options .option{
+        padding-left: 30px;
+        padding-right: 30px;
+        transition: .3s ease all;
+    }
+
+    .main-header .content .nav-bar .options .option:hover{
+        background-color: #d9f183;
+    }
+
     .main-header .content .forms{
         display: flex;
         height: 100px;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: center;
+    }
+
+    .main-header .content .forms a{
+        padding: 10px 5px 10px 5px;
+        transition: .3s ease all;
+    }
+
+    .main-header .content .forms a:hover{
+        background-color: #d9f183;
+        cursor: pointer;
     }
     /* Main footer */
     .main-footer .banner-interaction{
