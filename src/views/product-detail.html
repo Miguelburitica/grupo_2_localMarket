@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudﬂare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     rel="stylesheet" />
-    <link rel="stylesheet" href="/css/indexStyle.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>LocalMarket site</title>
     <link rel="shortcut icon" href="/images/logolocalmarket.ico">
 </head>
@@ -58,9 +58,32 @@
             </div>
         </div>
     </header> 
-    <body>
-        
-    </body>
+    <main class="main-main">
+        <section class="articles-section">
+            <article class="article-cards">
+                <section class="left">
+                    <span class="spans">Promoción</span>
+                    <img src="./images/sustanciaX.jpg" alt="ilustración Producto X">
+                    <div class="supplier-information">
+                        <img src="./images/supplier.png" alt="Proveedor del Producto X">
+                        <h5 class="supplier-name">Rick Sanchez</h5>
+                    </div>
+                    <span class="spans">categoría</span>
+                </section>
+                <section class="right">
+                    <h3 class="product-name">Producto X</h3>
+                    <span class="spans off"></span>
+                    <form action="#">
+                        <h4>Opciones de compra</h4>
+                        <label for="bulk"><input type="radio" name="pay-way" id="bulk" value="bulk">Libra <div>$ precio</div></label>
+                        <label for="unit"><input type="radio" name="pay-way" id="unit" value="unit">Unidad <div>$ precio</div></label>
+                        <input type="number" name="how-much" id="how-much" min="0" value="0">
+                        <button type="submit">Agregar <i class="fas fa-shopping-basket"></i></button>
+                    </form>
+                </section>
+            </article>
+        </section>
+    </main>
     <footer class="main-footer">
         <div class="social-media">
             <h4>Síguenos en:</h4>
