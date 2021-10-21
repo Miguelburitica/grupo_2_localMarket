@@ -299,19 +299,92 @@ i {
 
 /* Inicio Estilos Product Detail */
 
-.main-main {
+.detail-main {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffd164d1;
 }
 
-.main-main .articles-section {
+.detail-main .article-cards {
     width: 90%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-main .article-cards .left {
+    width: 49%;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.detail-main .article-cards .left img {
+    display: inline-block;
+    width: 40%;
+    border-radius: 50%;
+}
+
+.detail-main .article-cards .left .supplier-information {
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.detail-main .article-cards .left .supplier-information img {
+    width: 20%;
+    display: inline-block;
+    border-radius: 50%;
+    border: #754847 solid 2px;
+}
+
+.detail-main .article-cards .left .supplier-information .supplier-name {
+    width: auto;
+}
+
+.detail-main .article-cards .right {
+    width: 49%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-main .article-cards .right .buy {
+    display: grid;
+    grid-template-areas: "titulo titulo titulo"
+                         "opcion1 precio1 selector"
+                         "opcion2 precio2 selector"
+                         "boton boton boton";
+}
+
+.detail-main .article-cards .right .buy h4 {
+    grid-area: titulo;
+}
+
+.detail-main .article-cards .right .buy #bulk {
+    grid-area: opcion1;
+}
+
+.detail-main .article-cards .right .buy #unit {
+    grid-area: opcion2;
+}
+
+.detail-main .article-cards .right .buy .precio1 {
+    grid-area: precio1;
+}
+
+.detail-main .article-cards .right .buy .precio2{
+    grid-area: precio2;
+}
+
+.detail-main .article-cards .right .buy #how-much {
+    grid-area: selector;
+}
+
+.detail-main .article-cards .right .buy button {
+    grid-area: boton;
 }
 
 /* Final Estilos Product Detail */
