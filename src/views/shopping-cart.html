@@ -20,8 +20,8 @@
             </div>
 
             <div class="logo">
-                <a href="./"><img src="./images/logolocalmarket.png" alt="Logo LocalMarket"></a>
-                <a href="./"><h2>LocalMarket</h2></a>
+                <a href="/"><img src="./images/logolocalmarket.png" alt="Logo LocalMarket"></a>
+                <a href="/"><h2>LocalMarket</h2></a>
             </div>
 
             <div class="site-search">
@@ -45,7 +45,7 @@
 
             <nav class="nav-bar">
                 <ul class="options">
-                    <a href="#"><li class="option">Inicio</li></a>
+                    <a href="/"><li class="option">Inicio</li></a>
                     <a href="#"><li class="option">Productos</li></a>
                     <a href="#"><li class="option">Agricultores</li></a>
                     <a href="#"><li class="option">Encuéntranos</li></a>
@@ -59,7 +59,58 @@
         </div>
     </header> 
     <body>
-        <div><h2>HOLIII SOY EL BODY</h2></div>
+    <h2>Tu carrito de compras</h2>
+       <div class="main-shop">
+        <div class="shopping-list">
+            <div class="shop-item-information">
+                <img src="" alt="">
+                <p>Nombre del vendedor</p>
+                <p>$ Valor</p>
+                <p>Cantidad</p>
+                <i class="fas fa-trash-alt"></i>
+            </div>
+        </div>
+        <div class="pre-pay-resume">
+            <p>Subtotal</p>
+            <p>Costo de envío</p>
+            <p>TOTAL</p>
+            <button type="submit" class="">Enviar pedido</button>
+        </div>
+       </div> 
+       <div class="send-pay-information">
+            <h4>Metodo de envío</h4>
+            <div class="send-options">
+                <label><input type="radio" name="perfil">Recoger en Mercado local</label>
+                <label><input type="radio" name="perfil">Envío a domicilio</label>
+            </div>
+       </div>
+       <div class="send-location">
+        <h4>Dirección de entrega</h4>
+        <form action="/envio-domicilio" method="POST" class="form-location">
+            <div class="form-location">
+                <label>Dirección:</label>
+                <input type="text" name="direccion" class="control">
+            </div>
+            <div class="form-location">
+                <label>Barrio:</label>
+                <select name="barrio"  class="control">
+                    <option value="suramericana">Suramericana</option>
+                    <option value="poblado">Poblado</option>
+                    <option value="san javier">San Javier</option>
+                    <option value="floresta">Floresta</option>
+                    <option value="castilla">Castilla</option>
+                </select>
+            </div>
+            <div class="form-location">
+                <label>Casa-Bloque:</label>
+                <input type="text" name="casa-bloque" class="control">
+            </div>
+            <div class="form-location">
+                <label>Notas al pedido:</label>
+                <input type="text" name="notas al pedido" class="control">
+            </div>
+        </form>
+   </div>
     </body>
     <footer class="main-footer">
         <div class="social-media">

@@ -13,4 +13,8 @@ app.get('/product-detail', (req, res) => {
     res.sendFile(path.resolve(__dirname,'./views/product-detail.html'))
 });
 
+app.get('/shopping-cart', (req, res) => {
+    res.sendFile(path.resolve(__dirname,'./views/shopping-cart.html'))
+});
+
 app.listen(port, () => console.log("Servidor corriendo"))
