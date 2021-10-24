@@ -84,7 +84,48 @@ i {
     display: none;
 }
 
+/* Main mobile first */
+.main-main{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main-banner{
+    display: flex;
+}
+.main-banner img{
+    width: 100vw;
+}
+.main-main h2{
+    color:#754847;
+}
+/* Main products */
+.main-products{
+    display: flex;
+    justify-content:space-evenly;
+}
 
+.main-products .control-article{
+    display: flex;
+    width: 50vw;
+    justify-content: center;
+}
+.main-products .control-article img{
+    width: 40vw;
+}
+/* Main farmers */
+.main-farmers{
+    display: flex;
+    justify-content: space-evenly;
+}
+.main-farmers .control-farmer{
+    display: flex;
+    width: 50vw;
+    justify-content: center;
+}
+.main-farmers .control-farmer img{
+    width: 40vw;
+}
 
 /* Footer mobile first */
 
