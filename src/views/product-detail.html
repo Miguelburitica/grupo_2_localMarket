@@ -74,9 +74,17 @@
                         <span class="spans off">20% descuento</span>
                         <form action="#" class="buy">
                             <h4>Opciones de compra</h4>
-                            <label for="bulk"><input type="radio" name="pay-way" id="bulk" value="bulk">Libra </label><div class="opcion1">$ precio</div>
-                            <label for="unit"><input type="radio" name="pay-way" id="unit" value="unit">Unidad </label><div class="opcion2">$ precio</div>
-                            <input type="number" name="how-much" id="how-much" min="0" value="0">
+                            <div class="radio1">
+                                <input type="radio" name="pay-way"  id="bulk" value="bulk">
+                                <label for="bulk">Libra</label>
+                            </div>
+                            <div class="radio2">
+                                <input type="radio" name="pay-way" id="unit"  value="unit">
+                                <label for="unit">Unidad</label>
+                            </div>
+                            <div class="precio1">$ precio</div>
+                            <div class="precio2">$ precio</div>
+                            <input type="number" name="how-much" id="how-much" min="0" value="0" accept="numbers">
                             <button type="submit">Agregar <i class="fas fa-shopping-basket"></i></button>
                         </form>
                     </section>
