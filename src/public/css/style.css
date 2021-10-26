@@ -862,12 +862,13 @@ i {
 .main-shop{
     color: #754847
 }
-.main-shop h2{
+h2{
     text-align: center;
     font-family: "Montserrat";
     margin:10px;
+    color:#754847;
 }
-.main-product, .pay-information{
+.main-suggest, .pay-information{
     display:none;
 }
 .shopping-list{
@@ -880,7 +881,8 @@ i {
     border-radius: 5px;
     box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3),
     0 0 0 3px rgba(185, 185, 185, 0.3);  
-    background-color:rgba(255, 209, 100);}
+    background-color:rgba(255, 209, 100);
+}
     
 .shop-item-information{
     display:flex;
@@ -888,8 +890,8 @@ i {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    width: 95%;
-    height: 35%;
+    width: 90%;
+    height: 30%;
     margin: 10px 10px 10px 0;
     padding: 5px;
     border-radius:10px ;
@@ -939,7 +941,7 @@ i {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    width: 95%;
+    width: 80%;
     margin: 10px 15px 10px 0;
     padding: 5px;
     border-radius:10px ;
@@ -986,8 +988,22 @@ i {
     .main-shop{
         margin:15px;
     }
-    .main-shop .main-product{
-        display:flex;
+    .main-suggest{
+        display:block;
+        justify-content: center;
+    }
+
+    .suggest-product-list{
+        display: flex;
+        justify-content: center;
+        margin:0;
+        padding: 0px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .main-shop .main-suggest .suggest-product-list h2{
+        width: 100%;
     }
 
     .shop-item-information{
@@ -995,24 +1011,169 @@ i {
         font-size: 25px;
     }
 
-    .main-shop .suggest-product .control-article{
+    .main-shop .suggest-product-list .control-article{
         display: flex;
-        justify-content: space-around;
         align-items: center;
         flex-wrap: wrap;
-        border: red solid;
         flex-direction: column;
-        margin:auto;
-        width: 30%;
+        margin:7px;
+        padding: 5px 0px 10px 0px;
+        width: 21%;
+        height: 23%;
+        border-radius: 10%;
+        box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+        0 0 0 3px rgba(185, 185, 185, 0.3);
     }
 
-    .main-shop .suggest-product .control-article img{
-        width: 80%;
+    .main-shop .main-suggest .control-article img{
+        width: 70%;
         border-radius: 30%;
-        height: 25%;
+        margin: 5px;
+        height: 150px;
+    }
+    
+    .main-shop .main-suggest .control-article .product-name{
+            font-weight: bold;
+    }
+        
+    .main-shop .main-suggest .control-article .price{
+            font-weight: bold;
+            color: #78c3a5; 
+    }
+
+
+    .main-suggest .suggest-product-list button {
+        width: 160px;
+        height: 25px;
+        margin: 8px auto;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #d9f183;
+        box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+        0 0 0 3px rgba(185, 185, 185, 0.3);
+        font-weight: 600;
+    }
+    
+    .main-suggest .suggest-product-list button:hover {
+        background-color: #e1f587;
     }
     
 }
 
 /* Final estilos tablet */
+
+/* desktop shopping-cart */
+@media (min-width: 1280px){
+    h2{
+        font-size: 26px;
+    }
+
+    
+    .main-shop{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .pay-information{
+       display:Flex;
+       width: 30%;
+       flex-wrap: wrap;
+       border-radius: 5px;
+       justify-content:space-around;
+    } 
+
+   .main-shop .shop-left{
+       display: flex;
+       width: 65%;
+       flex-wrap: wrap;
+       flex-direction: row;
+       justify-content: center;
+   }
+
+    .pre-pay-resume .pay-subtotal, .pay-send-cost{
+        display: flex;
+    }
+
+    .pre-pay-resume .text{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+    }
+
+    .pre-pay-resume .pay-items, .pay-subtotal, .pay-send-cost, .pay-total{
+        width: 35%;
+        font-weight: bold;
+        text-align: left;
+        border-right: #e1f587 solid 3px ;
+        margin:2px;
+    }
+
+    .pre-pay-resume button{
+        width: 15%;
+    }
+
+
+    .pay-information .send-pay-information, .send-location, .pay-options{
+        width: 90%;
+        box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+            0 0 0 3px rgba(185, 185, 185, 0.3);
+        border-radius: 5px;
+    }
+    .pay-information .send-pay-information{
+        height: 20%;
+    }
+
+    .pay-information .send-location{
+        height: 55%;
+    }
+    .pay-information .pay-options{
+        height: 20%;
+    }
+
+    .pay-information h4{
+        font-size: 24px;
+        margin: 4px;
+        padding: 4px;
+        background-color: #e1f587;
+        border:4px;
+        border-bottom: #754847 solid 4px;
+    }
+
+    .pay-information label{
+        margin: 5px;
+        font-size: 20px;
+        padding: 5px;
+        display: inline-block;
+    }
+
+    .pay-information .send-options input{
+        margin: 3px;
+    }
+
+    .pay-information .pay-options input{
+        margin: 3px;
+    }
+    .pay-information .send-location input, select{
+        display: flex;
+        margin: 6px;
+        height: 30px;
+        align-items: center;
+        max-width: 500px;
+        border: #754847 solid 1px;
+        width: 95%;
+        border-radius: 6px;
+    }
+
+    .pay-information .send-location .notas-control{
+        height: 130px;
+    }
+
+
+
+}
+/* Final estilos desktop */
+
 /* Final Estilos Shopping Cart */
