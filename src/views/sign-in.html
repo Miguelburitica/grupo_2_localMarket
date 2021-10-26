@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Mulish:wght@200&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdnjs.cloudﬂare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        rel="stylesheet" />
+        <link rel="stylesheet" href="/css/style.css">
+        <title>LocalMarket site</title>
+        <link rel="shortcut icon" href="/images/logolocalmarket.ico">
+    </head>
+    <body>
+        <header class="main-header">
+            <div class="content">            
+                <div class="burger-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <div class="logo">
+                    <a href="/"><img src="./images/logolocalmarket.png" alt="Logo LocalMarket"></a>
+                    <a href="/"><h2>LocalMarket</h2></a>
+                </div>
+
+                <div class="site-search">
+                    <form class="search-bar">
+                        <input class="q" type="search" name="q" placeholder="Busqueda...">
+                        <button class="search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="site-shopping">
+                    <div class="items">
+                        #
+                    </div>
+                    <a href="/shopping"><i class="fas fa-shopping-basket"></i></a>
+                    <div class="current-bill">
+                        $0.0 
+                    </div>
+                </div>
+
+                <nav class="nav-bar">
+                    <ul class="options">
+                        <a href="#"><li class="option">Inicio</li></a>
+                        <a href="#"><li class="option">Productos</li></a>
+                        <a href="#"><li class="option">Agricultores</li></a>
+                        <a href="#"><li class="option">Encuéntranos</li></a>
+                    </ul>
+                </nav>
+                
+                <div class="forms">
+                    <a class="sign-in">regístrate <i class="fas fa-sign-in-alt"></i></a>
+                    <a class="log-in">Loguéate <i class="far fa-id-card"></i></a>
+                </div>
+            </div>
+        </header> 
+
+    <main class="singin-main">
+        <h2>¡Crea tu cuenta!</h2>
+        <form action="/index.html" class="formulario">
+            <input class="text-box" type="text" name="user-name" id="user-name" placeholder="Razón social (tienda/finca/familia) " minlength="2" required >
+            <input class="text-box" type="text" name="name" id="name" placeholder="Nombres completos" minlength="2" required>
+            <input class="text-box" type="text" name="surname" id="surname" placeholder="Apellidos completos" minlength="2" required>
+            <input class="text-box" type="text" name="DNI" id="DNI" placeholder="Documento de identidad" min-length="9" required>
+            <input class="text-box" type="tel" name="phone" id="phone" placeholder="Número de celular" minlength="9" required>
+            <input class="text-box" type="email" name="email" id="email" placeholder="Correo electrónico" required>
+            <input class="text-box" type="password" name="pass" id="pass" placeholder="Contraseña" minlength="10" required>
+            <div class="check">
+                <input class="slides" type="checkbox" name="agree-terms-conditions" id="agree-terms-conditions">
+                <label for="agree-terms-conditions">Acepto los terminos y condiciones de uso</label>
+            </div> 
+            <div class="check">
+                <input class="slides" type="checkbox" name="agree-data" id="agree-data">
+                <label for="agree-data">Acepto las politicas de tratamientos de datos</label>
+            </div>
+        </form>
+    </main>
+
+    <footer class="main-footer">
+        <div class="social-media">
+            <h4>Síguenos en:</h4>
+            <a href="/LocalMarketFB"> <i class="fab fa-facebook"></i></a> 
+            <a href="/LocalMarketInst"><i class="fab fa-instagram"></i></a>      
+            <a href="/LocalMarketTW"><i class="fab fa-twitter"></i></a> 
+            <a href="/LocalMarketLinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="banner-interaction">
+            <div class="FQA">
+                <i class="far fa-question-circle"></i>
+                <a href="/preguntas-respuestas-frecuentes.html">Preguntas y respuestas frecuentes</a>
+            </div>
+            <div class="technical-support">
+                <i class="fas fa-wrench"></i>
+                <a href="/soporte-tecnico.html">Soporte técnico</a>
+            </div>
+        </div>
+        <div class="contact-me">
+            <h4><i class="fas fa-phone-alt"></i> CONTÁCTENOS</h4>
+            <div>
+                <i class="fas fa-map-marker-alt"></i>
+                Parque Carlos E. Restrepo <br>
+                Medellín-Colombia<br>
+                Email: localmarket@correo.com
+            </div>
+            <img src="./images/logolocalmarket.png" alt="Logo LocalMarket">
+            <div>Localmarket</div>
+            <!-- <a href="/contactanos.html">Contacto</a> -->
+        </div>
+    </footer>
+</body>
+</html>

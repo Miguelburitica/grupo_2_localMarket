@@ -17,4 +17,10 @@ app.get('/shopping-cart', (req, res) => {
     res.sendFile(path.resolve(__dirname,'./views/shopping-cart.html'))
 });
 
+
+
+app.get('/sign-in', (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./views/sign-in.html"))
+})
+
 app.listen(port, () => console.log("Servidor corriendo"))
