@@ -576,6 +576,164 @@ i {
 
 /* Inicio Estilos Shopping Cart */
 
+/* mobile */
+.main-shop{
+    color: #754847
+}
+.main-shop h2{
+    text-align: center;
+    font-family: "Montserrat";
+    margin:10px;
+}
+.main-product, .pay-information{
+    display:none;
+}
+.shopping-list{
+    display: flex;
+    justify-content: center;
+    margin:auto;
+    padding: 10px;
+    width: 95%;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);  
+    background-color:rgba(255, 209, 100);}
+    
+.shop-item-information{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 95%;
+    height: 35%;
+    margin: 10px 10px 10px 0;
+    padding: 5px;
+    border-radius:10px ;
+    background-color: white;
+}
+
+.shop-item-information .product-farmer{
+    width:30%;
+}
+
+.shop-item-information .farmer-name{
+    font-size: 14px;
+    font-style: italic;
+}
+
+.shop-item-information .product-name{
+    font-weight: bold;
+}
+
+.shop-item-information .price{
+    font-weight: bold;
+    color: #78c3a5;
+}
+
+.shop-item-information img{
+    width: 20%;
+    border-radius: 30%;
+    height: 80%;
+}
+
+.shop-item-information i{
+    width: 15%;
+    text-align: center;
+}
+
+.shop-item-information i:active {
+    color:#78c3a5;
+}
+
+.shop-item-information:hover {
+    box-shadow:0 0 0 5px rgba(185, 185, 185, 0.4); 
+}
+
+.pre-pay-resume{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 95%;
+    margin: 10px 15px 10px 0;
+    padding: 5px;
+    border-radius:10px ;
+    background-color: white;
+}
+
+
+.pre-pay-resume .pay-subtotal, .pay-send-cost{
+    display: none;
+}
+
+.pre-pay-resume .pay-items, .pay-total{
+    width: 80%;
+    text-align: center;
+    font-weight: bold;
+
+}
+.main-shop .pre-pay-resume button {
+    width: 160px;
+    height: 25px;
+    margin: 8px auto;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #d9f183;
+    box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+    font-weight: 600;
+}
+
+.main-shop .pre-pay-resume button:hover {
+    background-color: #e1f587;
+}
+
+.main-shop .pre-pay-resume button:active {
+    background-color: #f1ff97;
+}
+
+/* Final estilos mobile */
+
+/* tablet shopping-cart */
+
+@media (min-width: 768px){
+    .main-shop{
+        margin:15px;
+    }
+    .main-shop .main-product{
+        display:flex;
+    }
+
+    .shop-item-information{
+        height: 180px;
+        font-size: 25px;
+    }
+
+    .main-shop .suggest-product .control-article{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        border: red solid;
+        flex-direction: column;
+        margin:auto;
+        width: 30%;
+    }
+
+    .main-shop .suggest-product .control-article img{
+        width: 80%;
+        border-radius: 30%;
+        height: 25%;
+    }
+    
+
+}
+
+/* Final estilos tablet */
 /* Final Estilos Shopping Cart */
 
 
