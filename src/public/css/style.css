@@ -107,12 +107,20 @@ i {
 
 .main-products .control-article{
     display: flex;
-    width: 50vw;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin:7px;
+    padding: 5px 0px 10px 0px;
+    width: 30%;
+    height: 30%;
+    border-radius: 10%;
 }
 .main-products .control-article img{
-    width: 40vw;
+    width: 100%;
+    border-radius: 20%;
+    margin: 5px;
 }
+
 /* Main farmers */
 .main-farmers{
     display: flex;
@@ -120,12 +128,57 @@ i {
 }
 .main-farmers .control-farmer{
     display: flex;
-    width: 50vw;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin:7px;
+    padding: 5px 0px 10px 0px;
+    width: 40%;
+    height: 40%;
+    border-radius: 10%;
 }
 .main-farmers .control-farmer img{
-    width: 40vw;
+    width: 100%;
+    border-radius: 20%;
+    margin: 5px;
 }
+/* Main more about us */
+.main-moreabout{
+    margin: 10%;
+    background-image: url(/images/maybebanner2.jfif);
+    background-position: center;
+    background-repeat: space;
+}
+.main-moreabout .transparent-box{
+    margin: 30px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.8;
+  }
+.main-moreabout .transparent-box h3{
+    text-align: center;
+    margin: 5%;
+    font-weight: bolder;
+    color:#754847;
+  }
+/* Main pre-order */
+.main-preorder{
+    margin: 10%;
+    background-image: url(/images/maybebanner.jfif);
+    background-position: center;
+    background-repeat: space;
+}
+.main-preorder .transparent-box{
+    margin: 30px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.8;
+  }
+.main-preorder .transparent-box h3{
+    text-align: center;
+    margin: 5%;
+    font-weight: bolder;
+    color:#754847;
+  }
 
 /* Footer mobile first */
 
