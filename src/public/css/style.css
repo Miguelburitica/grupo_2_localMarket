@@ -4,7 +4,7 @@
     margin: 0%;
     padding: 0%;
 }
-h1{
+h1, h2, h3, h4, h5, h6{
     font-family: "Monserrat";
 }
 
@@ -345,79 +345,7 @@ i {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.detail-main .article-cards {
-    width: 99%;
-    max-width: 800px;
-    display: flex;
-    justify-content: space-between;
-    background-color: #96d7a5;
-    margin: 40px 0;
-    padding: 20px 8px;
-    border-radius: 4px;
-}
-
-.detail-main .article-cards .left {
-    width: 41%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 10px;
-    font-size: 0.8rem;
-}
-
-.detail-main .article-cards .left img {
-    width: 80%;
-    border-radius: 50%;
-}
-
-.detail-main .article-cards .left .supplier-information {
-    width: 80%;
-    height: 26px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #d9f183;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: .3s ease all;
-    background-color: #d9f183;
-	box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3),
-    0 0 0 3px rgba(185, 185, 185, 0.3);
-    appearance: none;
-}
-
-.detail-main .article-cards .left .supplier-information img {
-    height: 100%;
-    max-width: 20%;
-    border-radius: 4px;
-    border: #754847 solid 4px;
-    align-self: flex-start;
-}
-
-.detail-main .article-cards .left .supplier-information .supplier-name {
-    width: auto;
-}
-
-.detail-main .article-cards .right {
-    width: 58%;
-    display: flex;
-    flex-direction: column;
-    font-size: 0.7rem;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.detail-main .article-cards .right .product-name {
-    font-size: 25px;
-    font-weight: 1000;
-}
-.detail-main .article-cards .right .off {
-    border-bottom: #754847 solid 2px;
-    width: 90px;
-    text-align: center;
+    background-color: #fefefe;
 }
 
 .detail-main .spans {
@@ -434,20 +362,145 @@ i {
     background-color: #e1f587;
 }
 
+.detail-main .article-cards {
+    width: 99%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #ff9ba015;
+    margin: 40px 0;
+    padding: 20px 8px;
+    border-radius: 4px;
+	box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+    position: relative;
+    height: 220px;
+    align-items: center;
+}
+
+.detail-main .article-cards .left {
+    width: 41%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+    font-size: 0.8rem;
+    height: 90%;
+}
+
+.detail-main .article-cards .left .promotion {
+    position: absolute;
+    top: -20px;
+    left: 9%;
+    padding: 8px 8px;
+}
+
+.detail-main .article-cards .left .category {
+    position: absolute;
+    top: 194px;
+    right: 9%;
+    padding: 8px 8px;
+}
+
+.detail-main .article-cards .left .image-product {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+}
+
+.detail-main .article-cards .left .image-product img {
+    max-height: 100%;
+}
+
+.detail-main .article-cards .left .supplier-information {
+    width: 80%;
+    height: 34px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .3s ease all;
+	background: #efefef;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+    appearance: none;
+    
+}
+
+.detail-main .article-cards .left .supplier-information .image-supplier {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    justify-self: flex-start;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+}
+
+.detail-main .article-cards .left .supplier-information .image-supplier img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.detail-main .article-cards .left .supplier-information .supplier-name {
+    width: auto;
+    color: #552827;
+
+}
+
+.detail-main .article-cards .right {
+    width: 58%;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.7rem;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #fefefe;
+    border: #754847 1px solid;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.detail-main .article-cards .right .product-name {
+    font-size: 25px;
+    font-weight: 1000;
+    border-bottom: #754847 solid 2px;
+    color: #552827;
+    padding: 0 12px;
+    border-radius: 4px;
+}
+.detail-main .article-cards .right .off {
+    border-bottom: #754847 solid 2px;
+    width: 90px;
+    text-align: center;
+    background-color: #fefefe;
+}
+
 .detail-main .article-cards .right .buy {
     display: grid;
     width: 100%;
     grid-template-areas: "titulo titulo titulo titulo"
-                         "opcion1 precio1 precio1 selector"
-                         "opcion2 precio2 precio2 selector"
+                         "opcion1 precio precio selector"
+                         "opcion2 precio precio selector"
                          "boton boton boton boton";
 }
 
 .detail-main .article-cards .right .buy h4 {
     grid-area: titulo;
     text-align: left;
-    margin-bottom: 5px;
-    padding-left: 8px;
+    color: #754847;
+    background-color: #fefefe;
+    width: 62%;
+    margin: 0 auto 8px 14px;
+    text-align: center;
+    border-radius: 2px;
+    padding: 2px 0; 
+    border-bottom: #552827 solid 1px;
 }
 
 .detail-main .article-cards .right .buy .radio1{
@@ -480,27 +533,29 @@ i {
 	cursor: pointer;
 	border-radius: 6px;
 	padding: 4px 8px;
-	background: #754847;
+	background: #efefef;
 	font-size: 14px;
-	box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3),
-    0 0 0 3px rgba(185, 185, 185, 0.3);
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
     transition: .3s ease all;
 }
 
 .detail-main .article-cards .right .buy div input:hover{
-    background-color: #855857;
+	box-shadow: inset 0 0 0 2px rgba(133, 88, 87, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
 }
 
 .detail-main .article-cards .right .buy div input:checked{
-    background-color: #e1f587;
+    background-color: #e1f587b5;
 }
 
 .detail-main .article-cards .right .buy div input:checked:hover{
-    background-color: #f1ff97;
+	box-shadow: inset 0 0 0 2px rgba(133, 88, 87, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
 }
 
 .detail-main .article-cards .right .buy div label {
-	color: #ffd164;
+	color: #552827;
     cursor: pointer;
     position: absolute;
 }
@@ -509,12 +564,16 @@ i {
     font-weight: 600;
 }
 
-.detail-main .article-cards .right .buy .precio1 {
-    grid-area: precio1;
-}
+.detail-main .article-cards .right .buy .precio {
+    grid-area: precio;
+    justify-self: center;
+    align-self: center;
+    font-size: 16px;
+    font-weight: 800;
+    color: #552827;
+    margin-right: 15px;
+    margin-bottom: 4px;
 
-.detail-main .article-cards .right .buy .precio2{
-    grid-area: precio2;
 }
 
 .detail-main .article-cards .right .buy #how-much {
@@ -522,20 +581,27 @@ i {
     width: 40px;
     height: 48px;
     text-align: center;
-    background-color: #d9f183;
+	background: #efefef;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: .3s ease all;
-    background-color: #d9f183;
-	box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3),
-    0 0 0 3px rgba(185, 185, 185, 0.3);
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
     appearance: none;
-
+    color: #754847;
+    font-weight: 600;
 }
 
 .detail-main .article-cards .right .buy #how-much:focus {
     outline: none;
+	box-shadow: inset 0 0 0 2px rgba(133, 88, 87, 0.2),
+    0 0 0 3px rgba(185, 185, 185, 0.2);
+}
+
+.detail-main .article-cards .right .buy #how-much:hover {
+	box-shadow: inset 0 0 0 2px rgba(133, 88, 87, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
 }
 
 .detail-main .article-cards .right .buy button {
@@ -546,14 +612,15 @@ i {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: .3s ease all;
-    background-color: #d9f183;
-	box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3),
-    0 0 0 3px rgba(185, 185, 185, 0.3);
+    transition: .3s ease background-color;
+    background-color: #efefef;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+    font-weight: 600;
 }
 
 .detail-main .article-cards .right .buy button:hover {
-    background-color: #e1f587;
+    background-color: #e1f587ad;
 }
 
 .detail-main .article-cards .right .buy button:active {
