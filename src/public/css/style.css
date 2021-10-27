@@ -1398,7 +1398,7 @@ h2{
 
     .main-shop .main-suggest .control-article img{
         width: 70%;
-        border-radius: 30%;
+        border-radius: 15% 15% 0 0;
         margin: 5px;
         height: 150px;
     }
@@ -1414,7 +1414,7 @@ h2{
 
 
     .main-suggest .suggest-product-list button {
-        width: 80%;
+        width: 70%;
         height: 25px;
         margin: 8px auto;
         border: none;
@@ -1437,7 +1437,7 @@ h2{
 
 /* desktop shopping-cart */
 @media (min-width: 1280px){
-    h2{
+    main h2{
         font-size: 26px;
         width: 100%;
     }
@@ -1558,5 +1558,229 @@ h2{
 
 /* Final Estilos Shopping Cart */
 
+
+/* Inicio Estilos Login */
+
+/* Inicio Estilos Mobile Login */
+
+.login-left{
+    display:none;
+}
+
+.sign-for-login{
+    display: none;
+}
+.login-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.login-main h2 {
+    color: #552827;
+    margin: 10px 0;
+    border-bottom: #552827 solid 2px;
+    border-radius: 6px;
+    padding: 0px 12px 5px 12px;
+}
+
+.login-main p{
+    color: #552827;
+    margin: 10px 0;
+    padding: 0px 12px 5px 12px;
+    font-weight: bold;
+}
+
+.login-main a{
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+
+
+.login-main .formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;    
+    max-width: 650px;
+    padding: 45px 0;
+    margin-bottom: 16px;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.25),
+    0 0 0 3px rgba(185, 185, 185, 0.25);
+   border-radius: 5px;
+}
+
+.login-main .formulario .text-box {
+    width: 80%;
+    height: 35px;
+    padding-left: 8px;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+    color: #552827;
+}
+
+.login-main .formulario .text-box:hover {
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.2),
+    0 0 0 3px rgba(185, 185, 185, 0.2);
+}
+
+.login-main .formulario .text-box:focus {
+    outline: none;
+    border: none;
+    background-color: #f1ff9755;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+    font-weight: 600;
+}
+
+.formulario .check {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario .check .slides {
+    width: 80%;
+	height: 20px;
+	appearance: none;
+	outline: none;
+	cursor: pointer;
+	border-radius: 6px;
+	padding: 4px 8px;
+	background: #efefef;
+	font-size: 14px;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+    transition: .3s ease all;
+}
+
+.formulario .check .slides:hover{
+	box-shadow: inset 0 0 0 2px rgba(133, 88, 87, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+}
+
+.formulario .check .slides:checked{
+    background-color: #e1f587b5;
+}
+
+.formulario .check .slides:checked:hover{
+	box-shadow: inset 0 0 0 2px rgba(133, 88, 87, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+}
+
+.formulario .check label {
+	color: #552827;
+    cursor: pointer;
+    position: absolute;
+}
+
+.formulario .check input:checked + label{
+    color: #754847;
+    font-weight: 600;
+}
+
+.login-main button {
+    width:100%;
+    height: 25px;
+    margin: 8px auto;
+    padding: 5px 80px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #d9f183;
+    box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+    font-weight: 600;
+}
+
+.login-main button:hover {
+    background-color: #e1f587;
+}
+
+/* Final Estilos Mobile Login*/
+
+/* Inicio Estilos Tablet Login*/
+@media (min-width: 768px){
+
+    .login-main{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+    .login-left{
+        display:block;
+        width: 50%;
+        align-items: center;
+    }
+
+    .login-left img{
+        display: flex;
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+        margin-bottom: 0;
+    }
+
+    .login-left p{
+        font-size: 25px ;
+        text-align: center;
+        background-color: #ffd164;
+        margin-top: 0;
+        border-radius: 0 0 10px 10px;
+        color:#754847;
+    }
+
+
+    .login-right{
+        width: 45%;
+       
+
+    }
+}
+/* Final Estilos Tablet Login*/
+
+/* Inicio Estilos desktop Login*/
+@media (min-width: 1280px){
+    .sign-for-login{
+        display: block;
+    }
+    .login-right p{
+        display:none
+    }
+
+    .login-right .formulario{
+        padding-top:20px;
+        padding-bottom:20px;
+    }
+
+    .login-left p{
+        font-size: 35px ;
+        margin-top: 30px;
+        border-radius:10px;
+        padding: 70px;
+        background-image: url('../images/banner1.jfif');
+        font-weight: bold;
+        text-shadow: #efefef -2px -2px 1px,#efefef 2px 2px 1px,#efefef -2px 2px 1px,#efefef 2px -2px 1px;
+    }
+
+    .login-left img{
+        display: flex;
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+}
+
+/* Final Estilos desktop Login*/
+
+
+/* Final Estilos Login*/
 
 
