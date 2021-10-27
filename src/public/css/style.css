@@ -626,6 +626,472 @@ i {
 .detail-main .article-cards .right .buy button:active {
     background-color: #f1ff97;
 }
+.detail-main .article-cards .supplier {
+    width: 41%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+    font-size: 0.8rem;
+    height: 90%;
+}
+
+.detail-main .article-cards .supplier .promotion {
+    position: absolute;
+    top: -20px;
+    left: 9%;
+    padding: 8px 8px;
+}
+
+.detail-main .article-cards .supplier .category {
+    position: absolute;
+    top: 200px;
+    right: 9%;
+    padding: 8px 8px;
+}
+
+.detail-main .article-cards .supplier .image-product {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+    transition: .3s all ease;
+}
+
+.detail-main .article-cards .supplier .image-product img {
+    max-height: 100%;
+}
+
+.detail-main .article-cards .supplier .supplier-info {
+    width: 80%;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .3s ease all;
+	background: #efefef;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+    appearance: none;
+    
+}
+
+.detail-main .article-cards .supplier .supplier-info .image-supplier {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    justify-self: flex-start;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+}
+
+.detail-main .article-cards .supplier .supplier-info .image-supplier img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.detail-main .article-cards .supplier .supplier-info .supplier-name {
+    width: auto;
+    color: #552827;
+
+}
+
+.detail-main .article-cards .item-info {
+    width: 58%;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.7rem;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #fefefe;
+    border: #754847 1px solid;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.detail-main .article-cards .item-info .product-name {
+    font-size: 25px;
+    font-weight: 1000;
+    border-bottom: #754847 solid 2px;
+    color: #552827;
+    padding: 0 12px;
+    border-radius: 4px;
+}
+.detail-main .article-cards .item-info .off {
+    border-bottom: #754847 solid 2px;
+    width: 90px;
+    text-align: center;
+    background-color: #fefefe;
+}
+
+.detail-main .article-cards .item-info .buy {
+    display: grid;
+    width: 100%;
+    grid-template-areas: "titulo titulo titulo titulo"
+                         "opcion1 precio precio selector"
+                         "opcion2 precio precio selector"
+                         "boton boton boton boton";
+}
+
+.detail-main .article-cards .item-info .buy h4 {
+    grid-area: titulo;
+    align-self: center;
+    justify-self: left;
+    margin-left: 4vw;
+    color: #754847;
+    background-color: #fefefe;
+    width: 31vw;
+    text-align: center;
+    border-radius: 2px;
+    padding-bottom: 5px;
+    border-bottom: #552827 solid 1px;
+    margin-bottom: 7px;
+    max-width: 280px;
+}
+
+.detail-main .article-cards .item-info .buy .radio1{
+    grid-area: opcion1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-main .article-cards .item-info .buy .radio2{
+    grid-area: opcion2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-main .article-cards .item-info .buy div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-evenly;
+}
+
+.detail-main .article-cards .item-info .buy div input {
+    width: 14vw;
+	height: 20px;
+	appearance: none;
+	outline: none;
+	cursor: pointer;
+	border-radius: 6px;
+	padding: 4px 8px;
+	background: #efefef;
+	font-size: 14px;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+    transition: .3s ease all;
+}
+
+.detail-main .article-cards .item-info .buy div input:hover{
+	box-shadow: inset 0 0 0 2px rgba(133, 88, 87, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+}
+
+.detail-main .article-cards .item-info .buy div input:checked{
+    background-color: #e1f587b5;
+}
+
+.detail-main .article-cards .item-info .buy div input:checked:hover{
+	box-shadow: inset 0 0 0 2px rgba(133, 88, 87, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+}
+
+.detail-main .article-cards .item-info .buy div label {
+	color: #552827;
+    cursor: pointer;
+    position: absolute;
+}
+.detail-main .article-cards .item-info .buy div input:checked + label{
+    color: #754847;
+    font-weight: 600;
+}
+
+.detail-main .article-cards .item-info .buy .precio {
+    grid-area: precio;
+    justify-self: center;
+    align-self: center;
+    font-size: 16px;
+    font-weight: 800;
+    color: #552827;
+    margin-bottom: 4px;
+    margin-right: 15px;
+}
+
+.detail-main .article-cards .item-info .buy #how-much {
+    grid-area: selector;
+    width: 40px;
+    height: 48px;
+    text-align: center;
+	background: #efefef;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .3s ease all;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+    appearance: none;
+    color: #754847;
+    font-weight: 600;
+}
+
+.detail-main .article-cards .item-info .buy #how-much:focus {
+    outline: none;
+	box-shadow: inset 0 0 0 2px rgba(133, 88, 87, 0.2),
+    0 0 0 3px rgba(185, 185, 185, 0.2);
+}
+
+.detail-main .article-cards .item-info .buy #how-much:hover {
+	box-shadow: inset 0 0 0 2px rgba(133, 88, 87, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+}
+
+.detail-main .article-cards .item-info .buy button {
+    grid-area: boton;
+    width: 160px;
+    height: 25px;
+    margin: 8px auto;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .3s ease background-color;
+    background-color: #efefef;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+    font-weight: 600;
+    color: #00000070;
+}
+
+.detail-main .article-cards .item-info .buy button:hover {
+    color: #552827e4;
+    background-color: #e1f587ad;
+}
+
+.detail-main .article-cards .item-info .buy button:active {
+    background-color: #f1ff97;
+    color: #552827e4;
+}
+
+/* Final estilos mobile product detail */
+
+/* Inicio estilos tablet product detail */
+
+@media (min-width: 481px){
+
+    .detail-main .article-cards {
+        max-width: 650px;
+    }
+
+    .detail-main .article-cards .item-info .buy h4 {
+        font-size: calc(13px + 1vw);
+    }
+
+    .detail-main .article-cards .item-info .buy .precio {
+        font-size: large;
+    }
+    .detail-main .article-cards .item-info .buy div input {
+        width: 18vw;
+        max-width: 150px;
+    }
+
+    .detail-main .article-cards .item-info .buy div label{
+        font-size: 15px;
+    }
+
+    .detail-main .article-cards .item-info .buy #how-much {
+        width: calc(34px + 4vw);
+        font-size: large;
+        max-width: 55px;
+    }
+
+    .detail-main .article-cards .item-info .buy button{
+        font-size: 15px;
+    }
+
+    .detail-main .article-cards .supplier .promotion {
+        font-size: 14px;
+    }
+    
+    .detail-main .article-cards .supplier .category {
+        font-size: 14px;
+    }
+
+    .detail-main .article-cards .supplier .image-product {
+        width: calc(90px + 6vw);
+        max-width: 130px;
+        height: 100px;
+    }
+
+    .detail-main .article-cards .supplier .supplier-name {
+        font-size: 16px;
+    }
+}
+
+/* Final estilos tablet product detail */
+
+/* Inicio estilos Desktop product detail */
+
+@media (min-width: 769px) {
+    .detail-main .article-cards {
+        flex-direction: column;
+        height: inherit;
+    }
+
+    .detail-main .article-cards .supplier .image-product {
+        width: 420px;
+        height: 178px;
+        max-width: inherit;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        padding: 3px 0;
+    }
+
+    .detail-main .article-cards .supplier{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .detail-main .article-cards .supplier .promotion {
+        font-size: 16px;
+    }
+
+    .detail-main .article-cards .supplier .category {
+        top: 444px;
+        font-size: 16px;
+    }
+
+    .detail-main .article-cards .item-info .buy h4 {
+        font-size: 20px;
+        margin-left: 21px;
+        width: 240px;
+    }
+
+}
+/* Final Estilos Desktop product detail */
+
+/* Final Estilos Product Detail */
+
+
+
+
+
+/* Inicio Estilos sign-in */
+
+.singin-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #efefef;
+}
+
+.singin-main h2 {
+    color: #552827;
+    margin: 10px 0;
+    border-bottom: #552827 solid 2px;
+    border-radius: 6px;
+    padding: 0px 12px 5px 12px;
+}
+
+/* aplicaré BEM :3 */
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 90%;    
+    max-width: 650px;
+    background-color: #fefefe;
+    padding: 45px 0;
+    margin-bottom: 16px;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.25),
+    0 0 0 3px rgba(185, 185, 185, 0.25);
+}
+
+.formulario .text-box {
+    width: 80%;
+    height: 35px;
+    padding-left: 8px;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+    color: #552827;
+}
+
+.formulario .text-box:hover {
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.2),
+    0 0 0 3px rgba(185, 185, 185, 0.2);
+}
+
+.formulario .text-box:focus {
+    outline: none;
+    border: none;
+    background-color: #f1ff9755;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+    font-weight: 600;
+}
+
+.formulario .check {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario .check .slides {
+    width: 80%;
+	height: 20px;
+	appearance: none;
+	outline: none;
+	cursor: pointer;
+	border-radius: 6px;
+	padding: 4px 8px;
+	background: #efefef;
+	font-size: 14px;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+    transition: .3s ease all;
+}
+
+.formulario .check .slides:hover{
+	box-shadow: inset 0 0 0 2px rgba(133, 88, 87, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+}
+
+.formulario .check .slides:checked{
+    background-color: #e1f587b5;
+}
+
+.formulario .check .slides:checked:hover{
+	box-shadow: inset 0 0 0 2px rgba(133, 88, 87, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+}
+
+.formulario .check label {
+	color: #552827;
+    cursor: pointer;
+    position: absolute;
+}
+
+.formulario .check input:checked + label{
+    color: #754847;
+    font-weight: 600;
+}
+
+/* Final Estilos sign-in */
 
 
 
