@@ -1278,7 +1278,7 @@ h2{
 
     .main-shop .main-suggest .control-article img{
         width: 70%;
-        border-radius: 30%;
+        border-radius: 15% 15% 0 0;
         margin: 5px;
         height: 150px;
     }
@@ -1294,7 +1294,7 @@ h2{
 
 
     .main-suggest .suggest-product-list button {
-        width: 80%;
+        width: 70%;
         height: 25px;
         margin: 8px auto;
         border: none;
