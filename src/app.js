@@ -24,7 +24,7 @@ app.get('/sign-in', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./views/sign-in.html"))
+    res.sendFile(path.resolve(__dirname, "./views/login.html"))
 }) 
 
 app.listen(port, () => console.log("Servidor corriendo"))
