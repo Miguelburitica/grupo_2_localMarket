@@ -1,5 +1,5 @@
 
-# GuavaMarket
+# LocalMarket
 
 ## Contexto o problema a solucionar
 
