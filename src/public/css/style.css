@@ -1821,9 +1821,6 @@ h2{
     display:none;
 }
 
-.sign-for-login{
-    display: none;
-}
 .login-main {
     width: 100%;
     display: flex;
@@ -1851,8 +1848,6 @@ h2{
     font-weight: bolder;
     text-decoration: underline;
 }
-
-
 
 .login-main .formulario {
     display: flex;
@@ -1891,14 +1886,14 @@ h2{
     font-weight: 600;
 }
 
-.formulario .check {
+.login-main .formulario .check {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.formulario .check .slides {
+.login-main .formulario .check .slides {
     width: 80%;
 	height: 20px;
 	appearance: none;
@@ -1913,32 +1908,32 @@ h2{
     transition: .3s ease all;
 }
 
-.formulario .check .slides:hover{
+.login-main .formulario .check .slides:hover{
 	box-shadow: inset 0 0 0 2px rgba(133, 88, 87, 0.3),
     0 0 0 3px rgba(185, 185, 185, 0.3);
 }
 
-.formulario .check .slides:checked{
+.login-main .formulario .check .slides:checked{
     background-color: #e1f587b5;
 }
 
-.formulario .check .slides:checked:hover{
+.login-main .formulario .check .slides:checked:hover{
 	box-shadow: inset 0 0 0 2px rgba(133, 88, 87, 0.3),
     0 0 0 3px rgba(185, 185, 185, 0.3);
 }
 
-.formulario .check label {
+.login-main .formulario .check label {
 	color: #552827;
     cursor: pointer;
     position: absolute;
 }
 
-.formulario .check input:checked + label{
+.login-main .formulario .check input:checked + label{
     color: #754847;
     font-weight: 600;
 }
 
-.login-main button {
+.login-main .login-right button {
     width:100%;
     height: 25px;
     margin: 8px auto;
@@ -1952,9 +1947,14 @@ h2{
     font-weight: 600;
 }
 
-.login-main button:hover {
+.login-main .login-right button:hover {
     background-color: #e1f587;
 }
+.login-main .login-right{
+    width: 95%; 
+    margin:auto;
+}
+
 
 /* Final Estilos Mobile Login*/
 
@@ -1969,67 +1969,43 @@ h2{
         flex-wrap: wrap;
     }
 
-    .login-left{
+    .login-main .login-right{
+        width: 40%; 
+        margin:auto;
+    }
+
+    .login-main .login-left{
         display:block;
         width: 50%;
         align-items: center;
+        margin:auto;
     }
 
-    .login-left img{
+    .login-main .login-left img{
         display: flex;
         width: 100%;
         border-radius: 10px 10px 0 0;
         margin-bottom: 0;
+        margin-top:20px;
     }
 
-    .login-left p{
+    .login-main .login-left p{
         font-size: 25px ;
         text-align: center;
         background-color: #ffd164;
         margin-top: 0;
         border-radius: 0 0 10px 10px;
         color:#754847;
+        margin-bottom: 20px;
     }
 
-
-    .login-right{
-        width: 45%;
-       
-
-    }
+    
 }
 /* Final Estilos Tablet Login*/
 
 /* Inicio Estilos desktop Login*/
 @media (min-width: 1280px){
-    .sign-for-login{
-        display: block;
-    }
-    .login-right p{
-        display:none
-    }
-
-    .login-right .formulario{
-        padding-top:20px;
-        padding-bottom:20px;
-    }
-
-    .login-left p{
-        font-size: 35px ;
-        margin-top: 30px;
-        border-radius:10px;
-        padding: 70px;
-        background-image: url('../images/banner1.jfif');
-        font-weight: bold;
-        text-shadow: #efefef -2px -2px 1px,#efefef 2px 2px 1px,#efefef -2px 2px 1px,#efefef 2px -2px 1px;
-    }
-
-    .login-left img{
-        display: flex;
-        width: 100%;
-        border-radius: 10px;
-        margin-bottom: 30px;
-    }
+   
 }
 
 /* Final Estilos desktop Login*/
