@@ -812,6 +812,7 @@ i {
     border-radius: 50%;
 	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1),
     0 0 0 3px rgba(185, 185, 185, 0.1);
+    padding: 2px;
 }
 
 .detail-main .article-cards .supplier .image-product img {
@@ -831,6 +832,12 @@ i {
     0 0 0 3px rgba(185, 185, 185, 0.1);
     appearance: none;
     padding: 6px 0;
+}
+
+.detail-main .article-cards .supplier .supplier-info:hover {
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+    background-color: #d9f18370;
 }
 
 .detail-main .article-cards .supplier .supplier-info .image-supplier {
@@ -1065,20 +1072,32 @@ i {
     flex-wrap: wrap;
     flex-direction: column;
     margin:7px;
+    background-color: #ff9ba015;
     padding: 15px 0px 10px 0px;
     width: 80%;
     border-radius: 10%;
+    box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+}
+
+.detail-main .suggest-product-list .control-article:hover{
     box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
     0 0 0 3px rgba(185, 185, 185, 0.3);
+    cursor: pointer;
 }
 
 .detail-main .main-suggest .control-article img{
     width: 70%;
     border-radius: 15% 15% 0 0;
     margin: 5px;
+    box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.1),
+    0 0 0 3px rgba(185, 185, 185, 0.1);
+    padding: 2px;
+}
+
+.detail-main .main-suggest .control-article:hover img{
     box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
     0 0 0 3px rgba(185, 185, 185, 0.3);
-    padding: 2px;
 }
 
 .detail-main .main-suggest .control-article .product-name{
@@ -1244,7 +1263,7 @@ i {
 
     }
 
-    /* Carrusel Desktop */
+    /* Sugeridos Desktop */
 
     .detail-main .main-suggest{
         width: 100%;
@@ -1273,8 +1292,6 @@ i {
         width: 21%;
         height: 23%;
         border-radius: 10%;
-        box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
-        0 0 0 3px rgba(185, 185, 185, 0.3);
     }
 
     .detail-main .main-suggest .control-article img{
@@ -1331,7 +1348,12 @@ i {
     background-color: #efefef;
 }
 
-.singin-main h2 {
+main h2 {
+    width: inherit;
+    font-size: inherit;
+}
+
+.singin-main .titulo {
     color: #552827;
     margin: 10px 0;
     border-bottom: #552827 solid 2px;
@@ -1346,14 +1368,17 @@ i {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    width: 90%;    
-    max-width: 650px;
+    width: 90%;
     background-color: #fefefe;
     padding: 45px 0;
     margin-bottom: 16px;
 	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.25),
     0 0 0 3px rgba(185, 185, 185, 0.25);
     border-radius: 4px;
+}
+
+.singin-main .formulario{
+    max-width: 650px;
 }
 
 .formulario .text-box {
@@ -1424,7 +1449,7 @@ i {
     transition: .3s all ease;
 }
 
-.formulario .check input:checked + label{
+.formulario .check .slides:checked + label{
     color: #754847;
     font-weight: 600;
 }
@@ -1691,7 +1716,7 @@ h2{
 
 /* desktop shopping-cart */
 @media (min-width: 1280px){
-    main h2{
+    .main-shop h2{
         font-size: 26px;
         width: 100%;
     }
