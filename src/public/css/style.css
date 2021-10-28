@@ -2030,6 +2030,9 @@ h2{
 .login-main .login-right{
     width: 95%; 
     margin:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
