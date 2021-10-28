@@ -9,7 +9,7 @@
         <link href="https://cdnjs.cloudﬂare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         rel="stylesheet" />
         <link rel="stylesheet" href="/css/style.css">
-        <title>LocalMarket site</title>
+        <title>Registro LocalMarket</title>
         <link rel="shortcut icon" href="/images/logolocalmarket.ico">
     </head>
     <body>
@@ -37,7 +37,7 @@
                     <div class="items">
                         #
                     </div>
-                    <a href="/shopping"><i class="fas fa-shopping-basket"></i></a>
+                    <a href="/shopping-cart"><i class="fas fa-shopping-basket"></i></a>
                     <div class="current-bill">
                         $0.0 
                     </div>
@@ -45,16 +45,16 @@
 
                 <nav class="nav-bar">
                     <ul class="options">
-                        <a href="#"><li class="option">Inicio</li></a>
-                        <a href="#"><li class="option">Productos</li></a>
+                        <a href="/"><li class="option">Inicio</li></a>
+                        <a href="/product-detail"><li class="option">Productos</li></a>
                         <a href="#"><li class="option">Agricultores</li></a>
                         <a href="#"><li class="option">Encuéntranos</li></a>
                     </ul>
                 </nav>
                 
                 <div class="forms">
-                    <a class="sign-in">regístrate <i class="fas fa-sign-in-alt"></i></a>
-                    <a class="log-in">Loguéate <i class="far fa-id-card"></i></a>
+                    <a class="sign-in" href="/sign-in">regístrate <i class="fas fa-sign-in-alt"></i></a>
+                    <a class="log-in" href="/login">Loguéate <i class="far fa-id-card"></i></a>
                 </div>
             </div>
         </header> 
@@ -69,7 +69,7 @@
             <input class="text-box" type="tel" name="phone" id="phone" placeholder="Número de celular" minlength="9" required>
             <input class="text-box" type="email" name="email" id="email" placeholder="Correo electrónico" required>
             <input class="text-box" type="password" name="pass" id="pass" placeholder="Contraseña" minlength="10" required>
-            <input class="text-box" type="password" name="pass" id="pass" placeholder="Contraseña" minlength="10" required>
+            <input class="text-box" type="password" name="pass-confirm" id="pass" placeholder="Confirma tu contraseña" minlength="10" required>
             <div class="check">
                 <input class="slides" type="checkbox" name="agree-terms-conditions" id="agree-terms-conditions">
                 <label for="agree-terms-conditions">Acepto los terminos y condiciones de uso</label>
@@ -78,6 +78,7 @@
                 <input class="slides" type="checkbox" name="agree-data" id="agree-data">
                 <label for="agree-data">Acepto las politicas de tratamientos de datos</label>
             </div>
+            <button type="submit" class="submit">Registrarse</button>
         </form>
     </main>
 
