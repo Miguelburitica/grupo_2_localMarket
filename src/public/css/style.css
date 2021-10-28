@@ -111,6 +111,9 @@ i {
     justify-content:space-evenly;
     width: 90%;
 }
+.main-products .control-article1{
+    display: none;
+}
 .main-products .control-article{
     display: flex;
     align-items: center;
@@ -141,11 +144,11 @@ i {
         box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
         0 0 0 3px rgba(185, 185, 185, 0.3);
         font-weight: 600;
-    }
+}
 
-    .main-products .control-article button:hover{
+.main-products .control-article button:hover{
         background-color: #e1f587;
-    }
+}
 
 .main-products .control-article .adding{
         width: 140px;
@@ -158,12 +161,15 @@ i {
         box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
         0 0 0 3px rgba(185, 185, 185, 0.3);
         font-weight: 600;
-    }
+}
 /* Main farmers */
 .main-farmers{
     display: flex;
     justify-content: space-evenly;
     width: 90%;
+}
+.main-farmers .control-farmer1{
+    display: none;
 }
 .main-farmers .control-farmer{
     display: flex;
@@ -198,6 +204,7 @@ i {
     box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
     0 0 0 3px rgba(185, 185, 185, 0.3);
     font-weight: 600;
+    font-size: smaller;
 }
 .main-farmers .control-farmer .adding button:hover {
     background-color: #ffd164;
@@ -235,6 +242,7 @@ i {
     background-repeat: space;
 }
 .main-preorder .transparent-box{
+    width: 100%;
     margin: 30px;
     background-color: #ffffff;
     border: 1px solid #754847;
@@ -246,6 +254,10 @@ i {
     font-weight: bolder;
     color:#754847;
   }
+
+.main-news-home{
+    display: none;
+}
 
 /* Footer mobile first */
 
@@ -435,12 +447,282 @@ i {
         background-color: #d9f183;
         cursor: pointer;
     }
-    /* Main footer */
-    .main-footer .banner-interaction{
+/* Main products */
+.main-products{
+    display: flex;
+    justify-content:space-evenly;
+    width: 100%;
+}
+.main-products .control-article{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin:7px;
+    padding: 5px 0px 10px 0px;
+    width: 25%;
+    height: 25%;
+    border-radius: 10%;
+    background-color: #ffffff;
+    box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+}
+.main-products .control-article img{
+    width: 65%;
+    border-radius: 10% 10% 0px 0px;
+    margin: 10% 10%;
+}
+
+.main-products .control-article button{
+        width: 140px;
+        height: 25px;
+        margin: 8px auto;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        /* background-color: #d9f183; */
+        box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+        0 0 0 3px rgba(185, 185, 185, 0.3);
+        font-weight: 600;
+}
+
+.main-products .control-article button:hover{
+        background-color: #e1f587;
+}
+
+.main-products .control-article .adding{
+        width: 140px;
+        height: 25px;
+        margin: 8px auto;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #d9f183;
+        box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+        0 0 0 3px rgba(185, 185, 185, 0.3);
+        font-weight: 600;
+        font-size: smaller;
+}
+.main-products .control-article1{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin:7px;
+        padding: 5px 0px 10px 0px;
+        width: 25%;
+        height: 25%;
+        border-radius: 10%;
+        background-color: #ffffff;
+        box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+        0 0 0 3px rgba(185, 185, 185, 0.3);
+}
+.main-products .control-article1 img{
+        width: 65%;
+        border-radius: 10% 10% 0px 0px;
+        margin: 10% 10%;
+}
+    
+.main-products .control-article1 button{
+            width: 140px;
+            height: 25px;
+            margin: 8px auto;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            /* background-color: #d9f183; */
+            box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+            0 0 0 3px rgba(185, 185, 185, 0.3);
+            font-weight: 600;
+}
+    
+.main-products .control-article1 button:hover{
+            background-color: #e1f587;
+}
+    
+.main-products .control-article1 .adding{
+            width: 140px;
+            height: 25px;
+            margin: 8px auto;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #d9f183;
+            box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+            0 0 0 3px rgba(185, 185, 185, 0.3);
+            font-weight: 600;
+            font-size: smaller;
+}
+ /* Main Famers */
+.main-farmers{
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+}
+.main-farmers .control-farmer1{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin:7px;
+        padding: 5px 15px;
+        width: 25%;
+        height: 25%;
+        border-radius: 10%;
+        background-color: #ffffff;
+        justify-content: center;
+        box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+        0 0 0 3px rgba(185, 185, 185, 0.3);
+}
+.main-farmers .control-farmer{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin:7px;
+        padding: 5px 15px;
+        width: 25%;
+        height: 25%;
+        border-radius: 10%;
+        background-color: #ffffff;
+        justify-content: center;
+        box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+        0 0 0 3px rgba(185, 185, 185, 0.3);
+}
+.main-farmers .control-farmer1 img{
+        width: 90%;
+        border-radius: 10% 10% 0px 0px;
+        margin: 10% ;
+}
+.main-farmers .control-farmer img{
+        width: 90%;
+        border-radius: 10% 10% 0px 0px;
+        margin: 10% ;
+}
+.main-farmers .control-farmer i{
+        color:#754847;
+}
+.main-farmers .control-farmer1 i{
+        color:#754847;
+}
+.main-farmers .control-farmer .adding{
+        width: 140px;
+        height: 50px;
+        margin: 8px auto;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #d9f183;
+        box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+        0 0 0 3px rgba(185, 185, 185, 0.3);
+        font-weight: 600;
+        font-size: smaller;
+}
+.main-farmers .control-farmer1 .adding{
+        width: 140px;
+        height: 50px;
+        margin: 8px auto;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #d9f183;
+        box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+        0 0 0 3px rgba(185, 185, 185, 0.3);
+        font-weight: 600;
+        font-size: smaller;
+}
+.main-farmers .control-farmer .adding button:hover {
+        background-color: #ffd164;
+}
+  /* Main information */
+  .main-information{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    background-image: url(/images/maybebanner2.jfif);
+    background-color: #ffffff;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 0px 10px;
+    box-shadow: inset 0 0 0 2px rgba(35, 33, 45, 0.3),
+    0 0 0 3px rgba(185, 185, 185, 0.3);
+}
+.main-news-home h3{
+    text-align: center;
+}
+/* Main more about us */
+.main-moreabout{
+    margin: 5%;
+    width: 40vw;
+    background-image: none;
+    justify-items: center;
+}
+.main-moreabout .transparent-box{
+    display: flex;
+    width: 100%;
+    height: 60px;
+    margin: auto;
+    background-color: #ffffff;
+    border: 1px solid #754847;
+    opacity: 0.8;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+.main-moreabout .transparent-box h3{
+    text-align: center;
+    margin: 2%;
+    font-weight: bolder;
+    color:#754847;
+    font-size: smaller;
+  }
+/* Main pre-order */
+
+.main-preorder{
+    display: flex;
+    margin: 5%;
+    width: 40vw;
+    background-image: none;
+    background-position: center;
+    background-repeat: space;
+}
+.main-preorder .transparent-box{
+    display: flex;
+    width: 100%;
+    height: 60px;
+    margin: auto;
+    background-color: #ffffff;
+    border: 1px solid #754847;
+    opacity: 0.8;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+.main-preorder .transparent-box h3{
+    text-align: center;
+    margin: auto;
+    font-weight: bolder;
+    color:#754847;
+    font-size: smaller;
+  }
+/* Main news home */
+.main-news-home{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+}
+.main-news-home h2{
+    color:#754847;
+}
+.main-news-home form{
+    font-size: x-small;
+}
+
+/* Main footer */
+.main-footer .banner-interaction{
         flex-direction: row;
         justify-content: center;
         gap: 10vw;
-    }
+}
 }
 
 /* Final Estilos Tablet Header/Footer */

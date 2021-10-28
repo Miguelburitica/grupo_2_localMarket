@@ -45,15 +45,15 @@
 
             <nav class="nav-bar">
                 <ul class="options">
-                    <a href="#"><li class="option">Inicio</li></a>
-                    <a href="#"><li class="option">Productos</li></a>
-                    <a href="#"><li class="option">Agricultores</li></a>
-                    <a href="#"><li class="option">Encuéntranos</li></a>
+                    <a href="./"><li class="option">Inicio</li></a>
+                    <a href="product-detail"><li class="option">Productos</li></a>
+                    <a href="/products"><li class="option">Agricultores</li></a>
+                    <a href="/farmers"><li class="option">Encuéntranos</li></a>
                 </ul>
             </nav>
             
             <div class="forms">
-                <a class="sign-in">Regístrate <i class="fas fa-sign-in-alt"></i></a>
+                <a href="/login" class="sign-in">Regístrate <i class="fas fa-sign-in-alt"></i></a>
                 <a href="/login" class="log-in">Loguéate <i class="far fa-id-card"></i></a>
             </div>
         </div>
@@ -73,7 +73,19 @@
             </article>
             <article class="control-article">
                 <img src="/images/yellowlemon.jfif" alt="Pimenton">
-                <p class= "product-name">Pimentón</p>
+                <p class= "product-name">Limón amarillo</p>
+                <p Class="price">Desde $1.000</p>
+                <button type="submit" class="adding">Agregar<i class="fas fa-plus-circle"></i> </button>
+            </article>
+            <article class="control-article1">
+                <img src="/images/mango.jfif" alt="Pimenton">
+                <p class= "product-name">Mango</p>
+                <p Class="price">Desde $1.000</p>
+                <button type="submit" class="adding">Agregar<i class="fas fa-plus-circle"></i> </button>
+            </article>
+            <article class="control-article1">
+                <img src="/images/zucchini.jfif" alt="Pimenton">
+                <p class= "product-name">Zucchini</p>
                 <p Class="price">Desde $1.000</p>
                 <button type="submit" class="adding">Agregar<i class="fas fa-plus-circle"></i> </button>
             </article>
@@ -87,20 +99,50 @@
             </article>
             <article class="control-farmer">
                 <img src="/images/farmer3.jpg" alt="Don-Jesus">
+                <button type="submit" class="adding">Conocer a Don Pedro <i class="fas fa-plus-circle"></i>  </button>
+            </article>
+            <article class="control-farmer1">
+                <img src="/images/farmer2.jpg" alt="Don-Jesus">
                 <button type="submit" class="adding">Conocer a Don Jesús <i class="fas fa-plus-circle"></i>  </button>
             </article>
+            <article class="control-farmer1">
+                <img src="/images/farmer4.jpg" alt="Don-Jesus">
+                <button type="submit" class="adding">Conocer a Doña Blanca <i class="fas fa-plus-circle"></i>  </button>
+            </article>
         </div>
-        <div class="main-moreabout">
-            <div class="transparent-box">
-                <h3>Conoce mas sobre LocalMarket
-                </h3>
-            </div>       
+        <div class="main-information">
+            <div class="main-moreabout">
+                <div class="transparent-box">
+                    <h3>Conoce mas sobre LocalMarket
+                    </h3>
+                </div>       
+            </div>
+            <div class="main-preorder">
+                <div class="transparent-box">
+                    <h3>¡Preordena y visítanos en nuestros puntos presenciales!
+                    </h3>
+                </div>  
         </div>
-        <div class="main-preorder">
-            <div class="transparent-box">
-                <h3>¡Preordena y visítanos en nuestros puntos presenciales!
-                </h3>
-            </div> 
+        </div>
+        <div class="main-news-home">
+            <h2>Suscríbete a nuestras noticias:</h2>
+            <form action="/index.html" class="formulario">
+                <input class="text-box" type="text" name="name" id="name" placeholder="Nombre" minlength="2" required>
+                <input class="text-box" type="text" name="surname" id="surname" placeholder="Apellido" minlength="2" required>
+                <input class="text-box" type="email" name="email" id="email" placeholder="Correo electrónico" required>
+                <input class="text-box" type="password" name="pass" id="pass" placeholder="Contraseña" minlength="10" required>
+                <div class="check">
+                    <input class="slides" type="checkbox" name="agree-terms-conditions" id="agree-terms-conditions">
+                    <label for="agree-terms-conditions">Acepto los terminos y condiciones de uso</label>
+                </div> 
+                <div class="check">
+                    <input class="slides" type="checkbox" name="agree-data" id="agree-data">
+                    <label for="agree-data">Acepto las politicas de tratamientos de datos</label>
+                </div>
+                <div class="sign-button">
+                    <button type="submit" class="button-form">Suscribirme</button> 
+                </div>
+            </form>
         </div>
     </main>
     </body>
