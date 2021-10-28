@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css/normalize.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Mulish:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Mulish:wght@200&display=swap"
+        rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudﬂare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    rel="stylesheet" />
+    <link href="https://cdnjs.cloudﬂare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/css/style.css">
     <title>LocalMarket site</title>
     <link rel="shortcut icon" href="/images/logolocalmarket.ico">
 </head>
+
 <body>
     <header class="main-header">
-        <div class="content">            
+        <div class="content">
             <div class="burger-menu">
                 <i class="fas fa-bars"></i>
             </div>
 
             <div class="logo">
                 <a href="./"><img src="./images/logolocalmarket.png" alt="Logo LocalMarket"></a>
-                <a href="./"><h2>LocalMarket</h2></a>
+                <a href="./">
+                    <h2>LocalMarket</h2>
+                </a>
             </div>
 
             <div class="site-search">
@@ -39,143 +43,166 @@
                 </div>
                 <a href="/shopping-cart"><i class="fas fa-shopping-basket"></i></a>
                 <div class="current-bill">
-                    $0.0 
+                    $0.0
                 </div>
             </div>
 
             <nav class="nav-bar">
                 <ul class="options">
-                    <a href="./"><li class="option">Inicio</li></a>
-                    <a href="product-detail"><li class="option">Productos</li></a>
-                    <a href="/products"><li class="option">Agricultores</li></a>
-                    <a href="/farmers"><li class="option">Encuéntranos</li></a>
+                    <a href="./">
+                        <li class="option">Inicio</li>
+                    </a>
+                    <a href="product-detail">
+                        <li class="option">Productos</li>
+                    </a>
+                    <a href="/products">
+                        <li class="option">Agricultores</li>
+                    </a>
+                    <a href="/farmers">
+                        <li class="option">Encuéntranos</li>
+                    </a>
                 </ul>
             </nav>
-            
+
             <div class="forms">
                 <a href="/login" class="sign-in">Regístrate <i class="fas fa-sign-in-alt"></i></a>
                 <a href="/login" class="log-in">Loguéate <i class="far fa-id-card"></i></a>
             </div>
         </div>
-    </header> 
+    </header>
     <div class="main-banner">
         <img src="/images/banner.jfif" alt="banner-img">
     </div>
     <main class="main-main">
-        <h2>Nuestros productos</h2>
-        <div class="main-products">
-            <!-- Carrusel de productos -->
-            <article class="control-article">
-                <img src="/images/pepper.jfif" alt="Pimenton">
-                <p class= "product-name">Pimentón</p>
-                <p Class="price">Desde $1.000</p>
-                <button type="submit" class="adding">Agregar<i class="fas fa-plus-circle"></i> </button>
-            </article>
-            <article class="control-article">
-                <img src="/images/yellowlemon.jfif" alt="Pimenton">
-                <p class= "product-name">Limón amarillo</p>
-                <p Class="price">Desde $1.000</p>
-                <button type="submit" class="adding">Agregar<i class="fas fa-plus-circle"></i> </button>
-            </article>
-            <article class="control-article1">
-                <img src="/images/mango.jfif" alt="Pimenton">
-                <p class= "product-name">Mango</p>
-                <p Class="price">Desde $1.000</p>
-                <button type="submit" class="adding">Agregar<i class="fas fa-plus-circle"></i> </button>
-            </article>
-            <article class="control-article1">
-                <img src="/images/zucchini.jfif" alt="Pimenton">
-                <p class= "product-name">Zucchini</p>
-                <p Class="price">Desde $1.000</p>
-                <button type="submit" class="adding">Agregar<i class="fas fa-plus-circle"></i> </button>
-            </article>
-        </div>
-        <h2>Nuestros agricultores</h2>
-        <div class="main-farmers">
-            <!-- Carrusel de agricultores -->
-            <article class="control-farmer">
-                <img src="/images/farmer1.jpg" alt="Don-Alcides">
-                <button type="submit" class="adding">Conocer a Don Alcides <i class="fas fa-plus-circle"></i> </button>
-            </article>
-            <article class="control-farmer">
-                <img src="/images/farmer3.jpg" alt="Don-Jesus">
-                <button type="submit" class="adding">Conocer a Don Pedro <i class="fas fa-plus-circle"></i>  </button>
-            </article>
-            <article class="control-farmer1">
-                <img src="/images/farmer2.jpg" alt="Don-Jesus">
-                <button type="submit" class="adding">Conocer a Don Jesús <i class="fas fa-plus-circle"></i>  </button>
-            </article>
-            <article class="control-farmer1">
-                <img src="/images/farmer4.jpg" alt="Don-Jesus">
-                <button type="submit" class="adding">Conocer a Doña Blanca <i class="fas fa-plus-circle"></i>  </button>
-            </article>
-        </div>
-        <div class="main-information">
-            <div class="main-moreabout">
-                <div class="transparent-box">
-                    <h3>Conoce mas sobre LocalMarket
-                    </h3>
-                </div>       
+        <div class="main-main-left">
+            <h2>Nuestros productos</h2>
+            <div class="main-products">
+                <!-- Carrusel de productos -->
+                <article class="control-article">
+                    <img src="/images/pepper.jfif" alt="Pimenton">
+                    <p class="product-name">Pimentón</p>
+                    <p Class="price">Desde $1.000</p>
+                    <button type="submit" class="adding">Agregar<i class="fas fa-plus-circle"></i> </button>
+                </article>
+                <article class="control-article">
+                    <img src="/images/yellowlemon.jfif" alt="Pimenton">
+                    <p class="product-name">Limón amarillo</p>
+                    <p Class="price">Desde $1.000</p>
+                    <button type="submit" class="adding">Agregar<i class="fas fa-plus-circle"></i> </button>
+                </article>
+                <article class="control-article1">
+                    <img src="/images/mango.jfif" alt="Pimenton">
+                    <p class="product-name">Mango</p>
+                    <p Class="price">Desde $1.000</p>
+                    <button type="submit" class="adding">Agregar<i class="fas fa-plus-circle"></i> </button>
+                </article>
+                <article class="control-article1">
+                    <img src="/images/zucchini.jfif" alt="Pimenton">
+                    <p class="product-name">Zucchini</p>
+                    <p Class="price">Desde $1.000</p>
+                    <button type="submit" class="adding">Agregar<i class="fas fa-plus-circle"></i> </button>
+                </article>
             </div>
-            <div class="main-preorder">
-                <div class="transparent-box">
-                    <h3>¡Preordena y visítanos en nuestros puntos presenciales!
-                    </h3>
-                </div>  
-        </div>
+            <h2>Nuestros agricultores</h2>
+            <div class="main-farmers">
+                <!-- Carrusel de agricultores -->
+                <article class="control-farmer">
+                    <img src="/images/farmer1.jpg" alt="Don-Alcides">
+                    <button type="submit" class="adding">Conocer a Don Alcides <i class="fas fa-plus-circle"></i>
+                    </button>
+                </article>
+                <article class="control-farmer">
+                    <img src="/images/farmer3.jpg" alt="Don-Jesus">
+                    <button type="submit" class="adding">Conocer a Don Pedro <i class="fas fa-plus-circle"></i>
+                    </button>
+                </article>
+                <article class="control-farmer1">
+                    <img src="/images/farmer2.jpg" alt="Don-Jesus">
+                    <button type="submit" class="adding">Conocer a Don Jesús <i class="fas fa-plus-circle"></i>
+                    </button>
+                </article>
+                <article class="control-farmer1">
+                    <img src="/images/farmer4.jpg" alt="Don-Jesus">
+                    <button type="submit" class="adding">Conocer a Doña Blanca <i class="fas fa-plus-circle"></i>
+                    </button>
+                </article>
+            </div>
+            <div class="main-information">
+                <div class="main-moreabout">
+                    <div class="transparent-box">
+                        <h3>Conoce mas sobre LocalMarket
+                        </h3>
+                    </div>
+                </div>
+                <div class="main-preorder">
+                    <div class="transparent-box">
+                        <h3>¡Preordena y visítanos en nuestros puntos presenciales!
+                        </h3>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="main-news-home">
             <h2>Suscríbete a nuestras noticias:</h2>
             <form action="/index.html" class="formulario">
                 <input class="text-box" type="text" name="name" id="name" placeholder="Nombre" minlength="2" required>
-                <input class="text-box" type="text" name="surname" id="surname" placeholder="Apellido" minlength="2" required>
+                <input class="text-box" type="text" name="surname" id="surname" placeholder="Apellido" minlength="2"
+                    required>
                 <input class="text-box" type="email" name="email" id="email" placeholder="Correo electrónico" required>
-                <input class="text-box" type="password" name="pass" id="pass" placeholder="Contraseña" minlength="10" required>
+                <input class="text-box" type="password" name="pass" id="pass" placeholder="Contraseña" minlength="10"
+                    required>
                 <div class="check">
                     <input class="slides" type="checkbox" name="agree-terms-conditions" id="agree-terms-conditions">
                     <label for="agree-terms-conditions">Acepto los terminos y condiciones de uso</label>
-                </div> 
+                </div>
                 <div class="check">
                     <input class="slides" type="checkbox" name="agree-data" id="agree-data">
                     <label for="agree-data">Acepto las politicas de tratamientos de datos</label>
                 </div>
                 <div class="sign-button">
-                    <button type="submit" class="button-form">Suscribirme</button> 
+                    <button type="submit" class="button-form">Suscribirme</button>
                 </div>
             </form>
+            <div class="main-photogallery">
+                <h2>
+                    Gallería de fotos
+                </h2>
+                <img src="/images/localmarket.jpg" alt="puestos-verdura-frutas">
+            </div>
         </div>
     </main>
-    </body>
-    <footer class="main-footer">
-        <div class="social-media">
-            <h4>Síguenos en:</h4>
-            <a href="/LocalMarketFB"> <i class="fab fa-facebook"></i></a> 
-            <a href="/LocalMarketInst"><i class="fab fa-instagram"></i></a>      
-            <a href="/LocalMarketTW"><i class="fab fa-twitter"></i></a> 
-            <a href="/LocalMarketLinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-        <div class="banner-interaction">
-            <div class="FQA">
-                <i class="far fa-question-circle"></i>
-                <a href="/preguntas-respuestas-frecuentes.html">Preguntas y respuestas frecuentes</a>
-            </div>
-            <div class="technical-support">
-                <i class="fas fa-wrench"></i>
-                <a href="/soporte-tecnico.html">Soporte técnico</a>
-            </div>
-        </div>
-        <div class="contact-me">
-            <h4><i class="fas fa-phone-alt"></i> CONTACTÉNOS</h4>
-            <div>
-                <i class="fas fa-map-marker-alt"></i>
-                Parque Carlos E. Restrepo <br>
-                Medellín-Colombia<br>
-                Email: localmarket@correo.com
-            </div>
-            <img src="./images/logolocalmarket.png" alt="Logo LocalMarket">
-            <div>Localmarket</div>
-            <!-- <a href="/contactanos.html">Contacto</a> -->
-        </div>
-    </footer>
 </body>
+<footer class="main-footer">
+    <div class="social-media">
+        <h4>Síguenos en:</h4>
+        <a href="/LocalMarketFB"> <i class="fab fa-facebook"></i></a>
+        <a href="/LocalMarketInst"><i class="fab fa-instagram"></i></a>
+        <a href="/LocalMarketTW"><i class="fab fa-twitter"></i></a>
+        <a href="/LocalMarketLinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <div class="banner-interaction">
+        <div class="FQA">
+            <i class="far fa-question-circle"></i>
+            <a href="/preguntas-respuestas-frecuentes.html">Preguntas y respuestas frecuentes</a>
+        </div>
+        <div class="technical-support">
+            <i class="fas fa-wrench"></i>
+            <a href="/soporte-tecnico.html">Soporte técnico</a>
+        </div>
+    </div>
+    <div class="contact-me">
+        <h4><i class="fas fa-phone-alt"></i> CONTACTÉNOS</h4>
+        <div>
+            <i class="fas fa-map-marker-alt"></i>
+            Parque Carlos E. Restrepo <br>
+            Medellín-Colombia<br>
+            Email: localmarket@correo.com
+        </div>
+        <img src="./images/logolocalmarket.png" alt="Logo LocalMarket">
+        <div>Localmarket</div>
+        <!-- <a href="/contactanos.html">Contacto</a> -->
+    </div>
+</footer>
+</body>
+
 </html>
