@@ -1,30 +1,21 @@
 const express = require("express");
 const path = require("path");
 
+const mainRoutes = require("./routes/main.routes");
+const productsRoutes = require("./routes/product.routes");
+const usersRoutes = require("./routes/user.routes");
+
 const app = express();
-const port = process.env.PORT || 3000;
 
-app.use(express.static(path.resolve(__dirname, "./public")))
+app.use(express.static(path.resolve(__dirname, "../public")))
 
-app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname,'./views/index.html'))});
+// GET the main routes
+app.use('/', mainRoutes)
 
-app.get('/product-detail', (req, res) => {
-    res.sendFile(path.resolve(__dirname,'./views/product-detail.html'))
-});
+// GET the products routes
+app.use('/products', productsRoutes)
 
-app.get('/shopping-cart', (req, res) => {
-    res.sendFile(path.resolve(__dirname,'./views/shopping-cart.html'))
-});
+// GET the users routes
+app.use('/users', usersRoutes)
 
-
-
-app.get('/sign-in', (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./views/sign-in.html"))
-})
-
-app.get('/login', (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./views/login.html"))
-}) 
-
-app.listen(port, () => console.log("Servidor corriendo"))
+module.exports = app;
