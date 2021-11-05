@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js"
-
   },
   "repository": {
     "type": "git",
@@ -19,6 +18,8 @@
   },
   "homepage": "https://github.com/Miguelburitica/grupo_2_guavaMarket#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "prettier": "^2.4.1"
   }
 }
