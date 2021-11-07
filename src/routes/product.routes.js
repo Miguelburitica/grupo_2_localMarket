@@ -1,6 +1,6 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/product.controllers')
+const controller = require('../controllers/product.controllers');
 
 // GET Create-edit page.
 router.get('/create-edit', controller.showCreateEdit);
@@ -11,4 +11,4 @@ router.get('/detail', controller.showProductDetail);
 // GET shopping-cart page.
 router.get('/shopping-cart', controller.showShoppingCart);
 
-module.exports = router
+module.exports = router;

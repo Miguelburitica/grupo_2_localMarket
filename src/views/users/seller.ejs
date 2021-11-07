@@ -1,26 +1,17 @@
-<html lang="en">
-
-<head>
-    <%- include('../partials/head') %>
-</head>
+<%- include('../partials/head') %>
     <body>
-        <header class="main-header">
-            <%- include('../partials/headerSeller') %>
-        </header>
-            <div class="main-manager">
-                <h2>¿Qué deseas hacer hoy?</h2>
-            </div>
-            <div class="options-product">
-                <a href="#">
-                    <li class="profile">Editar perfil</li>
-                </a>
-                <a href="../products/create-edit.ejs">
-                    <li class="new-product">Mis productos</li>
-                </a>
-            </div>
-        <footer class="main-footer">
-            <%- include('../partials/footer') %>
-        </footer>
+        <%- include('../partials/headerSeller') %>
+        <div class="main-manager">
+            <h2>¿Qué deseas hacer hoy?</h2>
+        </div>
+        <div class="options-product">
+            <a href="#">
+                <li class="profile">Editar perfil</li>
+            </a>
+            <a href="../products/create-edit.ejs">
+                <li class="new-product">Mis productos</li>
+            </a>
+        </div>
+        <%- include('../partials/footer') %>
     </body>
-
 </html>
