@@ -2078,7 +2078,6 @@ h2{
         color:#754847;
         margin-bottom: 20px;
     }
-
     
 }
 /* Final Estilos Tablet Login*/
@@ -2093,4 +2092,80 @@ h2{
 
 /* Final Estilos Login*/
 
+/* Inicio estilos Seller */
 
+/* Seller profile  mobile first*/
+.profile-seller-main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.profile-seller-main .profile-seller-right{
+    width: 90%; 
+    margin:auto;
+    text-align: center;
+}
+.profile-seller-main .profile-seller-right div{ 
+    margin:20px;
+    text-align: center;
+}
+.profile-seller-main .profile-seller-left{
+    display:block;
+    width: 90%;
+    align-items: center;
+    margin:auto;
+}
+
+.profile-seller-main .profile-seller-left img{
+    display: flex;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 0;
+    margin-top:20px;
+}
+
+.profile-seller-main .profile-seller-left p{
+    font-size: 25px ;
+    text-align: center;
+    background-color: #ffd164;
+    margin-top: 0;
+    border-radius: 0 0 10px 10px;
+    color:#754847;
+    margin-bottom: 20px;
+}
+/* Inicio Estilos  tablet Seller profile*/
+@media (min-width: 768px){
+    .profile-seller-main .profile-seller-right{
+        width: 40%; 
+        font-size: large;
+    }
+    .profile-seller-main .profile-seller-left{
+        width: 40%; 
+    }
+}
+/* Inicio Estilos desktop seller profile*/
+@media (min-width: 1280px){
+    .profile-seller-main .profile-seller-right{
+        width: 40%; 
+        font-size: x-large;
+    }
+    .profile-seller-main .profile-seller-left{
+        width: 40%; 
+    }
+}
+/* Final Estilos Seller*/
+
+/* Inicio estilos Create-edit */
+
+
+
+
+    
+
+
+
+
+/* Final estilos Create-edit */

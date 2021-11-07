@@ -1,17 +1,30 @@
-<%- include('../partials/head') %>
-    <body>
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <header>
         <%- include('../partials/headerSeller') %>
-        <div class="main-manager">
-            <h2>¿Qué deseas hacer hoy?</h2>
+    </header>
+    <main class="profile-seller-main">
+        <div class="profile-seller-left">
+            <img src="../images/farmer3.jpg" alt="">
+            <p>LocalMarket: Conectando campesinos con sus vecinos</p>
         </div>
-        <div class="options-product">
-            <a href="#">
-                <li class="profile">Editar perfil</li>
-            </a>
-            <a href="../products/create-edit.ejs">
-                <li class="new-product">Mis productos</li>
-            </a>
+        <div class="profile-seller-right">
+            <h2>Hola Alcides, <br> ¿Qué quieres hacer hoy?</h2>
+                <div>
+                    <a href="#"> <i class="fas fa-user-edit"></i> Editar mis datos </a>
+                </div>
+                <div>
+                    <a href="../products/create-edit"> <i class="far fa-edit"></i> Ir a mis productos</a>
+                </div>
         </div>
+    </main>
+    <footer>
         <%- include('../partials/footer') %>
-    </body>
+    </footer>
+</body>
+
+
 </html>

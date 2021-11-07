@@ -1,12 +1,42 @@
-<%- include('../partials/head') %>  
-    <body>
-        <%- include('../partials/headerSeller') %>  
-        <div>
-            <h2>editar</h2>
+<head>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/headerSeller') %>
+    </header>
+    <main>
+        <h2>Editar/crear productos</h2>
+        <div class="main-create-edit">
+            <div>
+                Agregar nuevo producto
+                <a href="/add-item"><i class="fas fa-plus"></i></a>
+            </div>
+            <div>
+                <table class="edit-item-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Ver</th>
+                            <th>Editar</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>1234</th>
+                            <th>Papaya</th>
+                            <th><i class="far fa-eye"></i></th>
+                            <th><i class="fas fa-pen"></i></th>
+                            <th><i class="far fa-trash-alt"></i></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div>
-            <h2>crear</h2>
-        </div>
-        <%- include('../partials/footer') %>      
-    </body>
-</html>
+    </main>
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
+</body>
