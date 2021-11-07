@@ -7,7 +7,9 @@ const pathViews = function (nameView) {
 const controller = {
 
     // Cuando cambies las funciones de arriba, deberás cambiar el metodo que muestra las vistas, deberá pasar de sendFile a render.
-
+    showSellerProfile : function (req, res) {
+        res.render(pathViews("seller"));
+    },
     showLogin : function (req, res) {
         res.render(pathViews("login"));
     },
