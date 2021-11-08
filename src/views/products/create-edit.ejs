@@ -6,30 +6,36 @@
         <%- include('../partials/headerSeller') %>
     </header>
     <main>
-        <h2>Editar/crear productos</h2>
+        <h2>Editar y agregar productos</h2>
         <div class="main-create-edit">
-            <div>
-                Agregar nuevo producto
-                <a href="/add-item"><i class="fas fa-plus"></i></a>
+            <div class= "table-add-product">
+                <a href="/products/add-item"><i class="fas fa-plus"></i> Agregar nuevo producto</a>
             </div>
-            <div>
+            <div class="table-create-edit-products">
                 <table class="edit-item-table">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Ver</th>
+                            <th class="thead-id">ID</th>
+                            <th>Producto</th>
+                            <th>Vista previa</th>
                             <th>Editar</th>
-                            <th>Borrar</th>
+                            <th class="thead-delete">Borrar</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="items-list">
                         <tr>
-                            <th>1234</th>
-                            <th>Papaya</th>
-                            <th><i class="far fa-eye"></i></th>
-                            <th><i class="fas fa-pen"></i></th>
-                            <th><i class="far fa-trash-alt"></i></th>
+                            <td>1235</td>
+                            <td>Tomates</td>
+                            <td><i class="far fa-eye"></i></td>
+                            <td><i class="fas fa-pen"></i></td>
+                            <td><i class="far fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <td>1234</td>
+                            <td>Papaya</td>
+                            <td><i class="far fa-eye"></i></td>
+                            <td><i class="fas fa-pen"></i></td>
+                            <td><i class="far fa-trash-alt"></i></td>
                         </tr>
                     </tbody>
                 </table>

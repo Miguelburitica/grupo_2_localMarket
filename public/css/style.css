@@ -2160,12 +2160,59 @@ h2{
 
 /* Inicio estilos Create-edit */
 
+.table-add-product{
+    text-align: center;
+}
+.table-add-product i{
+    text-align: center;
+    background-color: #d9f183;
+    border-radius: 50%;
+    padding: 4px;
+}
+.table-create-edit-products{
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+.edit-item-table{
+    width: 95%;
+    border-collapse: collapse;
+    margin: auto;
+}
 
+.edit-item-table td{
+    text-align: center;
+    border-bottom: #754847 solid 1px;
+}
 
+.edit-item-table th{
+border-bottom: #754847 solid 2px;
+background-color: #d9f183;
+}
 
-    
+.edit-item-table .thead-id{
+    border-radius: 6px 0px 0px 0px;
+}
 
+.edit-item-table .thead-delete{
+    border-radius: 0 6px 0 0;
+}
 
-
+.edit-item-table .items-list tr:hover {
+background-color:#e9f5db;
+}
 
 /* Final estilos Create-edit */
+
+/* Inicio estilos add-item */
+.main-add-item .formulario{
+    width: 60%;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.main-add-item .product-name, .form-product-type,.add-file, .price, .form-product-discount, .form-farmer-location {
+    width: 70%;
+    align-content: center;
+}
+
+/* Final estilos add-item */
