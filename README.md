@@ -1,4 +1,3 @@
-
 # LocalMarket
 
 ## Contexto o problema a solucionar
@@ -13,55 +12,57 @@ Evidenciado el problema, la plataforma propuesta ofrecerá los productos que se 
 
 ## Mercado objetivo
 
-* *Productores locales/Proveedores:* son las personas que asisten a los mercados campesinos con sus productos, quienes van a alimentar la plataforma.
-* *Compradores/clientes:* Personas que están en los lugares aledaños a los mercados campesinos interesados en hacer su mercado semanal
+-   _Productores locales/Proveedores:_ son las personas que asisten a los mercados campesinos con sus productos, quienes van a alimentar la plataforma.
+-   _Compradores/clientes:_ Personas que están en los lugares aledaños a los mercados campesinos interesados en hacer su mercado semanal
 
 ## Referentes
 
-* *<a href="www.freshharvestga.com/">Fresh Harvest:</a>*
-  * Ofrecen varios paquetes, canastas y descuentos. Tiene opcion de delivery y recogida. Videos de los agricultores y artesanos.
+-   _<a href="www.freshharvestga.com/">Fresh Harvest:</a>_
 
-* *<a href="www.dallasfarmersmarket.org/">Farmers market:</a>*
+    -   Ofrecen varios paquetes, canastas y descuentos. Tiene opcion de delivery y recogida. Videos de los agricultores y artesanos.
 
-  * Está bien la disposición de la página y los colores, aunque tienen mucha información junta, De inmediato se puede identificar las funcionalidades.
+-   _<a href="www.dallasfarmersmarket.org/">Farmers market:</a>_
 
-* *<a href="www.waruwa.com/">Waruwa:</a>*
+    -   Está bien la disposición de la página y los colores, aunque tienen mucha información junta, De inmediato se puede identificar las funcionalidades.
 
-  * Los colores son muy buenos, el carrito de compras tambien. tiene la opción B2B. Me gusta la clasificación de los productos.
+-   _<a href="www.waruwa.com/">Waruwa:</a>_
 
-* *<a href="www.smokehaus.com.au/">Smokehaus:</a>*
+    -   Los colores son muy buenos, el carrito de compras tambien. tiene la opción B2B. Me gusta la clasificación de los productos.
 
-  * Interesante forma de presentar los productos, dando un diseño de home compacto, una descripción de productos tentadora.
+-   _<a href="www.smokehaus.com.au/">Smokehaus:</a>_
 
-* *<a href="www.compralocal.medellindigital.gov.co/">Pagina de la alcaldía:</a>*
+    -   Interesante forma de presentar los productos, dando un diseño de home compacto, una descripción de productos tentadora.
 
-  * La base sobre la que está sustentado este comercio actualmente.
+-   _<a href="www.compralocal.medellindigital.gov.co/">Pagina de la alcaldía:</a>_
 
-* *<a href="www.co.frubana.com/bog/">Frubana:</a>*
+    -   La base sobre la que está sustentado este comercio actualmente.
 
-  * Productos destacados y con descuentos. No nos parece tan atractivo el home ni los colores. No esta tan enfocado al mercado local.
+-   _<a href="www.co.frubana.com/bog/">Frubana:</a>_
 
-* *<a href="www.veganessentials.com/">Vegan ESSENTIALS:</a>*
+    -   Productos destacados y con descuentos. No nos parece tan atractivo el home ni los colores. No esta tan enfocado al mercado local.
 
-  * Logo simple y compacto, uso de colores sencillo y coherente, un carrito de compras y un home básico.
+-   _<a href="www.veganessentials.com/">Vegan ESSENTIALS:</a>_
 
-* *<a href="www.food4all.com/">Food4all:</a>*
+    -   Logo simple y compacto, uso de colores sencillo y coherente, un carrito de compras y un home básico.
 
-  * Me gusta que está la opción para comprar y vender en el home y que se pueda seleccionar la ubicación. No pudimos ver los productos.
+-   _<a href="www.food4all.com/">Food4all:</a>_
 
-* *<a href="www.sourcewhatsgood.com/">WhatsGood:</a>*
+    -   Me gusta que está la opción para comprar y vender en el home y que se pueda seleccionar la ubicación. No pudimos ver los productos.
 
-  * Muy lindo el home una encantadora paleta de colores, pero no pudimos entrar a la tienda. en el home ponen los pasos de como funciona la pag (interesante).
+-   _<a href="www.sourcewhatsgood.com/">WhatsGood:</a>_
 
-* *<a href="www.alafut.qc.ca/en/">Alafut:</a>*
+    -   Muy lindo el home una encantadora paleta de colores, pero no pudimos entrar a la tienda. en el home ponen los pasos de como funciona la pag (interesante).
 
-  * Verticalización del Home, diseño de edificio de varias plantas donde cada planta puede ser un categoría distinta de productos y la exploración entre estas categorías podría hacerse elemento a elemento horizontalmente tipo carrusel, integrando bastante contenido en un mismo home vertical.
+-   _<a href="www.alafut.qc.ca/en/">Alafut:</a>_
+
+    -   Verticalización del Home, diseño de edificio de varias plantas donde cada planta puede ser un categoría distinta de productos y la exploración entre estas categorías podría hacerse elemento a elemento horizontalmente tipo carrusel, integrando bastante contenido en un mismo home vertical.
 
 ## Integrantes del equipo
 
-* *<a href="https://www.linkedin.com/in/diana-melisa-dom%C3%ADnguez-g%C3%B3mez-aa956659/">Diana Melisa Domínguez:</a>* Ingeniera Física, FullStack dev. en proceso.
-* *<a href="https://www.linkedin.com/in/miguel-antonio-buritica-vargas-74693a219/" >Miguel Buriticá:</a>* Desarrollador FullStack en formación, estudiante de Física y estudiante de ingeniería de sistemas.
-* *<a href="https://www.linkedin.com/in/danielazapatasosa/" >Daniela Zapata:</a>* Ingeniera Industrial de profesión y aprendiz de Desarrollo web FullStack
+-   _<a href="https://www.linkedin.com/in/diana-melisa-dom%C3%ADnguez-g%C3%B3mez-aa956659/">Diana Melisa Domínguez:</a>_ Ingeniera Física, FullStack dev. en proceso.
+-   _<a href="https://www.linkedin.com/in/miguel-antonio-buritica-vargas-74693a219/" >Miguel Buriticá:</a>_ Desarrollador FullStack en formación, estudiante de Física y estudiante de ingeniería de sistemas.
+-   _<a href="https://www.linkedin.com/in/danielazapatasosa/" >Daniela Zapata:</a>_ Ingeniera Industrial de profesión y aprendiz de Desarrollo web FullStack
 
 ## Enlace tablero de trabajo Trello
-* *<a href="https://trello.com/b/OCkDLuqw/grupo-2-guava-market">Tablero de trabajo Trello grupo_2_guavaMarket</a>*
+
+-   _<a href="https://trello.com/b/OCkDLuqw/grupo-2-guava-market">Tablero de trabajo Trello grupo_2_guavaMarket</a>_

@@ -1,34 +1,52 @@
-<head>
-    <%- include('../partials/head') %>
-</head>
+<%- include('../partials/head') %>
 <body>
-    <header>
-        <%- include('../partials/headerSeller') %>
-    </header>
-        <main class="login-main">
-            <div class="login-left">
-                <img src="../images/maybebanner.jfif" alt="">
-                <p>Conectando campesinos con sus vecinos</p>
-            </div>
-            <div class="login-right">
-                <h2>Iniciar sesión</h2>
-                <p>Ingresa si tienes una cuenta con nosotros, si no <a href="/sign-in">CREA UNA CUENTA</a></p>
-                <form action="/index.html" class="formulario">
-                    <input class="text-box" type="email" name="email" id="email" placeholder="Correo electrónico" required>
-                    <input class="text-box" type="password" name="pass" id="pass" placeholder="Contraseña" minlength="10" required>
-                    <div>
-                        <input class="slides" type="checkbox" name="agree-terms-conditions" id="agree-terms-conditions">
-                        <label for="agree-terms-conditions">Recordar mi usuario</label>
-                    </div>
-                    <div class="login-button">
-                        <button type="submit" class="button-form">Ingresar</button> 
-                    </div>
-                    <a href="">¿Olvidó su contraseña?</a>
-                </form>
-            </div>
-        </main> 
-        <footer>
-            <%- include('../partials/footer') %>
-        </footer> 
-    </body>
-</html>
+	<%- include('../partials/headerSeller') %>
+	<main class="login-main">
+		<div class="login-left">
+			<img src="../images/maybebanner.jfif" alt="" />
+			<p>Conectando campesinos con sus vecinos</p>
+		</div>
+		<div class="login-right">
+			<h2>Iniciar sesión</h2>
+			<p>
+				Ingresa si tienes una cuenta con nosotros, si no
+				<a href="/sign-in">CREA UNA CUENTA</a>
+			</p>
+			<form action="/index.html" class="formulario">
+				<input
+					class="text-box"
+					type="email"
+					name="email"
+					id="email"
+					placeholder="Correo electrónico"
+					required
+				/>
+				<input
+					class="text-box"
+					type="password"
+					name="pass"
+					id="pass"
+					placeholder="Contraseña"
+					minlength="10"
+					required
+				/>
+				<div>
+					<input
+						class="slides"
+						type="checkbox"
+						name="agree-terms-conditions"
+						id="agree-terms-conditions"
+					/>
+					<label for="agree-terms-conditions"
+						>Recordar mi usuario</label
+					>
+				</div>
+				<div class="login-button">
+					<button type="submit" class="button-form">Ingresar</button>
+				</div>
+				<a href="">¿Olvidó su contraseña?</a>
+			</form>
+		</div>
+	</main>
+	<%- include('../partials/footer') %>
+</body>

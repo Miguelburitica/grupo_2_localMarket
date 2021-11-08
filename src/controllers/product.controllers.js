@@ -13,6 +13,7 @@ const controller = {
 	showAddItem: function (req, res) {
 		res.render(pathViews('add-item'));
 	},
+
 	showProductDetail: function (req, res) {
 		res.render(pathViews('detail'));
 	},

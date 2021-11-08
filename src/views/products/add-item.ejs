@@ -1,58 +1,86 @@
-<head>
-    <%- include('../partials/head') %>
-</head>
+<%- include('../partials/head') %>
 <body>
-    <header>
-        <%- include('../partials/headerSeller') %>
-    </header>
-    <main class="main-add-item"> 
-        <h2 class="titulo">¡Agrega un nuevo producto!</h2>
-            <form action="/index.html" class="formulario">
-                <div class="product-name">
-                <label>Producto:</label>
-                <input class="text-box" type="text" name="product-name" id="product-name" placeholder="Nombre del producto" minlength="2" required >
-                </div>
-                <div class="form-product-type">
-                    <label>Selecciona la categoría:</label>
-                    <select name="categoria"  class="control" placeholder="Seleccione la categoria" >
-                        <option value="frutas">Frutas</option>
-                        <option value="hortalizas">Hortalizas</option>
-                        <option value="plantas">Plantas</option>
-                        <option value="granos">Granos</option>
-                        <option value="semillas">Semillas</option>
-                    </select>
-                </div>
-                <div class="add-file">
-                    <label >Adjunta la imagen del producto: </label>
-                <input class="text-box" type="file" name="imagefile" id="imagefile" placeholder="Adjuntar imagen" required>
-                </div>
+	<%- include('../partials/headerSeller') %>
+	<main class="main-add-item">
+		<h2 class="titulo">¡Agrega un nuevo producto!</h2>
+		<form action="/index.html" class="formulario">
+			<div class="product-name">
+				<label>Producto:</label>
+				<input
+					class="text-box"
+					type="text"
+					name="product-name"
+					id="product-name"
+					placeholder="Nombre del producto"
+					minlength="2"
+					required
+				/>
+			</div>
+			<div class="form-product-type">
+				<label>Selecciona la categoría:</label>
+				<select
+					name="categoria"
+					class="control"
+					placeholder="Seleccione la categoria"
+				>
+					<option value="frutas">Frutas</option>
+					<option value="hortalizas">Hortalizas</option>
+					<option value="plantas">Plantas</option>
+					<option value="granos">Granos</option>
+					<option value="semillas">Semillas</option>
+				</select>
+			</div>
+			<div class="add-file">
+				<label>Adjunta la imagen del producto: </label>
+				<input
+					class="text-box"
+					type="file"
+					name="imagefile"
+					id="imagefile"
+					placeholder="Adjuntar imagen"
+					required
+				/>
+			</div>
 
-                <div class="price"> 
-                    <label>Precio:</label>
-                <input class="text-box" type="number" name="price" id="price" placeholder="Precio en pesos" required>
-                </div> 
-                <div class="form-product-discount">
-                    <label>Selecciona un descuento:</label>
-                    <select name="descuento"  class="control" placeholder="Seleccione descuento" >
-                        <option value="5">5%</option>
-                        <option value="10">10%</option>
-                        <option value="15">15%</option>
-                        <option value="20">20%</option>
-                        <option value="30">30%</option>
-                    </select>
-                </div>
-                <div class="form-farmer-location">
-                    <label>Selecciona Mercado campesino:</label>
-                    <select name="ubicacion"  class="control" placeholder="Seleccione descuento" >
-                        <option value="b1">Carlos E Restrepo</option>
-                        <option value="b2">Poblado</option>
-                        <option value="b3">Ciudad del Río</option>
-                    </select>
-                </div>
-                <button type="submit" class="submit">Agregar</button>
-            </form>
-    </main>
-    <footer>
-        <%- include('../partials/footer') %>
-    </footer>
+			<div class="price">
+				<label>Precio:</label>
+				<input
+					class="text-box"
+					type="number"
+					name="price"
+					id="price"
+					placeholder="Precio en pesos"
+					required
+				/>
+			</div>
+			<div class="form-product-discount">
+				<label>Selecciona un descuento:</label>
+				<select
+					name="descuento"
+					class="control"
+					placeholder="Seleccione descuento"
+				>
+					<option value="5">5%</option>
+					<option value="10">10%</option>
+					<option value="15">15%</option>
+					<option value="20">20%</option>
+					<option value="30">30%</option>
+				</select>
+			</div>
+			<div class="form-farmer-location">
+				<label>Selecciona Mercado campesino:</label>
+				<select
+					name="ubicacion"
+					class="control"
+					placeholder="Seleccione descuento"
+				>
+					<option value="b1">Carlos E Restrepo</option>
+					<option value="b2">Poblado</option>
+					<option value="b3">Ciudad del Río</option>
+				</select>
+			</div>
+			<button type="submit" class="submit">Agregar</button>
+		</form>
+	</main>
+	<%- include('../partials/footer') %>
 </body>
