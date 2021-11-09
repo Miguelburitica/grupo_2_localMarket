@@ -10,6 +10,10 @@ const controller = {
 		res.render(pathViews('create-edit'));
 	},
 
+	showEditItem: function (req, res) {
+		res.render(pathViews('edit-item'));
+	},
+
 	showAddItem: function (req, res) {
 		res.render(pathViews('add-item'));
 	},

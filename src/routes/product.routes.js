@@ -5,6 +5,9 @@ const controller = require('../controllers/product.controllers');
 // GET Create-edit page.
 router.get('/create-edit', controller.showCreateEdit);
 
+// GET edit-item.
+router.get('/edit-item', controller.showEditItem);
+
 // GET add-item.
 router.get('/add-item', controller.showAddItem);
 
