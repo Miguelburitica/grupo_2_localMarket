@@ -2,8 +2,8 @@ const express = require('express');
 const path = require('path');
 
 const mainRoutes = require('./routes/main.routes');
-const productsRoutes = require('./routes/product.routes');
-const usersRoutes = require('./routes/user.routes');
+const productsRoutes = require('./routes/products/product.routes');
+const usersRoutes = require('./routes/users/user.routes');
 
 const app = express();
 

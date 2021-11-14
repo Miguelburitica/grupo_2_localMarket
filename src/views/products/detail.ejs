@@ -7,8 +7,8 @@
 				<span class="spans promotion">Promoción</span>
 				<div class="image-product">
 					<img
-						src="../images/banner1.jfif"
-						alt="ilustración Producto X"
+						src="/images/<%= product.image %>"
+						alt="ilustración del <%= product.name %>"
 					/>
 				</div>
 				<div class="supplier-info">
@@ -23,10 +23,36 @@
 				<span class="spans category">Categoría</span>
 			</section>
 			<section class="item-info">
-				<h3 class="product-name">Piña desértica</h3>
-				<span class="spans off">20% descuento</span>
+				<h3 class="product-name"><%= product.name %></h3>
+				<span class="spans off"><%= product.discount*100 %> % descuento</span>
 				<form action="#" class="buy">
 					<h4>Opciones de compra</h4>
+					<% if (product.wayToBuy == 0) { price = product.kiloPrice[0]
+					%>
+					<div class="radio1" style="top:15px">
+						<input
+							type="radio"
+							name="pay-way"
+							id="bulk"
+							value="bulk"
+							checked
+						/>
+						<label for="bulk">Libra</label>
+					</div>
+					<% } else if(product.wayToBuy == 1) { price =
+					product.kiloPrice[1]%>
+					<div class="radio2" style="top:-15px">
+						<input
+							type="radio"
+							name="pay-way"
+							id="unit"
+							value="unit"
+							checked
+						/>
+						<label for="unit">Unidad</label>
+					</div>
+					<% } else { %> 
+						
 					<div class="radio1">
 						<input
 							type="radio"
@@ -35,8 +61,7 @@
 							value="bulk"
 						/>
 						<label for="bulk">Libra</label>
-					</div>
-					<div class="radio2">
+						<div class="radio2">
 						<input
 							type="radio"
 							name="pay-way"
@@ -45,7 +70,8 @@
 						/>
 						<label for="unit">Unidad</label>
 					</div>
-					<p class="precio">$ precio</p>
+						<% } %>
+					<p class="precio">$ <%= price %> </p>
 					<input
 						type="number"
 						name="how-much"

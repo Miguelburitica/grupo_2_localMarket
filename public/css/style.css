@@ -389,6 +389,15 @@ i {
 		font-size: 16px;
 	}
 
+	.main-header .content .fa-shopping-basket {
+		font-size: 40px;
+		transition: 0.3s ease all;
+	}
+
+	.main-header .content .fa-shopping-basket:hover {
+		color: #552827;
+	}
+
 	.main-header .content .site-shopping {
 		display: flex;
 		align-items: center;

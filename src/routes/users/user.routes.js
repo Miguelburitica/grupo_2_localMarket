@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/user.controllers');
+const controller = require('../../controllers/users/user.controllers');
 
 // GET Seller page.
 router.get('/sellerProfile', controller.showSellerProfile);
