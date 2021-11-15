@@ -2,9 +2,15 @@
 <body>
 	<%- include('../partials/headerSeller') %>
 	<main class="detail-main">
+		<% if (product == undefined) { %>
+			<h2>
+				Parece que no has elegido un producto, quisieras echar un vistazo a uno de estos.
+			</h2>
+		   <% } else { %>
 		<article class="article-cards">
 			<section class="supplier">
 				<span class="spans promotion">Promoción</span>
+				
 				<div class="image-product">
 					<img
 						src="/images/<%= product.image %>"
@@ -107,22 +113,11 @@
 				</form>
 			</section>
 		</article>
+		<% } %> 
 		<div class="main-suggest">
 			<h2>También podría interesarte</h2>
 			<div class="suggest-product-list">
-				<% for (let i = 0; i < suggest.length; i++) { %>
-				<article class="control-article">
-					<img
-						src="/images/<%= suggest[i].image%>"
-						alt="<%suggest[i].name%>"
-					/>
-					<p class="product-name"><%= suggest[i].name%></p>
-					<p Class="price">Desde $<%= suggest[i].price.kilo%></p>
-					<button type="submit" class="">
-						Agregar<i class="fas fa-plus-circle"></i>
-					</button>
-				</article>
-				<% }%>
+				<%- include('../partials/suggest') %> 
 			</div>
 		</div>
 	</main>

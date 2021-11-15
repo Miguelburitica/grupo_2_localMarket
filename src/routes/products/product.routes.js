@@ -12,7 +12,7 @@ router.get('/edit-item', controller.showEditItem);
 router.get('/add-item', controller.showAddItem);
 
 // GET product-detail page.
-router.get('/detail/:id', controller.showDetail);
+router.get('/detail/:id?', controller.showDetail);
 
 // GET shopping-cart page.
 router.get('/shopping-cart', controller.showShoppingCart);
