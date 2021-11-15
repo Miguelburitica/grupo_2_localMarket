@@ -21,8 +21,14 @@ const controller = {
 
 	showDetail: function (req, res) {
 		const id = req.params.id;
+		const suggestProducts = data.filter(
+			(item) => item.id > 1 && item.id < 6
+		);
 		const product = data.find((item) => item.id == id);
-		res.render(pathViews('detail'), { product });
+		res.render(pathViews('detail'), {
+			product: product,
+			suggest: suggestProducts,
+		});
 	},
 
 	showShoppingCart: function (req, res) {

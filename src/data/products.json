@@ -2,49 +2,49 @@
 	{
 		"id": 1,
 		"name": "limón",
-		"kiloPrice": [0, 400],
+		"price": { "kilo": 0, "unidad": 400 },
 		"wayToBuy": 1,
 		"discount": 0.05,
-		"category": "Fruit",
+		"category": "Frutas",
 		"image": "lemon.jfif",
-		"seller": "seller"
+		"seller": "Don Juan Machete"
 	},
 	{
 		"id": 2,
 		"name": "Mango",
-		"kiloPrice": [2200, 800],
-		"wayToBuy": 0,
+		"price": { "kilo": 2200, "unidad": 800 },
+		"wayToBuy": 2,
 		"discount": 0.1,
-		"category": "Fruit",
+		"category": "Frutas",
 		"image": "mango.jfif",
-		"seller": "seller"
+		"seller": "Don Juan Machete"
 	},
 	{
 		"id": 3,
-		"name": "Clam - Cherrystone",
-		"price": "$72461.65",
-		"wayToBuy": 1,
-		"discount": 0.7,
-		"category": "Home",
-		"image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ2SURBVBgZBcFLiJVlGADg5/3+b87cbLyFNBJ4oexGQYqIi6hFQambgohoE0aLUqGCaBcuonWLUFe1CIJolWCLaiK1C0FUREpRBgmWNpqi4XjOnP97e57ITI+8fuLZ6bnJZ0rYhikECGSQzbi1M1cu5UJcvfzqycN7RgCRmXa9+dXJ9w5su6uUWJV0EoBMSIv/LXv/uyvOnx1eP/3zL2u+PLxnCBVKF3cMarfq1D+6EkGQjT6b8TgtLfceuv0mO7ZU37bFmWx3Xn5w/7HVx9/ePSwQESsysxt0xUShBl2hCyIoAs383MCe7fM23jY5Xedm34UCSUBBCUqEEqFEKBFKF/7+d8mGFcvuXhOe37lWN9E9CRUgk9oRQkZofVJC7Rhk8fulNGpjrY08sHlS1DKGCpkkahQpJaKEQDayKwwoLbTWSYUooEKiIYIQEolsTHSAKKIPWVJDJlChjcmkIZCZoBS0ULskgySFvtE3oEJrKTNJUgKQQAj950eMFg5ZPvebU+vW2zH9WGWnCn2jT7LRACRoyY2FI6ZOfeC+p54zuekeSz99YubkQv304YkDFdo4tUwHfxgJqQWZQSMjPX30Lbv3vmDqzBeceMPMylU2b9jg+1/z5Qrjca/vmZ+bsHVd0ZI+6YOWrL7yp6lbNrHrFQD14LyuxcYK42Fr49Zy1ItvzvVapBSgJetXzrv+4zGzR180XDrvOq5d7fSdvyos3+gvzA66m1+7dzSbmUXSACunq4vn9zt9/B23rp5WuwnXFsf+uNBJ/aHITNv3fbZvvJyPR8T9KWcAJImUHh0eq1sXP+zWDi/G1cHc8Oxgy8cvffT1E/8D2iAtJW5RUGAAAAAASUVORK5CYII="
+		"name": "Pimentón",
+		"price": { "kilo": 4000, "unidad": 0 },
+		"wayToBuy": 0,
+		"discount": 0.12,
+		"category": "Condimentos",
+		"image": "pepper.jfif"
 	},
 	{
 		"id": 4,
-		"name": "Truffle Cups - White Paper",
-		"price": "$79990.16",
+		"name": "Piña",
+		"price": { "kilo": 3000, "unidad": 3500 },
 		"wayToBuy": 2,
-		"discount": 0.64,
-		"category": "Electronics",
-		"image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEGSURBVDjLpZM/LwRRFMXPspmEaGc1shHRaiXsJ5GIRixbCr6SikxIlqgJM5UohIiGdofovHf/PZVmYwZvTntPfjnn3txWCAFNNFE33L/ZKXYv+1dRgL3r7bu0PbucJp3e4GLjtsrXGq9wkA8SU7tPk87i/MwCzAyP5QNeytcnJl46XMuoNoGKDoVlTkQhJpAgmJqcBjnqkqPTXxN8qz9cD6vdHtQMxXOBt49y5XjzLB/3tau6kWewKiwoRu8jZFvn+U++GgCBlWFBQY4qr1ANcAQxgQaFjwH4TwYrQ5skYBOYKbzjiASOwCrNd2BBwZ4jAcowGJgkAuAZ2dEJhAUqij//wn/1BesSumImTttSAAAAAElFTkSuQmCC"
+		"discount": 0.5,
+		"category": "Frutas",
+		"image": "pineapple.jfif"
 	},
 	{
 		"id": 5,
-		"name": "Beer - Guiness",
-		"price": "$132731.10",
-		"wayToBuy": 0,
+		"name": "Cebolla roja",
+		"price": { "kilo": 2400, "unidad": 450 },
+		"wayToBuy": 2,
 		"discount": 0.03,
-		"category": "Music",
-		"image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAALWSURBVBgZBcHLi1V1AADg73fuuXMd5947jzuO+WgSylIhdROEJNFIkBptclmEuza1yPBfyHWLKBcJLdq0KFBMEotKxCBSNDVJ0xzHxzyqM/ec+z739H3hwKH95xozjblSqQQAAgCAIAACBvnQ8uLy93FjpjH3+ccnhCgYDPsACIJCIYBWP0VQFJFiWCjkPjx6ZC4ulUpyA6H/pezsJZPnWpaOzhqrVd28ecGN7LgHS4lare7xSqIUl61mHe8cKJTjkgggSVYk20espqnWmevS9KE0TYXuJd12U7vV1Gun2u3UoJMJYYggDoDx8XUUfWvfn+Kj31TenDazYaPR/m3twVa1iZqRUiQuj0hbHSF0EURAkCSJNG36bya3OjnQ/uoW+VDR+lm/m2o1M/1uS7eT6XVbQihADDA+PkPRNzFel7y7w+SnKwYvb1CZ7prtrShXn7S2UlIeKWu2elglEBFAp9OVpS3JaqI5lvv3WTpf/KXIO6LeaZ12qtfNdLLUsJcJIIgDYHR0QrWeGa/XQfmtLUY/OC/On7KxcU1ntG1T9YrKyJJe+65S9LaAOACaSSZNu8j8uvDIvX5k/TO5507ctHAw83j+M1fvzUvbbb120ws7KgJiIQioTzxhddB1udVyt1c2NTnl0b5g3+mBk38OtWvL5vbutXlqqx+ufeOn37+WDesiKIrCL/N3nLp13f1/VnQ6HWmaSbtdF7cVbjx6YPe2XfIot2vDq/LQ9+LzeywP74oCWoPMUt5XGakaGx23pjKmuqZqy3xi8/0FS9mKcqh6Y/t74Mi+456e2akwFBGEEKmpq4aaSj5qbahaf2PRxoW2O3t2Sporrj244NjZw+DYd4fdXrwiEokHg1ye5zZN7bapQQBB2IpXmA7B/seJi1dO2bPzJSevfmIkxM5f/tGUWeH1Qwe/XTcz/VqpHCMIgAAAeDj8w/Lwb0MDkVjDrGhx8sz/ABdNCpr3mlcAAAAASUVORK5CYII="
+		"category": "Verduras",
+		"image": "redonion.jfif"
 	},
 	{
 		"id": 6,

@@ -869,7 +869,7 @@ i {
 }
 
 .detail-main .article-cards .supplier .image-product img {
-	max-height: 100%;
+	width: 100%;
 }
 
 .detail-main .article-cards .supplier .supplier-info {
@@ -930,11 +930,11 @@ i {
 }
 
 .detail-main .article-cards .item-info .product-name {
-	font-size: 25px;
+	font-size: 20px;
 	font-weight: 1000;
 	border-bottom: #754847 solid 2px;
 	color: #552827;
-	padding: 0 12px;
+	padding: 4px 12px 0 12px;
 	border-radius: 4px;
 }
 .detail-main .article-cards .item-info .off {
@@ -945,21 +945,18 @@ i {
 }
 
 .detail-main .article-cards .item-info .buy {
-	display: grid;
+	display: flex;
 	width: 100%;
-	grid-template-areas:
-		'titulo titulo titulo titulo'
-		'opcion1 precio precio selector'
-		'opcion2 precio precio selector'
-		'boton boton boton boton';
+	flex-wrap: wrap;
+	justify-content: space-evenly;
 }
 
 .detail-main .article-cards .item-info .buy h4 {
-	grid-area: titulo;
 	text-align: left;
+	display: block;
 	color: #754847;
 	background-color: #fefefe;
-	width: 62%;
+	width: 64%;
 	margin: 0 auto 8px 14px;
 	text-align: center;
 	border-radius: 2px;
@@ -967,15 +964,25 @@ i {
 	border-bottom: #552827 solid 1px;
 }
 
-.detail-main .article-cards .item-info .buy .radio1 {
-	grid-area: opcion1;
+.detail-main .article-cards .item-info .buy .optionAdds {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.detail-main .article-cards .item-info .buy .optionAdds div {
+	display: flex;
+	gap: 20px;
+	align-self: flex-start;
+}
+
+.detail-main .article-cards .item-info .buy .optionAdds div .radio1 {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-.detail-main .article-cards .item-info .buy .radio2 {
-	grid-area: opcion2;
+.detail-main .article-cards .item-info .buy .optionAdds div .radio2 {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -984,9 +991,8 @@ i {
 .detail-main .article-cards .item-info .buy div {
 	position: relative;
 	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	justify-content: space-evenly;
+	align-items: center;
+	justify-content: space-around;
 }
 
 .detail-main .article-cards .item-info .buy div input {
@@ -1028,19 +1034,16 @@ i {
 	font-weight: 600;
 }
 
-.detail-main .article-cards .item-info .buy .precio {
-	grid-area: precio;
+.detail-main .article-cards .item-info .buy p {
 	justify-self: center;
 	align-self: center;
 	font-size: 16px;
 	font-weight: 800;
 	color: #552827;
 	margin-right: 15px;
-	margin-bottom: 4px;
 }
 
 .detail-main .article-cards .item-info .buy #how-much {
-	grid-area: selector;
 	width: 40px;
 	height: 48px;
 	text-align: center;
@@ -1068,7 +1071,6 @@ i {
 }
 
 .detail-main .article-cards .item-info .buy button {
-	grid-area: boton;
 	width: 160px;
 	height: 25px;
 	margin: 8px auto;
@@ -1225,6 +1227,10 @@ i {
 		height: 100px;
 	}
 
+	.detail-main .article-cards .supplier .image-product img {
+		width: 100%;
+	}
+
 	.detail-main .article-cards .supplier .supplier-name {
 		font-size: 16px;
 	}
@@ -1249,11 +1255,15 @@ i {
 
 	.detail-main .article-cards .supplier .image-product {
 		height: 300px;
-		width: 72%;
+		width: 37%;
 		max-width: inherit;
 		border-radius: 15px;
 		display: flex;
 		justify-content: center;
+	}
+
+	.detail-main .article-cards .supplier .image-product img {
+		width: 98%;
 	}
 
 	.detail-main .article-cards .supplier .supplier-info {
@@ -1301,7 +1311,7 @@ i {
 
 	.detail-main .article-cards .item-info .buy h4 {
 		font-size: 20px;
-		margin-left: 21px;
+		margin-left: 59px;
 		width: 240px;
 	}
 

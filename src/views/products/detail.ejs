@@ -24,54 +24,75 @@
 			</section>
 			<section class="item-info">
 				<h3 class="product-name"><%= product.name %></h3>
-				<span class="spans off"><%= product.discount*100 %> % descuento</span>
-				<form action="#" class="buy">
+				<span class="spans off"
+					><%= product.discount*100 %> % descuento</span
+				>
+				<form action="POST" class="buy">
 					<h4>Opciones de compra</h4>
-					<% if (product.wayToBuy == 0) { price = product.kiloPrice[0]
-					%>
-					<div class="radio1" style="top:15px">
-						<input
-							type="radio"
-							name="pay-way"
-							id="bulk"
-							value="bulk"
-							checked
-						/>
-						<label for="bulk">Libra</label>
+					<% if (product.wayToBuy == 0) { %>
+					<div class="optionAdds">
+						<div>
+							<div class="radio1">
+								<input
+									type="radio"
+									name="pay-way"
+									id="bulk"
+									value="bulk"
+									checked
+								/>
+								<label for="bulk">Libra</label>
+							</div>
+							<p class="precioBulk">
+								$ <%= product.price.kilo %>
+							</p>
+						</div>
 					</div>
-					<% } else if(product.wayToBuy == 1) { price =
-					product.kiloPrice[1]%>
-					<div class="radio2" style="top:-15px">
-						<input
-							type="radio"
-							name="pay-way"
-							id="unit"
-							value="unit"
-							checked
-						/>
-						<label for="unit">Unidad</label>
-					</div>
-					<% } else { %> 
-						
-					<div class="radio1">
-						<input
-							type="radio"
-							name="pay-way"
-							id="bulk"
-							value="bulk"
-						/>
-						<label for="bulk">Libra</label>
+					<% } else if(product.wayToBuy == 1) { %>
+					<div class="optionAdds">
+						<div>
 						<div class="radio2">
-						<input
-							type="radio"
-							name="pay-way"
-							id="unit"
-							value="unit"
-						/>
-						<label for="unit">Unidad</label>
+							<input
+								type="radio"
+								name="pay-way"
+								id="unit"
+								value="unit"
+								checked
+							/>
+							<label for="unit">Unidad</label>
+						</div>
+						<p class="precioUnit">$ <%= product.price.unidad %></p>
 					</div>
-						<% } %>
-					<p class="precio">$ <%= price %> </p>
+				</div>
+					</div>
+					<% } else { %>
+					<div class="optionAdds">
+						<div>
+						<div class="radio1">
+							<input
+								type="radio"
+								name="pay-way"
+								id="bulk"
+								value="bulk"
+							/>
+							<label for="bulk">Libra</label>
+						</div>
+						<p class="precioBulk">$ <%= product.price.kilo %></p>
+					</div>
+					<div>
+						<div class="radio2">
+							<input
+								type="radio"
+								name="pay-way"
+								id="unit"
+								value="unit"
+							/>
+							<label for="unit">Unidad</label>
+						</div>
+						<p class="precioUnit">$ <%= product.price.unidad %></p>
+					</div>
+				</div>
+					<% } %>
+
 					<input
 						type="number"
 						name="how-much"
@@ -89,38 +110,19 @@
 		<div class="main-suggest">
 			<h2>También podría interesarte</h2>
 			<div class="suggest-product-list">
+				<% for (let i = 0; i < suggest.length; i++) { %>
 				<article class="control-article">
-					<img src="/images/pepper.jfif" alt="Pimenton" />
-					<p class="product-name">Pimentón</p>
-					<p Class="price">Desde $1.000</p>
+					<img
+						src="/images/<%= suggest[i].image%>"
+						alt="<%suggest[i].name%>"
+					/>
+					<p class="product-name"><%= suggest[i].name%></p>
+					<p Class="price">Desde $<%= suggest[i].price.kilo%></p>
 					<button type="submit" class="">
 						Agregar<i class="fas fa-plus-circle"></i>
 					</button>
 				</article>
-				<article class="control-article">
-					<img src="/images/tomato.jfif" alt="Tomate" />
-					<p class="product-name">Tomates</p>
-					<p Class="price">Desde $700</p>
-					<button type="submit" class="">
-						Agregar<i class="fas fa-plus-circle"></i>
-					</button>
-				</article>
-				<article class="control-article">
-					<img src="/images/mango.jfif" alt="Mango" />
-					<p class="product-name">Mango</p>
-					<p Class="price">Desde $1.500</p>
-					<button type="submit" class="">
-						Agregar<i class="fas fa-plus-circle"></i>
-					</button>
-				</article>
-				<article class="control-article">
-					<img src="/images/lemon.jfif" alt="Limon" />
-					<p class="product-name">Limón</p>
-					<p Class="price">Desde $1.200</p>
-					<button type="submit" class="">
-						Agregar<i class="fas fa-plus-circle"></i>
-					</button>
-				</article>
+				<% }%>
 			</div>
 		</div>
 	</main>
