@@ -94,60 +94,29 @@
 			</div>
 			<!-- Only desktop -->
 			<div class="pay-information">
-				<div class="send-pay-information">
-					<h4>Método de envío</h4>
-					<div class="send-options">
-						<label
-							><input type="radio" name="perfil" />Recoger en
-							Mercado local</label
-						>
-						<label
-							><input type="radio" name="perfil" />Envío a
-							domicilio</label
-						>
-					</div>
-				</div>
 				<div class="send-location">
-					<h4>Dirección de entrega</h4>
+					<h4>Punto de recogida</h4>
 					<form
 						action="/envio-domicilio"
 						method="POST"
 						class="form-location"
 					>
 						<div class="form-location">
-							<label>Dirección:</label>
-							<input
-								type="text"
-								name="direccion"
-								class="control"
-								placeholder="Escriba la dirección"
-							/>
-						</div>
-						<div class="form-location">
-							<label>Barrio:</label>
+							<label>Selecciona tu mercado mas cercano:</label>
 							<select
-								name="barrio"
+								name="market"
 								class="control"
-								placeholder="Seleccione el barrio"
+								placeholder="Seleccione su mercado mas cercano"
 							>
-								<option value="suramericana">
-									Suramericana
+								<option value="Carlos E Restrepo">
+									Carlos E Resptrepo
 								</option>
 								<option value="poblado">Poblado</option>
 								<option value="san javier">San Javier</option>
 								<option value="floresta">Floresta</option>
 								<option value="castilla">Castilla</option>
 							</select>
-						</div>
-						<div class="form-location">
-							<label>Casa-Bloque:</label>
-							<input
-								type="text"
-								name="casa-bloque"
-								class="control"
-								placeholder="Número de casa o bloque"
-							/>
-						</div>
+						</div>	
 						<div class="form-location">
 							<label>Notas al pedido:</label>
 							<input
@@ -167,10 +136,6 @@
 								type="radio"
 								name="pay-options"
 							/>Transferencia bancaria</label
-						>
-						<label
-							><input type="radio" name="pay-options" />Efectivo
-							contraentrega</label
 						>
 						<label
 							><input type="radio" name="pay-options" />Pago al
