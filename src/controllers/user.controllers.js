@@ -1,7 +1,7 @@
 const path = require('path');
 
 const pathViews = function (nameView) {
-	return path.resolve(__dirname, '../../views/users/' + nameView + '.ejs');
+	return path.resolve(__dirname, '../views/users/' + nameView + '.ejs');
 };
 
 const controller = {

@@ -1,9 +1,7 @@
 const express = require('express');
 const path = require('path');
 
-const mainRoutes = require('./routes/main.routes');
-const productsRoutes = require('./routes/products/product.routes');
-const usersRoutes = require('./routes/users/user.routes');
+const mainRoutes = require('./routes');
 
 const app = express();
 
@@ -13,16 +11,10 @@ app.set('views', path.resolve(__dirname, './views'));
 app.set('view engine', 'ejs');
 
 //para poder traer datos de los formularios
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // GET the main routes
 app.use('/', mainRoutes);
-
-// GET the products routes
-app.use('/products', productsRoutes);
-
-// GET the users routes
-app.use('/users', usersRoutes);
 
 module.exports = app;

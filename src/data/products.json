@@ -288,22 +288,9 @@
     },
     {
         "id": 31,
-        "name": "ddfadfa",
-        "price": "34000",
-        "category": "hortalizas"
-    },
-    {
-        "id": 32,
-        "name": "asdfadsc",
-        "price": "58000",
+        "name": "Tomate",
+        "price": "20000",
         "category": "frutas",
-        "image": "imagefile-1637426132950.jfif"
-    },
-    {
-        "id": 33,
-        "name": "dczxcxzc",
-        "price": "58000",
-        "category": "hortalizas",
-        "image": "imagefile-1637428158931.jfif"
+        "image": "imagefile-1637433387997.jfif"
     }
 ]

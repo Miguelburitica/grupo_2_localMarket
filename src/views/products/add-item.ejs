@@ -3,7 +3,12 @@
 	<%- include('../partials/headerSeller') %>
 	<main class="main-add-item">
 		<h2 class="titulo">¡Agrega un nuevo producto!</h2>
-		<form action="/products" class="formulario" method="POST" enctype="multipart/form-data">
+		<form
+			action="/products/add-item"
+			class="formulario"
+			method="POST"
+			enctype="multipart/form-data"
+		>
 			<div class="product-name">
 				<label>Producto:</label>
 				<input

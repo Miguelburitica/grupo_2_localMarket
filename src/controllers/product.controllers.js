@@ -2,29 +2,28 @@ const path = require('path');
 const fs = require('fs');
 
 const pathViews = function (nameView) {
-	return path.resolve(__dirname, '../../views/products/' + nameView + '.ejs');
+	return path.resolve(__dirname, '../views/products/' + nameView + '.ejs');
 };
 
-const data = require('../../data/products.json');
-const productsFilePath = path.resolve(__dirname, '../../data/products.json');
+const data = require('../data/products.json');
+const productsFilePath = path.resolve(__dirname, '../data/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-
 //función que permite almacenar el producto nuevo con el id superior al mayor de data
-const newId=() =>{
-	let ultimo=0;
-	products.forEach(product => {
-		if(product.id>ultimo){
+const newId = () => {
+	let ultimo = 0;
+	products.forEach((product) => {
+		if (product.id > ultimo) {
 			ultimo = product.id;
 		}
 	});
-	return ultimo+1;
-}
+	return ultimo + 1;
+};
 
 const controller = {
 	// Cuando cambies las funciones de arriba, deberás cambiar el metodo que muestra las vistas, deberá pasar de sendFile a render.
 	showCreateEdit: function (req, res) {
-		res.render(pathViews('create-edit'));
+		res.render(pathViews('list'));
 	},
 
 	showEditItem: function (req, res) {
@@ -35,23 +34,22 @@ const controller = {
 		res.render(pathViews('add-item'));
 	},
 
-	storeAddItem:function (req, res) {
-		
-		const product={
+	storeAddItem: function (req, res) {
+		const product = {
 			id: newId(),
 			name: req.body.name,
 			price: req.body.price,
-			discount:req.body.discount,
+			discount: req.body.discount,
 			category: req.body.categoria,
 			image: req.file.filename,
-		}
-	
-		console.log(req.file)
+		};
+
+		console.log(req.file);
 		products.push(product);
-		const jsonProducts=JSON.stringify(products, null,4);
+		const jsonProducts = JSON.stringify(products, null, 4);
 		fs.writeFileSync(productsFilePath, jsonProducts);
 
-		res.redirect(pathViews('/create-edit'));
+		res.redirect('list');
 	},
 
 	showDetail: function (req, res) {

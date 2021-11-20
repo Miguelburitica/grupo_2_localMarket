@@ -1,4 +1,6 @@
 const path = require('path');
+const userController = require('./user.controllers');
+const productController = require('./product.controllers');
 
 const pathViews = function (nameView) {
 	return path.resolve(__dirname, '../views/webs/' + nameView + '.ejs');
@@ -12,4 +14,8 @@ const controller = {
 	},
 };
 
-module.exports = controller;
+module.exports = {
+	controller,
+	userController,
+	productController,
+};
