@@ -83,6 +83,9 @@
 				</select>
 			</div>
 			<button type="submit" class="submit">Actualizar</button>
+			<form action="/products/?_method=DELETE" method="POST">
+				<button type="submit" class="action-button-delete">Eliminar</button>
+			</form>
 		</form>
 	</main>
 	<%- include('../partials/footer') %>

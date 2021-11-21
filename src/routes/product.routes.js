@@ -38,7 +38,7 @@ router.get('/edit-item', productController.showEditItem);
 router.get('/detail/:id?', productController.showDetail);
 
 //ELIMINAR PRODUCTOS
-
+router.delete('/:id', productController.deleteItem);
 // GET shopping-cart page.
 router.get('/shopping-cart', productController.showShoppingCart);
 
