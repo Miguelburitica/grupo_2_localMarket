@@ -56,11 +56,18 @@ const controller = {
 		const product = {
 			id: newId(),
 			name: req.body.name,
-			price: req.body.price,
-			discount: req.body.discount,
-			category: req.body.categoria,
+			price: {
+				kilo : parseInt(req.body.kilo),
+				unidad : parseInt(req.body.unidad),
+			},
+			discount: parseInt(req.body.discount),
+			category: req.body.category,
 			image: req.file.filename,
+			market: req.file.market,
+			seller: ""
 		};
+
+		console.log(req.body)
 
 		products.push(product);
 		const jsonProducts = JSON.stringify(products, null, 4);

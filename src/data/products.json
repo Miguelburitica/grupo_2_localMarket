@@ -1,93 +1,108 @@
 [
-	{
-		"id": 1,
-		"name": "Limón",
-		"price": {
-			"kilo": 0,
-			"unidad": 400
-		},
-		"wayToBuy": 1,
-		"discount": 0.05,
-		"category": ["Frutas"],
-		"image": "lemon.jfif",
-		"seller": "Don Juan Machete"
-	},
-	{
-		"id": 2,
-		"name": "Mango",
-		"price": {
-			"kilo": 2200,
-			"unidad": 800
-		},
-		"wayToBuy": 2,
-		"discount": 0.1,
-		"category": ["Frutas"],
-		"image": "mango.jfif",
-		"seller": "Don Juan Machete"
-	},
-	{
-		"id": 3,
-		"name": "Pimentón",
-		"price": {
-			"kilo": 4000,
-			"unidad": 0
-		},
-		"wayToBuy": 0,
-		"discount": 0.12,
-		"category": ["Condimentos"],
-		"image": "pepper.jfif",
-		"seller": "Don Juan Machete"
-	},
-	{
-		"id": 4,
-		"name": "Piña",
-		"price": {
-			"kilo": 3000,
-			"unidad": 3500
-		},
-		"wayToBuy": 2,
-		"discount": 0.5,
-		"category": ["Frutas"],
-		"image": "pineapple.jfif",
-		"seller": "Don Juan Machete"
-	},
-	{
-		"id": 5,
-		"name": "Cebolla roja",
-		"price": {
-			"kilo": 2400,
-			"unidad": 450
-		},
-		"wayToBuy": 2,
-		"discount": 0.03,
-		"category": ["Verduras"],
-		"image": "redonion.jfif",
-		"seller": "Don Juan Machete"
-	},
-	{
-		"id": 6,
-		"name": "Limón amarillo",
-		"price": {
-			"kilo": 1400,
-			"unidad": 0
-		},
-		"wayToBuy": 0,
-		"discount": 0.15,
-		"category": ["Frutas"],
-		"image": "yellowlemon.jfif",
-		"seller": "Don Juan Machete"
-	},
-	{
-		"id": 7,
-		"name": "Zucchini",
-		"price": {
-			"kilo": 4300,
-			"unidad": 0
-		},
-		"wayToBuy": 0,
-		"discount": 0,
-		"category": ["Verduras"],
-		"image": "zucchini.jfif",
-		"seller": "Don Juan Machete"
-	}
+    {
+        "id": 1,
+        "name": "Limón",
+        "price": {
+            "kilo": 0,
+            "unidad": 400
+        },
+        "wayToBuy": 1,
+        "discount": 0.05,
+        "category": [
+            "Frutas"
+        ],
+        "image": "lemon.jfif",
+        "seller": "Don Juan Machete"
+    },
+    {
+        "id": 2,
+        "name": "Mango",
+        "price": {
+            "kilo": 2200,
+            "unidad": 800
+        },
+        "wayToBuy": 2,
+        "discount": 0.1,
+        "category": [
+            "Frutas"
+        ],
+        "image": "mango.jfif",
+        "seller": "Don Juan Machete"
+    },
+    {
+        "id": 3,
+        "name": "Pimentón",
+        "price": {
+            "kilo": 4000,
+            "unidad": 0
+        },
+        "wayToBuy": 0,
+        "discount": 0.12,
+        "category": [
+            "Condimentos"
+        ],
+        "image": "pepper.jfif",
+        "seller": "Don Juan Machete"
+    },
+    {
+        "id": 4,
+        "name": "Piña",
+        "price": {
+            "kilo": 3000,
+            "unidad": 3500
+        },
+        "wayToBuy": 2,
+        "discount": 0.5,
+        "category": [
+            "Frutas"
+        ],
+        "image": "pineapple.jfif",
+        "seller": "Don Juan Machete"
+    },
+    {
+        "id": 5,
+        "name": "Cebolla roja",
+        "price": {
+            "kilo": 2400,
+            "unidad": 450
+        },
+        "wayToBuy": 2,
+        "discount": 0.03,
+        "category": [
+            "Verduras"
+        ],
+        "image": "redonion.jfif",
+        "seller": "Don Juan Machete"
+    },
+    {
+        "id": 6,
+        "name": "Limón amarillo",
+        "price": {
+            "kilo": 1400,
+            "unidad": 0
+        },
+        "wayToBuy": 0,
+        "discount": 0.15,
+        "category": [
+            "Frutas"
+        ],
+        "image": "yellowlemon.jfif",
+        "seller": "Don Juan Machete"
+    },
+    {
+        "id": 7,
+        "name": "Zucchini",
+        "price": {
+            "kilo": 4300,
+            "unidad": 0
+        },
+        "wayToBuy": 0,
+        "discount": 0,
+        "category": [
+            "Verduras"
+        ],
+        "image": "zucchini.jfif",
+        "seller": "Don Juan Machete"
+    }
+    
 ]

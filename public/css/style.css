@@ -2185,8 +2185,12 @@ h2 {
 .price,
 .form-product-discount,
 .form-farmer-location {
-	width: 70%;
+	width: 80%;
 	align-content: center;
+}
+
+.main-add-item .price .text-box{
+	width: 25%;
 }
 
 /* Final estilos add-item */

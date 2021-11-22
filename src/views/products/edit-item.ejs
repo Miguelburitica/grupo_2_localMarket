@@ -59,15 +59,18 @@
 			<div class="form-product-discount">
 				<label>Selecciona un descuento:</label>
 				<select
-					name="descuento"
+					name="discount"
 					class="control"
 					placeholder="Seleccione descuento"
 				>
-					<option value="5">5%</option>
-					<option value="10">10%</option>
-					<option value="15">15%</option>
-					<option value="20">20%</option>
-					<option value="30">30%</option>
+					<option value="0">0%</option>
+					<option value="0.05">5%</option>
+					<option value="0.1">10%</option>
+					<option value="0.15">15%</option>
+					<option value="0.2">20%</option>
+					<option value="0.25">25%</option>
+					<option value="0.3">30%</option>
+					<option value="0.35">35%</option>
 				</select>
 			</div>
 			<div class="form-farmer-location">
@@ -77,15 +80,12 @@
 					class="control"
 					placeholder="Seleccione descuento"
 				>
-					<option value="b1">Carlos E Restrepo</option>
-					<option value="b2">Poblado</option>
-					<option value="b3">Ciudad del Río</option>
+					<option value="Carlos E Restrepo">Carlos E Restrepo</option>
+					<option value="Poblado">Poblado</option>
+					<option value="Ciudad del Río">Ciudad del Río</option>
 				</select>
 			</div>
 			<button type="submit" class="submit">Actualizar</button>
-			<form action="/products/?_method=DELETE" method="POST">
-				<button type="submit" class="action-button-delete">Eliminar</button>
-			</form>
 		</form>
 	</main>
 	<%- include('../partials/footer') %>
