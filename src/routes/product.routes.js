@@ -10,26 +10,22 @@ const storage = multer.diskStorage({
 		cb(null, path.resolve(__dirname, '../../public/images'));
 	},
 	filename: function (req, file, cb) {
-		cb(
-			null,
-			file.fieldname + '-' + Date.now() + path.extname(file.originalname)
-		);
+		cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
 	},
 });
 
 //Middleware para guardar archivos
 const uploadFile = multer({ storage });
 
-// LISTADO DE PRODUCTOS
-router.get('/list', productController.showCreateEdit);
+// LISTADO DE PRODUCTOS DEL VENDEDOR
+router.get('/list', productController.showList);
+
+// LISTADO DE PRODUCTOS DE CARA AL COMPRADOR
+router.get('/catalog', productController.showCatalog);
 
 //CREACIÓN DE PRODUCTOS
 router.get('/add-item', productController.showAddItem);
-router.post(
-	'/add-item',
-	uploadFile.single('imagefile'),
-	productController.storeAddItem
-);
+router.post('/add-item', uploadFile.single('imagefile'), productController.storeAddItem);
 
 // EDICIÓN DE PRODUCTOS
 router.get('/edit-item', productController.showEditItem);

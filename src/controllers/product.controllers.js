@@ -5,9 +5,14 @@ const pathViews = function (nameView) {
 	return path.resolve(__dirname, '../views/products/' + nameView + '.ejs');
 };
 
-const data = require('../data/products.json');
+const dataProducts = require('../data/products.json');
 const productsFilePath = path.resolve(__dirname, '../data/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+
+/*
+const dataSellers = require('../data/sellers.json');
+const sellersFilePath = path.resolve(__dirname, '../data/sellers.json');
+const sellers = JSON.parse(fs.readFileSync(sellersFilePath, 'utf-8'));*/
 
 //función que permite almacenar el producto nuevo con el id superior al mayor de data
 const newId = () => {
@@ -22,8 +27,21 @@ const newId = () => {
 
 const controller = {
 	// Cuando cambies las funciones de arriba, deberás cambiar el metodo que muestra las vistas, deberá pasar de sendFile a render.
-	showCreateEdit: function (req, res) {
-		res.render(pathViews('list'));
+	showList: function (req, res) {
+		res.render(pathViews('list'), {
+			products /*.filter(product => product.seller == req.seller)*/,
+		});
+	},
+
+	showCatalog: function (req, res) {
+		const frutas = products.filter((product) => product.category.includes('Frutas'));
+		const verduras = products.filter((product) => product.category.includes('Verduras'));
+		const condimentos = products.filter((product) => product.category.includes('Condimentos'));
+		res.render(pathViews('catalog'), {
+			frutas,
+			verduras,
+			condimentos,
+		});
 	},
 
 	showEditItem: function (req, res) {
@@ -53,24 +71,23 @@ const controller = {
 
 	showDetail: function (req, res) {
 		const id = req.params.id;
-		const suggestProducts = data.filter(
-			(item) => item.id > 1 && item.id < 6
-		);
-		const product = data.find((item) => item.id == id);
+		const suggestProducts = dataProducts.filter((item) => item.id > 1 && item.id < 6);
+		const product = dataProducts.find((item) => item.id == id);
 		res.render(pathViews('detail'), {
 			product: product,
 			suggest: suggestProducts,
+			/*seller: seller,*/
 		});
 	},
 
-	deleteItem: function (req, res){
-		const idToDelete= req.params.id;
-		const newProductsList= products.filter(product=>product.id != product.idToDelete);
+	deleteItem: function (req, res) {
+		const idToDelete = req.params.id;
+		const newProductsList = products.filter((product) => product.id != product.idToDelete);
 
 		const jsonProducts = JSON.stringify(newProductsList, null, 4);
 		fs.writeFileSync(productsFilePath, jsonProducts);
-		
-		res.redirect('list')
+
+		res.redirect('list');
 	},
 
 	showShoppingCart: function (req, res) {

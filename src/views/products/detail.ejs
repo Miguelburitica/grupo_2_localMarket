@@ -2,122 +2,122 @@
 <body>
 	<%- include('../partials/headerSeller') %>
 	<main class="detail-main">
-		<% if (product == undefined) { %>
-			<h2>
-				Parece que no has elegido un producto, quisieras echar un vistazo a uno de estos.
-			</h2>
-		   <% } else { %>
-		<article class="article-cards">
-			<section class="supplier">
-				<span class="spans promotion">Promoción</span>
-				
-				<div class="image-product">
-					<img
-						src="/images/<%= product.image %>"
-						alt="ilustración del <%= product.name %>"
-					/>
-				</div>
-				<div class="supplier-info">
-					<div class="image-supplier">
+		<% if (product ) { %>
+			<article class="article-cards">
+				<section class="supplier">
+					<span class="spans promotion">Promoción</span>
+					
+					<div class="image-product">
 						<img
-							src="../images/farmer3.jpg"
-							alt="Proveedor del Producto X"
+							src="/images/<%= product.image %>"
+							alt="ilustración del <%= product.name %>"
 						/>
 					</div>
-					<h5 class="supplier-name">Don Pedro</h5>
-				</div>
-				<span class="spans category">Categoría</span>
-			</section>
-			<section class="item-info">
-				<h3 class="product-name"><%= product.name %></h3>
-				<span class="spans off"
-					><%= product.discount*100 %> % descuento</span
-				>
-				<form action="POST" class="buy">
-					<h4>Opciones de compra</h4>
-					<% if (product.wayToBuy == 0) { %>
-					<div class="optionAdds">
-						<div>
+					<div class="supplier-info">
+						<div class="image-supplier">
+							<img
+								src="../images/farmer3.jpg"
+								alt="Proveedor del Producto X"
+							/>
+						</div>
+						<h5 class="supplier-name">Don Pedro</h5>
+					</div>
+					<span class="spans category">Categoría</span>
+				</section>
+				<section class="item-info">
+					<h3 class="product-name"><%= product.name %></h3>
+					<span class="spans off"
+						><%= product.discount*100 %> % descuento</span
+					>
+					<form action="POST" class="buy">
+						<h4>Opciones de compra</h4>
+						<% if (product.wayToBuy == 0) { %>
+						<div class="optionAdds">
+							<div>
+								<div class="radio1">
+									<input
+										type="radio"
+										name="pay-way"
+										id="bulk"
+										value="bulk"
+										checked
+									/>
+									<label for="bulk">Libra</label>
+								</div>
+								<p class="precioBulk">
+									$ <%= product.price.kilo %>
+								</p>
+							</div>
+						</div>
+						<% } else if(product.wayToBuy == 1) { %>
+						<div class="optionAdds">
+							<div>
+							<div class="radio2">
+								<input
+									type="radio"
+									name="pay-way"
+									id="unit"
+									value="unit"
+									checked
+								/>
+								<label for="unit">Unidad</label>
+							</div>
+							<p class="precioUnit">$ <%= product.price.unidad %></p>
+						</div>
+					</div>
+						</div>
+						<% } else { %>
+						<div class="optionAdds">
+							<div>
 							<div class="radio1">
 								<input
 									type="radio"
 									name="pay-way"
 									id="bulk"
 									value="bulk"
-									checked
 								/>
-								<label for="bulk">Libra</label>
+								<label for="bulk">Kilo</label>
 							</div>
-							<p class="precioBulk">
-								$ <%= product.price.kilo %>
-							</p>
+							<p class="precioBulk">$ <%= product.price.kilo %></p>
 						</div>
-					</div>
-					<% } else if(product.wayToBuy == 1) { %>
-					<div class="optionAdds">
 						<div>
-						<div class="radio2">
-							<input
-								type="radio"
-								name="pay-way"
-								id="unit"
-								value="unit"
-								checked
-							/>
-							<label for="unit">Unidad</label>
+							<div class="radio2">
+								<input
+									type="radio"
+									name="pay-way"
+									id="unit"
+									value="unit"
+								/>
+								<label for="unit">Unidad</label>
+							</div>
+							<p class="precioUnit">$ <%= product.price.unidad %></p>
 						</div>
-						<p class="precioUnit">$ <%= product.price.unidad %></p>
 					</div>
-				</div>
-					</div>
-					<% } else { %>
-					<div class="optionAdds">
-						<div>
-						<div class="radio1">
-							<input
-								type="radio"
-								name="pay-way"
-								id="bulk"
-								value="bulk"
-							/>
-							<label for="bulk">Libra</label>
-						</div>
-						<p class="precioBulk">$ <%= product.price.kilo %></p>
-					</div>
-					<div>
-						<div class="radio2">
-							<input
-								type="radio"
-								name="pay-way"
-								id="unit"
-								value="unit"
-							/>
-							<label for="unit">Unidad</label>
-						</div>
-						<p class="precioUnit">$ <%= product.price.unidad %></p>
-					</div>
-				</div>
-					<% } %>
-
-					<input
-						type="number"
-						name="how-much"
-						id="how-much"
-						min="0"
-						value="0"
-						accept="numbers"
-					/>
-					<button type="submit">
-						Agregar <i class="fas fa-shopping-basket"></i>
-					</button>
-				</form>
-			</section>
-		</article>
+						<% } %>
+	
+						<input
+							type="number"
+							name="how-much"
+							id="how-much"
+							min="0"
+							value="0"
+							accept="numbers"
+						/>
+						<button type="submit">
+							Agregar <i class="fas fa-shopping-basket"></i>
+						</button>
+					</form>
+				</section>
+			</article>
+			<% } else { %>
+				<h2>
+					Parece que no has elegido un producto, quisieras echar un vistazo a uno de estos.
+				</h2>
 		<% } %> 
-		<div class="main-suggest">
+		<div class="products-space">
 			<h2>También podría interesarte</h2>
-			<div class="suggest-product-list">
-				<%- include('../partials/suggest') %> 
+			<div class="product-row">
+				<%- include('../partials/groupOfProducts') %> 
 			</div>
 		</div>
 	</main>
