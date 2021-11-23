@@ -1,20 +1,5 @@
 [
     {
-        "id": 1,
-        "name": "Limón",
-        "price": {
-            "kilo": 0,
-            "unidad": 400
-        },
-        "wayToBuy": 1,
-        "discount": 0.05,
-        "category": [
-            "Frutas"
-        ],
-        "image": "lemon.jfif",
-        "seller": "Don Juan Cabrera"
-    },
-    {
         "id": 2,
         "name": "Mango",
         "price": {
