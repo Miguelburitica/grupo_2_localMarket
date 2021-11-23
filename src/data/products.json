@@ -12,7 +12,7 @@
             "Frutas"
         ],
         "image": "lemon.jfif",
-        "seller": "Don Juan Machete"
+        "seller": "Don Juan Cabrera"
     },
     {
         "id": 2,
@@ -27,7 +27,7 @@
             "Frutas"
         ],
         "image": "mango.jfif",
-        "seller": "Don Juan Machete"
+        "seller": "Don Pedro Rodriguez"
     },
     {
         "id": 3,
@@ -42,7 +42,7 @@
             "Condimentos"
         ],
         "image": "pepper.jfif",
-        "seller": "Don Juan Machete"
+        "seller": "Doña Juana Martinez"
     },
     {
         "id": 4,
@@ -57,7 +57,7 @@
             "Frutas"
         ],
         "image": "pineapple.jfif",
-        "seller": "Don Juan Machete"
+        "seller": "Don Joaquin Vargas"
     },
     {
         "id": 5,
@@ -72,7 +72,7 @@
             "Verduras"
         ],
         "image": "redonion.jfif",
-        "seller": "Don Juan Machete"
+        "seller": "Doña Diana Gallego"
     },
     {
         "id": 6,
@@ -87,7 +87,7 @@
             "Frutas"
         ],
         "image": "yellowlemon.jfif",
-        "seller": "Don Juan Machete"
+        "seller": "Don Rodolfo Borreor"
     },
     {
         "id": 7,
@@ -102,7 +102,18 @@
             "Verduras"
         ],
         "image": "zucchini.jfif",
-        "seller": "Don Juan Machete"
+        "seller": "Don Alcides Jurado"
+    },
+    {
+        "id": 8,
+        "name": "Pera",
+        "price": {
+            "kilo": 5000,
+            "unidad": 820
+        },
+        "discount": 0,
+        "category": "frutas",
+        "image": "imagefile-1637623856855.jpg",
+        "seller": ""
     }
-    
 ]

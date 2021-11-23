@@ -45,7 +45,17 @@ const controller = {
 	},
 
 	showEditItem: function (req, res) {
-		res.render(pathViews('edit-item'));
+		const idReq = req.params.id
+		const prodReq = products.find(function(item){
+			return item.id==idReq});	
+		res.render(pathViews('edit-item'),{prodReq});
+	},
+
+	updateItem: function(req, res){
+		const idReqs = req.params.id;
+		const prodReq = products.find(function(item){
+			return item.id==idReqs});	
+		res.send(req.body)
 	},
 
 	showAddItem: function (req, res) {

@@ -28,7 +28,9 @@ router.get('/add-item', productController.showAddItem);
 router.post('/add-item', uploadFile.single('imagefile'), productController.storeAddItem);
 
 // EDICIÓN DE PRODUCTOS
-router.get('/edit-item', productController.showEditItem);
+// Mostrar el producto a editar.
+router.get('/edit-item/:id', productController.showEditItem);
+router.put('/edit-item/:id',productController.updateItem);
 
 // DETALLE DE UN PRODUCTO
 router.get('/detail/:id?', productController.showDetail);

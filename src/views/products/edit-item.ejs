@@ -3,24 +3,34 @@
 	<%- include('../partials/headerSeller') %>
 	<main class="main-add-item">
 		<h2 class="titulo">Edita este producto</h2>
-		<form action="/index.html" class="formulario">
+		<!-- <div class="image-product">
+			<img
+				src="/images/<%= prodReq.image %>"
+				alt="ilustración del <%= prodReq.name %>"
+			/>
+		</div> -->
+		<form 			
+		action="/products/edit-item/<%= prodReq.id %>?_method=PUT"
+		class="formulario"
+		method="POST"
+		>
 			<div class="product-name">
 				<label>Producto:</label>
 				<input
 					class="text-box"
 					type="text"
-					name="product-name"
-					id="product-name"
+					name="name"
+					id="name"
 					placeholder="Nombre del producto"
 					minlength="2"
-					value="Tomate"
+					value= <%= prodReq.name %>
 					required
 				/>
 			</div>
 			<div class="form-product-type">
 				<label>Selecciona la categoría:</label>
 				<select
-					name="categoria"
+					name="category"
 					class="control"
 					placeholder="Seleccione la categoria"
 				>
@@ -31,7 +41,7 @@
 					<option value="semillas">Semillas</option>
 				</select>
 			</div>
-			<div class="add-file">
+			<!-- <div class="add-file">
 				<label>Adjunta la imagen del producto: </label>
 				<input
 					class="text-box"
@@ -39,20 +49,32 @@
 					name="imagefile"
 					id="imagefile"
 					placeholder="Adjuntar imagen"
-					src="../images/tomato.jfif"
-					required
+					src="../images/<%= prodReq.image %>"
 				/>
-			</div>
+			</div> -->
 
+			<h4>Opciones de compra</h4>
 			<div class="price">
-				<label>Precio:</label>
+				<label>Precio kilo:</label>
 				<input
 					class="text-box"
 					type="number"
-					name="price"
+					name="kilo"
 					id="price"
 					placeholder="Precio en pesos"
-					value="1200"
+					value= <%= prodReq.price.kilo%>
+					required
+				/>
+			</div>
+			<div class="price">
+				<label>Precio unidad:</label>
+				<input
+					class="text-box"
+					type="number"
+					name="unidad"
+					id="price"
+					placeholder="Precio en pesos"
+					value= <%= prodReq.price.unidad%>
 					required
 				/>
 			</div>
