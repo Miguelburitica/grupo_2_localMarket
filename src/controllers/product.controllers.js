@@ -28,8 +28,9 @@ const newId = () => {
 const controller = {
 	// Cuando cambies las funciones de arriba, deberás cambiar el metodo que muestra las vistas, deberá pasar de sendFile a render.
 	showList: function (req, res) {
+		productss = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		res.render(pathViews('list'), {
-			products /*.filter(product => product.seller == req.seller)*/,
+			products: productss /*.filter(product => product.seller == req.seller)*/,
 		});
 	},
 
@@ -45,31 +46,19 @@ const controller = {
 	},
 
 	showEditItem: function (req, res) {
-		const idReq = req.params.id
-		const prodReq = products.find(function(item){
-			return item.id==idReq});	
-		res.render(pathViews('edit-item'),{prodReq});
+		const idReq = req.params.id;
+		const prodReq = products.find(function (item) {
+			return item.id == idReq;
+		});
+		res.render(pathViews('edit-item'), { prodReq });
 	},
 
-	updateItem: function(req, res){
+	updateItem: function (req, res) {
 		const idReqs = req.params.id;
-		products.forEach(product=>{
-			if(product.id==idReqs){
-				product.name= req.body.name
-				product.price= {
-					kilo : parseInt(req.body.kilo),
-					unidad : parseInt(req.body.unidad),
-				}
-				product.discount= parseInt(req.body.discount),
-				product.category= [req.body.category],
-				// image: req.file.filename,
-				// market: req.file.market,
-				product.seller= ""
-			}
+		const prodReq = products.find(function (item) {
+			return item.id == idReqs;
 		});
-			const jsonProducts = JSON.stringify(products, null, 4);
-			fs.writeFileSync(productsFilePath, jsonProducts);
-			res.redirect('/products/detail/'+ idReqs)
+		res.send(req.body);
 	},
 
 	showAddItem: function (req, res) {
@@ -81,17 +70,17 @@ const controller = {
 			id: newId(),
 			name: req.body.name,
 			price: {
-				kilo : parseInt(req.body.kilo),
-				unidad : parseInt(req.body.unidad),
+				kilo: parseInt(req.body.kilo),
+				unidad: parseInt(req.body.unidad),
 			},
 			discount: parseInt(req.body.discount),
-			category: [req.body.category],
+			category: req.body.category,
 			image: req.file.filename,
 			market: req.file.market,
-			seller: ""
+			seller: '',
 		};
 
-		console.log(req.body)
+		console.log(req.body);
 
 		products.push(product);
 		const jsonProducts = JSON.stringify(products, null, 4);
@@ -113,7 +102,7 @@ const controller = {
 
 	deleteItem: function (req, res) {
 		const idToDelete = req.params.id;
-		const newProductsList = products.filter((product) => product.id != idToDelete);
+		const newProductsList = products.filter((product) => product.id != product.idToDelete);
 
 		const jsonProducts = JSON.stringify(newProductsList, null, 4);
 		fs.writeFileSync(productsFilePath, jsonProducts);

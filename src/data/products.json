@@ -102,5 +102,17 @@
         ],
         "image": "imagefile-1637623856855.jpg",
         "seller": ""
+    },
+    {
+        "id": 9,
+        "name": "tomates",
+        "price": {
+            "kilo": 1200,
+            "unidad": 500
+        },
+        "discount": 0,
+        "category": "frutas",
+        "image": "imagefile-1637722886386.jfif",
+        "seller": ""
     }
 ]
