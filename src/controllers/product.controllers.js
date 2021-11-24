@@ -53,9 +53,23 @@ const controller = {
 
 	updateItem: function(req, res){
 		const idReqs = req.params.id;
-		const prodReq = products.find(function(item){
-			return item.id==idReqs});	
-		res.send(req.body)
+		products.forEach(product=>{
+			if(product.id==idReqs){
+				product.name= req.body.name
+				product.price= {
+					kilo : parseInt(req.body.kilo),
+					unidad : parseInt(req.body.unidad),
+				}
+				product.discount= parseInt(req.body.discount),
+				product.category= [req.body.category],
+				// image: req.file.filename,
+				// market: req.file.market,
+				product.seller= ""
+			}
+		});
+			const jsonProducts = JSON.stringify(products, null, 4);
+			fs.writeFileSync(productsFilePath, jsonProducts);
+			res.redirect('/products/detail/'+ idReqs)
 	},
 
 	showAddItem: function (req, res) {
@@ -71,7 +85,7 @@ const controller = {
 				unidad : parseInt(req.body.unidad),
 			},
 			discount: parseInt(req.body.discount),
-			category: req.body.category,
+			category: [req.body.category],
 			image: req.file.filename,
 			market: req.file.market,
 			seller: ""

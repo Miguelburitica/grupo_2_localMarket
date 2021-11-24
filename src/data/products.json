@@ -31,18 +31,18 @@
     },
     {
         "id": 4,
-        "name": "Piña",
+        "name": "Piña ojona",
         "price": {
             "kilo": 3000,
             "unidad": 3500
         },
         "wayToBuy": 2,
-        "discount": 0.5,
+        "discount": 0,
         "category": [
-            "Frutas"
+            "hortalizas"
         ],
         "image": "pineapple.jfif",
-        "seller": "Don Joaquin Vargas"
+        "seller": ""
     },
     {
         "id": 5,
@@ -91,13 +91,15 @@
     },
     {
         "id": 8,
-        "name": "Pera",
+        "name": "Pera con hoja",
         "price": {
             "kilo": 5000,
             "unidad": 820
         },
         "discount": 0,
-        "category": "frutas",
+        "category": [
+            "frutas"
+        ],
         "image": "imagefile-1637623856855.jpg",
         "seller": ""
     }
