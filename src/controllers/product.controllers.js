@@ -94,7 +94,7 @@ const controller = {
 				kilo: parseInt(req.body.kilo),
 				unidad: parseInt(req.body.unidad),
 			},
-			discount: parseInt(req.body.discount),
+			discount: req.body.discount,
 			category: [req.body.category],
 			image: req.file.filename,
 			market: req.body.market,
