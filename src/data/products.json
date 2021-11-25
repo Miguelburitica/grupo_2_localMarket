@@ -31,7 +31,7 @@
     },
     {
         "id": 4,
-        "name": "Piña ojona",
+        "name": "Piña",
         "price": {
             "kilo": 3000,
             "unidad": 3500
@@ -39,7 +39,7 @@
         "wayToBuy": 2,
         "discount": 0,
         "category": [
-            "hortalizas"
+            "frutas"
         ],
         "image": "pineapple.jfif",
         "seller": ""
@@ -73,5 +73,20 @@
         ],
         "image": "zucchini.jfif",
         "seller": "Don Alcides Jurado"
+    },
+    {
+        "id": 8,
+        "name": "Peras",
+        "price": {
+            "kilo": 3200,
+            "unidad": 800
+        },
+        "discount": 0,
+        "category": [
+            "frutas"
+        ],
+        "image": "imagefile-1637873034533.jpg",
+        "market": "Carlos E Restrepo",
+        "seller": ""
     }
 ]

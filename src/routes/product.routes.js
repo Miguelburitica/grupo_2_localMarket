@@ -30,7 +30,8 @@ router.post('/add-item', uploadFile.single('imagefile'), productController.store
 // EDICIÓN DE PRODUCTOS
 // Mostrar el producto a editar.
 router.get('/edit-item/:id', productController.showEditItem);
-router.put('/edit-item/:id',productController.updateItem);
+// Manda la info editada y redirige al detalle de producto.
+router.post('/edit-item/:id',uploadFile.single('imagefile'),productController.updateItem);
 
 // DETALLE DE UN PRODUCTO
 router.get('/detail/:id?', productController.showDetail);
