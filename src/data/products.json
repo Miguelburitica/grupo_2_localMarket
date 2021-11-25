@@ -81,43 +81,9 @@
         "category": [
             "frutas"
         ],
-<<<<<<< HEAD
         "image": "imagefile-1637879079920.jfif",
         "market": "Carlos E Restrepo",
         "seller": "",
         "wayToBuy": 1
-=======
-        "image": "zucchini.jfif",
-        "seller": "Don Alcides Jurado"
-    },
-    {
-        "id": 8,
-        "name": "Peras",
-        "price": {
-            "kilo": 3200,
-            "unidad": 800
-        },
-        "discount": 0,
-        "category": [
-            "frutas"
-        ],
-        "image": "imagefile-1637877841959.jpg",
-        "seller": "Don Alcides Jurado"
-    },
-    {
-        "id": 10,
-        "name": "Zucchini",
-        "price": {
-            "kilo": 1251,
-            "unidad": null
-        },
-        "discount": "0.2",
-        "category": [
-            "frutas"
-        ],
-        "image": "imagefile-1637878013427.jpg",
-        "seller": "",
-        "wayToBuy": 0
->>>>>>> e383412c1c405e7d1bb463b7693565061c55ef97
     }
 ]
