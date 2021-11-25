@@ -71,16 +71,22 @@
         "image": "zucchini.jfif"
     },
     {
-        "id": 9,
+        "id": 8,
         "name": "Tomates",
         "price": {
-            "kilo": 3500,
-            "unidad": null
+            "kilo": null,
+            "unidad": 15000
         },
-        "discount": 0,
+        "discount": "0.25",
         "category": [
             "frutas"
         ],
+<<<<<<< HEAD
+        "image": "imagefile-1637879079920.jfif",
+        "market": "Carlos E Restrepo",
+        "seller": "",
+        "wayToBuy": 1
+=======
         "image": "zucchini.jfif",
         "seller": "Don Alcides Jurado"
     },
@@ -112,5 +118,6 @@
         "image": "imagefile-1637878013427.jpg",
         "seller": "",
         "wayToBuy": 0
+>>>>>>> e383412c1c405e7d1bb463b7693565061c55ef97
     }
 ]
