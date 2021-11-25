@@ -100,18 +100,17 @@
     },
     {
         "id": 10,
-        "name": "Zucchini amarillo",
+        "name": "Zucchini",
         "price": {
             "kilo": 1251,
             "unidad": null
         },
-        "discount": 0,
+        "discount": "0.2",
         "category": [
-            "hortalizas"
+            "frutas"
         ],
         "image": "imagefile-1637878013427.jpg",
-        "market": "Poblado",
-        "seller": "Don Alcides Jurado",
+        "seller": "",
         "wayToBuy": 0
     }
 ]

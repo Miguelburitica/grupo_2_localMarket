@@ -59,10 +59,10 @@ const controller = {
 					kilo: parseInt(req.body.kilo),
 					unidad: parseInt(req.body.unidad),
 				};
-				product.discount = parseInt(req.body.discount),
-				product.category = [req.body.category],
-				product.image= req.file.filename,
-				product.market= req.body.market,
+				product.discount = req.body.discount;
+				product.category = [req.body.category];
+				req.file!=undefined?product.image=req.file.filename:product.image=product.image;	
+				product.market= req.body.market;
 				product.seller = '';
 			}
 		});
