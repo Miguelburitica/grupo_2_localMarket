@@ -1,17 +1,18 @@
 [
     {
         "id": 2,
-        "name": "Mango",
+        "name": "Mang",
         "price": {
             "kilo": 2200,
-            "unidad": 800
+            "unidad": 794
         },
         "wayToBuy": 2,
-        "discount": 0.1,
+        "discount": 0,
         "category": [
-            "frutas"
+            "hortalizas"
         ],
-        "image": "mango.jfif"
+        "image": "mango.jfif",
+        "seller": ""
     },
     {
         "id": 3,
@@ -70,32 +71,19 @@
         "image": "zucchini.jfif"
     },
     {
-        "id": 8,
-        "name": "Limon",
-        "price": {
-            "kilo": null,
-            "unidad": 600
-        },
-        "discount": 0,
-        "category": [
-            "frutas"
-        ],
-        "image": "imagefile-1637870012805.jfif",
-        "market": "Poblado"
-    },
-    {
         "id": 9,
-        "name": "Tomate",
+        "name": "Tomates",
         "price": {
-            "kilo": 3400,
+            "kilo": 3500,
             "unidad": null
         },
         "discount": 0,
         "category": [
             "frutas"
         ],
-        "image": "imagefile-1637870698848.jfif",
+        "image": "imagefile-1637871374095.jfif",
         "market": "Poblado",
-        "seller": ""
+        "seller": "",
+        "wayToBuy": 0
     }
 ]

@@ -5,11 +5,9 @@ const pathViews = function (nameView) {
 	return path.resolve(__dirname, '../views/products/' + nameView + '.ejs');
 };
 
-const dataProducts = require('../data/products.json');
 const productsFilePath = path.resolve(__dirname, '../data/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-const dataSellers = require('../data/users-sellers.json');
 const sellersFilePath = path.resolve(__dirname, '../data/users-sellers.json');
 const sellers = JSON.parse(fs.readFileSync(sellersFilePath, 'utf-8'));
 
@@ -79,14 +77,15 @@ const controller = {
 
 	storeAddItem: function (req, res) {
 
-		const fWayToBuy=function(priceKilo,priceUnidad){
-			if(priceKilo==0 && priceUnidad>0){
-				return 1;
-			}else if(priceKilo>0 && priceUnidad==0){
-				return 0;
-			}else if(priceKilo==0 && priceUnidad==0){
-				return 2;
-			}
+		const priceKilo = req.body.kilo;
+		const priceUnidad = req.body.unidad;
+
+		if((priceKilo == 0 && priceUnidad > 0) || (priceKilo == null  && priceUnidad > 0)){
+			wayToBuy = 1;
+		}else if((priceKilo > 0 && priceUnidad == 0) || (priceKilo > 0  && priceUnidad == null)) {
+			wayToBuy = 0;
+		}else if(priceKilo > 0 && priceUnidad > 0){
+			wayToBuy = 2;
 		}
 		const product = {
 			id: newId(),
@@ -100,7 +99,7 @@ const controller = {
 			image: req.file.filename,
 			market: req.body.market,
 			seller: '',
-			wayToBuy: fWayToBuy(parseInt(req.body.kilo),parseInt(req.body.unidad)),
+			wayToBuy: wayToBuy,
 		};
 
 		products.push(product);
@@ -112,6 +111,7 @@ const controller = {
 
 	showDetail: function (req, res) {
 		const id = req.params.id;
+		const dataProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		const suggestProducts = dataProducts.filter((item) => item.id > 1 && item.id < 6);
 		const product = dataProducts.find((item) => item.id == id);
 		const seller = sellers.find(seller => seller.products.includes(product.id))
