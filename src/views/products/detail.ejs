@@ -14,15 +14,25 @@
 						/>
 					</div>
 					<div class="supplier-info">
-						<div class="image-supplier">
-							<img
-								src="../images/farmer3.jpg"
-								alt="Proveedor del Producto X"
-							/>
-						</div>
-						<h5 class="supplier-name">Don Pedro</h5>
+						<% if (seller != undefined) { %>
+							<div class="image-supplier">
+								<img
+									src="/images/<%= seller.photo %> "
+									alt="vendedor <%= seller.name %> "
+								/>
+							</div>
+							<h5 class="supplier-name"><%= seller.name %> </h5>
+						<% } else { %>
+							<div class="image-supplier">
+								<img
+									src="/images/default.jpg"
+									alt="Parece que no hay un vendedor asignado"
+								/>
+							</div>
+							<h5 class="supplier-name"> Sin vendedor asignado :/ </h5>
+							<% } %> 
 					</div>
-					<span class="spans category">Categoría</span>
+					<span class="spans category"><%= product.category[0] %> </span>
 				</section>
 				<section class="item-info">
 					<h3 class="product-name"><%= product.name %></h3>

@@ -9,10 +9,9 @@ const dataProducts = require('../data/products.json');
 const productsFilePath = path.resolve(__dirname, '../data/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-/*
-const dataSellers = require('../data/sellers.json');
-const sellersFilePath = path.resolve(__dirname, '../data/sellers.json');
-const sellers = JSON.parse(fs.readFileSync(sellersFilePath, 'utf-8'));*/
+const dataSellers = require('../data/users-sellers.json');
+const sellersFilePath = path.resolve(__dirname, '../data/users-sellers.json');
+const sellers = JSON.parse(fs.readFileSync(sellersFilePath, 'utf-8'));
 
 //función que permite almacenar el producto nuevo con el id superior al mayor de data
 const newId = () => {
@@ -35,9 +34,9 @@ const controller = {
 	},
 
 	showCatalog: function (req, res) {
-		const frutas = products.filter((product) => product.category.includes('Frutas'));
-		const verduras = products.filter((product) => product.category.includes('Verduras'));
-		const condimentos = products.filter((product) => product.category.includes('Condimentos'));
+		const frutas = products.filter((product) => product.category.includes('frutas') || product.category.includes('Frutas'));
+		const verduras = products.filter((product) => product.category.includes('verduras') || product.category.includes('Verduras'));
+		const condimentos = products.filter((product) => product.category.includes('condimentos') || product.category.includes('Condimentos'));
 		res.render(pathViews('catalog'), {
 			frutas,
 			verduras,
@@ -115,10 +114,11 @@ const controller = {
 		const id = req.params.id;
 		const suggestProducts = dataProducts.filter((item) => item.id > 1 && item.id < 6);
 		const product = dataProducts.find((item) => item.id == id);
+		const seller = sellers.find(seller => seller.products.includes(product.id))
 		res.render(pathViews('detail'), {
 			product: product,
 			suggest: suggestProducts,
-			/*seller: seller,*/
+			seller: seller,
 		});
 	},
 

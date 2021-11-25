@@ -9,10 +9,9 @@
         "wayToBuy": 2,
         "discount": 0.1,
         "category": [
-            "Frutas"
+            "frutas"
         ],
-        "image": "mango.jfif",
-        "seller": "Don Pedro Rodriguez"
+        "image": "mango.jfif"
     },
     {
         "id": 3,
@@ -24,10 +23,9 @@
         "wayToBuy": 0,
         "discount": 0.12,
         "category": [
-            "Condimentos"
+            "condimentos"
         ],
-        "image": "pepper.jfif",
-        "seller": "Doña Juana Martinez"
+        "image": "pepper.jfif"
     },
     {
         "id": 4,
@@ -41,8 +39,7 @@
         "category": [
             "hortalizas"
         ],
-        "image": "pineapple.jfif",
-        "seller": ""
+        "image": "pineapple.jfif"
     },
     {
         "id": 5,
@@ -54,10 +51,9 @@
         "wayToBuy": 2,
         "discount": 0.03,
         "category": [
-            "Verduras"
+            "verduras"
         ],
-        "image": "redonion.jfif",
-        "seller": "Doña Diana Gallego"
+        "image": "redonion.jfif"
     },
     {
         "id": 7,
@@ -69,9 +65,37 @@
         "wayToBuy": 0,
         "discount": 0,
         "category": [
-            "Verduras"
+            "verduras"
         ],
-        "image": "zucchini.jfif",
-        "seller": "Don Alcides Jurado"
+        "image": "zucchini.jfif"
+    },
+    {
+        "id": 8,
+        "name": "Limon",
+        "price": {
+            "kilo": null,
+            "unidad": 600
+        },
+        "discount": 0,
+        "category": [
+            "frutas"
+        ],
+        "image": "imagefile-1637870012805.jfif",
+        "market": "Poblado"
+    },
+    {
+        "id": 9,
+        "name": "Tomate",
+        "price": {
+            "kilo": 3400,
+            "unidad": null
+        },
+        "discount": 0,
+        "category": [
+            "frutas"
+        ],
+        "image": "imagefile-1637870698848.jfif",
+        "market": "Poblado",
+        "seller": ""
     }
 ]
