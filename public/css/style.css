@@ -1401,6 +1401,7 @@ i {
 	margin-bottom: 16px;
 	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.25), 0 0 0 3px rgba(185, 185, 185, 0.25);
 	border-radius: 4px;
+	transition: 0.3s ease all;
 }
 
 .singin-main .formulario {
@@ -1415,10 +1416,12 @@ i {
 	color: #552827;
 	border-radius: 4px;
 	border-color: #00000020;
+	transition: ease all 0.3s
 }
 
 .formulario .text-box:hover {
-	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.2), 0 0 0 3px rgba(185, 185, 185, 0.2);
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.2), 0 0 0 3px rgba(185, 185, 185, 0.2);	
+	transition: ease all 0.3s
 }
 
 .formulario .text-box:focus {
@@ -1427,6 +1430,7 @@ i {
 	background-color: #f1ff9755;
 	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.3), 0 0 0 3px rgba(185, 185, 185, 0.3);
 	font-weight: 600;
+	transition: ease all 0.3s
 }
 
 .formulario .check {
@@ -1825,8 +1829,7 @@ h2 {
 	.pay-information .pay-options input {
 		margin: 3px;
 	}
-	.pay-information .send-location input,
-	select {
+	.pay-information .send-location input{
 		display: flex;
 		margin: 6px;
 		height: 30px;
@@ -2181,47 +2184,65 @@ h2 {
 /* Final Catalog */
 
 /* Inicio estilos add-item */
+.main-add-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.main-add-item .titulo {
+	padding: 14px 0;
+}
 .main-add-item .formulario {
-	width: 90%;
-	margin: auto;
-	margin-bottom: 15px;
+	justify-content: space-evenly;
+	max-width: 800px;
+	margin-bottom: 30px;
+}
+.main-add-item .formulario div {
+	width: 85%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-.main-add-item .product-name,
-.form-product-type,
-.add-file,
-.price,
-.form-product-discount,
-.form-farmer-location,.text-box, .control {
-	width: 90%;
-	margin: auto;
-	display: block;
+.main-add-item .formulario div label{
+	margin: 9px 12px;
+	color: #552827aa;
+	font-weight: 600;
+	align-self: flex-start;
+	cursor: pointer;
+	transition: ease .3s all
 }
 
-.main-add-item label{
-	margin:auto;
-	width: 90%;
-	text-align: left;
-	padding-left: 2px;
+.main-add-item .formulario div label:hover{
+	color: #552827;
+	transition: ease .3s all
 }
 
-@media (min-width: 769px) {
-.main-add-item .product-name,
-.price,.add-file,
-.form-product-discount,
-.form-product-type,
-.form-farmer-location,.text-box,.control {
-		display:flex;
-		width: 90%;
-	}
+.main-add-item .formulario div select{
+	width: 80%;
+	height: 35px;
+	padding-left: 8px;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.1), 0 0 0 3px rgba(185, 185, 185, 0.1);
+	color: #55282788;
+	border-radius: 4px;
+	border-color: #00000020;
+	background-color: #fff;
+	font-weight: 600;
+	transition: 0.3s ease all;
 }
 
-.main-add-item label{
-	margin:auto;
-	width: 45%;
-	text-align: left;
-	padding-left: 2px;
+.main-add-item .formulario div select:hover{
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.2), 0 0 0 3px rgba(185, 185, 185, 0.2);
+	transition: 0.3s ease all;
 }
+.main-add-item .formulario div select:focus{
+	outline: none;
+	border: none;
+	background-color: #f1ff9700;
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.3), 0 0 0 3px rgba(185, 185, 185, 0.3);
+	transition: 0.3s ease all;
+}
+
 
 
 /* Final estilos add-item */

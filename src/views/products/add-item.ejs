@@ -10,7 +10,7 @@
 			enctype="multipart/form-data"
 		>
 			<div class="product-name">
-				<label>Producto:</label>
+				<label for="name">Producto:</label>
 				<input
 					class="text-box"
 					type="text"
@@ -22,11 +22,12 @@
 				/>
 			</div>
 			<div class="form-product-type">
-				<label>Selecciona la categoría:</label>
+				<label for="category">Selecciona la categoría:</label>
 				<select
 					name="category"
 					class="control"
 					placeholder="Seleccione la categoria"
+					id="category"
 				>
 					<option value="frutas">Frutas</option>
 					<option value="hortalizas">Hortalizas</option>
@@ -36,7 +37,7 @@
 				</select>
 			</div>
 			<div class="add-file">
-				<label>Adjunta la imagen del producto: </label>
+				<label for="imagefile">Adjunta la imagen del producto: </label>
 				<input
 					class="text-box"
 					type="file"
@@ -48,31 +49,32 @@
 			</div>
 
 			<div class="price">
-				<label>Precio por unidad:</label>
+				<label for="unidad">Precio por unidad:</label>
 				<input
 					class="text-box"
 					type="number"
 					name="unidad"
-					id="price"
+					id="unidad"
 					placeholder="Precio en pesos"
 					min=0
 				/>
-				<label>Precio por kilogramo:</label>
+				<label for="kilo">Precio por kilogramo:</label>
 				<input
 					class="text-box"
 					type="number"
 					name="kilo"
-					id="price"
+					id="kilo"
 					placeholder="Precio en pesos"
 					min=0
 				/>
 			</div>
 			<div class="form-product-discount">
-				<label>Selecciona un descuento:</label>
+				<label for="discount">Selecciona un descuento:</label>
 				<select
 					name="discount"
 					class="control"
 					placeholder="Seleccione descuento"
+					id="discount"
 				>
 					<option value="0">0%</option>
 					<option value="0.05">5%</option>
@@ -85,10 +87,11 @@
 				</select>
 			</div>
 			<div class="form-farmer-location">
-				<label>Selecciona Mercado campesino:</label>
+				<label for="market">Selecciona Mercado campesino:</label>
 				<select
 					name="market"
 					class="control"
+					id="market"
 				>
 					<option value="Carlos E Restrepo">Carlos E Restrepo</option>
 					<option value="Poblado">Poblado</option>
