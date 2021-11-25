@@ -65,7 +65,7 @@ const controller = {
 				(product.discount = parseInt(req.body.discount)),
 					(product.category = [req.body.category]),
 					// image: req.file.filename,
-					// market: req.file.market,
+					// market: req.body.market,
 					(product.seller = '');
 			}
 		});
@@ -124,7 +124,7 @@ const controller = {
 
 	deleteItem: function (req, res) {
 		const idToDelete = req.params.id;
-		const newProductsList = products.filter((product) => product.id != product.idToDelete);
+		const newProductsList = products.filter((product) => product.id != idToDelete);
 
 		const jsonProducts = JSON.stringify(newProductsList, null, 4);
 		fs.writeFileSync(productsFilePath, jsonProducts);

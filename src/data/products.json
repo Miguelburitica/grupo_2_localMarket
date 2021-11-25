@@ -60,21 +60,6 @@
         "seller": "Doña Diana Gallego"
     },
     {
-        "id": 6,
-        "name": "Limón amarillo",
-        "price": {
-            "kilo": 1400,
-            "unidad": 0
-        },
-        "wayToBuy": 0,
-        "discount": 0.15,
-        "category": [
-            "Frutas"
-        ],
-        "image": "yellowlemon.jfif",
-        "seller": "Don Rodolfo Borreor"
-    },
-    {
         "id": 7,
         "name": "Zucchini",
         "price": {
