@@ -2174,7 +2174,7 @@ h2 {
 
 /* Inicio estilos add-item */
 .main-add-item .formulario {
-	width: 60%;
+	width: 90%;
 	margin: auto;
 	margin-bottom: 15px;
 }
@@ -2184,13 +2184,36 @@ h2 {
 .add-file,
 .price,
 .form-product-discount,
-.form-farmer-location {
-	width: 80%;
-	align-content: center;
+.form-farmer-location,.text-box, .control {
+	width: 90%;
+	margin: auto;
+	display: block;
 }
 
-.main-add-item .price .text-box{
-	width: 25%;
+.main-add-item label{
+	margin:auto;
+	width: 90%;
+	text-align: left;
+	padding-left: 2px;
 }
+
+@media (min-width: 769px) {
+.main-add-item .product-name,
+.price,.add-file,
+.form-product-discount,
+.form-product-type,
+.form-farmer-location,.text-box,.control {
+		display:flex;
+		width: 90%;
+	}
+}
+
+.main-add-item label{
+	margin:auto;
+	width: 45%;
+	text-align: left;
+	padding-left: 2px;
+}
+
 
 /* Final estilos add-item */
