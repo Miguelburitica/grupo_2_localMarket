@@ -88,31 +88,5 @@
         ],
         "image": "zucchini.jfif",
         "seller": "Don Alcides Jurado"
-    },
-    {
-        "id": 8,
-        "name": "Pera con hoja",
-        "price": {
-            "kilo": 5000,
-            "unidad": 820
-        },
-        "discount": 0,
-        "category": [
-            "frutas"
-        ],
-        "image": "imagefile-1637623856855.jpg",
-        "seller": ""
-    },
-    {
-        "id": 9,
-        "name": "tomates",
-        "price": {
-            "kilo": 1200,
-            "unidad": 500
-        },
-        "discount": 0,
-        "category": "frutas",
-        "image": "imagefile-1637722886386.jfif",
-        "seller": ""
-    }
+    } 
 ]

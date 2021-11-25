@@ -66,6 +66,16 @@ const controller = {
 	},
 
 	storeAddItem: function (req, res) {
+
+		const fWayToBuy=function(priceKilo,priceUnidad){
+			if(priceKilo==0 && priceUnidad>0){
+				return 1;
+			}else if(priceKilo>0 && priceUnidad==0){
+				return 0;
+			}else if(priceKilo==0 && priceUnidad==0){
+				return 2;
+			}
+		}
 		const product = {
 			id: newId(),
 			name: req.body.name,
@@ -76,11 +86,10 @@ const controller = {
 			discount: parseInt(req.body.discount),
 			category: req.body.category,
 			image: req.file.filename,
-			market: req.file.market,
+			market: req.body.market,
 			seller: '',
+			wayToBuy: fWayToBuy(parseInt(req.body.kilo),parseInt(req.body.unidad)),
 		};
-
-		console.log(req.body);
 
 		products.push(product);
 		const jsonProducts = JSON.stringify(products, null, 4);
