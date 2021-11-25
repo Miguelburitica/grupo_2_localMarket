@@ -59,11 +59,11 @@ const controller = {
 					kilo: parseInt(req.body.kilo),
 					unidad: parseInt(req.body.unidad),
 				};
-				(product.discount = parseInt(req.body.discount)),
-					(product.category = [req.body.category]),
-					// image: req.file.filename,
-					// market: req.body.market,
-					(product.seller = '');
+				product.discount = parseInt(req.body.discount),
+				product.category = [req.body.category],
+				product.image= req.file.filename,
+				product.market= req.body.market,
+				product.seller = '';
 			}
 		});
 		const jsonProducts = JSON.stringify(products, null, 4);

@@ -9,10 +9,11 @@
 				alt="ilustración del <%= prodReq.name %>"
 			/>
 		</div> -->
-		<form 			
-		action="/products/edit-item/<%= prodReq.id %>?_method=PUT"
+		<form
+		action="/products/edit-item/<%= prodReq.id %>"
 		class="formulario"
 		method="POST"
+		enctype="multipart/form-data"
 		>
 			<div class="product-name">
 				<label>Producto:</label>
@@ -41,7 +42,7 @@
 					<option value="semillas">Semillas</option>
 				</select>
 			</div>
-			<!-- <div class="add-file">
+			<div class="add-file">
 				<label>Adjunta la imagen del producto: </label>
 				<input
 					class="text-box"
@@ -49,9 +50,8 @@
 					name="imagefile"
 					id="imagefile"
 					placeholder="Adjuntar imagen"
-					src="../images/<%= prodReq.image %>"
 				/>
-			</div> -->
+			</div>
 
 			<h4>Opciones de compra</h4>
 			<div class="price">
@@ -83,6 +83,7 @@
 				<select
 					name="discount"
 					class="control"
+					id="discount"
 					placeholder="Seleccione descuento"
 				>
 					<option value="0">0%</option>
@@ -100,6 +101,7 @@
 				<select
 					name="ubicacion"
 					class="control"
+					id="market"
 					placeholder="Seleccione descuento"
 				>
 					<option value="Carlos E Restrepo">Carlos E Restrepo</option>
