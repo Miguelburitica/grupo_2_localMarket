@@ -114,5 +114,17 @@
         "category": "frutas",
         "image": "imagefile-1637722886386.jfif",
         "seller": ""
+    },
+    {
+        "id": 10,
+        "name": "Bananos",
+        "price": {
+            "kilo": 3500,
+            "unidad": 500
+        },
+        "discount": 0,
+        "category": "frutas",
+        "image": "imagefile-1637723628293.jpg",
+        "seller": ""
     }
 ]
