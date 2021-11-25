@@ -2124,6 +2124,7 @@ h2 {
 .edit-item-table td {
 	text-align: center;
 	border-bottom: #754847 solid 1px;
+	padding: 3px 0;
 }
 
 .edit-item-table th {
@@ -2141,6 +2142,13 @@ h2 {
 
 .edit-item-table .items-list tr:hover {
 	background-color: #e9f5db;
+}
+
+.edit-item-table .items-list tr td form button{
+	outline: inherit;
+	border: none;
+	background-color: #ffff;
+	cursor: pointer;
 }
 
 /* Final estilos List */

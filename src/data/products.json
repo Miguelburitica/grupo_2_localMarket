@@ -1,18 +1,18 @@
 [
     {
         "id": 2,
-        "name": "Mango",
+        "name": "Mang",
         "price": {
             "kilo": 2200,
-            "unidad": 800
+            "unidad": 794
         },
         "wayToBuy": 2,
-        "discount": 0.1,
+        "discount": 0,
         "category": [
-            "Frutas"
+            "hortalizas"
         ],
         "image": "mango.jfif",
-        "seller": "Don Pedro Rodriguez"
+        "seller": ""
     },
     {
         "id": 3,
@@ -24,10 +24,9 @@
         "wayToBuy": 0,
         "discount": 0.12,
         "category": [
-            "Condimentos"
+            "condimentos"
         ],
-        "image": "pepper.jfif",
-        "seller": "Doña Juana Martinez"
+        "image": "pepper.jfif"
     },
     {
         "id": 4,
@@ -41,8 +40,7 @@
         "category": [
             "frutas"
         ],
-        "image": "pineapple.jfif",
-        "seller": ""
+        "image": "pineapple.jfif"
     },
     {
         "id": 5,
@@ -54,10 +52,9 @@
         "wayToBuy": 2,
         "discount": 0.03,
         "category": [
-            "Verduras"
+            "verduras"
         ],
-        "image": "redonion.jfif",
-        "seller": "Doña Diana Gallego"
+        "image": "redonion.jfif"
     },
     {
         "id": 7,
@@ -69,7 +66,20 @@
         "wayToBuy": 0,
         "discount": 0,
         "category": [
-            "Verduras"
+            "verduras"
+        ],
+        "image": "zucchini.jfif"
+    },
+    {
+        "id": 9,
+        "name": "Tomates",
+        "price": {
+            "kilo": 3500,
+            "unidad": null
+        },
+        "discount": 0,
+        "category": [
+            "frutas"
         ],
         "image": "zucchini.jfif",
         "seller": "Don Alcides Jurado"
@@ -85,8 +95,23 @@
         "category": [
             "frutas"
         ],
-        "image": "imagefile-1637873034533.jpg",
-        "market": "Carlos E Restrepo",
-        "seller": ""
+        "image": "imagefile-1637877841959.jpg",
+        "seller": "Don Alcides Jurado"
+    },
+    {
+        "id": 10,
+        "name": "Zucchini amarillo",
+        "price": {
+            "kilo": 1251,
+            "unidad": null
+        },
+        "discount": 0,
+        "category": [
+            "hortalizas"
+        ],
+        "image": "imagefile-1637878013427.jpg",
+        "market": "Poblado",
+        "seller": "Don Alcides Jurado",
+        "wayToBuy": 0
     }
 ]

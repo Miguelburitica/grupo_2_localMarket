@@ -1,34 +1,34 @@
 [
     {
         "id": 1,
-        "name": "Kalila",
-        "surname": "Brimacombe",
+        "name": "Pedro",
+        "surname": "Cuburuco",
         "password": "NfrvAw8Q",
         "phone": "965-148-6637",
         "email": "kbrimacombe0@macromedia.com",
-        "photo": "https://robohash.org/corporiseadoloribus.png?size=50x50&set=set1",
+        "photo": "farmer1.jpg",
         "market": "CArlos E Restrepo",
         "products":[1,2,3]
     },
     {
         "id": 2,
-        "name": "Terrye",
-        "surname": "Count",
+        "name": "José",
+        "surname": "Rodriguez",
         "password": "XRJsLL",
         "phone": "933-364-2124",
         "email": "tcount1@cornell.edu",
-        "photo": "https://robohash.org/maximeexcepturicupiditate.png?size=50x50&set=set1",
+        "photo": "farmer2.jpg",
         "market": "Poblado",
         "products":[4,5,6]
     },
     {
         "id": 3,
-        "name": "Basia",
-        "surname": "Showering",
+        "name": "Hector",
+        "surname": "Marquez",
         "password": "1YjRpV1JVg",
         "phone": "223-207-7169",
         "email": "bshowering2@tripadvisor.com",
-        "photo": "https://robohash.org/voluptasvoluptatibusfacere.png?size=50x50&set=set1",
+        "photo": "farmer3.jpg",
         "market": "CArlos E Restrepo",
         "products":[7,8,9]
     }
