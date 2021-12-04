@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const model = require('../model/product.model');
 
 const pathViews = function (nameView) {
 	return path.resolve(__dirname, '../views/products/' + nameView + '.ejs');
@@ -32,6 +33,7 @@ const controller = {
 	},
 
 	showCatalog: function (req, res) {
+
 		const frutas = products.filter(
 			(product) => product.category.includes('frutas') || product.category.includes('Frutas')
 		);
@@ -57,23 +59,7 @@ const controller = {
 	},
 
 	updateItem: function (req, res) {
-		const idReqs = req.params.id;
-		products.forEach((product) => {
-			if (product.id == idReqs) {
-				product.name = req.body.name;
-				product.price = {
-					kilo: parseInt(req.body.kilo),
-					unidad: parseInt(req.body.unidad),
-				};
-				product.discount = req.body.discount;
-				product.category = [req.body.category];
-				req.file != undefined ? (product.image = req.file.filename) : (product.image = product.image);
-				product.market = req.body.market;
-				product.seller = '';
-			}
-		});
-		const jsonProducts = JSON.stringify(products, null, 4);
-		fs.writeFileSync(productsFilePath, jsonProducts);
+		model.edit_products(req);
 		res.redirect('/products/detail/' + idReqs);
 	},
 
