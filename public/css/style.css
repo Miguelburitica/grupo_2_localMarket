@@ -1408,6 +1408,15 @@ i {
 	max-width: 650px;
 }
 
+.singin-main .formulario .input-field{
+	width: 80%;
+}
+
+.singin-main .formulario .select-field select {
+	width: 80%;
+	width: 100%;
+}
+
 .formulario .text-box {
 	width: 80%;
 	height: 35px;
@@ -1416,12 +1425,12 @@ i {
 	color: #552827;
 	border-radius: 4px;
 	border-color: #00000020;
-	transition: ease all 0.3s
+	transition: ease all 0.3s;
 }
 
 .formulario .text-box:hover {
-	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.2), 0 0 0 3px rgba(185, 185, 185, 0.2);	
-	transition: ease all 0.3s
+	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.2), 0 0 0 6px rgba(185, 185, 185, 0.2);
+	transition: ease all 0.3s;
 }
 
 .formulario .text-box:focus {
@@ -1430,7 +1439,44 @@ i {
 	background-color: #f1ff9755;
 	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.3), 0 0 0 3px rgba(185, 185, 185, 0.3);
 	font-weight: 600;
-	transition: ease all 0.3s
+	transition: ease all 0.3s;
+}
+
+.formulario .incorrect {
+	box-shadow: inset 0 0 0 2px rgba(200, 100, 108, 0.8), 0 0 0 6px rgba(205, 125, 125, 0.2);
+	border-color: #80000030;
+	transition: ease all 0.3s;
+}
+
+.formulario .incorrect:hover {
+	box-shadow: inset 0 0 0 2px rgba(200, 100, 108, 0.2), 0 0 0 4px rgba(205, 125, 125, 0.2);
+	transition: ease all 0.3s;
+}
+
+.formulario .incorrect:focus {
+	box-shadow: inset 0 0 0 2px rgba(200, 100, 108, 0.8), 0 0 0 3px rgba(205, 125, 125, 0.2);
+	border-color: #80000030;
+	background-color: #ff97ae15;
+	transition: ease all 0.3s;
+}
+
+.formulario .correct {
+	box-shadow: inset 0 0 0 2px rgba(100, 200, 108, 0.8), 0 0 0 4px rgba(125, 205, 125, 0.2);
+	border-color: #00800030;
+	transition: ease all 0.3s;
+}
+
+.formulario .correct:hover {
+	box-shadow: inset 0 0 0 2px rgba(100, 200, 108, 0.2), 0 0 0 4px rgba(125, 205, 125, 0.2);
+	transition: ease all 0.3s;
+}
+
+.formulario .correct:focus {
+	background-color: #a0ff971f;
+	box-shadow: inset 0 0 0 2px rgba(100, 200, 108, 0.8), 0 0 0 3px rgba(125, 205, 125, 0.2);
+	border-color: #00800030;
+	transition: ease all 0.3s;
+	
 }
 
 .formulario .check {
@@ -1483,11 +1529,6 @@ i {
 .formulario .submit {
 	width: 50%;
 	padding: 6px 8px;
-}
-
-.formulario .submit {
-	width: 50%;
-	padding: 6px 8px;
 	margin: 8px auto;
 	border: none;
 	border-radius: 4px;
@@ -1507,6 +1548,18 @@ i {
 .formulario .submit:active {
 	background-color: #f1ff97;
 	color: #552827e4;
+}
+
+.singin-main .formulario a {
+	margin: 5px 0px;
+	color: #653847cc;
+	font-weight: 600;
+	text-decoration: underline;
+	transition: 0.3s ease all;
+}
+
+.singin-main .formulario a:hover {
+	color: #653827ff;
 }
 
 @media (min-width: 481px) {
@@ -1829,7 +1882,7 @@ h2 {
 	.pay-information .pay-options input {
 		margin: 3px;
 	}
-	.pay-information .send-location input{
+	.pay-information .send-location input {
 		display: flex;
 		margin: 6px;
 		height: 30px;
@@ -2147,7 +2200,7 @@ h2 {
 	background-color: #e9f5db;
 }
 
-.edit-item-table .items-list tr td form button{
+.edit-item-table .items-list tr td form button {
 	outline: inherit;
 	border: none;
 	background-color: #ffff;
@@ -2197,28 +2250,28 @@ h2 {
 	max-width: 800px;
 	margin-bottom: 30px;
 }
-.main-add-item .formulario div {
+.formulario .input-field{
 	width: 85%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-.main-add-item .formulario div label{
+.formulario .input-field label {
 	margin: 9px 12px;
 	color: #552827aa;
 	font-weight: 600;
 	align-self: flex-start;
 	cursor: pointer;
-	transition: ease .3s all
+	transition: ease 0.3s all;
 }
 
-.main-add-item .formulario div label:hover{
+.formulario .input-field label:hover {
 	color: #552827;
-	transition: ease .3s all
+	transition: ease 0.3s all;
 }
 
-.main-add-item .formulario div select{
+.formulario .select-field select {
 	width: 80%;
 	height: 35px;
 	padding-left: 8px;
@@ -2231,18 +2284,16 @@ h2 {
 	transition: 0.3s ease all;
 }
 
-.main-add-item .formulario div select:hover{
+.formulario .select-field select:hover {
 	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.2), 0 0 0 3px rgba(185, 185, 185, 0.2);
 	transition: 0.3s ease all;
 }
-.main-add-item .formulario div select:focus{
+.formulario .select-field select:focus{
 	outline: none;
 	border: none;
 	background-color: #f1ff9700;
 	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.3), 0 0 0 3px rgba(185, 185, 185, 0.3);
 	transition: 0.3s ease all;
 }
-
-
 
 /* Final estilos add-item */

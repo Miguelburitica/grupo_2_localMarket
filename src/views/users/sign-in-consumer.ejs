@@ -7,15 +7,6 @@
 			<input
 				class="text-box"
 				type="text"
-				name="user-name"
-				id="user-name"
-				placeholder="Razón social (tienda/finca/familia)"
-				minlength="2"
-				required
-			/>
-			<input
-				class="text-box"
-				type="text"
 				name="name"
 				id="name"
 				placeholder="Nombres completos"
@@ -29,15 +20,6 @@
 				id="surname"
 				placeholder="Apellidos completos"
 				minlength="2"
-				required
-			/>
-			<input
-				class="text-box"
-				type="text"
-				name="DNI"
-				id="DNI"
-				placeholder="Documento de identidad"
-				min-length="9"
 				required
 			/>
 			<input
@@ -98,6 +80,9 @@
 				>
 			</div>
 			<button type="submit" class="submit">Registrarse</button>
+			<a href="/users/sign-in-seller">
+				Dale click aquí para registrarte como vendedor
+			</a>
 		</form>
 	</main>
 	<%- include('../partials/footer') %>
