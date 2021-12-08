@@ -1,104 +1,111 @@
 [
-    {
-        "id":1,
-        "name":"Fernando",
-        "surname":"Zapata",
-        "password":"123456",
-        "phone": 3005679876,
-        "email": "dmzapatas@gmail.com",
-        "market":"Carlos E Restrepo"
-
-        
-    },
-    {
-        "id": 1,
-        "name": "Orlan",
-        "surname": "Broschke",
-        "password": "eiqFFAff",
-        "phone": "317-641-5524",
-        "email": "obroschke0@newsvine.com",
-        "market": "66958 American Ash Park"
-    },
-    {
-        "id": 2,
-        "name": "Ricky",
-        "surname": "Derell",
-        "password": "2gj9DvA3KW",
-        "phone": "689-131-2787",
-        "email": "rderell1@webmd.com",
-        "market": "31829 Northview Plaza"
-    },
-    {
-        "id": 3,
-        "name": "Lucita",
-        "surname": "Padwick",
-        "password": "RksXjsCAcjur",
-        "phone": "775-621-6699",
-        "email": "lpadwick2@whitehouse.gov",
-        "market": "527 Kropf Junction"
-    },
-    {
-        "id": 4,
-        "name": "Royall",
-        "surname": "Gives",
-        "password": "AM8SYVOfxps",
-        "phone": "210-297-0377",
-        "email": "rgives3@webeden.co.uk",
-        "market": "41 Duke Trail"
-    },
-    {
-        "id": 5,
-        "name": "Saundra",
-        "surname": "Wakefield",
-        "password": "dFlgtHve",
-        "phone": "211-603-4571",
-        "email": "swakefield4@google.nl",
-        "market": "09 Dwight Hill"
-    },
-    {
-        "id": 6,
-        "name": "Syman",
-        "surname": "Rysdale",
-        "password": "XRhhyex",
-        "phone": "561-619-2118",
-        "email": "srysdale5@eventbrite.com",
-        "market": "176 Dunning Circle"
-    },
-    {
-        "id": 7,
-        "name": "Kristian",
-        "surname": "Langham",
-        "password": "P8ouXWZK",
-        "phone": "113-818-5402",
-        "email": "klangham6@baidu.com",
-        "market": "149 Schmedeman Plaza"
-    },
-    {
-        "id": 8,
-        "name": "Arturo",
-        "surname": "Cluderay",
-        "password": "z6wAw0Ljmws",
-        "phone": "891-563-8599",
-        "email": "acluderay7@godaddy.com",
-        "market": "02 Florence Terrace"
-    },
-    {
-        "id": 9,
-        "name": "Kristine",
-        "surname": "Awcoate",
-        "password": "Awh8gxnHf4",
-        "phone": "910-791-2075",
-        "email": "kawcoate8@dedecms.com",
-        "market": "12 East Trail"
-    },
-    {
-        "id": 10,
-        "name": "Garnette",
-        "surname": "Rasch",
-        "password": "3wNzKFSLwAXQ",
-        "phone": "338-241-7300",
-        "email":"grasch9@unesco.org",
-        "market":"1606 Butternut Avenue"
-    }
-   
+	{
+		"id": 1,
+		"name": "Fernando",
+		"surname": "Zapata",
+		"password": "123456",
+		"phone": 3005679876,
+		"email": "dmzapatas@gmail.com",
+		"market": "Carlos E Restrepo"
+	},
+	{
+		"id": 1,
+		"name": "Orlan",
+		"surname": "Broschke",
+		"password": "eiqFFAff",
+		"phone": "317-641-5524",
+		"email": "obroschke0@newsvine.com",
+		"market": "66958 American Ash Park"
+	},
+	{
+		"id": 2,
+		"name": "Ricky",
+		"surname": "Derell",
+		"password": "2gj9DvA3KW",
+		"phone": "689-131-2787",
+		"email": "rderell1@webmd.com",
+		"market": "31829 Northview Plaza"
+	},
+	{
+		"id": 3,
+		"name": "Lucita",
+		"surname": "Padwick",
+		"password": "RksXjsCAcjur",
+		"phone": "775-621-6699",
+		"email": "lpadwick2@whitehouse.gov",
+		"market": "527 Kropf Junction"
+	},
+	{
+		"id": 4,
+		"name": "Royall",
+		"surname": "Gives",
+		"password": "AM8SYVOfxps",
+		"phone": "210-297-0377",
+		"email": "rgives3@webeden.co.uk",
+		"market": "41 Duke Trail"
+	},
+	{
+		"id": 5,
+		"name": "Saundra",
+		"surname": "Wakefield",
+		"password": "dFlgtHve",
+		"phone": "211-603-4571",
+		"email": "swakefield4@google.nl",
+		"market": "09 Dwight Hill"
+	},
+	{
+		"id": 6,
+		"name": "Syman",
+		"surname": "Rysdale",
+		"password": "XRhhyex",
+		"phone": "561-619-2118",
+		"email": "srysdale5@eventbrite.com",
+		"market": "176 Dunning Circle"
+	},
+	{
+		"id": 7,
+		"name": "Kristian",
+		"surname": "Langham",
+		"password": "P8ouXWZK",
+		"phone": "113-818-5402",
+		"email": "klangham6@baidu.com",
+		"market": "149 Schmedeman Plaza"
+	},
+	{
+		"id": 8,
+		"name": "Arturo",
+		"surname": "Cluderay",
+		"password": "z6wAw0Ljmws",
+		"phone": "891-563-8599",
+		"email": "acluderay7@godaddy.com",
+		"market": "02 Florence Terrace"
+	},
+	{
+		"id": 9,
+		"name": "Kristine",
+		"surname": "Awcoate",
+		"password": "Awh8gxnHf4",
+		"phone": "910-791-2075",
+		"email": "kawcoate8@dedecms.com",
+		"market": "12 East Trail"
+	},
+	{
+		"id": 10,
+		"name": "Garnette",
+		"surname": "Rasch",
+		"password": "3wNzKFSLwAXQ",
+		"phone": "338-241-7300",
+		"email": "grasch9@unesco.org",
+		"market": "1606 Butternut Avenue"
+	},
+	{
+		"id": 11,
+		"name": "Miguel Antonio",
+		"surname": "Buritica Vargas",
+		"phone": "3146464588",
+		"email": "carlostibocheylaura@gmail.com",
+		"pass": "J45KTcSQwcURF9r",
+		"pass-confirm": "J45KTcSQwcURF9r",
+		"agree-data": "on"
+	}
 ]

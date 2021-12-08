@@ -3,7 +3,7 @@
 	<%- include('../partials/headerSeller') %>
 	<main class="singin-main">
 		<h2 class="titulo">Registra tu cuenta como vendedor</h2>
-		<form action="/index.html" class="formulario">
+		<form action="/users/sign-in" method="post" class="formulario">
 			<input
 				class="text-box"
 				type="text"
@@ -40,7 +40,7 @@
 				</select>
 			</div>
 			<input
-				class="text-box correct"
+				class="text-box"
 				type="tel"
 				name="phone"
 				id="phone"
@@ -48,14 +48,7 @@
 				minlength="9"
 				required
 			/>
-			<input
-				class="text-box"
-				type="email"
-				name="email"
-				id="email"
-				placeholder="Correo electrónico"
-				required
-			/>
+			<input class="text-box" type="email" name="email" id="email" placeholder="Correo electrónico" required />
 			<input
 				class="text-box"
 				type="password"
@@ -66,7 +59,7 @@
 				required
 			/>
 			<input
-				class="text-box incorrect"
+				class="text-box"
 				type="password"
 				name="pass-confirm"
 				id="pass"
@@ -75,31 +68,15 @@
 				required
 			/>
 			<div class="check">
-				<input
-					class="slides"
-					type="checkbox"
-					name="agree-terms-conditions"
-					id="agree-terms-conditions"
-				/>
-				<label for="agree-terms-conditions"
-					>Acepto los terminos y condiciones de uso</label
-				>
+				<input class="slides" type="checkbox" name="agree-terms-conditions" id="agree-terms-conditions" />
+				<label for="agree-terms-conditions">Acepto los terminos y condiciones de uso</label>
 			</div>
 			<div class="check">
-				<input
-					class="slides"
-					type="checkbox"
-					name="agree-data"
-					id="agree-data"
-				/>
-				<label for="agree-data"
-					>Acepto las politicas de tratamientos de datos</label
-				>
+				<input class="slides" type="checkbox" name="agree-data" id="agree-data" />
+				<label for="agree-data">Acepto las politicas de tratamientos de datos</label>
 			</div>
 			<button type="submit" class="submit">Registrarse</button>
-			<a href="/users/sign-in-consumer">
-				Dale click aquí para registrarte como comprador
-			</a>
+			<a href="/users/sign-in-consumer"> Registrarse como comprador </a>
 		</form>
 	</main>
 	<%- include('../partials/footer') %>
