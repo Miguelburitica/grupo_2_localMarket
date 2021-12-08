@@ -85,5 +85,37 @@
         "market": "Carlos E Restrepo",
         "seller": "",
         "wayToBuy": 1
+    },
+    {
+        "id": 9,
+        "name": "asjkbjkbasf",
+        "price": {
+            "kilo": null,
+            "unidad": 1500
+        },
+        "discount": "0.3",
+        "category": [
+            "frutas"
+        ],
+        "image": "imagefile-1638645659863.jfif",
+        "market": "Poblado",
+        "seller": "",
+        "wayToBuy": 1
+    },
+    {
+        "id": 10,
+        "name": "papa",
+        "price": {
+            "kilo": 4000,
+            "unidad": 900
+        },
+        "discount": "0.15",
+        "category": [
+            "frutas"
+        ],
+        "image": "imagefile-1638645683758.jpg",
+        "market": "Ciudad del Río",
+        "seller": "",
+        "wayToBuy": 2
     }
 ]

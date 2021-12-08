@@ -16,8 +16,12 @@ const controller = {
 		res.render(pathViews('login'));
 	},
 
-	showSignIn: function (req, res) {
-		res.render(pathViews('sign-in'));
+	showSignInSeller: function (req, res) {
+		res.render(pathViews('sign-in-seller'));
+	},
+
+	showSignInConsumer: function (req, res) {
+		res.render(pathViews('sign-in-consumer'));
 	},
 };
 

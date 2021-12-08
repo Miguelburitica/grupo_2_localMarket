@@ -1,0 +1,106 @@
+<%- include('../partials/head') %>
+<body>
+	<%- include('../partials/headerSeller') %>
+	<main class="singin-main">
+		<h2 class="titulo">Registra tu cuenta como vendedor</h2>
+		<form action="/index.html" class="formulario">
+			<input
+				class="text-box"
+				type="text"
+				name="user-name"
+				id="user-name"
+				placeholder="Razón social (tienda/finca/familia)"
+				minlength="2"
+				required
+			/>
+			<input
+				class="text-box"
+				type="text"
+				name="name"
+				id="name"
+				placeholder="Nombres completos"
+				minlength="2"
+				required
+			/>
+			<input
+				class="text-box"
+				type="text"
+				name="surname"
+				id="surname"
+				placeholder="Apellidos completos"
+				minlength="2"
+				required
+			/>
+			<div class="select-field input-field">
+				<label for="market">Selecciona el mercado donde usualmente estarás presente</label>
+				<select name="market" class="control" id="market">
+					<option value="Carlos E Restrepo">Carlos E Restrepo</option>
+					<option value="Poblado">Poblado</option>
+					<option value="Ciudad del Río">Ciudad del Río</option>
+				</select>
+			</div>
+			<input
+				class="text-box correct"
+				type="tel"
+				name="phone"
+				id="phone"
+				placeholder="Número de celular"
+				minlength="9"
+				required
+			/>
+			<input
+				class="text-box"
+				type="email"
+				name="email"
+				id="email"
+				placeholder="Correo electrónico"
+				required
+			/>
+			<input
+				class="text-box"
+				type="password"
+				name="pass"
+				id="pass"
+				placeholder="Contraseña"
+				minlength="10"
+				required
+			/>
+			<input
+				class="text-box incorrect"
+				type="password"
+				name="pass-confirm"
+				id="pass"
+				placeholder="Confirma tu contraseña"
+				minlength="10"
+				required
+			/>
+			<div class="check">
+				<input
+					class="slides"
+					type="checkbox"
+					name="agree-terms-conditions"
+					id="agree-terms-conditions"
+				/>
+				<label for="agree-terms-conditions"
+					>Acepto los terminos y condiciones de uso</label
+				>
+			</div>
+			<div class="check">
+				<input
+					class="slides"
+					type="checkbox"
+					name="agree-data"
+					id="agree-data"
+				/>
+				<label for="agree-data"
+					>Acepto las politicas de tratamientos de datos</label
+				>
+			</div>
+			<button type="submit" class="submit">Registrarse</button>
+			<a href="/users/sign-in-consumer">
+				Dale click aquí para registrarte como comprador
+			</a>
+		</form>
+	</main>
+	<%- include('../partials/footer') %>
+</body>

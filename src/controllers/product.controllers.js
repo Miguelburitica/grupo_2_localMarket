@@ -32,9 +32,15 @@ const controller = {
 	},
 
 	showCatalog: function (req, res) {
-		const frutas = products.filter((product) => product.category.includes('frutas') || product.category.includes('Frutas'));
-		const verduras = products.filter((product) => product.category.includes('verduras') || product.category.includes('Verduras'));
-		const condimentos = products.filter((product) => product.category.includes('condimentos') || product.category.includes('Condimentos'));
+		const frutas = products.filter(
+			(product) => product.category.includes('frutas') || product.category.includes('Frutas')
+		);
+		const verduras = products.filter(
+			(product) => product.category.includes('verduras') || product.category.includes('Verduras')
+		);
+		const condimentos = products.filter(
+			(product) => product.category.includes('condimentos') || product.category.includes('Condimentos')
+		);
 		res.render(pathViews('catalog'), {
 			frutas,
 			verduras,
@@ -61,8 +67,8 @@ const controller = {
 				};
 				product.discount = req.body.discount;
 				product.category = [req.body.category];
-				req.file!=undefined?product.image=req.file.filename:product.image=product.image;	
-				product.market= req.body.market;
+				req.file != undefined ? (product.image = req.file.filename) : (product.image = product.image);
+				product.market = req.body.market;
 				product.seller = '';
 			}
 		});
@@ -76,15 +82,14 @@ const controller = {
 	},
 
 	storeAddItem: function (req, res) {
-
 		const priceKilo = req.body.kilo;
 		const priceUnidad = req.body.unidad;
 
-		if((priceKilo == 0 && priceUnidad > 0) || (priceKilo == null  && priceUnidad > 0)){
+		if ((priceKilo == 0 && priceUnidad > 0) || (priceKilo == null && priceUnidad > 0)) {
 			wayToBuy = 1;
-		}else if((priceKilo > 0 && priceUnidad == 0) || (priceKilo > 0  && priceUnidad == null)) {
+		} else if ((priceKilo > 0 && priceUnidad == 0) || (priceKilo > 0 && priceUnidad == null)) {
 			wayToBuy = 0;
-		}else if(priceKilo > 0 && priceUnidad > 0){
+		} else if (priceKilo > 0 && priceUnidad > 0) {
 			wayToBuy = 2;
 		}
 		const product = {
@@ -114,7 +119,7 @@ const controller = {
 		const dataProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		const suggestProducts = dataProducts.filter((item) => item.id > 1 && item.id < 6);
 		const product = dataProducts.find((item) => item.id == id);
-		const seller = sellers.find(seller => seller.products.includes(product.id))
+		const seller = sellers.find((seller) => seller.products.includes(product.id));
 		res.render(pathViews('detail'), {
 			product: product,
 			suggest: suggestProducts,
