@@ -1,20 +1,5 @@
 [
     {
-        "id": 2,
-        "name": "Mang",
-        "price": {
-            "kilo": 2200,
-            "unidad": 794
-        },
-        "wayToBuy": 2,
-        "discount": 0,
-        "category": [
-            "hortalizas"
-        ],
-        "image": "mango.jfif",
-        "seller": ""
-    },
-    {
         "id": 3,
         "name": "Pimentón",
         "price": {
@@ -72,50 +57,34 @@
     },
     {
         "id": 8,
-        "name": "Tomates",
+        "name": "tomates",
         "price": {
-            "kilo": null,
-            "unidad": 15000
-        },
-        "discount": "0.25",
-        "category": [
-            "frutas"
-        ],
-        "image": "imagefile-1637879079920.jfif",
-        "market": "Carlos E Restrepo",
-        "seller": "",
-        "wayToBuy": 1
-    },
-    {
-        "id": 9,
-        "name": "asjkbjkbasf",
-        "price": {
-            "kilo": null,
-            "unidad": 1500
-        },
-        "discount": "0.3",
-        "category": [
-            "frutas"
-        ],
-        "image": "imagefile-1638645659863.jfif",
-        "market": "Poblado",
-        "seller": "",
-        "wayToBuy": 1
-    },
-    {
-        "id": 10,
-        "name": "papa",
-        "price": {
-            "kilo": 4000,
-            "unidad": 900
+            "kilo": 2300,
+            "unidad": 700
         },
         "discount": "0.15",
         "category": [
             "frutas"
         ],
-        "image": "imagefile-1638645683758.jpg",
-        "market": "Ciudad del Río",
+        "image": "imagefile-1638989333935.jfif",
+        "market": "Poblado",
         "seller": "",
         "wayToBuy": 2
+    },
+    {
+        "id": 10,
+        "name": "Lemon",
+        "price": {
+            "kilo": 11000,
+            "unidad": 0
+        },
+        "discount": "0.25",
+        "category": [
+            "frutas"
+        ],
+        "image": "imagefile-1638989740023.jfif",
+        "market": "Poblado",
+        "seller": "",
+        "wayToBuy": 0
     }
 ]

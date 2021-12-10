@@ -31,5 +31,17 @@
 		"photo": "farmer3.jpg",
 		"market": "CArlos E Restrepo",
 		"products": [7, 8, 9]
+	},
+	{
+		"id": 4,
+		"user-name": "Los Remiendos",
+		"name": "Martha Leo",
+		"surname": "Vargas Salg",
+		"market": "Poblado",
+		"phone": "3134093189",
+		"email": "dimimaru@hotmail.com",
+		"pass": "J45KTcSQwcURF9r",
+		"pass-confirm": "J45KTcSQwcURF9r",
+		"agree-data": "on"
 	}
 ]

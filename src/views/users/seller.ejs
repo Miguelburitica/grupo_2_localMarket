@@ -4,22 +4,19 @@
 	<%- include('../partials/headerSeller') %>
 	<main class="profile-seller-main">
 		<div class="profile-seller-left">
-			<img src="/images/<%= seller.photo %> " alt="" />
+			<img src="/images/users/<%= seller.photo %> " alt="" />
 			<p>LocalMarket: Conectando campesinos con sus vecinos</p>
 		</div>
 		<div class="profile-seller-right">
-			<h2>Hola <%= seller.name + ' ' + seller.surname %> , <br />
+			<h2>
+				Hola <%= seller.name + ' ' + seller.surname %> , <br />
 				¿Qué quieres hacer hoy?
 			</h2>
 			<div>
-				<a href="#">
-					<i class="fas fa-user-edit"></i> Editar mis datos
-				</a>
+				<a href="#"> <i class="fas fa-user-edit"></i> Editar mis datos </a>
 			</div>
 			<div>
-				<a href="/products/create-edit">
-					<i class="far fa-edit"></i> Ir a mis productos</a
-				>
+				<a href="/products/create-edit"> <i class="far fa-edit"></i> Ir a mis productos</a>
 			</div>
 		</div>
 	</main>

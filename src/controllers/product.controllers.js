@@ -8,11 +8,12 @@ const pathViews = function (nameView) {
 const productsFilePath = path.resolve(__dirname, '../data/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-const sellersFilePath = path.resolve(__dirname, '../data/users-sellers.json');
+const sellersFilePath = path.resolve(__dirname, '../data/sellers.json');
 const sellers = JSON.parse(fs.readFileSync(sellersFilePath, 'utf-8'));
 
 //función que permite almacenar el producto nuevo con el id superior al mayor de data
-const newId = () => {
+
+function newId() {
 	let ultimo = 0;
 	products.forEach((product) => {
 		if (product.id > ultimo) {
@@ -20,7 +21,7 @@ const newId = () => {
 		}
 	});
 	return ultimo + 1;
-};
+}
 
 const controller = {
 	// Cuando cambies las funciones de arriba, deberás cambiar el metodo que muestra las vistas, deberá pasar de sendFile a render.
