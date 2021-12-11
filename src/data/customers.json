@@ -97,15 +97,5 @@
 		"phone": "338-241-7300",
 		"email": "grasch9@unesco.org",
 		"market": "1606 Butternut Avenue"
-	},
-	{
-		"id": 11,
-		"name": "Miguel Antonio",
-		"surname": "Buritica Vargas",
-		"phone": "3146464588",
-		"email": "carlostibocheylaura@gmail.com",
-		"pass": "J45KTcSQwcURF9r",
-		"pass-confirm": "J45KTcSQwcURF9r",
-		"agree-data": "on"
 	}
 ]

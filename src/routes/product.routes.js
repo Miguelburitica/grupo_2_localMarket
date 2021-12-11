@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const { productController } = require('../controllers');
+const { check } = require('express-validator');
 
 //Para guardar
 const storage = multer.diskStorage({
@@ -31,7 +32,7 @@ router.post('/add-item', uploadFile.single('imagefile'), productController.store
 // Mostrar el producto a editar.
 router.get('/edit-item/:id', productController.showEditItem);
 // Manda la info editada y redirige al detalle de producto.
-router.post('/edit-item/:id',uploadFile.single('imagefile'),productController.updateItem);
+router.post('/edit-item/:id', uploadFile.single('imagefile'), productController.updateItem);
 
 // DETALLE DE UN PRODUCTO
 router.get('/detail/:id?', productController.showDetail);
