@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const path = require('path');
 
 const mainRoutes = require('./routes');
@@ -7,6 +8,11 @@ const app = express();
 const methodOverride = require('method-override');
 
 app.use(express.static(path.resolve(__dirname, '../public')));
+app.use(session({
+    secret: "¡Es secreto!",
+    resave: false,
+    saveUninitialized: false,
+}));
 
 app.set('views', path.resolve(__dirname, './views'));
 app.set('view engine', 'ejs');
