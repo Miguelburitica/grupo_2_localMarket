@@ -6,7 +6,7 @@ const { productController } = require('../controllers');
 const { check } = require('express-validator');
 
 //Para guardar
-const storage = multer.diskStorage({
+const storageProduct = multer.diskStorage({
 	destination: function (req, file, cb) {
 		cb(null, path.resolve(__dirname, '../../public/images'));
 	},
@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 });
 
 //Middleware para guardar archivos
-const uploadFile = multer({ storage });
+const uploadFileProduct = multer({ storageProduct });
 
 // LISTADO DE PRODUCTOS DEL VENDEDOR
 router.get('/list', productController.showList);
@@ -26,13 +26,13 @@ router.get('/catalog', productController.showCatalog);
 
 //CREACIÓN DE PRODUCTOS
 router.get('/add-item', productController.showAddItem);
-router.post('/add-item', uploadFile.single('imagefile'), productController.storeAddItem);
+router.post('/add-item', uploadFileProduct.single('imagefile'), productController.storeAddItem);
 
 // EDICIÓN DE PRODUCTOS
 // Mostrar el producto a editar.
 router.get('/edit-item/:id', productController.showEditItem);
 // Manda la info editada y redirige al detalle de producto.
-router.post('/edit-item/:id', uploadFile.single('imagefile'), productController.updateItem);
+router.post('/edit-item/:id', uploadFileProduct.single('imagefile'), productController.updateItem);
 
 // DETALLE DE UN PRODUCTO
 router.get('/detail/:id?', productController.showDetail);

@@ -1,9 +1,9 @@
 <%- include('../partials/head') %>
 <body>
 	<%- include('../partials/headerSeller') %>
-	<main class="singin-main">
+	<main class="signin-main">
 		<h2 class="titulo">¡Crea tu cuenta!</h2>
-		<form action="/users/sign-in-customer" method="post" class="formulario">
+		<form action="/users/sign-in-customer" method="post" class="formulario" enctype="multipart/form-data">
 			<input
 				class="text-box"
 				type="text"
@@ -13,6 +13,9 @@
 				minlength="2"
 				required
 			/>
+			<% if (locals.errors && errors.name) { %>
+			<span class="error">e</span>
+			<% } %>
 			<input
 				class="text-box"
 				type="text"
@@ -22,6 +25,10 @@
 				minlength="2"
 				required
 			/>
+			<input class="text-box file-field" type="file" name="profile_photo" id="profile_photo" />
+			<label for="profile_photo" class="text-box label-file"
+				><i class="far fa-user-circle"></i> Sube una foto para tu perfil</label
+			>
 			<input
 				class="text-box"
 				type="tel"

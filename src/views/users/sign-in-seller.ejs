@@ -1,14 +1,14 @@
 <%- include('../partials/head') %>
 <body>
 	<%- include('../partials/headerSeller') %>
-	<main class="singin-main">
+	<main class="signin-main">
 		<h2 class="titulo">Registra tu cuenta como vendedor</h2>
-		<form action="/users/sign-in-seller" method="post" class="formulario">
+		<form action="/users/sign-in-seller" method="post" class="formulario" enctype="multipart/form-data">
 			<input
 				class="text-box"
 				type="text"
-				name="user-name"
-				id="user-name"
+				name="user_name"
+				id="user_name"
 				placeholder="Razón social (tienda/finca/familia)"
 				minlength="2"
 				required
@@ -31,6 +31,10 @@
 				minlength="2"
 				required
 			/>
+			<input class="text-box file-field" type="file" name="profile_photo" id="profile_photo" />
+			<label for="profile_photo" class="text-box label-file"
+				><i class="far fa-user-circle"></i> Sube una foto para tu perfil</label
+			>
 			<div class="select-field input-field">
 				<label for="market">Selecciona el mercado donde usualmente estarás presente</label>
 				<select name="market" class="control" id="market">
@@ -76,7 +80,7 @@
 				<label for="agree-data">Acepto las politicas de tratamientos de datos</label>
 			</div>
 			<button type="submit" class="submit">Registrarse</button>
-			<a href="/users/sign-in-consumer"> Registrarse como comprador </a>
+			<a href="/users/sign-in-customer"> Registrarse como comprador </a>
 		</form>
 	</main>
 	<%- include('../partials/footer') %>

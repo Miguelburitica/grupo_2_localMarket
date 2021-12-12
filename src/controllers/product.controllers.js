@@ -120,7 +120,14 @@ const controller = {
 		const dataProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		const suggestProducts = dataProducts.filter((item) => item.id > 1 && item.id < 6);
 		const product = dataProducts.find((item) => item.id == id);
-		const seller = sellers.find((seller) => seller.products.includes(product.id));
+		const seller = sellers.find((seller) => {
+			if (seller.product !== undefined) {
+				seller.products.includes(product.id);
+			} else {
+				seller = undefined;
+			}
+		});
+
 		res.render(pathViews('detail'), {
 			product: product,
 			suggest: suggestProducts,
