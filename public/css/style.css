@@ -1406,6 +1406,7 @@ i {
 
 .signin-main .formulario {
 	max-width: 650px;
+	gap: 7px;
 }
 
 .signin-main .formulario .input-field {
@@ -1443,7 +1444,7 @@ i {
 }
 
 .formulario .incorrect {
-	box-shadow: inset 0 0 0 2px rgba(200, 100, 108, 0.8), 0 0 0 6px rgba(205, 125, 125, 0.2);
+	box-shadow: inset 0 0 0 2px rgba(200, 100, 108, 0.3), 0 0 0 4px rgba(205, 125, 125, 0.2);
 	border-color: #80000030;
 	transition: ease all 0.3s;
 }
@@ -1454,15 +1455,15 @@ i {
 }
 
 .formulario .incorrect:focus {
-	box-shadow: inset 0 0 0 2px rgba(200, 100, 108, 0.8), 0 0 0 3px rgba(205, 125, 125, 0.2);
+	box-shadow: inset 0 0 0 2px rgba(200, 100, 108, 0.3), 0 0 0 3px rgba(205, 125, 125, 0.2);
 	border-color: #80000030;
 	background-color: #ff97ae15;
 	transition: ease all 0.3s;
 }
 
 .formulario .correct {
-	box-shadow: inset 0 0 0 2px rgba(100, 200, 108, 0.8), 0 0 0 4px rgba(125, 205, 125, 0.2);
-	border-color: #00800030;
+	/* box-shadow: inset 0 0 0 2px rgba(100, 200, 108, 0.1), 0 0 0 4px rgba(125, 205, 125, 0.2); */
+	/* border-color: #00800030; */
 	transition: ease all 0.3s;
 }
 
@@ -1473,7 +1474,7 @@ i {
 
 .formulario .correct:focus {
 	background-color: #a0ff971f;
-	box-shadow: inset 0 0 0 2px rgba(100, 200, 108, 0.8), 0 0 0 3px rgba(125, 205, 125, 0.2);
+	box-shadow: inset 0 0 0 2px rgba(100, 200, 108, 0.1), 0 0 0 3px rgba(125, 205, 125, 0.2);
 	border-color: #00800030;
 	transition: ease all 0.3s;
 }
@@ -1580,9 +1581,32 @@ i {
 	text-align: center;
 }
 
+.formulario .error {
+	font-size: 11px;
+	align-self: self-start;
+	margin-left: 50px;
+	color: rgb(200, 100, 108);
+	font-weight: bold;
+	width: 75%;
+	transition: all 0.3 ease;
+}
+
 @media (min-width: 481px) {
 	.formulario .check label {
 		font-size: 16px;
+	}
+
+	.formulario .error {
+		margin-left: 65px;
+		transition: all 0.3 ease;
+}
+}
+
+@media (min-width: 768px){
+	.formulario .error {
+		margin-left: 85px;
+		width: 80%;
+		transition: all 0.3 ease;
 	}
 }
 

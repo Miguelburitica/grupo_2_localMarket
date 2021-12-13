@@ -86,5 +86,34 @@
         "market": "Poblado",
         "seller": "",
         "wayToBuy": 0
+    },
+    {
+        "id": 11,
+        "name": "Camino",
+        "price": {
+            "kilo": null,
+            "unidad": 1500
+        },
+        "discount": "0",
+        "category": [
+            "frutas"
+        ],
+        "seller": "",
+        "wayToBuy": 1,
+        "image": "imagefile-1639367096189.jfif"
+    },
+    {
+        "id": 12,
+        "name": "Camino",
+        "price": {
+            "kilo": null,
+            "unidad": 1500
+        },
+        "discount": "0",
+        "category": [
+            "frutas"
+        ],
+        "seller": "",
+        "wayToBuy": 1
     }
 ]

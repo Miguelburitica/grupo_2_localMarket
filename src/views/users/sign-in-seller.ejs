@@ -5,56 +5,99 @@
 		<h2 class="titulo">Registra tu cuenta como vendedor</h2>
 		<form action="/users/sign-in-seller" method="post" class="formulario" enctype="multipart/form-data">
 			<input
-				class="text-box"
+				class="text-box  <%= locals.errors !== undefined ? locals.errors && errors.name === undefined ? 'correct' : 'incorrect' : ''%>"
 				type="text"
 				name="user_name"
 				id="user_name"
 				placeholder="Razón social (tienda/finca/familia)"
 				minlength="2"
 				required
+				<% if (locals.old && old.user_name) { %>
+					value="<%= old.user_name %>"
+				<% } %>
 			/>
+			<% if (locals.errors && errors.user_name) { %>
+				<span class="error"><%= errors.user_name.msg %> </span>
+			<% } else if(locals.errors){ %>
+				<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+			<% } else {%>
+				<span class="error" style="color: inherit;"></span>
+				<% } %> 
 			<input
-				class="text-box"
+				class="text-box <%= locals.errors !== undefined ? locals.errors && errors.name === undefined ? 'correct' : 'incorrect' : ''%> "
 				type="text"
 				name="name"
 				id="name"
 				placeholder="Nombres completos"
 				minlength="2"
 				required
+				<% if (locals.old && old.name) { %>
+					value="<%= old.name %>"
+				<% } %>
 			/>
+			<% if (locals.errors && errors.name) { %>
+				<span class="error"><%= errors.name.msg %> </span>
+			<% } else if(locals.errors){ %>
+				<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+			<% } else {%>
+				<span class="error" style="color: inherit;"></span>
+				<% } %>  
 			<input
-				class="text-box"
+				class="text-box <%= locals.errors !== undefined ? locals.errors && errors.surname === undefined ? 'correct' : 'incorrect' : ''%>"
 				type="text"
 				name="surname"
 				id="surname"
 				placeholder="Apellidos completos"
 				minlength="2"
 				required
+				<% if (locals.old && old.surname) { %>
+					value="<%= old.surname %>"
+				<% } %>
 			/>
+			<% if (locals.errors && errors.surname) { %>
+				<span class="error"><%= errors.surname.msg %> </span>
+				<% } else if(locals.errors){ %>
+					<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+				<% } else {%>
+					<span class="error" style="color: inherit;"></span>
+					<% } %>  
 			<input class="text-box file-field" type="file" name="profile_photo" id="profile_photo" />
 			<label for="profile_photo" class="text-box label-file"
 				><i class="far fa-user-circle"></i> Sube una foto para tu perfil</label
 			>
-			<div class="select-field input-field">
-				<label for="market">Selecciona el mercado donde usualmente estarás presente</label>
-				<select name="market" class="control" id="market">
-					<option value="Carlos E Restrepo">Carlos E Restrepo</option>
-					<option value="Poblado">Poblado</option>
-					<option value="Ciudad del Río">Ciudad del Río</option>
-				</select>
-			</div>
+			<span class="error" style="color: inherit;"></span>
 			<input
-				class="text-box"
+				class="text-box <%= locals.errors !== undefined ? locals.errors && errors.phone === undefined ? 'correct' : 'incorrect' : ''%>"
 				type="tel"
 				name="phone"
 				id="phone"
 				placeholder="Número de celular"
 				minlength="9"
 				required
+				<% if (locals.old && old.phone) { %>
+					value="<%= old.phone %>"
+				<% } %>
 			/>
-			<input class="text-box" type="email" name="email" id="email" placeholder="Correo electrónico" required />
+			<% if (locals.errors && errors.phone) { %>
+				<span class="error"><%= errors.phone.msg %> </span>
+				<% } else if(locals.errors){ %>
+					<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+				<% } else {%>
+					<span class="error" style="color: inherit;"></span>
+					<% } %>  
+			<input class="text-box <%= locals.errors !== undefined ? locals.errors && errors.email === undefined ? 'correct' : 'incorrect' : ''%>" type="email" name="email" id="email" placeholder="Correo electrónico" required
+			<% if (locals.old && old.email) { %>
+				value="<%= old.email %>"
+			<% } %> />
+			<% if (locals.errors && errors.email) { %>
+				<span class="error"><%= errors.email.msg %> </span>
+				<% } else if(locals.errors){ %>
+					<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+				<% } else {%>
+					<span class="error" style="color: inherit;"></span>
+					<% } %>  
 			<input
-				class="text-box"
+				class="text-box <%= locals.errors !== undefined ? locals.errors && errors.pass === undefined ? 'correct' : 'incorrect' : ''%>"
 				type="password"
 				name="pass"
 				id="pass"
@@ -62,8 +105,15 @@
 				minlength="10"
 				required
 			/>
+			<% if (locals.errors && errors.pass) { %>
+				<span class="error"><%= errors.pass.msg %> </span>
+				<% } else if(locals.errors){ %>
+					<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+				<% } else {%>
+					<span class="error" style="color: inherit;"></span>
+					<% } %>  
 			<input
-				class="text-box"
+				class="text-box <%= locals.errors !== undefined ? locals.errors && errors.pass_confirm === undefined ? 'correct' : 'incorrect' : ''%>"
 				type="password"
 				name="pass_confirm"
 				id="pass"
@@ -71,6 +121,13 @@
 				minlength="10"
 				required
 			/>
+			<% if (locals.errors && errors.pass_confirm) { %>
+				<span class="error"><%= errors.pass_confirm.msg %> </span>
+				<% } else if(locals.errors){ %>
+					<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+				<% } else {%>
+					<span class="error" style="color: inherit;"></span>
+					<% } %> 
 			<div class="check">
 				<input class="slides" type="checkbox" name="agree-terms-conditions" id="agree-terms-conditions" />
 				<label for="agree-terms-conditions">Acepto los terminos y condiciones de uso</label>

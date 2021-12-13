@@ -120,11 +120,11 @@ const controller = {
 				...req.body,
 				pass: bcryptjs.hashSync(req.body.pass, 10),
 				pass_confirm: null,
-				image: req.file != undefined ? req.file.filename : 'default.jpg',
+				image: req.file !== undefined ? req.file.filename : 'default.jpg',
 			};
 			let users = [];
 			console.log(user);
-			if (user.market === undefined) {
+			if (user.user_name === undefined) {
 				user.id = newCustomerId();
 				users = getCustomers();
 				users.push(user);
@@ -141,7 +141,7 @@ const controller = {
 			if (req.body.market === undefined) {
 				res.render(pathViews('sign-in-customer'), { errors: errors.mapped(), old: req.body });
 			} else {
-				res.render(pathViews('sign-in-seller'));
+				res.render(pathViews('sign-in-seller'), { errors: errors.mapped(), old: req.body });
 			}
 		}
 	},

@@ -175,5 +175,113 @@
         "agree-terms-conditions": "on",
         "agree-data": "on",
         "id": 17
+    },
+    {
+        "name": "Miguel Antonio",
+        "surname": "Buritica Vargas",
+        "phone": "3146464588",
+        "email": "carlostibocheylaura@gmail.com",
+        "pass": "$2a$10$pYKpXUI8d/qcinepZ4Q0ZObwlXRQJcB.l2ROZ1F0i3.Tb/eHgdQpW",
+        "pass_confirm": null,
+        "agree-data": "on",
+        "id": 18
+    },
+    {
+        "name": "Miguel Antonio",
+        "surname": "Buritica Vargas",
+        "phone": "3146464588",
+        "email": "carlostibocheylaura@gmail.com",
+        "pass": "$2a$10$MY7E8EuFMtjiiYEuMLavz.fLpqmoMO9RdO7.NUE0oxyehzj8.WQsO",
+        "pass_confirm": null,
+        "agree-data": "on",
+        "id": 19
+    },
+    {
+        "name": "Miguel Antonio",
+        "surname": "Buritica Vargas",
+        "phone": "3146464588",
+        "email": "carlostibocheylaura@gmail.com",
+        "pass": "$2a$10$gVe5Qq/a1OzhAPU8DSQROOtg5eLohiI9gLklHyLayflrTlhvWls6a",
+        "pass_confirm": null,
+        "agree-data": "on",
+        "id": 20
+    },
+    {
+        "name": "opo",
+        "surname": "Buritica Vargas",
+        "phone": "3146464588",
+        "email": "caminar@asda.ed",
+        "pass": "$2a$10$iMw6Tp/AEWjVIYBCNUt9ZOan5RcuPJFZY4HriNMKX2sUk3umSpMYC",
+        "pass_confirm": null,
+        "agree-data": "on",
+        "image": "default.jpg",
+        "id": 21
+    },
+    {
+        "name": "Miguel Antonio",
+        "surname": "Buritica Vargas",
+        "phone": "3146464588",
+        "email": "carlostibocheylaura@gmail.com",
+        "pass": "$2a$10$SUyEJalKlzy99oxEbP1Gz.LxPI0XUxyhNBYUh8lK0aa11IPo7GXgi",
+        "pass_confirm": null,
+        "agree-terms-conditions": "on",
+        "image": "default.jpg",
+        "id": 22
+    },
+    {
+        "name": "Miguel Antonio",
+        "surname": "Buritica Vargas",
+        "phone": "3146464588",
+        "email": "carlostibocheylaura@gmail.com",
+        "pass": "$2a$10$zBoW6qKiROSNq1VRTN9SIOidTrbuz0v0QZq6lreVTS9BDX4mI3u7G",
+        "pass_confirm": null,
+        "agree-terms-conditions": "on",
+        "id": 23
+    },
+    {
+        "name": "Miguel Antonio",
+        "surname": "Buritica Vargas",
+        "phone": "3146464588",
+        "email": "carlostibocheylaura@gmail.com",
+        "pass": "$2a$10$HCbsLb/87yts6HA1j5R8tOLhhwa0/MK6jDDYf7Rwu9bQdX66uiaEW",
+        "pass_confirm": null,
+        "agree-terms-conditions": "on",
+        "agree-data": "on",
+        "image": "profile_photo-1639367446647.jpg",
+        "id": 24
+    },
+    {
+        "name": "Miguel Antonio",
+        "surname": "Buritica Vargas",
+        "phone": "3146464588",
+        "email": "carlostibocheylaura@gmail.com",
+        "pass": "$2a$10$PFO2LoTs/kg5NESPB8VRpuKs9GEkO8Dl7jFhmUrV..q3jXULEGZBi",
+        "pass_confirm": null,
+        "agree-data": "on",
+        "image": "default.jpg",
+        "id": 25
+    },
+    {
+        "name": "Miguel Antonio",
+        "surname": "Buritica Vargas",
+        "phone": "3146464588",
+        "email": "carlostibocheylaura@gmail.com",
+        "pass": "$2a$10$icDFU58ARcwBmOlekG3JcOl7wcihzTG1JUrw5MAA3XkYMkIRA.XE6",
+        "pass_confirm": null,
+        "agree-data": "on",
+        "image": "profile_photo-1639367775121.jpg",
+        "id": 26
+    },
+    {
+        "user_name": "Las puñaladas",
+        "name": "Miguel Antonio",
+        "surname": "Buritica Vargas",
+        "phone": "3146464588",
+        "email": "carlostibocheylaura@gmail.com",
+        "pass": "$2a$10$2oHPclOy8//py4j.fHOtpecwrQ8JL8TF7X5uPMMvU6I1LwWmS/5nK",
+        "pass_confirm": null,
+        "agree-terms-conditions": "on",
+        "image": "profile_photo-1639367846722.jpg",
+        "id": 27
     }
 ]
