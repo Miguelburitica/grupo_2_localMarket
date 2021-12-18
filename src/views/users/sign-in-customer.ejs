@@ -2,27 +2,8 @@
 <body>
 	<%- include('../partials/headerSeller') %>
 	<main class="signin-main">
-		<h2 class="titulo">Registra tu cuenta como vendedor</h2>
-		<form action="/users/sign-in-seller" method="post" class="formulario" enctype="multipart/form-data">
-			<input
-				class="text-box  <%= locals.errors !== undefined ? locals.errors && errors.name === undefined ? 'correct' : 'incorrect' : ''%>"
-				type="text"
-				name="user_name"
-				id="user_name"
-				placeholder="Razón social (tienda/finca/familia)"
-				minlength="2"
-				required
-				<% if (locals.old && old.user_name) { %>
-					value="<%= old.user_name %>"
-				<% } %>
-			/>
-			<% if (locals.errors && errors.user_name) { %>
-				<span class="error"><%= errors.user_name.msg %> </span>
-			<% } else if(locals.errors){ %>
-				<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
-			<% } else {%>
-				<span class="error" style="color: inherit;"></span>
-				<% } %> 
+		<h2 class="titulo">¡Crea tu cuenta!</h2>
+		<form action="/users/sign-in-customer" method="post" class="formulario" enctype="multipart/form-data">
 			<input
 				class="text-box <%= locals.errors !== undefined ? locals.errors && errors.name === undefined ? 'correct' : 'incorrect' : ''%> "
 				type="text"
@@ -65,8 +46,8 @@
 			<label for="profile_photo" class="text-box label-file"
 				><i class="far fa-user-circle"></i> Sube una foto para tu perfil</label
 			>
-			<span class="error" style="color: inherit;"></span>
-			<input
+				<span class="error" style="color: inherit;"></span>
+				<input
 				class="text-box <%= locals.errors !== undefined ? locals.errors && errors.phone === undefined ? 'correct' : 'incorrect' : ''%>"
 				type="tel"
 				name="phone"
@@ -127,7 +108,7 @@
 					<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
 				<% } else {%>
 					<span class="error" style="color: inherit;"></span>
-					<% } %> 
+					<% } %>  
 			<div class="check">
 				<input class="slides" type="checkbox" name="agree-terms-conditions" id="agree-terms-conditions" />
 				<label for="agree-terms-conditions">Acepto los terminos y condiciones de uso</label>
@@ -137,7 +118,7 @@
 				<label for="agree-data">Acepto las politicas de tratamientos de datos</label>
 			</div>
 			<button type="submit" class="submit">Registrarse</button>
-			<a href="/users/sign-in-customer"> Registrarse como comprador </a>
+			<a href="/users/sign-in-seller"> Registrarse como vendedor </a>
 		</form>
 	</main>
 	<%- include('../partials/footer') %>

@@ -12,7 +12,10 @@
 				Ingresa si tienes una cuenta con nosotros, si no
 				<a href="/sign-in">CREA UNA CUENTA</a>
 			</p>
-			<form action="/index.html" class="formulario">
+			<form action="/users/login"
+				class="formulario"
+				method="POST"
+				>
 				<input
 					class="text-box"
 					type="email"
@@ -21,6 +24,11 @@
 					placeholder="Correo electrónico"
 					required
 				/>
+				<% if(locals.errors && locals.email){ %>
+					<div class="text-danger">
+						<%= errors.email.msg%>
+					</div>
+					<% } %>   
 				<input
 					class="text-box"
 					type="password"

@@ -1,14 +1,12 @@
 [
     {
-        "id":1,
-        "name":"Fernando",
-        "surname":"Zapata",
-        "password":"123456",
+        "id": 1,
+        "name": "Fernando",
+        "surname": "Zapata",
+        "password": "123456",
         "phone": 3005679876,
         "email": "dmzapatas@gmail.com",
-        "market":"Carlos E Restrepo"
-
-        
+        "market": "Carlos E Restrepo"
     },
     {
         "id": 1,
@@ -18,15 +16,6 @@
         "phone": "317-641-5524",
         "email": "obroschke0@newsvine.com",
         "market": "66958 American Ash Park"
-    },
-    {
-        "id": 2,
-        "name": "Ricky",
-        "surname": "Derell",
-        "password": "2gj9DvA3KW",
-        "phone": "689-131-2787",
-        "email": "rderell1@webmd.com",
-        "market": "31829 Northview Plaza"
     },
     {
         "id": 3,
@@ -97,8 +86,53 @@
         "surname": "Rasch",
         "password": "3wNzKFSLwAXQ",
         "phone": "338-241-7300",
-        "email":"grasch9@unesco.org",
-        "market":"1606 Butternut Avenue"
+        "email": "grasch9@unesco.org",
+        "market": "1606 Butternut Avenue"
+    },
+    {
+        "id": 11,
+        "name": "Miguel Antonio",
+        "surname": "Buritica Vargas",
+        "phone": "3146464588",
+        "email": "carlostibocheylaura@gmail.com",
+        "pass": "J45KTcSQwcURF9r",
+        "pass-confirm": "J45KTcSQwcURF9r",
+        "agree-data": "on"
+    },
+    {
+        "name": "DIANA MELISA",
+        "surname": "DOMINGUEZ GOMEZ",
+        "phone": "300 4867807",
+        "email": "ggg@aaa",
+        "pass": "9Y6aaH3mtPUdjGV",
+        "pass-confirm": "9Y6aaH3mtPUdjGV",
+        "agree-terms-conditions": "on",
+        "agree-data": "on",
+        "id": 12
+    },
+    {
+        "user-name": "finca",
+        "name": "Daniela",
+        "surname": "Zapata",
+        "market": "Carlos E Restrepo",
+        "phone": "3004867807",
+        "email": "dani@gmail.com",
+        "pass": "$2a$10$tPd54uqvqaTuLAIIWQld3u9xXB4KWt1XEuBNhdcWjd/0d1TCtf6gm",
+        "pass-confirm": "0123456789",
+        "agree-terms-conditions": "on",
+        "agree-data": "on",
+        "id": 13
+    },
+    {
+        "user_name": "Las puñaladas",
+        "name": "Miguel Antonio",
+        "surname": "Buritica Vargas",
+        "phone": "3146464588",
+        "email": "carlostibocheylaura@gmail.com",
+        "pass": "$2a$10$Knu5lWfTOohW11bSZlOm4OAC.RCcLUgmLC/XJyT8zTHfqiiML9Oci",
+        "pass_confirm": null,
+        "agree-terms-conditions": "on",
+        "image": "profile_photo-1639367946852.jpg",
+        "id": 14
     }
-   
 ]

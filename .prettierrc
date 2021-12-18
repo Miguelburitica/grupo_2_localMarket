@@ -16,5 +16,5 @@
 	"useTabs": true,
 	"vueIndentScriptAndStyle": false,
 	"tabWidth": 4,
-	"editor.formatOnSave": true
+	"editor.formatOnSave": false
 }

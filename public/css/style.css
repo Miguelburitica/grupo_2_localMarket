@@ -1371,7 +1371,7 @@ i {
 
 /* Inicio Estilos sign-in */
 
-.singin-main {
+.signin-main {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -1380,7 +1380,7 @@ i {
 	background-color: #efefef;
 }
 
-.singin-main .titulo {
+.signin-main .titulo {
 	color: #552827;
 	margin: 10px 0;
 	border-bottom: #552827 solid 2px;
@@ -1404,15 +1404,16 @@ i {
 	transition: 0.3s ease all;
 }
 
-.singin-main .formulario {
+.signin-main .formulario {
 	max-width: 650px;
+	gap: 7px;
 }
 
-.singin-main .formulario .input-field{
+.signin-main .formulario .input-field {
 	width: 80%;
 }
 
-.singin-main .formulario .select-field select {
+.signin-main .formulario .select-field select {
 	width: 80%;
 	width: 100%;
 }
@@ -1443,7 +1444,7 @@ i {
 }
 
 .formulario .incorrect {
-	box-shadow: inset 0 0 0 2px rgba(200, 100, 108, 0.8), 0 0 0 6px rgba(205, 125, 125, 0.2);
+	box-shadow: inset 0 0 0 2px rgba(200, 100, 108, 0.3), 0 0 0 4px rgba(205, 125, 125, 0.2);
 	border-color: #80000030;
 	transition: ease all 0.3s;
 }
@@ -1454,15 +1455,15 @@ i {
 }
 
 .formulario .incorrect:focus {
-	box-shadow: inset 0 0 0 2px rgba(200, 100, 108, 0.8), 0 0 0 3px rgba(205, 125, 125, 0.2);
+	box-shadow: inset 0 0 0 2px rgba(200, 100, 108, 0.3), 0 0 0 3px rgba(205, 125, 125, 0.2);
 	border-color: #80000030;
 	background-color: #ff97ae15;
 	transition: ease all 0.3s;
 }
 
 .formulario .correct {
-	box-shadow: inset 0 0 0 2px rgba(100, 200, 108, 0.8), 0 0 0 4px rgba(125, 205, 125, 0.2);
-	border-color: #00800030;
+	/* box-shadow: inset 0 0 0 2px rgba(100, 200, 108, 0.1), 0 0 0 4px rgba(125, 205, 125, 0.2); */
+	/* border-color: #00800030; */
 	transition: ease all 0.3s;
 }
 
@@ -1473,10 +1474,9 @@ i {
 
 .formulario .correct:focus {
 	background-color: #a0ff971f;
-	box-shadow: inset 0 0 0 2px rgba(100, 200, 108, 0.8), 0 0 0 3px rgba(125, 205, 125, 0.2);
+	box-shadow: inset 0 0 0 2px rgba(100, 200, 108, 0.1), 0 0 0 3px rgba(125, 205, 125, 0.2);
 	border-color: #00800030;
 	transition: ease all 0.3s;
-	
 }
 
 .formulario .check {
@@ -1550,7 +1550,7 @@ i {
 	color: #552827e4;
 }
 
-.singin-main .formulario a {
+.signin-main .formulario a {
 	margin: 5px 0px;
 	color: #653847cc;
 	font-weight: 600;
@@ -1558,13 +1558,55 @@ i {
 	transition: 0.3s ease all;
 }
 
-.singin-main .formulario a:hover {
+.signin-main .formulario a:hover {
 	color: #653827ff;
+}
+
+.formulario .file-field {
+	opacity: 0;
+	width: 0.1px;
+	height: 0.1px;
+	position: absolute;
+}
+
+.formulario .label-file {
+	width: 55%;
+	height: inherit;
+	padding: 6px 8px;
+	border-radius: 4px;
+	cursor: pointer;
+	background-color: #fefefe;
+	font-weight: 600;
+	color: #65382790;
+	text-align: center;
+}
+
+.formulario .error {
+	font-size: 11px;
+	align-self: self-start;
+	margin-left: 50px;
+	color: rgb(200, 100, 108);
+	font-weight: bold;
+	width: 75%;
+	transition: all 0.3 ease;
 }
 
 @media (min-width: 481px) {
 	.formulario .check label {
 		font-size: 16px;
+	}
+
+	.formulario .error {
+		margin-left: 65px;
+		transition: all 0.3 ease;
+}
+}
+
+@media (min-width: 768px){
+	.formulario .error {
+		margin-left: 85px;
+		width: 80%;
+		transition: all 0.3 ease;
 	}
 }
 
@@ -2250,7 +2292,7 @@ h2 {
 	max-width: 800px;
 	margin-bottom: 30px;
 }
-.formulario .input-field{
+.formulario .input-field {
 	width: 85%;
 	display: flex;
 	flex-direction: column;
@@ -2288,7 +2330,7 @@ h2 {
 	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.2), 0 0 0 3px rgba(185, 185, 185, 0.2);
 	transition: 0.3s ease all;
 }
-.formulario .select-field select:focus{
+.formulario .select-field select:focus {
 	outline: none;
 	border: none;
 	background-color: #f1ff9700;
