@@ -134,5 +134,18 @@
         "agree-terms-conditions": "on",
         "image": "profile_photo-1639367946852.jpg",
         "id": 14
+    },
+    {
+        "user_name": "arroz con leche",
+        "name": "Daniela",
+        "surname": "Zapata",
+        "phone": "3004867807",
+        "email": "DMZAPATAS11@GMAIL.COM",
+        "pass": "$2a$10$t0N7glUDU7cY8udx33M0t.DSHy4t7kON/mAwkolpL/vF4p.lWHGgy",
+        "pass_confirm": null,
+        "agree-terms-conditions": "on",
+        "agree-data": "on",
+        "image": "default.jpg",
+        "id": 15
     }
 ]

@@ -43,8 +43,20 @@
 		</nav>
 
 		<div class="forms">
+			<% if (locals.isLogged) { %>
+					<a class="login" href="#" id="dropUser" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">
+						<img src="/images/users/default.jpg" width="40" style="border-radius: 100%;">
+						Hola 
+					</a>
+					style="left: auto; right: 0;">
+						<a class="login" href="/users/seller">Mi perfil</a>
+						<div class="dropdown-divider"></div>
+						<a class="login" href="/users/logout">Cerrar sesión</a>
+			<% } else { %>
 			<a href="/users/sign-in-customer" class="sign-in">Regístrate <i class="fas fa-sign-in-alt"></i></a>
 			<a href="/users/login" class="login">Loguéate <i class="far fa-id-card"></i></a>
+			<% } %>
 		</div>
 	</div>
 </header>

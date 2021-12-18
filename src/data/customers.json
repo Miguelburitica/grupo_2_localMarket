@@ -283,5 +283,17 @@
         "agree-terms-conditions": "on",
         "image": "profile_photo-1639367846722.jpg",
         "id": 27
+    },
+    {
+        "name": "Olga",
+        "surname": "Sosa",
+        "phone": "3004867807",
+        "email": "DMZAPATAS10@GMAIL.COM",
+        "pass": "$2a$10$7lMzEfdqDW2HjYlCPgJthexFjnCexIpCXrbScCzBu42wLWgFPUMya",
+        "pass_confirm": null,
+        "agree-terms-conditions": "on",
+        "agree-data": "on",
+        "image": "default.jpg",
+        "id": 28
     }
 ]

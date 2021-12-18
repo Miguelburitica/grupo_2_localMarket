@@ -147,26 +147,33 @@ const controller = {
 	},
 	// Login vendedor o comprador
 	showLogin: function (req, res) {
-		console.log(req.session);
 		res.render(pathViews('login'));
 	},
 	// Enviar los datos
 	processLogin: function (req, res) {
 		const userToLogCustomer = findByEmailCustomer(req.body.email);
 		const userToLogSeller = findByEmailSeller(req.body.email);
+		req.session.isUserLogged = false;
+
 		if (userToLogCustomer) {
 			const passwordOk = bcryptjs.compareSync(req.body.pass, userToLogCustomer.pass);
 			if (passwordOk) {
 				delete userToLogCustomer.pass;
 				req.session.customerLogged = userToLogCustomer;
+				req.session.isUserLogged = true;
+
+				if(req.body.remember_user){
+					res.cookie('userEmail',req.body.email,{maxAge: (1000*60)*3})
+				}
 				return res.redirect('/users/customer');
 			}
-			// Este if está problemático. Dice que credenciales inválidas.
-		} else if (userToLogSeller) {
+		} 
+		else if (userToLogSeller) {
 			const passwordOk = bcryptjs.compareSync(req.body.pass, userToLogSeller.pass);
 			if (passwordOk) {
 				delete userToLogSeller.pass;
 				req.session.sellerLogged = userToLogSeller;
+				req.session.isUserLogged = true;
 				return res.redirect('/users/seller');
 			}
 		} else {
@@ -181,6 +188,11 @@ const controller = {
 			// })
 		}
 	},
+
+	logout: (req,res)=>{
+		req.session.destroy();
+		return res.redirect('/');
+	}
 };
 
 module.exports = controller;
