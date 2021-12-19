@@ -4,11 +4,12 @@
 	<%- include('../partials/headerSeller') %>
 	<main class="profile-seller-main">
 		<div class="profile-seller-left">
+			<img src="/images/users/<%= locals.userLogged.image %> " alt="" />
 			<p>LocalMarket: Conectando campesinos con sus vecinos</p>
 		</div>
 		<div class="profile-seller-right">
 			<h2>
-				Hola <%= customer.name + ' ' + customer.surname %> , <br />
+				Hola <%= userLogged.name + ' ' + userLogged.surname %>, <br />
 				¿Qué quieres hacer hoy?
 			</h2>
 			<div>
@@ -18,6 +19,7 @@
 				<a href="#"> <i class="far fa-edit"></i> Ir a mi carrito</a>
 			</div>
 		</div>
+		<% console.log(userLogged) %> 
 	</main>
 	<%- include('../partials/footer') %>
 </body>

@@ -1,4 +1,4 @@
-<header class="main-header">
+<header class="main-header">	
 	<div class="content">
 		<div class="burger-menu">
 			<i class="fas fa-bars"></i>
@@ -27,7 +27,8 @@
 				<a href="/products/list">
 					<li class="option">Mis Productos</li>
 				</a>
-				<a href="/users/sellerProfile">
+				<!-- Acá faltaria poner un condicional para el perfil de comprador -->
+				<a href="/users/seller">
 					<li class="option">Mi perfil</li>
 				</a>
 				<a href="/products/catalog">
@@ -46,13 +47,12 @@
 			<% if (locals.isLogged) { %>
 					<a class="login" href="#" id="dropUser" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">
-						<img src="/images/users/default.jpg" width="40" style="border-radius: 100%;">
-						Hola 
+						<img src="/images/users/<%= locals.userLogged.image %> " width="40" style="border-radius: 100%;">
+						<%= locals.userLogged.name + ' ' + locals.userLogged.surname %>
 					</a>
-					style="left: auto; right: 0;">
-						<a class="login" href="/users/seller">Mi perfil</a>
-						<div class="dropdown-divider"></div>
-						<a class="login" href="/users/logout">Cerrar sesión</a>
+					<a class="login" href="/users/seller">Mi perfil</a>
+					<div class="dropdown-divider"></div>
+					<a class="login" href="/users/logout">Cerrar sesión</a>
 			<% } else { %>
 			<a href="/users/sign-in-customer" class="sign-in">Regístrate <i class="fas fa-sign-in-alt"></i></a>
 			<a href="/users/login" class="login">Loguéate <i class="far fa-id-card"></i></a>

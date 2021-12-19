@@ -4,12 +4,12 @@
 	<%- include('../partials/headerSeller') %>
 	<main class="profile-seller-main">
 		<div class="profile-seller-left">
-			<img src="/images/users/<%= seller.photo %> " alt="" />
+			<img src="/images/users/<%= userLogged.image %> " alt="" />
 			<p>LocalMarket: Conectando campesinos con sus vecinos</p>
 		</div>
 		<div class="profile-seller-right">
 			<h2>
-				Hola <%= seller.name + ' ' + seller.surname %> , <br />
+				Hola <%= userLogged.name + ' ' + userLogged.surname %> , <br />
 				¿Qué quieres hacer hoy?
 			</h2>
 			<div>

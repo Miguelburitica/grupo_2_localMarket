@@ -96,7 +96,7 @@ const controller = {
 	},
 	// Mostrar perfil de comprador
 	showCustomerProfile: function (req, res) {
-		res.render(pathViews('customer'), { customer: req.session.customerLogged });
+		res.render(pathViews('customer'), { customer: res.locals.customerLogged });
 	},
 	// Registro de comprador
 	showSignInCustomer: function (req, res) {
@@ -113,7 +113,6 @@ const controller = {
 	// 	Crea usuario vendedor o comprador
 	addUser: function (req, res) {
 		let errors = validationResult(req);
-
 		if (errors.isEmpty()) {
 			console.log(req.file);
 			const user = {
@@ -152,16 +151,15 @@ const controller = {
 	// Enviar los datos
 	processLogin: function (req, res) {
 		const userToLogCustomer = findByEmailCustomer(req.body.email);
-		const userToLogSeller = findByEmailSeller(req.body.email);
+		const userToLogSeller = findByEmailSeller(req.body.email);//buscamos los usuarios en cada DB
 		req.session.isUserLogged = false;
-
 		if (userToLogCustomer) {
-			const passwordOk = bcryptjs.compareSync(req.body.pass, userToLogCustomer.pass);
+			const passwordOk = bcryptjs.compareSync(req.body.pass, userToLogCustomer.pass);// Hasheo de la contraseña
 			if (passwordOk) {
 				delete userToLogCustomer.pass;
 				req.session.customerLogged = userToLogCustomer;
 				req.session.isUserLogged = true;
-
+				// cookies para comprador
 				if(req.body.remember_user){
 					res.cookie('userEmail',req.body.email,{maxAge: (1000*60)*3})
 				}
@@ -174,6 +172,10 @@ const controller = {
 				delete userToLogSeller.pass;
 				req.session.sellerLogged = userToLogSeller;
 				req.session.isUserLogged = true;
+				// cookies para vendedor
+				if(req.body.remember_user){
+					res.cookie('userEmail',req.body.email,{maxAge: (1000*60)*3})
+				}
 				return res.redirect('/users/seller');
 			}
 		} else {
@@ -190,6 +192,7 @@ const controller = {
 	},
 
 	logout: (req,res)=>{
+		res.clearCookie('userEmail');
 		req.session.destroy();
 		return res.redirect('/');
 	}
