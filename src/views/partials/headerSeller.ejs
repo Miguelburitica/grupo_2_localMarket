@@ -1,4 +1,4 @@
-<header class="main-header">
+<header class="main-header">	
 	<div class="content">
 		<div class="burger-menu">
 			<i class="fas fa-bars"></i>
@@ -18,22 +18,30 @@
 				</button>
 			</form>
 		</div>
+		<% if (locals.isLogged && locals.customerLogged) { %>
 		<a href="/products/shopping-cart"><i class="fas fa-shopping-basket"></i></a>
+		<% } %>
 		<nav class="nav-bar">
 			<ul class="options">
 				<a href="/">
 					<li class="option">Inicio</li>
 				</a>
-				<a href="/products/list">
-					<li class="option">Mis Productos</li>
-				</a>
-				<a href="/users/sellerProfile">
+			<% if (locals.isLogged && locals.customerLogged) { %>
+				<a href="/users/customer">
 					<li class="option">Mi perfil</li>
 				</a>
 				<a href="/products/catalog">
 					<li class="option">Productos</li>
 				</a>
 				<a href="/">
+			<%}else if(locals.isLogged && locals.sellerLogged) { %>
+				<a href="/users/seller">
+					<li class="option">Mi perfil</li>
+				</a>
+				<a href="/products/list">
+					<li class="option">Mis Productos</li>
+				</a>
+			<% } %>
 					<li class="option">Agricultores</li>
 				</a>
 				<a href="/">
@@ -43,8 +51,17 @@
 		</nav>
 
 		<div class="forms">
+			<% if (locals.isLogged) { %>
+					<a class="login" href="#" id="dropUser" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">
+						<img src="/images/users/<%= locals.userLogged.image %> " width="40" style="border-radius: 100%;">
+						<%= locals.userLogged.name %>
+					</a>
+					<a class="login" href="/users/logout">Cerrar sesión</a>
+			<% } else { %>
 			<a href="/users/sign-in-customer" class="sign-in">Regístrate <i class="fas fa-sign-in-alt"></i></a>
 			<a href="/users/login" class="login">Loguéate <i class="far fa-id-card"></i></a>
+			<% } %>
 		</div>
 	</div>
 </header>

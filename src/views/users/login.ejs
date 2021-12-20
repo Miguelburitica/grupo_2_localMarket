@@ -10,21 +10,23 @@
 			<h2>Iniciar sesión</h2>
 			<p>
 				Ingresa si tienes una cuenta con nosotros, si no
-				<a href="/sign-in">CREA UNA CUENTA</a>
+				<a href="/users/sign-in-customer">CREA UNA CUENTA</a>
 			</p>
 			<form action="/users/login"
 				class="formulario"
 				method="POST"
 				>
+				<% console.log(locals.errors) %>
 				<input
-					class="text-box"
+					class="text-box<%= locals.errors && errors.email ? 'is-invalid' : null %>"
 					type="email"
 					name="email"
 					id="email"
 					placeholder="Correo electrónico"
+					value="<%= locals.oldData && oldData.email ? oldData.email : null %>"
 					required
 				/>
-				<% if(locals.errors && locals.email){ %>
+				<% if(locals.errors && errors.email){ %>
 					<div class="text-danger">
 						<%= errors.email.msg%>
 					</div>
@@ -42,7 +44,7 @@
 					<input
 						class="slides"
 						type="checkbox"
-						name="agree-terms-conditions"
+						name="remember_user"
 						id="agree-terms-conditions"
 					/>
 					<label for="agree-terms-conditions"

@@ -35,7 +35,7 @@ function updateCustomers(customers) {
 function updateSellers(sellers) {
 	fs.writeFileSync(path.resolve(__dirname, '../data/sellers.json'), JSON.stringify(sellers, null, 4));
 }
-//  ------- Hasta aquí------ ¿Qué hace? Están repetidas en el controller que exportas. Avisa si se pueden borrar :)
+
 
 function newSellerId() {
 	let ultimo = 0;
@@ -96,7 +96,7 @@ const controller = {
 	},
 	// Mostrar perfil de comprador
 	showCustomerProfile: function (req, res) {
-		res.render(pathViews('customer'), { customer: req.session.customerLogged });
+		res.render(pathViews('customer'), { customer: res.locals.customerLogged });
 	},
 	// Registro de comprador
 	showSignInCustomer: function (req, res) {
@@ -113,7 +113,6 @@ const controller = {
 	// 	Crea usuario vendedor o comprador
 	addUser: function (req, res) {
 		let errors = validationResult(req);
-
 		if (errors.isEmpty()) {
 			console.log(req.file);
 			const user = {
@@ -147,40 +146,63 @@ const controller = {
 	},
 	// Login vendedor o comprador
 	showLogin: function (req, res) {
-		console.log(req.session);
 		res.render(pathViews('login'));
 	},
 	// Enviar los datos
 	processLogin: function (req, res) {
+		//validaciones
+		let resultValidation = validationResult(req);
+
+        if (resultValidation.errors.length > 0) {
+            return res.render(pathViews('login'), {
+                errors: resultValidation.mapped(),
+                oldData: req.body
+            })
+		}else{
 		const userToLogCustomer = findByEmailCustomer(req.body.email);
-		const userToLogSeller = findByEmailSeller(req.body.email);
+		const userToLogSeller = findByEmailSeller(req.body.email);//buscamos los usuarios en cada DB
+		req.session.isUserLogged = false;
 		if (userToLogCustomer) {
-			const passwordOk = bcryptjs.compareSync(req.body.pass, userToLogCustomer.pass);
+			const passwordOk = bcryptjs.compareSync(req.body.pass, userToLogCustomer.pass);// Hasheo de la contraseña
 			if (passwordOk) {
 				delete userToLogCustomer.pass;
 				req.session.customerLogged = userToLogCustomer;
+				req.session.isUserLogged = true;
+				// cookies para comprador
+				if(req.body.remember_user){
+					res.cookie('userEmail',req.body.email,{maxAge: (1000*60)*3})
+				}
 				return res.redirect('/users/customer');
 			}
-			// Este if está problemático. Dice que credenciales inválidas.
-		} else if (userToLogSeller) {
+		} 
+		else if (userToLogSeller) {
 			const passwordOk = bcryptjs.compareSync(req.body.pass, userToLogSeller.pass);
 			if (passwordOk) {
 				delete userToLogSeller.pass;
 				req.session.sellerLogged = userToLogSeller;
+				req.session.isUserLogged = true;
+				// cookies para vendedor
+				if(req.body.remember_user){
+					res.cookie('userEmail',req.body.email,{maxAge: (1000*60)*3})
+				}
 				return res.redirect('/users/seller');
 			}
 		} else {
-			// Aquí debería ir la validación del usuario que no existe con errors
-			return res.send('Las credenciales son inválidas');
-			// return res.send('login', {
-			// 	errors:{
-			// 		email: {
-			// 			msg: 'Las credenciales son inválidas'
-			// 		}
-			// 	}
-			// })
+				res.render(pathViews('login'), {
+				errors:{
+					email: {
+						msg: 'Las credenciales son inválidas'
+					}
+				}
+			})
 		}
-	},
+	}},
+
+	logout: (req,res)=>{
+		res.clearCookie('userEmail');
+		req.session.destroy();
+		return res.redirect('/');
+	}
 };
 
 module.exports = controller;

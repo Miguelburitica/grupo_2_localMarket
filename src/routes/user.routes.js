@@ -4,6 +4,8 @@ const router = express.Router();
 const { check } = require('express-validator');
 const multer = require('multer');
 const path = require('path');
+const guestMiddleware = require('../middlewares/guestMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
@@ -44,7 +46,7 @@ let validateRegisterSeller = [
 			'Trata ingresar tu correo, correo del que estés atento para estar al tanto de cualquier novedad. >_<'
 		)
 		.isEmail()
-		.withMessage('El correo debe tener un formato de correo valido como "ejemplo@organizacion.tipo"'),
+		.withMessage('El correo debe tener un formato de correo válido como "ejemplo@organizacion.tipo"'),
 ];
 
 let validateRegisterCustomer = [
@@ -77,25 +79,33 @@ let validateRegisterCustomer = [
 		.withMessage('El correo debe tener un formato de correo valido como "ejemplo@organizacion.tipo"'),
 ];
 
+let validateLogin =[
+	check('email').notEmpty().withMessage('Escribe con el que te registraste el Local Market')
+    .isEmail().withMessage('Ingresa un correo válido como "ejemplo@organizacion.tipo"')
+];
+
 // GET Seller page.
-router.get('/seller', userController.showSellerProfile);
+router.get('/seller',authMiddleware, userController.showSellerProfile);
 // GET Customer page.
-router.get('/customer', userController.showCustomerProfile);
+router.get('/customer',authMiddleware, userController.showCustomerProfile);
 
 // Mostrar el login.
-router.get('/login', userController.showLogin);
+router.get('/login',guestMiddleware, userController.showLogin);
 // Enviar los datos del login.
-router.post('/login', userController.processLogin);
+router.post('/login',validateLogin, userController.processLogin);
 
 // Get Sign-in page comprador
-router.get('/sign-in-customer', userController.showSignInCustomer);
+router.get('/sign-in-customer',guestMiddleware, userController.showSignInCustomer);
 
 router.post('/sign-in-customer', uploadFile.single('profile_photo'), validateRegisterCustomer, userController.addUser);
 
 // Get Sign-in page vendedor
-router.get('/sign-in-seller', userController.showSignInSeller);
+router.get('/sign-in-seller',guestMiddleware,userController.showSignInSeller);
 
 // Enviar datos de registro de comprador
 router.post('/sign-in-seller', uploadFile.single('profile_photo'), validateRegisterSeller, userController.addUser);
+
+//Get Cerrar sesión
+router.get('/logout', userController.logout)
 
 module.exports = router;
