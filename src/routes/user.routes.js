@@ -46,7 +46,7 @@ let validateRegisterSeller = [
 			'Trata ingresar tu correo, correo del que estés atento para estar al tanto de cualquier novedad. >_<'
 		)
 		.isEmail()
-		.withMessage('El correo debe tener un formato de correo valido como "ejemplo@organizacion.tipo"'),
+		.withMessage('El correo debe tener un formato de correo válido como "ejemplo@organizacion.tipo"'),
 ];
 
 let validateRegisterCustomer = [
@@ -79,6 +79,11 @@ let validateRegisterCustomer = [
 		.withMessage('El correo debe tener un formato de correo valido como "ejemplo@organizacion.tipo"'),
 ];
 
+let validateLogin =[
+	check('email').notEmpty().withMessage('Escribe con el que te registraste el Local Market')
+    .isEmail().withMessage('Ingresa un correo válido como "ejemplo@organizacion.tipo"')
+];
+
 // GET Seller page.
 router.get('/seller',authMiddleware, userController.showSellerProfile);
 // GET Customer page.
@@ -87,7 +92,7 @@ router.get('/customer',authMiddleware, userController.showCustomerProfile);
 // Mostrar el login.
 router.get('/login',guestMiddleware, userController.showLogin);
 // Enviar los datos del login.
-router.post('/login', userController.processLogin);
+router.post('/login',validateLogin, userController.processLogin);
 
 // Get Sign-in page comprador
 router.get('/sign-in-customer',guestMiddleware, userController.showSignInCustomer);

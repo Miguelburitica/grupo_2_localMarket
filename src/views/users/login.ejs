@@ -16,15 +16,17 @@
 				class="formulario"
 				method="POST"
 				>
+				<% console.log(locals.errors) %>
 				<input
-					class="text-box"
+					class="text-box<%= locals.errors && errors.email ? 'is-invalid' : null %>"
 					type="email"
 					name="email"
 					id="email"
 					placeholder="Correo electrónico"
+					value="<%= locals.oldData && oldData.email ? oldData.email : null %>"
 					required
 				/>
-				<% if(locals.errors && locals.email){ %>
+				<% if(locals.errors && errors.email){ %>
 					<div class="text-danger">
 						<%= errors.email.msg%>
 					</div>

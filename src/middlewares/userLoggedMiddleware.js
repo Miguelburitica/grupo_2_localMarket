@@ -40,8 +40,10 @@ function userLoggedMiddleware(req, res, next){
         //  Con esto estamos mandando los datos a las vistas.
          if(req.session.customerLogged){
              res.locals.userLogged = req.session.customerLogged
+             res.locals.customerLogged=req.session.customerLogged
          }else if(req.session.sellerLogged){
             res.locals.userLogged = req.session.sellerLogged
+            res.locals.sellerLogged=req.session.sellerLogged
      }
      
     }

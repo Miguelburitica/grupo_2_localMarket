@@ -35,7 +35,7 @@ function updateCustomers(customers) {
 function updateSellers(sellers) {
 	fs.writeFileSync(path.resolve(__dirname, '../data/sellers.json'), JSON.stringify(sellers, null, 4));
 }
-//  ------- Hasta aquí------ ¿Qué hace? Están repetidas en el controller que exportas. Avisa si se pueden borrar :)
+
 
 function newSellerId() {
 	let ultimo = 0;
@@ -150,6 +150,15 @@ const controller = {
 	},
 	// Enviar los datos
 	processLogin: function (req, res) {
+		//validaciones
+		let resultValidation = validationResult(req);
+
+        if (resultValidation.errors.length > 0) {
+            return res.render(pathViews('login'), {
+                errors: resultValidation.mapped(),
+                oldData: req.body
+            })
+		}else{
 		const userToLogCustomer = findByEmailCustomer(req.body.email);
 		const userToLogSeller = findByEmailSeller(req.body.email);//buscamos los usuarios en cada DB
 		req.session.isUserLogged = false;
@@ -179,17 +188,15 @@ const controller = {
 				return res.redirect('/users/seller');
 			}
 		} else {
-			// Aquí debería ir la validación del usuario que no existe con errors
-			return res.send('Las credenciales son inválidas');
-			// return res.send('login', {
-			// 	errors:{
-			// 		email: {
-			// 			msg: 'Las credenciales son inválidas'
-			// 		}
-			// 	}
-			// })
+				res.render(pathViews('login'), {
+				errors:{
+					email: {
+						msg: 'Las credenciales son inválidas'
+					}
+				}
+			})
 		}
-	},
+	}},
 
 	logout: (req,res)=>{
 		res.clearCookie('userEmail');
