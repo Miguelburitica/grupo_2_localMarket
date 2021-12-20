@@ -7,11 +7,14 @@ const pathViews = function (nameView) {
 };
 
 const productsFilePath = path.resolve(__dirname, '../data/products.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const products = function () {
+	return JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+};
 
 const sellersFilePath = path.resolve(__dirname, '../data/sellers.json');
-const sellers = JSON.parse(fs.readFileSync(sellersFilePath, 'utf-8'));
-
+const sellers = function () {
+	return JSON.parse(fs.readFileSync(sellersFilePath, 'utf-8'));
+};
 //función que permite almacenar el producto nuevo con el id superior al mayor de data
 
 function newId() {
@@ -34,7 +37,6 @@ const controller = {
 	},
 
 	showCatalog: function (req, res) {
-
 		const frutas = products.filter(
 			(product) => product.category.includes('frutas') || product.category.includes('Frutas')
 		);
@@ -53,15 +55,13 @@ const controller = {
 
 	showEditItem: function (req, res) {
 		const idReq = req.params.id;
-		const prodReq = products.find(function (item) {
-			return item.id == idReq;
-		});
-		res.render(pathViews('edit-item'), { prodReq });
+		const product = model.getOne(idReq);
+		res.render(pathViews('edit-item'), { product });
 	},
 
 	updateItem: function (req, res) {
 		model.edit_products(req);
-		res.redirect('/products/detail/' + idReqs);
+		res.redirect('/products/detail/' + req.params.id);
 	},
 
 	showAddItem: function (req, res) {
@@ -106,13 +106,12 @@ const controller = {
 		const dataProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		const suggestProducts = dataProducts.filter((item) => item.id > 1 && item.id < 6);
 		const product = dataProducts.find((item) => item.id == id);
-		const seller = sellers.find((seller) => {
-			if (seller.product !== undefined) {
-				seller.products.includes(product.id);
-			} else {
-				seller = undefined;
-			}
+		console.log(sellers());
+		sellers().forEach((seller) => {
+			console.log(id);
+			console.log(seller.products.includes(id));
 		});
+		const seller = sellers().find((sel) => sel.products.includes(id));
 
 		res.render(pathViews('detail'), {
 			product: product,
@@ -123,7 +122,7 @@ const controller = {
 
 	deleteItem: function (req, res) {
 		const idToDelete = req.params.id;
-		const newProductsList = products.filter((product) => product.id != idToDelete);
+		const newProductsList = products().filter((product) => product.id != idToDelete);
 
 		const jsonProducts = JSON.stringify(newProductsList, null, 4);
 		fs.writeFileSync(productsFilePath, jsonProducts);

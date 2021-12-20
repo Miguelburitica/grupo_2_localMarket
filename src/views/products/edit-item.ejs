@@ -5,12 +5,12 @@
 		<h2 class="titulo">Edita este producto</h2>
 		<!-- <div class="image-product">
 			<img
-				src="/images/<%= prodReq.image %>"
-				alt="ilustración del <%= prodReq.name %>"
+				src="/images/<%= product.image %>"
+				alt="ilustración del <%= product.name %>"
 			/>
 		</div> -->
 		<form
-		action="/products/edit-item/<%= prodReq.id %>"
+		action="/products/edit-item/<%= product.id %>"
 		class="formulario"
 		method="POST"
 		enctype="multipart/form-data"
@@ -24,7 +24,7 @@
 					id="name"
 					placeholder="Nombre del producto"
 					minlength="2"
-					value= <%= prodReq.name %>
+					value= <%= product.name %>
 					required
 				/>
 			</div>
@@ -62,7 +62,7 @@
 					name="kilo"
 					id="price"
 					placeholder="Precio en pesos"
-					value= <%= prodReq.price.kilo%>
+					value= <%= product.price.kilo%>
 					required
 				/>
 			</div>
@@ -74,7 +74,7 @@
 					name="unidad"
 					id="price"
 					placeholder="Precio en pesos"
-					value= <%= prodReq.price.unidad%>
+					value= <%= product.price.unidad%>
 					required
 				/>
 			</div>

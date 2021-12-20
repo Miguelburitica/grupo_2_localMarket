@@ -29,17 +29,18 @@
     },
     {
         "id": 5,
-        "name": "Cebolla roja",
+        "name": "Cebolla",
         "price": {
             "kilo": 2400,
             "unidad": 450
         },
         "wayToBuy": 2,
-        "discount": 0.03,
+        "discount": "0.2",
         "category": [
-            "verduras"
+            "frutas"
         ],
-        "image": "redonion.jfif"
+        "image": "imagefile-1640041127011.jfif",
+        "seller": ""
     },
     {
         "id": 7,
@@ -62,58 +63,28 @@
             "kilo": 2300,
             "unidad": 700
         },
-        "discount": "0.15",
+        "discount": "0",
         "category": [
             "frutas"
         ],
-        "image": "imagefile-1638989333935.jfif",
-        "market": "Poblado",
+        "image": "imagefile-1640043525520.jfif",
         "seller": "",
         "wayToBuy": 2
     },
     {
-        "id": 10,
-        "name": "Lemon",
+        "id": 9,
+        "name": "Altamar",
         "price": {
-            "kilo": 11000,
-            "unidad": 0
+            "kilo": 12000,
+            "unidad": 15000
         },
-        "discount": "0.25",
+        "discount": "0.2",
         "category": [
             "frutas"
         ],
-        "image": "imagefile-1638989740023.jfif",
+        "image": "imagefile-1640041539683.jfif",
         "market": "Poblado",
         "seller": "",
-        "wayToBuy": 0
-    },
-    {
-        "id": 11,
-        "name": "Camino",
-        "price": {
-            "kilo": null,
-            "unidad": 1500
-        },
-        "discount": "0",
-        "category": [
-            "frutas"
-        ],
-        "seller": "",
-        "wayToBuy": 1,
-        "image": "imagefile-1639367096189.jfif"
-    },
-    {
-        "id": 12,
-        "name": "Camino",
-        "price": {
-            "kilo": null,
-            "unidad": 1500
-        },
-        "discount": "0",
-        "category": [
-            "frutas"
-        ],
-        "seller": "",
-        "wayToBuy": 1
+        "wayToBuy": 2
     }
 ]
