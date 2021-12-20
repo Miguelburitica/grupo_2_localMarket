@@ -36,7 +36,7 @@ let validateRegisterSeller = [
 			'La contraseña debe contener mayúsculas, minúsculas con al menos 8 caracteres y máximo 50 caracteres >n< .'
 		),
 	check('pass_confirm')
-	.custom((value, { req }) => value === req.body.pass)
+		.custom((value, { req }) => value === req.body.pass)
 		.withMessage('Debe ser igual que la contraseña que ingresaste'),
 	check('email')
 		.notEmpty()
@@ -66,7 +66,7 @@ let validateRegisterCustomer = [
 			'La contraseña como minimo debe tener 8 caracteres entre ellos al menos un número, una mayúscula y una minúscula >n< .'
 		),
 	check('pass_confirm')
-	.custom((value, { req }) => value === req.body.pass)
+		.custom((value, { req }) => value === req.body.pass)
 		.withMessage('Debe ser igual que la contraseña que ingresaste'),
 	check('email')
 		.notEmpty()
@@ -90,18 +90,12 @@ router.post('/login', userController.processLogin);
 // Get Sign-in page comprador
 router.get('/sign-in-customer', userController.showSignInCustomer);
 
-router.post(
-	'/sign-in-customer',
-	uploadFile.single('profile_photo'),
-	validateRegisterCustomer,
-	userController.addUser
-);
+router.post('/sign-in-customer', uploadFile.single('profile_photo'), validateRegisterCustomer, userController.addUser);
 
 // Get Sign-in page vendedor
 router.get('/sign-in-seller', userController.showSignInSeller);
 
 // Enviar datos de registro de comprador
-router.post('/sign-in-seller',
-uploadFile.single('profile_photo'), validateRegisterSeller, userController.addUser);
+router.post('/sign-in-seller', uploadFile.single('profile_photo'), validateRegisterSeller, userController.addUser);
 
 module.exports = router;
