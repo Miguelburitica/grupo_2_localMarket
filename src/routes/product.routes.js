@@ -38,16 +38,16 @@ const storage = multer.diskStorage({
 const uploadFile = multer({ storage });
 
 // LISTADO DE PRODUCTOS DEL VENDEDOR
-router.get('/list', productController.showList);
+router.get('/list', productController.showList);//agregar middleware para que solo el vendedor vea esta pestaña
 
 // LISTADO DE PRODUCTOS DE CARA AL COMPRADOR
-router.get('/catalog', productController.showCatalog);
+router.get('/catalog', productController.showCatalog);//agregar middleware para que solo el comprar vea esta pestaña
 
-//CREACIÓN DE PRODUCTOS
+//CREACIÓN DE PRODUCTOS //agregar middleware para que solo el vendedor vea esta pestaña
 router.get('/add-item', productController.showAddItem);
 router.post('/add-item', uploadFile.single('imagefile'),validateAddItem, productController.storeAddItem);
 
-// EDICIÓN DE PRODUCTOS
+// EDICIÓN DE PRODUCTOS //agregar middleware para que solo el vendedor vea esta pestaña
 // Mostrar el producto a editar.
 router.get('/edit-item/:id', productController.showEditItem);
 // Manda la info editada y redirige al detalle de producto.
@@ -56,7 +56,7 @@ router.post('/edit-item/:id', uploadFile.single('imagefile'),validateEditItem, p
 // DETALLE DE UN PRODUCTO
 router.get('/detail/:id?', productController.showDetail);
 
-//ELIMINAR PRODUCTOS
+//ELIMINAR PRODUCTOS //agregar middleware para que solo el vendedor vea esta pestaña
 router.delete('/:id', productController.deleteItem);
 // GET shopping-cart page.
 router.get('/shopping-cart', productController.showShoppingCart);

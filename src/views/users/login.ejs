@@ -23,6 +23,7 @@
 					id="email"
 					placeholder="Correo electrónico"
 					value="<%= locals.oldData && oldData.email ? oldData.email : null %>"
+					required
 				/>
 				<% if (locals.errors && errors.email) { %>
 					<span class="error"><%= errors.email.msg %> </span>
@@ -38,6 +39,7 @@
 					id="pass"
 					placeholder="Contraseña"
 					minlength="10"
+					required
 				/>
 				<div>
 					<input

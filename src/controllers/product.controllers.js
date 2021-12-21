@@ -37,13 +37,13 @@ const controller = {
 	},
 
 	showCatalog: function (req, res) {
-		const frutas = products.filter(
+		const frutas = products().filter(
 			(product) => product.category.includes('frutas') || product.category.includes('Frutas')
 		);
-		const verduras = products.filter(
+		const verduras = products().filter(
 			(product) => product.category.includes('verduras') || product.category.includes('Verduras')
 		);
-		const condimentos = products.filter(
+		const condimentos = products().filter(
 			(product) => product.category.includes('condimentos') || product.category.includes('Condimentos')
 		);
 		res.render(pathViews('catalog'), {
