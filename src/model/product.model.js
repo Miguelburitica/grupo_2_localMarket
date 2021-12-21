@@ -1,20 +1,24 @@
 const path = require('path');
 const fs = require('fs');
 
-const model={
-    get_products: function(){
-       return JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/product.json'), 'utf-8'));
-    },
+const model = {
+	get_products: function () {
+		return JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/products.json'), 'utf-8'));
+	},
 
-    updateList:function(list){
-        const jsonProducts = JSON.stringify(list, null, 4);
-		fs.writeFileSync(path.resolve(__dirname, '../data/product.json'), jsonProducts);
+	updateList: function (list) {
+		const jsonProducts = JSON.stringify(list, null, 4);
+		fs.writeFileSync(path.resolve(__dirname, '../data/products.json'), jsonProducts);
+	},
 
-    },
+	getOne: function (id) {
+		let product = this.get_products().find((item) => item.id == id);
+		return product;
+	},
 
-    edit_products:function(req){
-        const products=this.get_products();
-        const idReqs = req.params.id;
+	edit_products: function (req) {
+		const products = this.get_products();
+		const idReqs = req.params.id;
 		products.forEach((product) => {
 			if (product.id == idReqs) {
 				product.name = req.body.name;
@@ -29,24 +33,22 @@ const model={
 				product.seller = '';
 			}
 		});
-        
-        this.updateList(products);
-    },
-    
 
-    newId:function(){
-        let ultimo = 0;
-        this.get_products.forEach((product) => {
-            if (product.id > ultimo) {
-                ultimo = product.id;
-            }
-        });
-        return ultimo + 1;
-    },
+		this.updateList(products);
+	},
 
-    store_products: function(req){
-        
-        const priceKilo = req.body.kilo;
+	newId: function () {
+		let ultimo = 0;
+		this.get_products.forEach((product) => {
+			if (product.id > ultimo) {
+				ultimo = product.id;
+			}
+		});
+		return ultimo + 1;
+	},
+
+	store_products: function (req) {
+		const priceKilo = req.body.kilo;
 		const priceUnidad = req.body.unidad;
 
 		if ((priceKilo == 0 && priceUnidad > 0) || (priceKilo == null && priceUnidad > 0)) {
@@ -71,10 +73,10 @@ const model={
 			wayToBuy: wayToBuy,
 		};
 
-        const products=this.get_products;
+		const products = this.get_products;
 		products.push(product);
-        this.updateList(products);
-    }
-}
+		this.updateList(products);
+	},
+};
 
-module.exports=model;
+module.exports = model;

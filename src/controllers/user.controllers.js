@@ -36,7 +36,6 @@ function updateSellers(sellers) {
 	fs.writeFileSync(path.resolve(__dirname, '../data/sellers.json'), JSON.stringify(sellers, null, 4));
 }
 
-
 function newSellerId() {
 	let ultimo = 0;
 	getSellers().forEach((seller) => {
@@ -112,32 +111,38 @@ const controller = {
 	},
 	// 	Crea usuario vendedor o comprador
 	addUser: function (req, res) {
+		// trae los errores del form
 		let errors = validationResult(req);
+		// Comprueba que los datos que vienen del form, vienen ok y si sí, hace esto
 		if (errors.isEmpty()) {
-			console.log(req.file);
+			// Es encapsulado en una variable el objeto usuario
 			const user = {
 				...req.body,
+				agree_data: req.body.agree_data === undefined ? 'off' : req.body.agree_data,
+				agree_terms_conditions:
+					req.body.agree_terms_conditions === undefined ? 'off' : req.body.agree_terms_conditions,
 				pass: bcryptjs.hashSync(req.body.pass, 10),
 				pass_confirm: null,
 				image: req.file !== undefined ? req.file.filename : 'default.jpg',
 			};
 			let users = [];
-			console.log(user);
+			// separo el sign-in dependiendo del formulario que sea
 			if (user.user_name === undefined) {
 				user.id = newCustomerId();
 				users = getCustomers();
 				users.push(user);
 				updateCustomers(users);
 			} else {
+				user.products = [];
 				user.id = newSellerId();
 				users = getSellers();
 				users.push(user);
 				updateSellers(users);
 			}
-			res.redirect('/');
+			res.redirect('/users/login');
+			// En caso de que hayan errores, devuelve la vista con los errores
 		} else {
-			console.log(errors.mapped());
-			if (req.body.market === undefined) {
+			if (req.body.user_name === undefined) {
 				res.render(pathViews('sign-in-customer'), { errors: errors.mapped(), old: req.body });
 			} else {
 				res.render(pathViews('sign-in-seller'), { errors: errors.mapped(), old: req.body });
@@ -152,56 +157,56 @@ const controller = {
 	processLogin: function (req, res) {
 		//validaciones
 		let resultValidation = validationResult(req);
-        if (resultValidation.errors.length > 0) {
-            return res.render(pathViews('login'), {
-                errors: resultValidation.mapped(),
-                oldData: req.body
-            })
-		}else{
-		const userToLogCustomer = findByEmailCustomer(req.body.email);
-		const userToLogSeller = findByEmailSeller(req.body.email);//buscamos los usuarios en cada DB
-		req.session.isUserLogged = false;
-		if (userToLogCustomer) {
-			const passwordOk = bcryptjs.compareSync(req.body.pass, userToLogCustomer.pass);// Hasheo de la contraseña
-			if (passwordOk) {
-				delete userToLogCustomer.pass;
-				req.session.customerLogged = userToLogCustomer;
-				req.session.isUserLogged = true;
-				// cookies para comprador
-				if(req.body.remember_user){
-					res.cookie('userEmail',req.body.email,{maxAge: (1000*60)*3})
-				}
-				return res.redirect('/users/customer');
-			}
-		} 
-		else if (userToLogSeller) {
-			const passwordOk = bcryptjs.compareSync(req.body.pass, userToLogSeller.pass);
-			if (passwordOk) {
-				delete userToLogSeller.pass;
-				req.session.sellerLogged = userToLogSeller;
-				req.session.isUserLogged = true;
-				// cookies para vendedor
-				if(req.body.remember_user){
-					res.cookie('userEmail',req.body.email,{maxAge: (1000*60)*3})
-				}
-				return res.redirect('/users/seller');
-			}
+		if (resultValidation.errors.length > 0) {
+			return res.render(pathViews('login'), {
+				errors: resultValidation.mapped(),
+				oldData: req.body,
+			});
 		} else {
-				res.render(pathViews('login'), {
-				errors:{
-					email: {
-						msg: 'Las credenciales son inválidas'
+			const userToLogCustomer = findByEmailCustomer(req.body.email);
+			const userToLogSeller = findByEmailSeller(req.body.email); //buscamos los usuarios en cada DB
+			req.session.isUserLogged = false;
+			if (userToLogCustomer) {
+				const passwordOk = bcryptjs.compareSync(req.body.pass, userToLogCustomer.pass); // Hasheo de la contraseña
+				if (passwordOk) {
+					delete userToLogCustomer.pass;
+					req.session.customerLogged = userToLogCustomer;
+					req.session.isUserLogged = true;
+					// cookies para comprador
+					if (req.body.remember_user) {
+						res.cookie('userEmail', req.body.email, { maxAge: 1000 * 60 * 3 });
 					}
+					return res.redirect('/users/customer');
 				}
-			})
+			} else if (userToLogSeller) {
+				const passwordOk = bcryptjs.compareSync(req.body.pass, userToLogSeller.pass);
+				if (passwordOk) {
+					delete userToLogSeller.pass;
+					req.session.sellerLogged = userToLogSeller;
+					req.session.isUserLogged = true;
+					// cookies para vendedor
+					if (req.body.remember_user) {
+						res.cookie('userEmail', req.body.email, { maxAge: 1000 * 60 * 3 });
+					}
+					return res.redirect('/users/seller');
+				}
+			} else {
+				res.render(pathViews('login'), {
+					errors: {
+						email: {
+							msg: 'Las credenciales son inválidas',
+						},
+					},
+				});
+			}
 		}
-	}},
+	},
 
-	logout: (req,res)=>{
+	logout: (req, res) => {
 		res.clearCookie('userEmail');
 		req.session.destroy();
 		return res.redirect('/');
-	}
+	},
 };
 
 module.exports = controller;
