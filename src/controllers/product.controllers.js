@@ -106,11 +106,6 @@ const controller = {
 		const dataProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		const suggestProducts = dataProducts.filter((item) => item.id > 1 && item.id < 6);
 		const product = dataProducts.find((item) => item.id == id);
-		console.log(sellers());
-		sellers().forEach((seller) => {
-			console.log(id);
-			console.log(seller.products.includes(id));
-		});
 		const seller = sellers().find((sel) => sel.products.includes(id));
 
 		res.render(pathViews('detail'), {
