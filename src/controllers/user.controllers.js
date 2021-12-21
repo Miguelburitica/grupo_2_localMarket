@@ -123,15 +123,17 @@ const controller = {
 					req.body.agree_terms_conditions === undefined ? 'off' : req.body.agree_terms_conditions,
 				pass: bcryptjs.hashSync(req.body.pass, 10),
 				pass_confirm: null,
-				image: req.file !== undefined ? req.file.filename : 'default.jpg',
+				photo: req.file !== undefined ? req.file.filename : 'default.jpg',
 			};
 			let users = [];
 			// separo el sign-in dependiendo del formulario que sea
+			// customer, debido a que un customer no tiene user-name
 			if (user.user_name === undefined) {
 				user.id = newCustomerId();
 				users = getCustomers();
 				users.push(user);
 				updateCustomers(users);
+				// Seller, debido a que sólo hay dos tipos posibles
 			} else {
 				user.products = [];
 				user.id = newSellerId();
@@ -155,7 +157,7 @@ const controller = {
 	},
 	// Enviar los datos
 	processLogin: function (req, res) {
-		//validaciones
+		// validaciones
 		let resultValidation = validationResult(req);
 		if (resultValidation.errors.length > 0) {
 			return res.render(pathViews('login'), {

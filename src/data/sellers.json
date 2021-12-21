@@ -1,17 +1,5 @@
 [
 	{
-		"name": "DIANA MELISA",
-		"surname": "DOMINGUEZ GOMEZ",
-		"phone": "300 4867807",
-		"email": "ggg@aaa",
-		"pass": "9Y6aaH3mtPUdjGV",
-		"pass-confirm": "9Y6aaH3mtPUdjGV",
-		"agree-terms-conditions": "on",
-		"agree-data": "on",
-		"id": 2,
-		"products": ["1", "2", "3"]
-	},
-	{
 		"user_name": "arroz con leche",
 		"name": "Daniela",
 		"surname": "Zapata",
@@ -21,9 +9,9 @@
 		"pass_confirm": null,
 		"agree-terms-conditions": "on",
 		"agree-data": "on",
-		"image": "default.jpg",
+		"photo": "default.jpg",
 		"id": 4,
-		"products": ["4", "5", "6"]
+		"products": ["1", "4", "5", "6"]
 	},
 	{
 		"user_name": "Los Cachivaches",
@@ -35,8 +23,8 @@
 		"pass_confirm": null,
 		"agree_data": "on",
 		"agree_terms_conditions": "off",
-		"image": "default.jpg",
+		"photo": "default.jpg",
 		"id": 5,
-		"products": ["7", "8", "9"]
+		"products": ["7", "8", "9", "2", "3"]
 	}
 ]

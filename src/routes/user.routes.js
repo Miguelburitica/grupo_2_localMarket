@@ -173,15 +173,11 @@ router.post('/login', validateLogin, userController.processLogin);
 
 // Get Sign-in page comprador
 router.get('/sign-in-customer', guestMiddleware, userController.showSignInCustomer);
-
+// Enviar datos de registre de vendedor
 router.post('/sign-in-customer', uploadFile.single('profile_photo'), validateRegisterCustomer, userController.addUser);
 
 // Get Sign-in page vendedor
 router.get('/sign-in-seller', guestMiddleware, userController.showSignInSeller);
-
-// Enviar datos de registro de vendedor
-router.post('/sign-in-seller',
-uploadFile.single('profile_photo'), validateRegisterSeller, userController.addUser);
 // Enviar datos de registro de comprador
 router.post('/sign-in-seller', uploadFile.single('profile_photo'), validateRegisterSeller, userController.addUser);
 

@@ -20,7 +20,7 @@ const sellers = function () {
 
 function newId() {
 	let ultimo = 0;
-	products.forEach((product) => {
+	products().forEach((product) => {
 		if (product.id > ultimo) {
 			ultimo = product.id;
 		}
@@ -30,9 +30,9 @@ function newId() {
 
 const controller = {
 	showList: function (req, res) {
-		productss = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+		productss = products().filter((product) => req.session.sellerLogged.products.includes(product.id));
 		res.render(pathViews('list'), {
-			products: productss /*.filter(product => product.seller == req.seller)*/,
+			productos: productss /*.filter(product => product.seller == req.seller)*/,
 		});
 	},
 
@@ -69,13 +69,13 @@ const controller = {
 	},
 
 	storeAddItem: function (req, res) {
-		const resultValidation = validationResult(req);// validación de creación.
+		const resultValidation = validationResult(req); // validación de creación.
 		if (resultValidation.errors.length > 0) {
-            return res.render(pathViews('add-item'), {
-                errors: resultValidation.mapped(),
-                oldData: req.body
-            })
-        }
+			return res.render(pathViews('add-item'), {
+				errors: resultValidation.mapped(),
+				oldData: req.body,
+			});
+		}
 		const priceKilo = req.body.kilo;
 		const priceUnidad = req.body.unidad;
 
@@ -100,9 +100,9 @@ const controller = {
 			seller: '',
 			wayToBuy: wayToBuy,
 		};
-
-		products.push(product);
-		const jsonProducts = JSON.stringify(products, null, 4);
+		let p = products();
+		p.push(product);
+		const jsonProducts = JSON.stringify(p, null, 4);
 		fs.writeFileSync(productsFilePath, jsonProducts);
 
 		res.redirect('list');

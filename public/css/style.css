@@ -800,7 +800,7 @@ i {
 }
 
 .detail-main .article-cards {
-	width: 95%;
+	width: 85%;
 	max-width: 800px;
 	display: flex;
 	justify-content: space-between;
@@ -1186,7 +1186,6 @@ i {
 	}
 
 	.detail-main .article-cards .item-info .buy #how-much {
-		width: calc(34px + 4vw);
 		font-size: large;
 		max-width: 55px;
 	}
@@ -1218,35 +1217,31 @@ i {
 
 @media (min-width: 769px) {
 	.detail-main .article-cards {
-		flex-direction: column;
-		height: inherit;
-		padding: 35px 0;
+		flex-direction: row;
+		height: 425px;
+		max-width: 720px;
+		gap: 30px;
+		padding: 15px 38px;
 	}
 
 	.detail-main .article-cards .supplier {
 		width: 100%;
-		margin-bottom: 20px;
-		max-height: inherit;
+		max-height: 305px;
 	}
 
 	.detail-main .article-cards .supplier .image-product {
-		height: 300px;
-		width: 37%;
+		width: 100%;
 		max-width: inherit;
+		max-height: 290px;
 		border-radius: 15px;
-		display: flex;
 		justify-content: center;
-	}
-
-	.detail-main .article-cards .supplier .image-product img {
-		width: 98%;
 	}
 
 	.detail-main .article-cards .supplier .supplier-info {
 		background-color: #44444400;
 		box-shadow: none;
-		justify-content: center;
-		gap: 31px;
+		width: 100%;
+		padding: 6px;
 	}
 
 	.detail-main .article-cards .supplier .supplier-info .image-supplier {
@@ -1255,7 +1250,7 @@ i {
 	}
 
 	.detail-main .article-cards .supplier .supplier-info .supplier-name {
-		font-size: 22px;
+		font-size: 20px;
 		background: #ffd174;
 		padding: 6px 12px;
 		border-radius: 4px;
@@ -1271,7 +1266,8 @@ i {
 	}
 
 	.detail-main .article-cards .item-info {
-		width: 80%;
+		width: 100%;
+		max-width: none;
 		padding: 11px 7px;
 		margin-right: 0;
 	}
@@ -1279,15 +1275,19 @@ i {
 	.detail-main .article-cards .item-info .off {
 		font-size: 15px;
 		width: 120px;
+		border-radius: 4px;
 	}
 
 	.detail-main .article-cards .item-info .buy {
 		gap: 10px;
+		padding: 15px;
+		width: 329px;
 	}
 
 	.detail-main .article-cards .item-info .buy h4 {
 		font-size: 20px;
-		margin-left: 59px;
+		border-radius: 4px;
+		margin-left: -2px;
 		width: 240px;
 	}
 
@@ -1296,11 +1296,19 @@ i {
 		margin: 14px auto;
 	}
 
+	.detail-main .article-cards .item-info .buy .optionAdds {
+		width: 240px;
+	}
+
+	.detail-main .article-cards .item-info .buy .optionAdds #how-much {
+		max-width: 49px;
+	}
+
 	/* Sugeridos Desktop */
 
 	.products-space {
 		margin-bottom: 20px;
-		min-width: 760px;
+		max-width: 760px;
 	}
 
 	.products-space .product-row {
@@ -2264,12 +2272,14 @@ h2 {
 	border-bottom: solid #552827 1px;
 	padding: 6px 18px;
 	margin: auto;
+	text-align: center;
 	font-family: 'mulish';
 }
 
 @media (min-width: 769px) {
 	.catalog-main {
 		margin: 0 2%;
+		align-items: center;
 		gap: 20px;
 	}
 }
