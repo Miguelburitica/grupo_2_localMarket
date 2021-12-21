@@ -25,7 +25,7 @@ function newId() {
 			ultimo = product.id;
 		}
 	});
-	return ultimo + 1;
+	return parseInt(ultimo) + 1;
 }
 
 const controller = {

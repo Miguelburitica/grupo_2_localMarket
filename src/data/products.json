@@ -1,103 +1,75 @@
 [
-    {
-        "id": "3",
-        "name": "Pimentón",
-        "price": {
-            "kilo": 4000,
-            "unidad": 0
-        },
-        "wayToBuy": 0,
-        "discount": 0.12,
-        "category": [
-            "condimentos"
-        ],
-        "image": "pepper.jfif"
-    },
-    {
-        "id": "4",
-        "name": "Piña",
-        "price": {
-            "kilo": 3000,
-            "unidad": 3500
-        },
-        "wayToBuy": 2,
-        "discount": 0,
-        "category": [
-            "frutas"
-        ],
-        "image": "pineapple.jfif"
-    },
-    {
-        "id": "5",
-        "name": "Cebolla",
-        "price": {
-            "kilo": 2400,
-            "unidad": 450
-        },
-        "wayToBuy": 2,
-        "discount": "0.2",
-        "category": [
-            "frutas"
-        ],
-        "image": "imagefile-1640041127011.jfif"
-    },
-    {
-        "id": "7",
-        "name": "Zucchini",
-        "price": {
-            "kilo": 4300,
-            "unidad": 0
-        },
-        "wayToBuy": 0,
-        "discount": 0,
-        "category": [
-            "verduras"
-        ],
-        "image": "zucchini.jfif"
-    },
-    {
-        "id": "8",
-        "name": "tomates",
-        "price": {
-            "kilo": 2300,
-            "unidad": 700
-        },
-        "discount": "0",
-        "category": [
-            "frutas"
-        ],
-        "image": "imagefile-1640043525520.jfif",
-        "wayToBuy": 2
-    },
-    {
-        "id": "9",
-        "name": "Altamar",
-        "price": {
-            "kilo": 12000,
-            "unidad": 15000
-        },
-        "discount": "0.2",
-        "category": [
-            "frutas"
-        ],
-        "image": "imagefile-1640041539683.jfif",
-        "market": "Poblado",
-        "wayToBuy": 2
-    },
-    {
-        "id": "91",
-        "name": "asdasdas",
-        "price": {
-            "kilo": 231321,
-            "unidad": 123123
-        },
-        "discount": "0",
-        "category": [
-            "frutas"
-        ],
-        "image": "imagefile-1640126761264.jfif",
-        "market": "Carlos E Restrepo",
-        "seller": "",
-        "wayToBuy": 2
-    }
+	{
+		"id": "3",
+		"name": "Pimentón",
+		"price": {
+			"kilo": 4000,
+			"unidad": 0
+		},
+		"wayToBuy": 0,
+		"discount": 0.12,
+		"category": ["condimentos"],
+		"image": "pepper.jfif"
+	},
+	{
+		"id": "4",
+		"name": "Piña",
+		"price": {
+			"kilo": 3000,
+			"unidad": 3500
+		},
+		"wayToBuy": 2,
+		"discount": 0,
+		"category": ["frutas"],
+		"image": "pineapple.jfif"
+	},
+	{
+		"id": "5",
+		"name": "Cebolla",
+		"price": {
+			"kilo": 2400,
+			"unidad": 450
+		},
+		"wayToBuy": 2,
+		"discount": "0.2",
+		"category": ["frutas"],
+		"image": "imagefile-1640041127011.jfif"
+	},
+	{
+		"id": "7",
+		"name": "Zucchini",
+		"price": {
+			"kilo": 4300,
+			"unidad": 0
+		},
+		"wayToBuy": 0,
+		"discount": 0,
+		"category": ["verduras"],
+		"image": "zucchini.jfif"
+	},
+	{
+		"id": "8",
+		"name": "tomates",
+		"price": {
+			"kilo": 2300,
+			"unidad": 700
+		},
+		"discount": "0",
+		"category": ["frutas"],
+		"image": "imagefile-1640043525520.jfif",
+		"wayToBuy": 2
+	},
+	{
+		"id": "9",
+		"name": "Altamar",
+		"price": {
+			"kilo": 12000,
+			"unidad": 15000
+		},
+		"discount": "0.2",
+		"category": ["frutas"],
+		"image": "imagefile-1640041539683.jfif",
+		"market": "Poblado",
+		"wayToBuy": 2
+	}
 ]
