@@ -107,7 +107,7 @@ router.post(
 // Get Sign-in page vendedor
 router.get('/sign-in-seller',guestMiddleware,userController.showSignInSeller);
 
-// Enviar datos de registro de comprador
+// Enviar datos de registro de vendedor
 router.post('/sign-in-seller',
 uploadFile.single('profile_photo'), validateRegisterSeller, userController.addUser);
 

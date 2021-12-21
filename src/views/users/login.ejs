@@ -16,7 +16,6 @@
 				class="formulario"
 				method="POST"
 				>
-				<% console.log(locals.errors) %>
 				<input
 					class="text-box<%= locals.errors && errors.email ? 'is-invalid' : null %>"
 					type="email"
@@ -24,13 +23,14 @@
 					id="email"
 					placeholder="Correo electrónico"
 					value="<%= locals.oldData && oldData.email ? oldData.email : null %>"
-					required
 				/>
-				<% if(locals.errors && errors.email){ %>
-					<div class="text-danger">
-						<%= errors.email.msg%>
-					</div>
-					<% } %>   
+				<% if (locals.errors && errors.email) { %>
+					<span class="error"><%= errors.email.msg %> </span>
+					<% } else if(locals.errors){ %>
+						<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listo<i class="far fa-check-circle"></i></span>
+					<% } else {%>
+						<span class="error" style="color: inherit;"></span>
+						<% } %>  
 				<input
 					class="text-box"
 					type="password"
@@ -38,7 +38,6 @@
 					id="pass"
 					placeholder="Contraseña"
 					minlength="10"
-					required
 				/>
 				<div>
 					<input

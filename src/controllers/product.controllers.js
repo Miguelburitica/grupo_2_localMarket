@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const model = require('../model/product.model');
+const { validationResult } = require('express-validator');
 
 const pathViews = function (nameView) {
 	return path.resolve(__dirname, '../views/products/' + nameView + '.ejs');
@@ -25,7 +26,6 @@ function newId() {
 }
 
 const controller = {
-	// Cuando cambies las funciones de arriba, deberás cambiar el metodo que muestra las vistas, deberá pasar de sendFile a render.
 	showList: function (req, res) {
 		productss = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		res.render(pathViews('list'), {
@@ -69,6 +69,13 @@ const controller = {
 	},
 
 	storeAddItem: function (req, res) {
+		const resultValidation = validationResult(req);// validación de creación.
+		if (resultValidation.errors.length > 0) {
+            return res.render(pathViews('add-item'), {
+                errors: resultValidation.mapped(),
+                oldData: req.body
+            })
+        }
 		const priceKilo = req.body.kilo;
 		const priceUnidad = req.body.unidad;
 

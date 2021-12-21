@@ -7,13 +7,12 @@
 			<div class="input-field">
 				<label for="name">Producto:</label>
 				<input
-					class="text-box"
+					class="text-box <%= locals.errors && errors.name ? 'is-invalid' : null %>"
 					type="text"
 					name="name"
 					id="name"
 					placeholder="Nombre del producto"
 					minlength="2"
-					required
 				/>
 			</div>
 			<div class="select-field input-field">

@@ -82,7 +82,7 @@ const controller = {
 		const sellers = getSellers();
 		const newSellerList = sellers.filter((seller) => seller.id != idToDelete);
 		updateSellers(newSellerList);
-		console.log(newSellerList);
+		// console.log(newSellerList);
 		res.redirect('/');
 	},
 	// CONTROLADOR DE COMPRADOR
@@ -152,7 +152,6 @@ const controller = {
 	processLogin: function (req, res) {
 		//validaciones
 		let resultValidation = validationResult(req);
-
         if (resultValidation.errors.length > 0) {
             return res.render(pathViews('login'), {
                 errors: resultValidation.mapped(),
