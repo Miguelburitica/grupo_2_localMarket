@@ -13,9 +13,17 @@
 					id="name"
 					placeholder="Nombre del producto"
 					minlength="2"
+					value="<%= locals.oldData && oldData.name ? oldData.name : null %>"
 				/>
+				<% if (locals.errors && errors.name) { %>
+					<span class="error"><%= errors.name.msg %> </span>
+					<% } else if(locals.errors){ %>
+						<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+					<% } else {%>
+						<span class="error" style="color: inherit;"></span>
+						<% } %>
 			</div>
-			<div class="select-field input-field">
+			<div class="select-field input-field<%= locals.errors && errors.category ? 'is-invalid' : null %>">
 				<label for="category">Selecciona la categoría:</label>
 				<select name="category" class="control" placeholder="Seleccione la categoria" id="category">
 					<option value="frutas">Frutas</option>
@@ -32,11 +40,25 @@
 
 			<div class="input-field">
 				<label for="unidad">Precio por unidad:</label>
-				<input class="text-box" type="number" name="unidad" id="unidad" placeholder="Precio en pesos" min="0" />
+				<input class="text-box <%= locals.errors && errors.unidad ? 'is-invalid' : null %>" type="number" name="unidad" id="unidad" placeholder="Precio en pesos" min="0" />
+				<% if (locals.errors && errors.unidad) { %>
+					<span class="error"><%= errors.unidad.msg %> </span>
+					<% } else if(locals.errors){ %>
+						<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+					<% } else {%>
+						<span class="error" style="color: inherit;"></span>
+						<% } %>
 				<label for="kilo">Precio por kilogramo:</label>
-				<input class="text-box" type="number" name="kilo" id="kilo" placeholder="Precio en pesos" min="0" />
+				<input class="text-box <%= locals.errors && errors.kilo ? 'is-invalid' : null %>" type="number" name="kilo" id="kilo" placeholder="Precio en pesos" min="0" />
+				<% if (locals.errors && errors.kilo) { %>
+					<span class="error"><%= errors.kilo.msg %> </span>
+					<% } else if(locals.errors){ %>
+						<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+					<% } else {%>
+						<span class="error" style="color: inherit;"></span>
+						<% } %>
 			</div>
-			<div class="select-field input-field">
+			<div class="select-field input-field <%= locals.errors && errors.discount ? 'is-invalid' : null %>">
 				<label for="discount">Selecciona un descuento:</label>
 				<select name="discount" class="control" placeholder="Seleccione descuento" id="discount">
 					<option value="0">0%</option>
@@ -49,7 +71,7 @@
 					<option value="0.35">35%</option>
 				</select>
 			</div>
-			<div class="select-field input-field">
+			<div class="select-field input-field <%= locals.errors && errors.market ? 'is-invalid' : null %>">
 				<label for="market">Selecciona Mercado campesino:</label>
 				<select name="market" class="control" id="market">
 					<option value="Carlos E Restrepo">Carlos E Restrepo</option>

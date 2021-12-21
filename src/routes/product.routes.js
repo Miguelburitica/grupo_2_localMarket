@@ -4,11 +4,15 @@ const multer = require('multer');
 const path = require('path');
 const { productController } = require('../controllers');
 const { check } = require('express-validator');
+const authSellerMiddleware =  require('../middlewares/authSellerMiddleware');
 
 let validateAddItem = [
 	check('name').notEmpty().withMessage('Este campo es obligatorio'),
 	check('category').notEmpty().withMessage('Selecciona la categoria a la que mejor se ajuste el producto'),
 	check('unidad').notEmpty().withMessage('Este campo es obligatorio').bail()
+	.isInt()
+	.withMessage('Escribe el precio por unidad sin puntos ni comas'),
+	check('kilo').notEmpty().withMessage('Este campo es obligatorio').bail()
 	.isInt()
 	.withMessage('Escribe el precio por unidad sin puntos ni comas'),
 	check('discount').notEmpty().withMessage('Selecciona el porcentaje de descuento'),
@@ -38,18 +42,18 @@ const storage = multer.diskStorage({
 const uploadFile = multer({ storage });
 
 // LISTADO DE PRODUCTOS DEL VENDEDOR
-router.get('/list', productController.showList);//agregar middleware para que solo el vendedor vea esta pestaña
+router.get('/list', authSellerMiddleware,productController.showList);//agregar middleware para que solo el vendedor vea esta pestaña
 
 // LISTADO DE PRODUCTOS DE CARA AL COMPRADOR
-router.get('/catalog', productController.showCatalog);//agregar middleware para que solo el comprar vea esta pestaña
+router.get('/catalog',productController.showCatalog);
 
 //CREACIÓN DE PRODUCTOS //agregar middleware para que solo el vendedor vea esta pestaña
-router.get('/add-item', productController.showAddItem);
+router.get('/add-item',authSellerMiddleware,productController.showAddItem);
 router.post('/add-item', uploadFile.single('imagefile'),validateAddItem, productController.storeAddItem);
 
 // EDICIÓN DE PRODUCTOS //agregar middleware para que solo el vendedor vea esta pestaña
 // Mostrar el producto a editar.
-router.get('/edit-item/:id', productController.showEditItem);
+router.get('/edit-item/:id', authSellerMiddleware,productController.showEditItem);
 // Manda la info editada y redirige al detalle de producto.
 router.post('/edit-item/:id', uploadFile.single('imagefile'),validateEditItem, productController.updateItem);
 
@@ -57,7 +61,7 @@ router.post('/edit-item/:id', uploadFile.single('imagefile'),validateEditItem, p
 router.get('/detail/:id?', productController.showDetail);
 
 //ELIMINAR PRODUCTOS //agregar middleware para que solo el vendedor vea esta pestaña
-router.delete('/:id', productController.deleteItem);
+router.delete('/:id',productController.deleteItem);
 // GET shopping-cart page.
 router.get('/shopping-cart', productController.showShoppingCart);
 
