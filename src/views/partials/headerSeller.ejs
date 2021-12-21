@@ -18,9 +18,9 @@
 				</button>
 			</form>
 		</div>
-		<% if (locals.isLogged && locals.customerLogged) { %>
+		<% if (!locals.sellerLogged) { %>
 		<a href="/products/shopping-cart"><i class="fas fa-shopping-basket"></i></a>
-		<% } %>
+		<% }%>
 		<nav class="nav-bar">
 			<ul class="options">
 				<a href="/">
@@ -41,13 +41,17 @@
 				<a href="/products/list">
 					<li class="option">Mis Productos</li>
 				</a>
-			<% } %>
+			<% } else { %>
+				<a href="/products/catalog">
+					<li class="option">Productos</li>
+				</a>
 				<a href="/">
 					<li class="option">Agricultores</li>
 				</a>
 				<a href="/">
 					<li class="option">Encuéntranos</li>
 				</a>
+			<% } %>
 			</ul>
 		</nav>
 
