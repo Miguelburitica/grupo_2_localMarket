@@ -29,14 +29,14 @@ function newId() {
 }
 
 const controller = {
-	showList: function (req, res) {
+	getList: function (req, res) {
 		productss = products().filter((product) => req.session.sellerLogged.products.includes(product.id));
 		res.render(pathViews('list'), {
 			productos: productss /*.filter(product => product.seller == req.seller)*/,
 		});
 	},
 
-	showCatalog: function (req, res) {
+	getCatalog: function (req, res) {
 		const frutas = products().filter(
 			(product) => product.category.includes('frutas') || product.category.includes('Frutas')
 		);
@@ -53,7 +53,7 @@ const controller = {
 		});
 	},
 
-	showEditItem: function (req, res) {
+	getEditItem: function (req, res) {
 		const idReq = req.params.id;
 		const product = model.getOne(idReq);
 		res.render(pathViews('edit-item'), { product });
@@ -64,7 +64,7 @@ const controller = {
 		res.redirect('/products/detail/' + req.params.id);
 	},
 
-	showAddItem: function (req, res) {
+	getAddItem: function (req, res) {
 		res.render(pathViews('add-item'));
 	},
 
@@ -108,7 +108,7 @@ const controller = {
 		res.redirect('list');
 	},
 
-	showDetail: function (req, res) {
+	getDetail: function (req, res) {
 		const id = req.params.id;
 		const dataProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		const suggestProducts = dataProducts.filter((item) => item.id > 1 && item.id < 6);
@@ -132,7 +132,7 @@ const controller = {
 		res.redirect('list');
 	},
 
-	showShoppingCart: function (req, res) {
+	getShoppingCart: function (req, res) {
 		res.render(pathViews('shopping-cart'));
 	},
 };

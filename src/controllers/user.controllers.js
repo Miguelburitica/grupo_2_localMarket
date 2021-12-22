@@ -57,22 +57,12 @@ function newCustomerId() {
 }
 
 const controller = {
-	// CONTROLADOR DE VENDEDOR
-
-	// Obtener la DB de vendedor
-	getSellers: function () {
-		return JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/sellers.json'), 'utf-8'));
-	},
-	// Actualizar perfil de vendedor
-	updateSellers: function (sellers) {
-		fs.writeFileSync(path.resolve(__dirname, '../data/sellers.json'), JSON.stringify(sellers, null, 4));
-	},
 	// Mostrar perfil de vendedor
-	showSellerProfile: function (req, res) {
+	getSellerProfile: function (req, res) {
 		res.render(pathViews('seller'), { seller: req.session.sellerLogged });
 	},
 	// Mostrar registro de vendedor
-	showSignInSeller: function (req, res) {
+	getSignInSeller: function (req, res) {
 		res.render(pathViews('sign-in-seller'));
 	},
 	// Eliminar vendedor
@@ -84,21 +74,12 @@ const controller = {
 		// console.log(newSellerList);
 		res.redirect('/');
 	},
-	// CONTROLADOR DE COMPRADOR
-	// Obtener la DB de comprador
-	getCustomers: function () {
-		return JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/customers.json'), 'utf-8'));
-	},
-	// Actualizar comprador
-	updateCustomers: function (customers) {
-		fs.writeFileSync(path.resolve(__dirname, '../data/customers.json'), JSON.stringify(customers, null, 4));
-	},
 	// Mostrar perfil de comprador
-	showCustomerProfile: function (req, res) {
+	getCustomerProfile: function (req, res) {
 		res.render(pathViews('customer'), { customer: res.locals.customerLogged });
 	},
 	// Registro de comprador
-	showSignInCustomer: function (req, res) {
+	getSignInCustomer: function (req, res) {
 		res.render(pathViews('sign-in-customer'));
 	},
 	// Eliminar comprador
@@ -152,7 +133,7 @@ const controller = {
 		}
 	},
 	// Login vendedor o comprador
-	showLogin: function (req, res) {
+	getLogin: function (req, res) {
 		res.render(pathViews('login'));
 	},
 	// Enviar los datos
