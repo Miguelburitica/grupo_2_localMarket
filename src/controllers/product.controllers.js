@@ -1,58 +1,37 @@
 const path = require('path');
 const fs = require('fs');
-const model = require('../model/product.model');
 const { validationResult } = require('express-validator');
+const { productModel } = require('../model');
 
 const pathViews = function (nameView) {
 	return path.resolve(__dirname, '../views/products/' + nameView + '.ejs');
 };
 
-// PRODUCTS prototype models
-// path of products JSON
-const productsFilePath = path.resolve(__dirname, '../data/products.json');
-// get all products in an array
-function products() {
-	return JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-}
-// update the JSON of products with a new array of products
-function updateProducts(products) {
-	fs.writeFileSync(productsFilePath, JSON.stringify(products, null, 4));
-}
-
-// USERS prototype models
+// USERS prototype productModels
 
 const sellersFilePath = path.resolve(__dirname, '../data/sellers.json');
 function sellers() {
 	return JSON.parse(fs.readFileSync(sellersFilePath, 'utf-8'));
 }
 
-//función que permite almacenar el producto nuevo con el id superior al mayor de data
-function newId() {
-	let ultimo = 0;
-	products().forEach((product) => {
-		if (product.id > ultimo) {
-			ultimo = product.id;
-		}
-	});
-	return parseInt(ultimo) + 1;
-}
-
 const controller = {
 	getList: function (req, res) {
-		productss = products().filter((product) => req.session.sellerLogged.products.includes(product.id));
+		const productos = productModel.getSomeProducts((product) =>
+			req.session.sellerLogged.products.includes(product.id)
+		);
 		res.render(pathViews('list'), {
-			productos: productss /*.filter(product => product.seller == req.seller)*/,
+			productos,
 		});
 	},
 
 	getCatalog: function (req, res) {
-		const frutas = products().filter(
+		const frutas = productModel.getSomeProducts(
 			(product) => product.category.includes('frutas') || product.category.includes('Frutas')
 		);
-		const verduras = products().filter(
+		const verduras = productModel.getSomeProducts(
 			(product) => product.category.includes('verduras') || product.category.includes('Verduras')
 		);
-		const condimentos = products().filter(
+		const condimentos = productModel.getSomeProducts(
 			(product) => product.category.includes('condimentos') || product.category.includes('Condimentos')
 		);
 		res.render(pathViews('catalog'), {
@@ -62,72 +41,59 @@ const controller = {
 		});
 	},
 
-	getEditItem: function (req, res) {
-		const idReq = req.params.id;
-		const product = model.getOne(idReq);
+	getEdit: function (req, res) {
+		const id = req.params.id;
+		const product = productModel.getOne(id);
 		res.render(pathViews('edit-item'), { product });
 	},
 
 	updateItem: function (req, res) {
-		model.editProduct(req);
+		productModel.editProduct(req);
 		res.redirect('/products/detail/' + req.params.id);
 	},
 
-	getAddItem: function (req, res) {
+	getAdd: function (req, res) {
 		res.render(pathViews('add-item'));
 	},
 
-	storeAddItem: function (req, res) {
-		const resultValidation = validationResult(req); // validación de creación.
-		if (resultValidation.errors.length > 0) {
-			return res.render(pathViews('add-item'), {
+	createItem: function (req, res) {
+		const errors = validationResult(req); // validación de creación.
+		if (errors.isEmpty()) {
+			productModel.storeProduct(req);
+			res.redirect('list');
+		} else {
+			res.render(pathViews('add-item'), {
 				errors: resultValidation.mapped(),
 				oldData: req.body,
 			});
 		}
-		const priceKilo = req.body.kilo;
-		const priceUnidad = req.body.unidad;
-
-		if ((priceKilo == 0 && priceUnidad > 0) || (priceKilo == null && priceUnidad > 0)) {
-			wayToBuy = 1;
-		} else if ((priceKilo > 0 && priceUnidad == 0) || (priceKilo > 0 && priceUnidad == null)) {
-			wayToBuy = 0;
-		} else if (priceKilo > 0 && priceUnidad > 0) {
-			wayToBuy = 2;
-		}
-		const product = {
-			id: newId(),
-			name: req.body.name,
-			price: {
-				kilo: parseInt(req.body.kilo),
-				unidad: parseInt(req.body.unidad),
-			},
-			discount: req.body.discount,
-			category: [req.body.category],
-			image: req.file.filename,
-			market: req.body.market,
-			seller: '',
-			wayToBuy: wayToBuy,
-		};
-		let newProducts = products();
-		newProducts.push(product);
-		updateProducts(newProducts);
-
-		res.redirect('list');
 	},
 
 	getDetail: function (req, res) {
 		const id = req.params.id;
-		const dataProducts = products();
-		const suggestProducts = [];
 		let i = 0;
-		dataProducts.forEach((product) => {
-			if (i < 4 && id != product.id) {
-				suggestProducts.push(product);
+		const product = productModel.getOne(id);
+		// make a new array with just the items that I need suggest
+		const suggestProducts = productModel.getSomeProducts((item) => {
+			// principal condition, it'll be part of the same category
+			if (i < 4 && item.category[0] === product.category[0] && item.id !== id) {
 				i++;
+				return item;
 			}
 		});
-		const product = dataProducts.find((item) => item.id == id);
+		const extraSuggest = productModel.getSomeProducts((item) => {
+			// if we don't have enought to fill the space to four add some products from other categories
+			if (i < 4 && item.category[0] !== product.category[0]) {
+				i++;
+				return item;
+			}
+		});
+		// I join both arrays
+		extraSuggest.forEach((item) => {
+			suggestProducts.push(item);
+		});
+
+		// Hay que aplicar acá algun metodo del modelo de usuarios
 		const seller = sellers().find((sel) => sel.products.includes(id));
 
 		res.render(pathViews('detail'), {
@@ -138,11 +104,8 @@ const controller = {
 	},
 
 	deleteItem: function (req, res) {
-		const idToDelete = req.params.id;
-		const newProductsList = products().filter((product) => product.id != idToDelete);
-
-		const jsonProducts = JSON.stringify(newProductsList, null, 4);
-		fs.writeFileSync(productsFilePath, jsonProducts);
+		const id = req.params.id;
+		productModel.deleteProduct(id);
 
 		res.redirect('list');
 	},

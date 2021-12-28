@@ -1,21 +1,35 @@
 const path = require('path');
 const fs = require('fs');
 
+// path of products JSON
+const productsFilePath = path.resolve(__dirname, '../data/products.json');
+
 const model = {
+	// get the major id plus 1
+	newId: function () {
+		let lastId = 0;
+		this.getProducts().forEach((product) => (lastId = parseInt(product.id) > lastId ? product.id : lastId));
+		return (parseInt(lastId) + 1).toString();
+	},
+	// get all products in an array
 	getProducts: function () {
-		return JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/products.json'), 'utf-8'));
+		return JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 	},
-
-	updateList: function (list) {
-		const jsonProducts = JSON.stringify(list, null, 4);
-		fs.writeFileSync(path.resolve(__dirname, '../data/products.json'), jsonProducts);
+	// get some products in an array
+	getSomeProducts: function (callBack) {
+		return this.getProducts().filter(callBack);
 	},
-
+	// get just one product
 	getOne: function (id) {
 		let product = this.getProducts().find((item) => item.id == id);
 		return product;
 	},
-
+	// update the JSON of products with a new array of products
+	updateList: function (list) {
+		const jsonProducts = JSON.stringify(list, null, 4);
+		fs.writeFileSync(productsFilePath, jsonProducts);
+	},
+	// change a product making match trought its id
 	editProduct: function (req) {
 		const products = this.getProducts();
 		const id = req.params.id;
@@ -32,49 +46,40 @@ const model = {
 				product.market = req.body.market;
 			}
 		});
-
 		this.updateList(products);
 	},
 
-	newId: function () {
-		let ultimo = 0;
-		this.getProducts.forEach((product) => {
-			if (product.id > ultimo) {
-				ultimo = product.id;
-			}
-		});
-		return ultimo + 1;
-	},
+	storeProduct: function (req) {
+		const kiloValue = req.body.kilo;
+		const unitValue = req.body.unidad;
 
-	storeProducts: function (req) {
-		const priceKilo = req.body.kilo;
-		const priceUnidad = req.body.unidad;
-
-		if ((priceKilo == 0 && priceUnidad > 0) || (priceKilo == null && priceUnidad > 0)) {
-			wayToBuy = 1;
-		} else if ((priceKilo > 0 && priceUnidad == 0) || (priceKilo > 0 && priceUnidad == null)) {
-			wayToBuy = 0;
-		} else if (priceKilo > 0 && priceUnidad > 0) {
-			wayToBuy = 2;
-		}
+		// prettier-ignore
+		let wayToBuy =
+			(kiloValue == 0 && unitValue > 0) || (kiloValue == null && unitValue > 0) ? '1':
+			(kiloValue > 0 && unitValue == 0) || (kiloValue > 0 && unitValue == null) ? '0':
+			(kiloValue > 0 && unitValue > 0)                                          ? '2':
+																						' ';
 		const product = {
 			id: this.newId(),
 			name: req.body.name,
 			price: {
-				kilo: parseInt(req.body.kilo),
-				unidad: parseInt(req.body.unidad),
+				kilo: parseInt(kiloValue),
+				unidad: parseInt(unitValue),
 			},
 			discount: req.body.discount,
 			category: [req.body.category],
-			image: req.file.filename,
+			image: req.file != undefined ? req.file.filename : 'default.jpg',
 			market: req.body.market,
-			seller: '',
 			wayToBuy: wayToBuy,
 		};
 
 		const products = this.getProducts();
 		products.push(product);
 		this.updateList(products);
+	},
+	deleteProduct: function (id) {
+		const newProductsList = this.getSomeProducts((product) => product.id != id);
+		this.updateList(newProductsList);
 	},
 };
 

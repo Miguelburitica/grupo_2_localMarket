@@ -25,12 +25,12 @@ router.get('/list', authSellerMiddleware, productController.getList); //agregar 
 router.get('/catalog', productController.getCatalog);
 
 //CREACIÓN DE PRODUCTOS //agregar middleware para que solo el vendedor vea esta pestaña
-router.get('/add-item', authSellerMiddleware, productController.getAddItem);
-router.post('/add-item', uploadFile.single('imagefile'), validateAddItem, productController.storeAddItem);
+router.get('/add-item', authSellerMiddleware, productController.getAdd);
+router.post('/add-item', uploadFile.single('imagefile'), validateAddItem, productController.createItem);
 
 // EDICIÓN DE PRODUCTOS //agregar middleware para que solo el vendedor vea esta pestaña
 // Mostrar el producto a editar.
-router.get('/edit-item/:id', authSellerMiddleware, productController.getEditItem);
+router.get('/edit-item/:id', authSellerMiddleware, productController.getEdit);
 // Manda la info editada y redirige al detalle de producto.
 router.put('/edit-item/:id', uploadFile.single('imagefile'), validateEditItem, productController.updateItem);
 
