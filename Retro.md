@@ -1,6 +1,33 @@
-# Rerospectivas
+# Retrospectivas
+## Retrospectiva sprint 6
 
-## Retrospectiva sprint 4
+### Comenzar a hacer:
+* Comentarios que explique el código para comprender que hace el otro.
+* Reconocer el trabajo que es opcional en los requerimientos.
+
+### Hacer más:
+* Ser más apegados a las fechas definidas para las entregas parciales.
+
+### Continuar haciendo:
+* Reunión de los lunes hacerla a las 7pm.
+* Estar pendientes de cómo es el cierre del sprint.
+* Tener sesiones de trabajo conjunto, así no estemos haciendo lo mismo,esto nos ayuda a resolver dudas más rápido, por tanto, avanzamos más rápido.
+* Ser más apegados a las fechas definidas para las entregas parciales.
+* Seguir con la buena comunicación y el buen manejo de los errores/dificultades.
+* Hacer más uso de git para hacer commits más frecuentes.
+* Seguir usando Trello para tener un mejor seguimiento y ejecución de los pendientes.
+* Avisar con tiempo la no disponibilidad para asistir a una daily.  
+* No esperar hasta las daily reports para comentar sugerencias en el trabajo de los demás.
+* Continuar con las daily reports.
+
+### Hacer menos:
+* Ignorar el tiempo que realmente tenemos disponible para dedicarle al proyecto.
+
+
+### Dejar de hacer:
+* sobrecargarnos de trabajo.
+
+## Retrospectiva sprint 5
 
 ### Comenzar a hacer:
 
@@ -36,7 +63,7 @@
 * sobrecargarnos de trabajo.
 
 
-## Retrospectiva sprint 3
+## Retrospectiva sprint 4
 
 ### Comenzar a hacer:
 
@@ -66,7 +93,7 @@
 
 * sobrecargarnos de trabajo.
 
-## Retrospectiva sprint 2
+## Retrospectiva sprint 3
 
 ### Comenzar a hacer:
 
@@ -93,7 +120,7 @@
 
 * sobrecargarnos de trabajo.
 
-## Retrospectiva sprint 1
+## Retrospectiva sprint 2
 
 ### Comenzar a hacer:
 
