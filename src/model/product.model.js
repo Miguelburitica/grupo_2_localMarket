@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 const model = {
-	get_products: function () {
+	getProducts: function () {
 		return JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/products.json'), 'utf-8'));
 	},
 
@@ -12,15 +12,15 @@ const model = {
 	},
 
 	getOne: function (id) {
-		let product = this.get_products().find((item) => item.id == id);
+		let product = this.getProducts().find((item) => item.id == id);
 		return product;
 	},
 
-	edit_products: function (req) {
-		const products = this.get_products();
-		const idReqs = req.params.id;
+	editProduct: function (req) {
+		const products = this.getProducts();
+		const id = req.params.id;
 		products.forEach((product) => {
-			if (product.id == idReqs) {
+			if (product.id === id) {
 				product.name = req.body.name;
 				product.price = {
 					kilo: parseInt(req.body.kilo),
@@ -30,7 +30,6 @@ const model = {
 				product.category = [req.body.category];
 				req.file != undefined ? (product.image = req.file.filename) : (product.image = product.image);
 				product.market = req.body.market;
-				product.seller = '';
 			}
 		});
 
@@ -39,7 +38,7 @@ const model = {
 
 	newId: function () {
 		let ultimo = 0;
-		this.get_products.forEach((product) => {
+		this.getProducts.forEach((product) => {
 			if (product.id > ultimo) {
 				ultimo = product.id;
 			}
@@ -47,7 +46,7 @@ const model = {
 		return ultimo + 1;
 	},
 
-	store_products: function (req) {
+	storeProducts: function (req) {
 		const priceKilo = req.body.kilo;
 		const priceUnidad = req.body.unidad;
 
@@ -73,7 +72,7 @@ const model = {
 			wayToBuy: wayToBuy,
 		};
 
-		const products = this.get_products;
+		const products = this.getProducts();
 		products.push(product);
 		this.updateList(products);
 	},

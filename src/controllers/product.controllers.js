@@ -7,17 +7,26 @@ const pathViews = function (nameView) {
 	return path.resolve(__dirname, '../views/products/' + nameView + '.ejs');
 };
 
+// PRODUCTS prototype models
+// path of products JSON
 const productsFilePath = path.resolve(__dirname, '../data/products.json');
-const products = function () {
+// get all products in an array
+function products() {
 	return JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-};
+}
+// update the JSON of products with a new array of products
+function updateProducts(products) {
+	fs.writeFileSync(productsFilePath, JSON.stringify(products, null, 4));
+}
+
+// USERS prototype models
 
 const sellersFilePath = path.resolve(__dirname, '../data/sellers.json');
-const sellers = function () {
+function sellers() {
 	return JSON.parse(fs.readFileSync(sellersFilePath, 'utf-8'));
-};
-//función que permite almacenar el producto nuevo con el id superior al mayor de data
+}
 
+//función que permite almacenar el producto nuevo con el id superior al mayor de data
 function newId() {
 	let ultimo = 0;
 	products().forEach((product) => {
@@ -60,7 +69,7 @@ const controller = {
 	},
 
 	updateItem: function (req, res) {
-		model.edit_products(req);
+		model.editProduct(req);
 		res.redirect('/products/detail/' + req.params.id);
 	},
 
@@ -100,18 +109,24 @@ const controller = {
 			seller: '',
 			wayToBuy: wayToBuy,
 		};
-		let p = products();
-		p.push(product);
-		const jsonProducts = JSON.stringify(p, null, 4);
-		fs.writeFileSync(productsFilePath, jsonProducts);
+		let newProducts = products();
+		newProducts.push(product);
+		updateProducts(newProducts);
 
 		res.redirect('list');
 	},
 
 	getDetail: function (req, res) {
 		const id = req.params.id;
-		const dataProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-		const suggestProducts = dataProducts.filter((item) => item.id > 1 && item.id < 6);
+		const dataProducts = products();
+		const suggestProducts = [];
+		let i = 0;
+		dataProducts.forEach((product) => {
+			if (i < 4 && id != product.id) {
+				suggestProducts.push(product);
+				i++;
+			}
+		});
 		const product = dataProducts.find((item) => item.id == id);
 		const seller = sellers().find((sel) => sel.products.includes(id));
 

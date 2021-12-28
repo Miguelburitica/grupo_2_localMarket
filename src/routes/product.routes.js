@@ -32,7 +32,7 @@ router.post('/add-item', uploadFile.single('imagefile'), validateAddItem, produc
 // Mostrar el producto a editar.
 router.get('/edit-item/:id', authSellerMiddleware, productController.getEditItem);
 // Manda la info editada y redirige al detalle de producto.
-router.post('/edit-item/:id', uploadFile.single('imagefile'), validateEditItem, productController.updateItem);
+router.put('/edit-item/:id', uploadFile.single('imagefile'), validateEditItem, productController.updateItem);
 
 // DETALLE DE UN PRODUCTO
 router.get('/detail/:id?', productController.getDetail);

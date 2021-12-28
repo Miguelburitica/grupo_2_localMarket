@@ -1,14 +1,14 @@
 [
 	{
 		"id": "3",
-		"name": "Pimentón",
+		"name": "Pime",
 		"price": {
 			"kilo": 4000,
 			"unidad": 0
 		},
 		"wayToBuy": 0,
-		"discount": 0.12,
-		"category": ["condimentos"],
+		"discount": "0",
+		"category": ["frutas"],
 		"image": "pepper.jfif"
 	},
 	{
@@ -70,6 +70,19 @@
 		"category": ["frutas"],
 		"image": "imagefile-1640041539683.jfif",
 		"market": "Poblado",
+		"wayToBuy": 2
+	},
+	{
+		"id": 10,
+		"name": "dasdasda",
+		"price": {
+			"kilo": 1244,
+			"unidad": 150
+		},
+		"discount": "0.25",
+		"category": ["condimentos"],
+		"image": "imagefile-1640629703795.jpg",
+		"market": "Ciudad del Río",
 		"wayToBuy": 2
 	}
 ]

@@ -6,13 +6,13 @@
 		<h3 class="sub-title">¡Hey! llevate unas cuantas frutas para asustar el hambre</h3>
 		<div class="products-space">
 			<div class="product-row">
-				<% for (let i = 0; i < frutas.length; i++) { %>
+				<% for (let i = 0; i < frutas.length && i < 4; i++) { %>
 				<a href="/products/detail/<%= frutas[i].id %>">
 					<article class="control-article">
 						<img src="/images/<%= frutas[i].image%>" alt="<%frutas[i].name%>" />
 						<p class="product-name"><%= frutas[i].name%></p>
 						<p Class="price">
-							Desde $<%= frutas.wayToBuy == 0 ? frutas[i].price.kilo : frutas[i].price.unidad%>
+							Desde $<%= frutas[i].wayToBuy == 0 ? frutas[i].price.kilo : frutas[i].price.unidad%>
 						</p>
 						<button type="submit" class="">Agregar<i class="fas fa-plus-circle"></i></button>
 					</article>
@@ -23,12 +23,14 @@
 		<h3>Que no se te olviden las verduras, importantes para crecer sano y fuerte</h3>
 		<div class="products-space">
 			<div class="product-row">
-				<% for (let i = 0; i < verduras.length; i++) { %>
+				<% for (let i = 0; i < verduras.length && i < 4; i++) { %>
 				<a href="/products/detail/<%= verduras[i].id %>">
 					<article class="control-article">
 						<img src="/images/<%= verduras[i].image%>" alt="<%verduras[i].name%>" />
 						<p class="product-name"><%= verduras[i].name%></p>
-						<p Class="price">Desde $<%= verduras[i].price.kilo%></p>
+						<p Class="price">
+						Desde $<%= verduras[i].wayToBuy == 0 ? verduras[i].price.kilo : verduras[i].price.unidad%>
+						</p>
 						<button type="submit" class="">Agregar<i class="fas fa-plus-circle"></i></button>
 					</article>
 				</a>
@@ -39,12 +41,14 @@
 		<h3>Prueba con algunos condimentos que le puedan dar profundidad al sabor de tus comidas</h3>
 		<div class="products-space">
 			<div class="product-row">
-				<% for (let i = 0; i < condimentos.length; i++) { %>
+				<% for (let i = 0; i < condimentos.length && i < 4; i++) { %>
 				<a href="/products/detail/<%= condimentos[i].id %>">
 					<article class="control-article">
 						<img src="/images/<%= condimentos[i].image%>" alt="<%condimentos[i].name%>" />
 						<p class="product-name"><%= condimentos[i].name%></p>
-						<p Class="price">Desde $<%= condimentos[i].price.kilo%></p>
+						<p Class="price">
+							Desde $<%= condimentos[i].wayToBuy == 0 ? condimentos[i].price.kilo : condimentos[i].price.unidad%>
+						</p>
 						<button type="submit" class="">Agregar<i class="fas fa-plus-circle"></i></button>
 					</article>
 				</a>
