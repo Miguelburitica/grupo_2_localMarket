@@ -8,10 +8,13 @@ const pathViews = function (nameView) {
 };
 
 // USERS prototype productModels
-
 const sellersFilePath = path.resolve(__dirname, '../data/sellers.json');
 function sellers() {
 	return JSON.parse(fs.readFileSync(sellersFilePath, 'utf-8'));
+}
+function updateSellers(sellers) {
+	let jsonSellers = JSON.stringify(sellers, null, 4);
+	fs.writeFileSync(sellersFilePath, jsonSellers);
 }
 
 const controller = {
@@ -59,8 +62,39 @@ const controller = {
 	createItem: function (req, res) {
 		const errors = validationResult(req); // validación de creación.
 		if (errors.isEmpty()) {
-			productModel.storeProduct(req);
-			res.redirect('list');
+			// Aquí implementaré el cómo se agrega un producto teniendo en cuenta el usuario asociado
+			if (req.session.sellerLogged !== undefined) {
+				// modelo que creará el nuevo producto en el JSON de productos
+				productModel.storeProduct(req);
+
+				// capturo el array de productos actuales del vendedor logueado
+				let userProducts = req.session.sellerLogged.products;
+
+				// le agredo el id que recien se ingresó
+				userProducts.push(productModel.lastId());
+
+				// capturo toda la lista de vendedores que hay
+				let sellersList = sellers();
+
+				// recorro el array de vendedores buscando el vendedor logueago
+				sellersList.forEach((seller) => {
+					// compruebo el vendedor por su email, ya que debe ser único
+					if (seller.email === req.session.sellerLogged.email) {
+						// remplazo el array de productos que tenía por el nuevo, el cual tiene agregado el nuevo producto
+						seller.products = userProducts;
+					}
+				});
+
+				// actualizo la lista de vendedores con el cambió al vendedor logueado en su array de productos
+				updateSellers(sellersList);
+
+				// redirijo a la lista de productos
+				res.redirect('list');
+			} else {
+				// si llega a acabarse la sesión antes de crear el producto le enviará este mensaje de apoyo :3
+				res.send('Chic@ no deberías estar viendo esto >:°');
+			}
+			// en caso de que hayan errores, redirije al formulario de crear item, para crearlo bien
 		} else {
 			res.render(pathViews('add-item'), {
 				errors: resultValidation.mapped(),

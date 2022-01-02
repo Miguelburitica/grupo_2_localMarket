@@ -11,7 +11,7 @@
 		"agree-data": "on",
 		"photo": "default.jpg",
 		"id": 4,
-		"products": ["1", "4", "5", "6"]
+		"products": ["1"]
 	},
 	{
 		"user_name": "Los Cachivaches",
@@ -23,8 +23,8 @@
 		"pass_confirm": null,
 		"agree_data": "on",
 		"agree_terms_conditions": "off",
-		"photo": "default.jpg",
+		"photo": "farmer4.jpg",
 		"id": 5,
-		"products": ["7", "8", "9", "2", "3"]
+		"products": ["2"]
 	}
 ]

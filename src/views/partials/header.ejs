@@ -1,0 +1,101 @@
+<header class="main-header">	
+	<div class="content">
+		<div class="no-desktop">
+            <div class="burger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+    
+            <div class="logo">
+                    <img src="/images/logolocalmarket.png" alt="Logo LocalMarket" />
+            </div>
+            
+            <div class="site-search">
+                <form class="search-bar">
+                    <input class="q" type="search" name="q" placeholder="Busqueda..." />
+                    <button class="search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            <% if (!locals.sellerLogged) { %>
+                <div class="basket">
+                    <i class="fas fa-shopping-basket"></i>
+                </div>
+            <% } %> 
+        </div>
+        
+        <div class="desktop">
+            <div class="left">
+                <a href="/">
+                    <img src="/images/logolocalmarket.png" alt="Logo LocalMarket" />
+                    <h2>LocalMarket</h2>
+                </a>
+            </div>
+
+            <div class="center-left">
+                <div class="site-search">
+                    <form class="search-bar">
+                        <input class="q" type="search" name="q" placeholder="Busqueda..." />
+                        <button class="search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+    
+                <nav class="nav-bar">
+                    <ul class="options">
+                        <a href="/">
+                            <li class="option">Inicio</li>
+                        </a>
+                    <% if (locals.isLogged && locals.customerLogged) { %>
+                        <a href="/users/customer">
+                            <li class="option">Mi perfil</li>
+                        </a>
+                        <a href="/products/catalog">
+                            <li class="option">Productos</li>
+                        </a>
+                        <a href="/">
+                    <%}else if(locals.isLogged && locals.sellerLogged) { %>
+                        <a href="/users/seller">
+                            <li class="option">Mi perfil</li>
+                        </a>
+                        <a href="/products/list">
+                            <li class="option">Mis Productos</li>
+                        </a>
+                    <% } else { %>
+                        <a href="/products/catalog">
+                            <li class="option">Productos</li>
+                        </a>
+                        <a href="/">
+                            <li class="option">Agricultores</li>
+                        </a>
+                        <a href="/">
+                            <li class="option">Encuéntranos</li>
+                        </a>
+                    <% } %>
+                    </ul>
+                </nav>
+            </div>
+
+            <% if (!locals.sellerLogged) { %>
+                <a href="/products/shopping-cart" class="center-right">
+                    <i class="fas fa-shopping-basket"></i>
+                </a>
+            <% } %> 
+
+            <div class="right">
+                <% if (locals.isLogged) { %>
+                        <a class="login" href="#" id="dropUser" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <img src="/images/users/<%= locals.userLogged.photo %> " width="40" style="border-radius: 100%;">
+                            <%= locals.userLogged.name %>
+                        </a>
+                        <a class="login" href="/users/logout">Cerrar sesión</a>
+                <% } else { %>
+                    <a href="/users/sign-in-customer" class="sign-in">Regístrate <i class="fas fa-sign-in-alt"></i></a>
+                    <a href="/users/login" class="login">Loguéate <i class="far fa-id-card"></i></a>
+                <% } %>
+            </div>
+        </div>
+	</div>
+</header>

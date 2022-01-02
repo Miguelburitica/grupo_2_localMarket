@@ -5,6 +5,12 @@ const fs = require('fs');
 const productsFilePath = path.resolve(__dirname, '../data/products.json');
 
 const model = {
+	// get the major id
+	lastId: function () {
+		let lastId = 0;
+		this.getProducts().forEach((product) => (lastId = parseInt(product.id) > lastId ? product.id : lastId));
+		return lastId;
+	},
 	// get the major id plus 1
 	newId: function () {
 		let lastId = 0;
@@ -77,6 +83,7 @@ const model = {
 		products.push(product);
 		this.updateList(products);
 	},
+
 	deleteProduct: function (id) {
 		const newProductsList = this.getSomeProducts((product) => product.id != id);
 		this.updateList(newProductsList);
