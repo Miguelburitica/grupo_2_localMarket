@@ -2380,13 +2380,13 @@ h2 {
 /* Inicio estilos para el prototipo de nuevo header */
 
 /* Mobile first */
-
-/* .desktop {
+/* 
+.desktop {
 	display: none;
 }
 
 .main-header .content {
-	height: inherit;
+	height: 140px;
 }
 
 .main-header .content .no-desktop {
@@ -2395,23 +2395,144 @@ h2 {
 	width: 100%;
 	justify-content: space-evenly;
 	align-items: center;
-} */
+}
 
-/* .main-header .content .burger-menu {
+.main-header .content .burger-menu {
 	order: inherit;
 	text-align: inherit;
 }
 
 .main-header .content .logo {
-	height: none; */
-/* height quitar 100% */
-/* }
+	height: none;
+	position: relative;
+}
+
+.main-header .content .logo a {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
 
 .main-header .content .logo img {
-	width: 21vw;
-	min-width: 85px;
-	max-width: 150px; */
-/* quitar height 100% */
-/* } */
+	width: 20vw;
+	min-width: 95px;
+	max-width: 140px;
+}
+
+.no-desktop .profile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 6px;
+}
+
+.no-desktop .profile .top {
+	display: flex;
+	position: relative;
+	align-items: center;
+	gap: 6px;
+	color: #552827;
+	flex-direction: column;
+}
+
+.no-desktop .profile .top a {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.no-desktop .profile .top img {
+	width: 100px;
+	border-radius: 28px;
+}
+
+.no-desktop .profile .top h4 {
+	font-family: Mulish;
+} */
+
+/* end mobile and tablet*/
+
+/* Desktop styles now */
+
+/* @media (min-width: 769px) {
+	.main-header {
+		height: 120px;
+	}
+
+	.main-header .content {
+		height: 100%;
+	}
+
+	.main-header .content .no-desktop {
+		display: none;
+	}
+
+	.main-header .content .desktop {
+		display: flex;
+		width: 100%;
+	}
+
+	.desktop .left {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 18%;
+	}
+
+	.desktop .left a {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+
+	.desktop .left img {
+		width: 70px;
+	}
+
+	.desktop .left h2 {
+		font-size: 22px;
+		margin: 0;
+		font-family: Monserrat;
+	}
+
+	.desktop .center-left {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 55%;
+	}
+
+	.desktop .center-left .site-search {
+		height: inherit;
+		width: 82%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.desktop .center-left .nav-bar {
+		display: flex;
+		order: inherit;
+		margin-top: 15px;
+		width: 100%;
+		justify-content: center;
+	}
+
+	.desktop .center-left .nav-bar .options {
+		justify-content: space-evenly;
+		width: 100%;
+	}
+
+	.desktop .center-left .nav-bar .options .option {
+		padding: 2px 5px;
+		position: relative;
+	}
+
+	.desktop .center-left .nav-bar .options .option a {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+} */
 
 /* Final estilos para el nuevo header */
