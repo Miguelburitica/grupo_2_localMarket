@@ -68,38 +68,54 @@
                     <ul class="options">
                         <li class="option">
                             <a href="/"></a>
-                            Inicio
+                            <div>
+                                Inicio
+                            </div>
                         </li>
                         <% if (locals.isLogged && locals.customerLogged) { %>
                             <li class="option">
                                 <a href="/users/customer"></a>
-                                Mi perfil
+                                <div>
+                                    Mi perfil
+                                </div>
                             </li>
                             <li class="option">
                                 <a href="/products/catalog"></a>
-                                Productos
+                                <div>
+                                    Productos
+                                </div>
                             </li>
                         <% } else if(locals.isLogged && locals.sellerLogged) { %>
                             <li class="option">
                                 <a href="/users/seller"></a>
-                                Mi perfil
+                                <div>
+                                    Mi perfil
+                                </div>
                             </li>
                             <li class="option">
                                 <a href="/products/list"></a>
-                                Mis Productos
+                                <div>
+                                    Mis Productos
+                                </div>
                             </li>
                         <% } else { %>
                             <li class="option">
                                 <a href="/products/catalog"></a>
-                                Productos
+                                <div>
+                                    Productos
+                                </div>
                             </li>
                             <li class="option">
                                 <a href="/"></a>
-                                Agricultores
+                                <div>
+                                    Agricultores
+                                </div>
                             </li>
                             <li class="option">
                                 <a href="/"></a>
-                                Encuéntranos
+                                <div>
+                                    Encuéntranos
+                                </div>
                             </li>
                         <% } %>
                     </ul>
@@ -107,22 +123,54 @@
             </div>
 
             <% if (!locals.sellerLogged) { %>
-                <a href="/products/shopping-cart" class="center-right">
-                    <i class="fas fa-shopping-basket"></i>
-                </a>
+                <div class="center-right">
+                    <a href="/products/shopping-cart"></a>
+                    <div class="ico">
+                        <i class="fas fa-shopping-basket"></i>
+                    </div>
+                </div>
             <% } %> 
 
             <div class="right">
-                <% if (locals.isLogged) { %>
-                        <a class="login" href="#" id="dropUser" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <img src="/images/users/<%= locals.userLogged.photo %> " width="40" style="border-radius: 100%;">
-                            <%= locals.userLogged.name %>
-                        </a>
-                        <a class="login" href="/users/logout">Cerrar sesión</a>
+                <% if (locals.sellerLogged) { %>
+                    <div class="profile">
+                        <div class="top">
+                            <a href="/users/seller"></a>
+                            <img src="/images/users/<%= locals.userLogged.photo %>">
+                            <h4><%= locals.userLogged.name %></h4>
+                        </div>
+                        <div class="bottom">
+                            <a href="/users/logout"></a>
+                            <i class="fas fa-sign-out-alt"></i>
+                        </div>
+                    </div>
+                <% } else if(locals.customerLogged) { %> 
+                    <div class="profile">
+                        <div class="top">
+                            <a href="/users/customer"></a>
+                            <img src="/images/users/<%= locals.userLogged.photo %>">
+                            <h4>locals.userLogged.name</h4>
+                        </div>
+                        <div class="bottom">
+                            <a href="/users/logout"></a>
+                            <i class="fas fa-sign-out-alt"></i>
+                        </div>
+                    </div>
                 <% } else { %>
-                    <a href="/users/sign-in-customer" class="sign-in">Regístrate <i class="fas fa-sign-in-alt"></i></a>
-                    <a href="/users/login" class="login">Loguéate <i class="far fa-id-card"></i></a>
+                    <div class="camp">
+                        <a href="/users/sign-in-customer"></a>
+                        <div>
+                            Regístrate 
+                        </div>
+                        <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <div class="camp">
+                        <a href="/users/login"></a>
+                        <div>
+                            Ingresa
+                        </div>
+                        <i class="far fa-id-card"></i>
+                    </div>
                 <% } %>
             </div>
         </div>
