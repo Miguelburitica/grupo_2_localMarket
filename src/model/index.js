@@ -1,9 +1,11 @@
 const path = require('path');
 
 const productModel = require(path.resolve(__dirname, './product.model'));
-const userModel = require(path.resolve(__dirname, './user.model'));
+const sellerModel = require(path.resolve(__dirname, './seller.model'));
+const customerModel = require(path.resolve(__dirname, './customer.model'));
 
 module.exports = {
 	productModel,
-	userModel,
+	sellerModel,
+	customerModel
 };

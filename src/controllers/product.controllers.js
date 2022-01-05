@@ -127,7 +127,7 @@ const controller = {
 			suggestProducts.push(item);
 		});
 
-		// Hay que aplicar acá algun metodo del modelo de usuarios
+		// Hay que aplicar acá algun metodo del modelo de usuarios (¿cuál?)
 		const seller = sellers().find((sel) => sel.products.includes(id));
 
 		res.render(pathViews('detail'), {

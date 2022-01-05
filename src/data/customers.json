@@ -1,26 +1,38 @@
 [
-	{
-		"name": "Olga",
-		"surname": "Sosa",
-		"phone": "3004867807",
-		"email": "DMZAPATAS10@GMAIL.COM",
-		"pass": "$2a$10$7lMzEfdqDW2HjYlCPgJthexFjnCexIpCXrbScCzBu42wLWgFPUMya",
-		"pass_confirm": null,
-		"agree-terms-conditions": "on",
-		"agree-data": "on",
-		"image": "default.jpg",
-		"id": 2
-	},
-	{
-		"name": "Miguel Antonio",
-		"surname": "Buritica Vargas",
-		"phone": "3146464588",
-		"email": "carlostibocheylaura@gmail.com",
-		"pass": "$2a$10$uct93ExF5t4UmKIE8mgWlOx0ZLzsL/.LxS52tlURqGlGcZAXUcObG",
-		"pass_confirm": null,
-		"agree_terms_conditions": "on",
-		"agree_data": "on",
-		"photo": "profile_photo-1640196477033.jpg",
-		"id": 3
-	}
+    {
+        "name": "Olga",
+        "surname": "Sosa",
+        "phone": "3004867807",
+        "email": "DMZAPATAS10@GMAIL.COM",
+        "pass": "$2a$10$7lMzEfdqDW2HjYlCPgJthexFjnCexIpCXrbScCzBu42wLWgFPUMya",
+        "pass_confirm": null,
+        "agree-terms-conditions": "on",
+        "agree-data": "on",
+        "image": "default.jpg",
+        "id": 2
+    },
+    {
+        "name": "Miguel Antonio",
+        "surname": "Buritica Vargas",
+        "phone": "3146464588",
+        "email": "carlostibocheylaura@gmail.com",
+        "pass": "$2a$10$uct93ExF5t4UmKIE8mgWlOx0ZLzsL/.LxS52tlURqGlGcZAXUcObG",
+        "pass_confirm": null,
+        "agree_terms_conditions": "on",
+        "agree_data": "on",
+        "photo": "profile_photo-1640196477033.jpg",
+        "id": 3
+    },
+    {
+        "name": "Sebastian",
+        "surname": "Romo",
+        "phone": "3016761679",
+        "email": "sebas@gmail.com",
+        "pass": "$2a$10$FuALwFwKKKSNmYbUlVUokOl2LpKX2PacM.Fy/kR7PKhKeHANjm/P2",
+        "pass_confirm": null,
+        "agree_terms_conditions": "on",
+        "agree_data": "on",
+        "photo": "profile_photo-1641385784394.jpg",
+        "id": 4
+    }
 ]

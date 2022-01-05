@@ -4,62 +4,17 @@ const dataCustomers = require('../data/customers.json');
 const fs = require('fs');
 const bcryptjs = require('bcryptjs');
 const { validationResult } = require('express-validator');
+const { sellerModel } = require('../model');
+const { customerModel } = require('../model');
 
 const pathViews = function (nameView) {
 	return path.resolve(__dirname, '../views/users/' + nameView + '.ejs');
 };
-// ------- Desde aquí -------
-function getSellers() {
-	return JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/sellers.json'), 'utf-8'));
-}
-
-function getCustomers() {
-	return JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/customers.json'), 'utf-8'));
-}
-
-function findByEmailSeller(email) {
-	const allSellers = getSellers();
-	const foundSeller = allSellers.find((item) => item.email === email);
-	return foundSeller;
-}
-function findByEmailCustomer(email) {
-	const allCustomers = getCustomers();
-	const foundCustomer = allCustomers.find((item) => item.email === email);
-	return foundCustomer;
-}
-
-function updateCustomers(customers) {
-	fs.writeFileSync(path.resolve(__dirname, '../data/customers.json'), JSON.stringify(customers, null, 4));
-}
-
-function updateSellers(sellers) {
-	fs.writeFileSync(path.resolve(__dirname, '../data/sellers.json'), JSON.stringify(sellers, null, 4));
-}
-
-function newSellerId() {
-	let ultimo = 0;
-	getSellers().forEach((seller) => {
-		if (seller.id > ultimo) {
-			ultimo = seller.id;
-		}
-	});
-	return ultimo + 1;
-}
-
-function newCustomerId() {
-	let ultimo = 0;
-	getCustomers().forEach((seller) => {
-		if (seller.id > ultimo) {
-			ultimo = seller.id;
-		}
-	});
-	return ultimo + 1;
-}
 
 const controller = {
 	// Mostrar perfil de vendedor
 	getSellerProfile: function (req, res) {
-		res.render(pathViews('seller'), { seller: req.session.sellerLogged });
+		res.render(pathViews('seller'), { seller: req.session.sellerLogged});
 	},
 	// Mostrar registro de vendedor
 	getSignInSeller: function (req, res) {
@@ -68,9 +23,9 @@ const controller = {
 	// Eliminar vendedor
 	deleteSeller: function (req, res) {
 		const idToDelete = req.params.id;
-		const sellers = getSellers();
+		const sellers = sellerModel.getSellers();
 		const newSellerList = sellers.filter((seller) => seller.id != idToDelete);
-		updateSellers(newSellerList);
+		sellerModel.updateSellers(newSellerList);
 		// console.log(newSellerList);
 		res.redirect('/');
 	},
@@ -85,9 +40,9 @@ const controller = {
 	// Eliminar comprador
 	deleteCustomer: function (req, res) {
 		const idToDelete = req.params.id;
-		const customers = getCustomers();
+		const customers = customerModel.getCustomers();
 		const newCustomerList = customers.filter((customer) => customer.id != idToDelete);
-		updateSellers(newCustomerList);
+		customerModel.updateCustomers(newCustomerList);
 		res.redirect('/');
 	},
 	// 	Crea usuario vendedor o comprador
@@ -110,17 +65,17 @@ const controller = {
 			// separo el sign-in dependiendo del formulario que sea
 			// customer, debido a que un customer no tiene user-name
 			if (user.user_name === undefined) {
-				user.id = newCustomerId();
-				users = getCustomers();
+				user.id = customerModel.newCustomerId();
+				users = customerModel.getCustomers();
 				users.push(user);
-				updateCustomers(users);
+				customerModel.updateCustomers(users);
 				// Seller, debido a que sólo hay dos tipos posibles
 			} else {
 				user.products = [];
-				user.id = newSellerId();
-				users = getSellers();
+				user.id = sellerModel.newSellerId();
+				users = sellerModel.getSellers();
 				users.push(user);
-				updateSellers(users);
+				sellerModel.updateSellers(users);
 			}
 			res.redirect('/users/login');
 			// En caso de que hayan errores, devuelve la vista con los errores
@@ -146,8 +101,8 @@ const controller = {
 				oldData: req.body,
 			});
 		} else {
-			const userToLogCustomer = findByEmailCustomer(req.body.email);
-			const userToLogSeller = findByEmailSeller(req.body.email); //buscamos los usuarios en cada DB
+			const userToLogCustomer = customerModel.findByEmailCustomer(req.body.email);
+			const userToLogSeller = sellerModel.findByEmailSeller(req.body.email); //buscamos los usuarios en cada DB
 			req.session.isUserLogged = false;
 			if (userToLogCustomer) {
 				const passwordOk = bcryptjs.compareSync(req.body.pass, userToLogCustomer.pass); // Hasheo de la contraseña

@@ -5,13 +5,13 @@ const fs = require('fs');
 const productsFilePath = path.resolve(__dirname, '../data/products.json');
 
 const model = {
-	// get the major id
+	// get the largest id
 	lastId: function () {
 		let lastId = 0;
 		this.getProducts().forEach((product) => (lastId = parseInt(product.id) > lastId ? product.id : lastId));
 		return lastId;
 	},
-	// get the major id plus 1
+	// get the largest id plus 1
 	newId: function () {
 		let lastId = 0;
 		this.getProducts().forEach((product) => (lastId = parseInt(product.id) > lastId ? product.id : lastId));

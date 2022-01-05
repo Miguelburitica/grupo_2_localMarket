@@ -1,30 +1,48 @@
 [
-	{
-		"user_name": "arroz con leche",
-		"name": "Daniela",
-		"surname": "Zapata",
-		"phone": "3004867807",
-		"email": "DMZAPATAS11@GMAIL.COM",
-		"pass": "$2a$10$t0N7glUDU7cY8udx33M0t.DSHy4t7kON/mAwkolpL/vF4p.lWHGgy",
-		"pass_confirm": null,
-		"agree-terms-conditions": "on",
-		"agree-data": "on",
-		"photo": "default.jpg",
-		"id": 4,
-		"products": ["1"]
-	},
-	{
-		"user_name": "Los Cachivaches",
-		"name": "Eustasio Wilhelm",
-		"surname": "Shakespeare Kiyosaki",
-		"phone": "3146464588",
-		"email": "caminar@hotmali.com",
-		"pass": "$2a$10$q3.lW2NSJXSdQoFwZcldvuLMl7fWmSv5m1OLcQJylDC3wJDKfNG76",
-		"pass_confirm": null,
-		"agree_data": "on",
-		"agree_terms_conditions": "off",
-		"photo": "farmer4.jpg",
-		"id": 5,
-		"products": ["2"]
-	}
+    {
+        "user_name": "arroz con leche",
+        "name": "Daniela",
+        "surname": "Zapata",
+        "phone": "3004867807",
+        "email": "DMZAPATAS11@GMAIL.COM",
+        "pass": "$2a$10$t0N7glUDU7cY8udx33M0t.DSHy4t7kON/mAwkolpL/vF4p.lWHGgy",
+        "pass_confirm": null,
+        "agree-terms-conditions": "on",
+        "agree-data": "on",
+        "photo": "default.jpg",
+        "id": 4,
+        "products": [
+            "1"
+        ]
+    },
+    {
+        "user_name": "Los Cachivaches",
+        "name": "Eustasio Wilhelm",
+        "surname": "Shakespeare Kiyosaki",
+        "phone": "3146464588",
+        "email": "caminar@hotmali.com",
+        "pass": "$2a$10$q3.lW2NSJXSdQoFwZcldvuLMl7fWmSv5m1OLcQJylDC3wJDKfNG76",
+        "pass_confirm": null,
+        "agree_data": "on",
+        "agree_terms_conditions": "off",
+        "photo": "farmer4.jpg",
+        "id": 5,
+        "products": [
+            "2"
+        ]
+    },
+    {
+        "user_name": "Macondo",
+        "name": "Diana",
+        "surname": "Gomez",
+        "phone": "3016761679",
+        "email": "dianita@gmail.com",
+        "pass": "$2a$10$KYA6xluWfQ9KxE1Ht3Xd8OIxjI1WF6kojw8Gkkq1VWfRoOWq6P2A.",
+        "pass_confirm": null,
+        "agree_terms_conditions": "on",
+        "agree_data": "on",
+        "photo": "profile_photo-1641384542177.jpg",
+        "products": [],
+        "id": 6
+    }
 ]
