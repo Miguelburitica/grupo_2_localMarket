@@ -13,7 +13,7 @@ Evidenciado el problema, la plataforma propuesta ofrecerá los productos que se 
 ## Mercado objetivo
 
 -   _Productores locales/Proveedores:_ son las personas que asisten a los mercados campesinos con sus productos, quienes van a alimentar la plataforma.
--   _Compradores/clientes:_ Personas que están en los lugares aledaños a los mercados campesinos interesados en hacer su mercado semanal
+-   _Compradores/clientes:_ Personas que están en los lugares aledaños a los mercados campesinos interesados en hacer su mercado semanal.
 
 ## Referentes
 
@@ -60,7 +60,7 @@ Evidenciado el problema, la plataforma propuesta ofrecerá los productos que se 
 ## Integrantes del equipo
 
 -   _<a href="https://www.linkedin.com/in/diana-melisa-dom%C3%ADnguez-g%C3%B3mez-aa956659/">Diana Melisa Domínguez:</a>_ Ingeniera Física, FullStack dev. en proceso.
--   _<a href="https://www.linkedin.com/in/miguel-antonio-buritica-vargas-74693a219/" >Miguel Buriticá:</a>_ Desarrollador FullStack en formación, estudiante de Física y estudiante de ingeniería de sistemas.
+-   _<a href="https://www.linkedin.com/in/miguel-antonio-buritica-vargas-74693a219/" >Miguel Buriticá:</a>_ Desarrollador FullStack en formación, estudiante de ingeniería de sistemas.
 -   _<a href="https://www.linkedin.com/in/danielazapatasosa/" >Daniela Zapata:</a>_ Ingeniera Industrial de profesión y aprendiz de Desarrollo web FullStack
 
 ## Enlace tablero de trabajo Trello

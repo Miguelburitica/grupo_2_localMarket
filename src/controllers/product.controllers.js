@@ -107,34 +107,37 @@ const controller = {
 		const id = req.params.id;
 		let i = 0;
 		const product = productModel.getOne(id);
-		// make a new array with just the items that I need suggest
-		const suggestProducts = productModel.getSomeProducts((item) => {
-			// principal condition, it'll be part of the same category
-			if (i < 4 && item.category[0] === product.category[0] && item.id !== id) {
-				i++;
-				return item;
-			}
-		});
-		const extraSuggest = productModel.getSomeProducts((item) => {
-			// if we don't have enought to fill the space to four add some products from other categories
-			if (i < 4 && item.category[0] !== product.category[0]) {
-				i++;
-				return item;
-			}
-		});
-		// I join both arrays
-		extraSuggest.forEach((item) => {
-			suggestProducts.push(item);
-		});
 
-		// Hay que aplicar acá algun metodo del modelo de usuarios (¿cuál?)
-		const seller = sellers().find((sel) => sel.products.includes(id));
+		if (req.session.sellerLogged !== undefined) {
+		} else {
+			// make a new array with just the items that I need suggest
+			const suggestProducts = productModel.getSomeProducts((item) => {
+				// principal condition, it'll be part of the same category
+				if (i < 4 && item.category[0] === product.category[0] && item.id !== id) {
+					i++;
+					return item;
+				}
+			});
+			const extraSuggest = productModel.getSomeProducts((item) => {
+				// if we don't have enought to fill the space to four add some products from other categories
+				if (i < 4 && item.category[0] !== product.category[0]) {
+					i++;
+					return item;
+				}
+			});
+			// I join both arrays
+			extraSuggest.forEach((item) => {
+				suggestProducts.push(item);
+			});
+			// Hay que aplicar acá algun metodo del modelo de usuarios (¿cuál?)
+			const seller = sellers().find((sel) => sel.products.includes(id));
 
-		res.render(pathViews('detail'), {
-			product: product,
-			suggest: suggestProducts,
-			seller: seller,
-		});
+			res.render(pathViews('detailCustomer'), {
+				product: product,
+				suggest: suggestProducts,
+				seller: seller,
+			});
+		}
 	},
 
 	deleteItem: function (req, res) {

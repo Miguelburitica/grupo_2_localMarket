@@ -2453,8 +2453,8 @@ h2 {
 /* end mobile and tablet*/
 
 /* Desktop styles now */
-
-/* @media (min-width: 769px) {
+/* 
+@media (min-width: 769px) {
 	.main-header {
 		height: 100px;
 	}
