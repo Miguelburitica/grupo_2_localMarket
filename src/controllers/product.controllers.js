@@ -109,7 +109,7 @@ const controller = {
 		const product = productModel.getOne(id);
 
 		if (req.session.sellerLogged !== undefined) {
-			// TEMPORAL
+			// !!!!! TEMPORAL !!!!!
 			const suggestProducts = productModel.getSomeProducts((item) => {
 				// principal condition, it'll be part of the same category
 				if (i < 4 && item.category[0] === product.category[0] && item.id !== id) {
