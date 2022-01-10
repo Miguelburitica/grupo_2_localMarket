@@ -24,6 +24,7 @@
 							<td><%= product.id %></td>
 							<td><%= product.name %></td>
 							<td>
+								<!-- <input type="checkbox" name="detail" id="detail"> -->
 								<a href="/products/detail/<%= product.id %>"><i class="far fa-eye"></i></a>
 							</td>
 							<td>
@@ -37,6 +38,10 @@
 								</form>
 							</td>
 						</tr>
+						<!-- <div class="detail">
+							<img src="images/<%= product.image %>" alt="<%= product.name %> ">
+							<p class="price">Price<%= product.price.kilo %> </p>
+						</div> -->
 						<% }) %> <% } %>
 					</tbody>
 				</table>

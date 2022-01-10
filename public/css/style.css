@@ -2380,7 +2380,7 @@ h2 {
 /* Inicio estilos para el prototipo de nuevo header */
 
 /* Mobile first */
-
+/* 
 .desktop {
 	display: none;
 }
@@ -2442,19 +2442,19 @@ h2 {
 }
 
 .no-desktop .profile .top img {
-	width: 100px;
+	max-height: 60px;
 	border-radius: 28px;
 }
 
 .no-desktop .profile .top h4 {
 	font-family: Mulish;
-}
+} */
 
 /* end mobile and tablet*/
 
 /* Desktop styles now */
 
-@media (min-width: 769px) {
+/* @media (min-width: 769px) {
 	.main-header {
 		height: 100px;
 	}
@@ -2637,8 +2637,7 @@ h2 {
 	}
 
 	.desktop .right .profile .top img {
-		width: 100px;
-		max-height: 60px;
+		max-height: 40px;
 		border-radius: 28px;
 	}
 
@@ -2669,6 +2668,6 @@ h2 {
 	.desktop .right .profile .bottom:hover {
 		transform: scale(1.1);
 	}
-}
+} */
 
 /* Final estilos para el nuevo header */

@@ -28,7 +28,7 @@
 				<select name="category" class="control" placeholder="Seleccione la categoria" id="category">
 					<option value="frutas">Frutas</option>
 					<option value="hortalizas">Hortalizas</option>
-					<option value="plantas">Plantas</option>
+					<option value="plantas">Verduras</option>
 					<option value="granos">Granos</option>
 					<option value="semillas">Semillas</option>
 				</select>
@@ -37,7 +37,7 @@
 				<label for="imagefile">Adjunta la imagen del producto: </label>
 				<input class="text-box" type="file" name="imagefile" id="imagefile" required />
 			</div>
-
+			
 			<div class="input-field">
 				<label for="unidad">Precio por unidad:</label>
 				<input class="text-box <%= locals.errors && errors.unidad ? 'is-invalid' : null %>" type="number" name="unidad" id="unidad" placeholder="Precio en pesos" min="0" />
