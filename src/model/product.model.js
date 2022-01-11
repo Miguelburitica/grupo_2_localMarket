@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const db = require(path.resolve(__dirname, '../database/models'));
 
 // path of products JSON
 const productsFilePath = path.resolve(__dirname, '../data/products.json');
@@ -8,6 +9,7 @@ const model = {
 	// get the largest id
 	lastId: function () {
 		let lastId = 0;
+
 		this.getProducts().forEach((product) => (lastId = parseInt(product.id) > lastId ? product.id : lastId));
 		return lastId;
 	},
@@ -20,6 +22,9 @@ const model = {
 	// get all products in an array
 	getProducts: function () {
 		return JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+		// return db.Product.findAll()
+		// 	.then((products) => products)
+		// 	.catch((err) => console.log(err));
 	},
 	// get some products in an array
 	getSomeProducts: function (callBack) {
@@ -91,3 +96,8 @@ const model = {
 };
 
 module.exports = model;
+
+// model
+// 	.getProducts()
+// 	.then((products) => console.log(products))
+// 	.catch((err) => console.log(err));

@@ -26,13 +26,15 @@ module.exports = (sequelize, dataType) => {
 		Market.hasMany(models.Product, {
 			as: 'products',
 			foreignKey: 'markets_id',
-		}),
-			Market.belongsToMany(models.User, {
-				as: 'users',
-				through: 'markets_has_users',
-				foreignKey: 'markets_id',
-				otherKey: 'users_id',
-			});
+		});
+		// It's need the User model
+
+		// Market.belongsToMany(models.User, {
+		// 	as: 'users',
+		// 	through: 'markets_has_users',
+		// 	foreignKey: 'markets_id',
+		// 	otherKey: 'users_id',
+		// });
 	};
 
 	return Market;

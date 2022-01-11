@@ -7,39 +7,39 @@ module.exports = (sequelize, dataType) => {
 		},
 		name: {
 			type: dataType.STRING,
-			notNull: true,
+			allowNull: false,
 		},
 		wayToSell: {
 			type: dataType.TINYINT,
-			notNull: true,
+			allowNull: false,
 		},
 		kilo: {
 			type: dataType.INTEGER,
-			notNull: false,
+			allowNull: false,
 		},
 		unit: {
 			type: dataType.INTEGER,
-			notNull: false,
+			allowNull: false,
 		},
 		discount: {
 			type: dataType.TINYINT,
-			notNull: false,
+			allowNull: false,
 		},
 		image: {
 			type: dataType.STRING,
-			notNull: true,
+			allowNull: false,
 		},
 		users_id: {
 			type: dataType.INTEGER,
-			notNull: true,
+			allowNull: false,
 		},
 		categories_id: {
 			type: dataType.INTEGER,
-			notNull: true,
+			allowNull: false,
 		},
 		markets_id: {
-			type: dataType.TINYINT,
-			notNull: true,
+			type: dataType.INTEGER,
+			allowNull: false,
 		},
 	};
 
@@ -50,19 +50,21 @@ module.exports = (sequelize, dataType) => {
 
 	const Product = sequelize.define('Product', cols, config);
 
-	Product.associate = function (models) {
-		Product.belongsTo(models.Category, {
-			as: 'category',
-			foreingKey: categories_id,
+	Product.associate = function (modelos) {
+		Product.belongsTo(modelos.Market, {
+			as: 'market',
+			foreignKey: 'markets_id',
 		}),
-			Product.belongsTo(models.User, {
-				as: 'seller',
-				foreingKey: users_id,
-			}),
-			Product.belongsTo(models.Market, {
-				as: 'market',
-				foreingKey: markets_id,
+			Product.belongsTo(modelos.Category, {
+				as: 'category',
+				foreignKey: 'categories_id',
 			});
+		// It's need the User model
+
+		// Product.belongsTo(models.User, {
+		// 	as: 'seller',
+		// 	foreingKey: users_id,
+		// }),
 	};
 
 	return Product;
