@@ -45,10 +45,6 @@ i {
 	font-size: calc(10px + 6vw);
 }
 
-.main-header .content .logo {
-	height: 100%;
-}
-
 .main-header .content .logo img {
 	height: 100%;
 }
@@ -2380,7 +2376,7 @@ h2 {
 /* Inicio estilos para el prototipo de nuevo header */
 
 /* Mobile first */
-/* 
+
 .desktop {
 	display: none;
 }
@@ -2448,13 +2444,13 @@ h2 {
 
 .no-desktop .profile .top h4 {
 	font-family: Mulish;
-} */
+}
 
 /* end mobile and tablet*/
 
 /* Desktop styles now */
 
-/* @media (min-width: 769px) {
+@media (min-width: 769px) {
 	.main-header {
 		height: 100px;
 	}
@@ -2668,6 +2664,6 @@ h2 {
 	.desktop .right .profile .bottom:hover {
 		transform: scale(1.1);
 	}
-} */
+}
 
 /* Final estilos para el nuevo header */
