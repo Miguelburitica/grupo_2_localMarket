@@ -3,7 +3,7 @@ const { check } = require('express-validator');
 const validateAddItem = [
 	check('name').notEmpty().withMessage('Este campo es obligatorio'),
 	check('category').notEmpty().withMessage('Selecciona la categoria a la que mejor se ajuste el producto'),
-	check('unidad')
+	check('unit')
 		.notEmpty()
 		.withMessage('Este campo es obligatorio')
 		.bail()

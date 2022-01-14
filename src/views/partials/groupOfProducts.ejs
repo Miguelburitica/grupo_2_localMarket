@@ -3,7 +3,7 @@
 	<article class="control-article">
 		<img src="/images/<%= suggest[i].image%>" alt="<%suggest[i].name%>" />
 		<p class="product-name"><%= suggest[i].name%></p>
-		<p Class="price">Desde $<%= suggest[i].price.kilo%></p>
+		<p Class="price">Desde $<%= suggest[i].wayToSell == 0 ? suggest[i].kilo : suggest[i].unit %></p>
 		<button type="submit" class="">Agregar<i class="fas fa-plus-circle"></i></button>
 	</article>
 </a>
