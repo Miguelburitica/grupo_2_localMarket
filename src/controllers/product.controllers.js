@@ -59,9 +59,13 @@ const controller = {
 	},
 
 	getEdit: async function (req, res) {
-		const id = req.params.id;
-		const product = await productModel.getOne(id);
-		res.render(pathViews('edit-item'), { product });
+		try {
+			const id = req.params.id;
+			const product = await productModel.getOne(id);
+			res.render(pathViews('edit-item'), { product });
+		} catch (err) {
+			console.log(err);
+		}
 	},
 
 	updateItem: async function (req, res) {
@@ -142,7 +146,6 @@ const controller = {
 				const extraSuggest = await productModel.getSomeProducts((item) => {
 					// if we don't have enought to fill the space to four add some products from other categories
 					if (i < 4 && item.category !== product.category) {
-						console.log(item);
 						i++;
 						return item;
 					}

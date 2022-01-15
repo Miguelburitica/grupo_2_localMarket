@@ -2,16 +2,16 @@ const path = require('path');
 const db = require(path.resolve(__dirname, '../database/models'));
 
 class Product {
-	constructor(id, name, wayToSell, kilo, unidad, discount, image) {
+	constructor(id, name, wayToSell, kilo, unidad, discount, category, market, image) {
 		this.id = id;
 		this.name = name;
 		this.wayToSell = wayToSell;
 		this.kilo = kilo;
 		this.unit = unidad;
 		this.discount = discount;
+		this.categories_id = category;
+		this.markets_id = market;
 		this.image = image;
-		this.markets_id = 1;
-		this.categories_id = 1;
 		this.users_id = 1;
 	}
 }
@@ -68,6 +68,15 @@ const model = {
 	editProduct: async function (req) {
 		try {
 			const id = req.params.id;
+			const kiloValue = parseInt(req.body.kilo);
+			const unitValue = parseInt(req.body.unit);
+			console.log(kiloValue);
+			console.log(unitValue);
+			// prettier-ignore
+			let wayToSell = (kiloValue == 0 && unitValue > 0) || (kiloValue == null && unitValue > 0) ? 1 :
+							(kiloValue > 0 && unitValue == 0) || (kiloValue > 0 && unitValue == null) ? 0 :
+							(kiloValue > 0 && unitValue > 0)                                          ? 2 :
+																					   ''
 
 			// simplified the req.body to body
 			let body = req.body;
@@ -75,13 +84,18 @@ const model = {
 			let components = [
 				id, 
 				body.name, 
-				body.wayToSell, 
-				body.kilo, 
-				body.unit, 
-				body.discount, 
+				wayToSell, 
+				kiloValue, 
+				unitValue, 
+				body.discount,
+				body.category,
+				body.market
+
 			];
+			console.log(components);
 			req.file != undefined ? components.push(req.file.filename) : components.push('default.jpg');
 			let product = new Product(...components);
+			console.log(product);
 			db.Product.update(product, {
 				where: { id: id },
 			});
@@ -108,8 +122,8 @@ const model = {
 	storeProduct: async function (req) {
 		try {
 			const id = req.params.id;
-			const kiloValue = req.body.kilo;
-			const unitValue = req.body.unidad;
+			const kiloValue = parseInt(req.body.kilo);
+			const unitValue = parseInt(req.body.unidad);
 
 			// prettier-ignore
 			let wayToSell = (kiloValue == 0 && unitValue > 0) || (kiloValue == null && unitValue > 0) ? 1 :
@@ -126,7 +140,9 @@ const model = {
 				wayToSell, 
 				body.kilo, 
 				body.unit, 
-				body.discount, 
+				body.discount,
+				body.category,
+				body.market
 			];
 			req.file != undefined ? components.push(req.file.filename) : components.push('default.jpg');
 			let product = new Product(...components);
@@ -175,3 +191,22 @@ const model = {
 };
 
 module.exports = model;
+
+// let req = {
+// 	params: {
+// 		id: 2,
+// 	},
+// 	body: {
+// 		name: 'Cebolla Roja',
+// 		kilo: 2000,
+// 		unit: 400,
+// 		discount: 15,
+// 		category: 3,
+// 		market: 3,
+// 	},
+// 	file: {
+// 		filename: 'redonion.jfif',
+// 	},
+// };
+
+// model.editProduct(req);
