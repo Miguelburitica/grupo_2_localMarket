@@ -20,7 +20,7 @@ module.exports = (sequelize, dataType) => {
 		email: {
 			type: dataType.STRING,
 			allowNull: false,
-            unique: true,
+			unique: true,
 		},
 		phone: {
 			type: dataType.INTEGER,
@@ -40,9 +40,9 @@ module.exports = (sequelize, dataType) => {
 		agree_data: {
 			type: dataType.STRING,
 		},
-        rols_id: {
+		rols_id: {
 			type: dataType.BOOLEAN,
-            allowNull: false,
+			allowNull: false,
 		},
 	};
 
@@ -51,19 +51,20 @@ module.exports = (sequelize, dataType) => {
 		timestamps: false,
 	};
 
-    const User = sequelize.define('User', cols, config)
+	const User = sequelize.define('User', cols, config);
 
-    User.associate = function (modelos) {
-		User.hasMany(modelos.Market, {
-			as: 'market',
+	User.associate = function (modelos) {
+		User.belongsToMany(modelos.Market, {
+			as: 'markets',
+			through: 'markets_has_users',
 			foreignKey: 'users_id',
-		})
-		
+			otherKey: 'markets_id',
+		});
+
 		// User.hasOne(modelos.Rol, {
 		// 		as: 'rol',
 		// 		foreignKey: 'users_id',
 		// 	})
-			
-		}
-    return User;
+	};
+	return User;
 };
