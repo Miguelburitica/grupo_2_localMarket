@@ -14,7 +14,7 @@ const pathViews = function (nameView) {
 const controller = {
 	// Mostrar perfil de vendedor
 	getSellerProfile: function (req, res) {
-		res.render(pathViews('seller'), { seller: req.session.sellerLogged});
+		res.render(pathViews('seller'), { seller: req.session.sellerLogged });
 	},
 	// Mostrar registro de vendedor
 	getSignInSeller: function (req, res) {
@@ -49,6 +49,7 @@ const controller = {
 	addUser: function (req, res) {
 		// trae los errores del form
 		let errors = validationResult(req);
+		console.log(errors.mapped());
 		// Comprueba que los datos que vienen del form, vienen ok y si sí, hace esto
 		if (errors.isEmpty()) {
 			// Es encapsulado en una variable el objeto usuario
@@ -80,6 +81,7 @@ const controller = {
 			res.redirect('/users/login');
 			// En caso de que hayan errores, devuelve la vista con los errores
 		} else {
+			console.log(`error: ${errors.mapped()}`);
 			if (req.body.user_name === undefined) {
 				res.render(pathViews('sign-in-customer'), { errors: errors.mapped(), old: req.body });
 			} else {

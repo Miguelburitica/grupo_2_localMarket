@@ -44,5 +44,19 @@
         "photo": "profile_photo-1641384542177.jpg",
         "products": [],
         "id": 6
+    },
+    {
+        "user_name": "Optimus prime",
+        "name": "Miguel",
+        "surname": "Gaitán",
+        "phone": "3146464588",
+        "email": "mburiticav@unal.edu.co",
+        "pass": "$2a$10$3wJe4fPwjsmyy9fvE1Xd8uz51CBIc5ThAWkcVl8VydZUeEgkbEW2q",
+        "pass_confirm": null,
+        "agree_terms_conditions": "on",
+        "agree_data": "off",
+        "photo": "profile_photo-1642376736765.png",
+        "products": [],
+        "id": 7
     }
 ]

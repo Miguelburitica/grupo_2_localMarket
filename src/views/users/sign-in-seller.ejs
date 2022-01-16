@@ -95,7 +95,11 @@
 			<% } %>
 			<input class="text-box file-field" type="file" name="profile_photo" id="profile_photo" />
 			<label for="profile_photo" class="text-box label-file"><i class="far fa-user-circle"></i> Sube una foto para tu perfil</label>
-				<span class="error" style="color: inherit;"></span>
+				<% if (locals.errors && errors.profile_photo) { %>
+					<span class="error"><%= errors.profile_photo.msg %> </span>
+				<% } else {%>
+					<span class="error" style="color: inherit;"></span>
+				<% } %>
 			<div class="input-container">
 				<input
 					class="text-box <%= locals.errors !== undefined ? locals.errors && errors.phone === undefined ? 'correct' : 'incorrect' : ''%>"
