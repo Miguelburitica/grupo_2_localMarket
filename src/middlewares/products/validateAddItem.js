@@ -17,7 +17,7 @@ const validateAddItem = [
 		.bail()
 		.isInt()
 		.withMessage('Escribe el precio por kilo sin puntos ni comas'),
-	check('profile_photo')
+	check('image')
 		.custom((value, { req }) => {
 			let format = req.file.mimetype;
 			console.log(req.file);
