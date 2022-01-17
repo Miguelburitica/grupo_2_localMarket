@@ -59,12 +59,11 @@ module.exports = (sequelize, dataType) => {
 				as: 'category',
 				foreignKey: 'categories_id',
 			});
-		// It's need the User model
 
-		// Product.belongsTo(models.User, {
-		// 	as: 'seller',
-		// 	foreingKey: users_id,
-		// }),
+		Product.belongsTo(models.User, {
+			as: 'seller',
+			foreingKey: 'users_id',
+		})
 	};
 
 	return Product;

@@ -55,14 +55,19 @@ module.exports = (sequelize, dataType) => {
 
     User.associate = function (modelos) {
 		User.hasMany(modelos.Market, {
-			as: 'market',
+			as: 'markets',
+			foreignKey: 'users_id',
+		})
+
+		User.hasMany(modelos.Product,{
+			as: 'products',
 			foreignKey: 'users_id',
 		})
 		
-		// User.hasOne(modelos.Rol, {
-		// 		as: 'rol',
-		// 		foreignKey: 'users_id',
-		// 	})
+		User.belongsTo(modelos.Rol, {
+				as: 'rol',
+				foreignKey: 'rols_id',
+			})
 			
 		}
     return User;
