@@ -26,21 +26,21 @@
 			<div class="select-field input-field<%= locals.errors && errors.category ? 'is-invalid' : null %>">
 				<label for="category">Selecciona la categoría:</label>
 				<select name="category" class="control" placeholder="Seleccione la categoria" id="category">
-					<option value="frutas">Frutas</option>
-					<option value="hortalizas">Hortalizas</option>
-					<option value="plantas">Verduras</option>
-					<option value="granos">Granos</option>
-					<option value="semillas">Semillas</option>
+					<option value="1">Frutas</option>
+					<option value="2">Hortalizas</option>
+					<option value="3">Verduras</option>
+					<option value="4">Granos</option>
+					<option value="5">Semillas</option>
 				</select>
 			</div>
 			<div class="input-field">
 				<label for="imagefile">Adjunta la imagen del producto: </label>
-				<input class="text-box" type="file" name="imagefile" id="imagefile" required />
+				<input class="text-box" type="file" name="image" id="imagefile" required />
 			</div>
 			
 			<div class="input-field">
-				<label for="unidad">Precio por unidad:</label>
-				<input class="text-box <%= locals.errors && errors.unidad ? 'is-invalid' : null %>" type="number" name="unidad" id="unidad" placeholder="Precio en pesos" min="0" />
+				<label for="unit">Precio por unidad:</label>
+				<input class="text-box <%= locals.errors && errors.unidad ? 'is-invalid' : null %>" type="number" name="unit" id="unidad" placeholder="Precio en pesos" min="0" />
 				<% if (locals.errors && errors.unidad) { %>
 					<span class="error"><%= errors.unidad.msg %> </span>
 					<% } else if(locals.errors){ %>
@@ -61,22 +61,17 @@
 			<div class="select-field input-field <%= locals.errors && errors.discount ? 'is-invalid' : null %>">
 				<label for="discount">Selecciona un descuento:</label>
 				<select name="discount" class="control" placeholder="Seleccione descuento" id="discount">
-					<option value="0">0%</option>
-					<option value="0.05">5%</option>
-					<option value="0.1">10%</option>
-					<option value="0.15">15%</option>
-					<option value="0.2">20%</option>
-					<option value="0.25">25%</option>
-					<option value="0.3">30%</option>
-					<option value="0.35">35%</option>
+					<% for( let i = 0; i < 50; i += 5 ) { %>
+						<option value="<%= i %> "><%= i %> %</option>
+					<% } %>
 				</select>
 			</div>
 			<div class="select-field input-field <%= locals.errors && errors.market ? 'is-invalid' : null %>">
 				<label for="market">Selecciona Mercado campesino:</label>
 				<select name="market" class="control" id="market">
-					<option value="Carlos E Restrepo">Carlos E Restrepo</option>
-					<option value="Poblado">Poblado</option>
-					<option value="Ciudad del Río">Ciudad del Río</option>
+					<option value="1">Carlos E Restrepo</option>
+					<option value="2">Poblado</option>
+					<option value="3">Ciudad del Río</option>
 				</select>
 			</div>
 			<button type="submit" class="submit">Agregar</button>

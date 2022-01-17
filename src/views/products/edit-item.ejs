@@ -35,11 +35,11 @@
 					class="control"
 					placeholder="Seleccione la categoria"
 				>
-					<option value="frutas">Frutas</option>
-					<option value="hortalizas">Hortalizas</option>
-					<option value="plantas">Plantas</option>
-					<option value="granos">Granos</option>
-					<option value="semillas">Semillas</option>
+					<option value="1">Frutas</option>
+					<option value="2">Hortalizas</option>
+					<option value="3">Plantas</option>
+					<option value="4">Granos</option>
+					<option value="5">Semillas</option>
 				</select>
 			</div>
 			<div class="input-field">
@@ -47,7 +47,7 @@
 				<input
 					class="text-box"
 					type="file"
-					name="imagefile"
+					name="image"
 					id="imagefile"
 					placeholder="Adjuntar imagen"
 				/>
@@ -62,7 +62,7 @@
 					name="kilo"
 					id="price"
 					placeholder="Precio en pesos"
-					value= <%= product.price.kilo%>
+					value= <%= product.kilo%>
 					required
 				/>
 			</div>
@@ -71,42 +71,31 @@
 				<input
 					class="text-box"
 					type="number"
-					name="unidad"
+					name="unit"
 					id="price"
 					placeholder="Precio en pesos"
-					value= <%= product.price.unidad%>
+					value= <%= product.unit%>
 					required
 				/>
 			</div>
 			<div class="select-field input-field">
 				<label>Selecciona un descuento:</label>
-				<select
-					name="discount"
-					class="control"
-					id="discount"
-					placeholder="Seleccione descuento"
-				>
-					<option value="0">0%</option>
-					<option value="0.05">5%</option>
-					<option value="0.1">10%</option>
-					<option value="0.15">15%</option>
-					<option value="0.2">20%</option>
-					<option value="0.25">25%</option>
-					<option value="0.3">30%</option>
-					<option value="0.35">35%</option>
+				<select name="discount" class="control" placeholder="Seleccione descuento" id="discount">
+					<% for( let i = 0; i < 50; i += 5 ) { %>
+						<option value="<%= i %> "><%= i %> %</option>
+					<% } %>
 				</select>
 			</div>
 			<div class="select-field input-field">
 				<label>Selecciona Mercado campesino:</label>
 				<select
-					name="ubicacion"
+					name="market"
 					class="control"
 					id="market"
-					placeholder="Seleccione descuento"
 				>
-					<option value="Carlos E Restrepo">Carlos E Restrepo</option>
-					<option value="Poblado">Poblado</option>
-					<option value="Ciudad del Río">Ciudad del Río</option>
+					<option value="1">Carlos E Restrepo</option>
+					<option value="2">Poblado</option>
+					<option value="3">Ciudad del Río</option>
 				</select>
 			</div>
 			<button type="submit" class="submit">Actualizar</button>
