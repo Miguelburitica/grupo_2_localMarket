@@ -2667,3 +2667,24 @@ h2 {
 }
 
 /* Final estilos para el nuevo header */
+
+/* Inicio estilos search-results */
+
+.mobile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 15px 0;
+	width: 100%;
+	gap: 6px;
+}
+
+.mobile .card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 80%;
+	padding-bottom: 6px;
+}
+
+/* FInal estilos search-results */

@@ -1,25 +1,47 @@
 <%- include('../partials/head') %> 
 <%- include('../partials/header') %> 
-
-<ul>
-    <% results.forEach(product => { %>
-        <li>
-            <div class='card'>
-                <div class='left'>
-                    <img src="/images/<%= product.image %>" alt="Imagen del/l@s <%= product.name %>">
-                </div>
-                <div class='center'>
-                    <h2><%= product.name %></h2>
-                    <p><% if (product.wayToSell == 0) { %>
+<body class="search-results">
+    <div class="mobile">
+        <% results.forEach(product => { %>
+            <div class="card">
+                <img src="/images/<%= product.image %> " alt="Imagen del/l@s <%= product.name %> ">
+                <h3><%= product.name %></h3>
+                <p>
+                    <% if (product.wayToSell == 1) { %>
+                        <%= product.unit %> 
+                    <% } else { %>
                         <%= product.kilo %> 
-                    <% } %></p>
-                </div>
-                <div class='right'>
-                    
-                </div>
+                    <% }%> 
+                </p>
             </div>
-        </li>
-    <% }) %>
-</ul>
+            <% }) %>
+    </div>
+    <div class="desktop">
+        <ul>
+            <% results.forEach(product => { %>
+                <li>
+                    <div class='card'>
+                        <div class='left'>
+                            <img src="/images/<%= product.image %>" alt="Imagen del/l@s <%= product.name %>">
+                        </div>
+                        <div class='center'>
+                            <h3><%= product.name %></h3>
+                            <p>
+                                <% if (product.wayToSell == 1) { %>
+                                    <%= product.unit %> 
+                                <% } else { %>
+                                    <%= product.kilo %> 
+                                <% }%> 
+                            </p>
+                        </div>
+                        <div class='right'>
+                            
+                        </div>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
 
 <%- include('../partials/footer') %> 
