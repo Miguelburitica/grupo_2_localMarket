@@ -42,4 +42,7 @@ router.delete('/:id', productController.deleteItem);
 // GET shopping-cart page.
 router.get('/shopping-cart', productController.getShoppingCart);
 
+// GET search a product by the search-bar
+router.get('/search', productController.search);
+
 module.exports = router;

@@ -1,5 +1,6 @@
 const path = require('path');
 const db = require(path.resolve(__dirname, '../database/models'));
+const { Op } = require('sequelize');
 
 class Product {
 	constructor(id, name, wayToSell, kilo, unidad, discount, category, market, image) {
@@ -55,6 +56,20 @@ const model = {
 			return newProducts;
 		} catch (err) {
 			return err;
+		}
+	},
+	getSearched: async function (query) {
+		try {
+			let results = await db.Product.findAll({
+				where: {
+					name: {
+						[Op.substring]: [query],
+					},
+				},
+			});
+			return results;
+		} catch (err) {
+			console.log(err);
 		}
 	},
 	// get just one product
