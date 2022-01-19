@@ -41,7 +41,7 @@ module.exports = (sequelize, dataType) => {
 			type: dataType.STRING,
 		},
 		rols_id: {
-			type: dataType.BOOLEAN,
+			type: dataType.INTEGER,
 			allowNull: false,
 		},
 	};
@@ -61,10 +61,15 @@ module.exports = (sequelize, dataType) => {
 			otherKey: 'markets_id',
 		});
 
-		// User.hasOne(modelos.Rol, {
-		// 		as: 'rol',
-		// 		foreignKey: 'users_id',
-		// 	})
+        User.hasMany(modelos.Product,{
+            as: 'products',
+            foreignKey: 'users_id',
+        });
+        
+        User.belongsTo(modelos.Rol, {
+                as: 'rol',
+                foreignKey: 'rols_id',
+            });
 	};
 	return User;
 };
