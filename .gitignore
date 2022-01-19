@@ -1,4 +1,4 @@
 node_modules
 docker-compose.yml
 volumenes
-src/database/config
+.env
