@@ -2670,6 +2670,8 @@ h2 {
 
 /* Inicio estilos search-results */
 
+/* Inicio Mobile vertion */
+
 .mobile {
 	display: flex;
 	flex-direction: column;
@@ -2677,6 +2679,10 @@ h2 {
 	margin: 15px 0;
 	width: 100%;
 	gap: 16px;
+}
+
+.mobile h2 {
+	font-size: 18px;
 }
 
 .mobile .card {
@@ -2689,7 +2695,14 @@ h2 {
 	border-radius: 4px;
 	overflow: hidden;
 	position: relative;
-	gap: 4px;
+	gap: 8px;
+	transition: 0.3s ease all;
+	max-width: 400px;
+}
+
+.mobile .card:hover {
+	box-shadow: inset 0 0 0 4px rgba(35, 33, 45, 0.1), 0 0 0 6px rgba(185, 185, 185, 0.1);
+	transform: scale(1.03);
 }
 
 .mobile .card img {
@@ -2706,5 +2719,31 @@ h2 {
 	width: 100%;
 	height: 100%;
 }
+
+/* Final Mobile vertion */
+
+/* Inicio Desktop vertion */
+
+@media (min-width: 768px) {
+	.search-results .mobile {
+		display: none;
+	}
+
+	.search-results .desktop {
+		display: flex;
+	}
+
+	.search-results .desktop .search {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.search-results .desktop .search .card {
+		display: flex;
+		flex-direction: row;
+	}
+}
+
+/* Final Desktop vertion */
 
 /* FInal estilos search-results */
