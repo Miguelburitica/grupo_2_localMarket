@@ -27,6 +27,7 @@ const model = {
 			return err;
 		}
 	},
+
 	getByPk: async function (pk) {
 		try {
 			let market = await db.Market.findByPk(pk, { include: ['products'] });

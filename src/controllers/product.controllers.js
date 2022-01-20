@@ -209,7 +209,17 @@ const controller = {
 	},
 
 	getShoppingCart: function (req, res) {
-		res.render(pathViews('shopping-cart'));
+		res.render(pathViews('shoppingCart'));
+	},
+
+	search: async function (req, res) {
+		try {
+			let busqueda = req.query.q;
+			let results = await productModel.getSearched(busqueda);
+			res.render(pathViews('searchResult'), { results });
+		} catch (err) {
+			console.log(err);
+		}
 	},
 };
 

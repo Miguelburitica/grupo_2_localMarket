@@ -63,7 +63,7 @@ module.exports = (sequelize, dataType) => {
 		Product.belongsTo(modelos.User, {
 			as: 'seller',
 			foreignKey: 'users_id',
-		})
+		});
 	};
 
 	return Product;
