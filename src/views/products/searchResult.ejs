@@ -2,6 +2,7 @@
 <%- include('../partials/header') %> 
 <body class="search-results">
     <div class="mobile">
+        <h2>Las busquedas asociadas con "<%= query %>" son las siguientes </h2>
         <% results.forEach(product => { %>
             <div class="card">
                 <img src="/images/<%= product.image %> " alt="Imagen del/l@s <%= product.name %> " title="Imagen del/l@s <%= product.name %> ">
@@ -15,13 +16,12 @@
                 </p>
                 <a href="/products/detail/<%= product.id %>"></a>
             </div>
-            <% }) %>
+        <% }) %>
     </div>
     <div class="desktop">
-        <ul>
+        <ul class="search">
             <% results.forEach(product => { %>
-                <li>
-                    <div class='card'>
+                <li class='card'>
                         <div class='left'>
                             <img src="/images/<%= product.image %>" alt="Imagen del/l@s <%= product.name %>">
                         </div>
@@ -36,8 +36,6 @@
                             </p>
                         </div>
                         <div class='right'>
-                            
-                        </div>
                     </div>
                 </li>
             <% }) %>

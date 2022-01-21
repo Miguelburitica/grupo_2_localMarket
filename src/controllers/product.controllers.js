@@ -214,9 +214,9 @@ const controller = {
 
 	search: async function (req, res) {
 		try {
-			let busqueda = req.query.q;
-			let results = await productModel.getSearched(busqueda);
-			res.render(pathViews('searchResult'), { results });
+			let query = req.query.q;
+			let results = await productModel.getSearched(query);
+			res.render(pathViews('searchResult'), { results, query });
 		} catch (err) {
 			console.log(err);
 		}
