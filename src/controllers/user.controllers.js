@@ -68,9 +68,10 @@ const controller = {
 				agree_terms_conditions:
 					req.body.agree_terms_conditions === undefined ? 'off' : req.body.agree_terms_conditions,
 				password: bcryptjs.hashSync(req.body.password, 10),
-				pass_confirm: null,
+				password_confirm: null,
 				photo: req.file !== undefined ? req.file.filename : 'default.jpg',
 			};
+			console.log(user)
 			// let users = [];
 			// separo el sign-in dependiendo del formulario que sea
 			// customer, debido a que un customer no tiene user-name
@@ -113,9 +114,9 @@ const controller = {
 			const userToLogSeller = sellerModel.findByEmailSeller(req.body.email); //buscamos los usuarios en cada DB
 			req.session.isUserLogged = false;
 			if (userToLogCustomer) {
-				const passwordOk = bcryptjs.compareSync(req.body.pass, userToLogCustomer.pass); // Hasheo de la contraseña
+				const passwordOk = bcryptjs.compareSync(req.body.password, userToLogCustomer.password); // Hasheo de la contraseña
 				if (passwordOk) {
-					delete userToLogCustomer.pass;
+					delete userToLogCustomer.password;
 					req.session.customerLogged = userToLogCustomer;
 					req.session.isUserLogged = true;
 					// cookies para comprador
@@ -125,9 +126,9 @@ const controller = {
 					return res.redirect('/users/customer');
 				}
 			} else if (userToLogSeller) {
-				const passwordOk = bcryptjs.compareSync(req.body.pass, userToLogSeller.pass);
+				const passwordOk = bcryptjs.compareSync(req.body.password, userToLogSeller.password);
 				if (passwordOk) {
-					delete userToLogSeller.pass;
+					delete userToLogSeller.password;
 					req.session.sellerLogged = userToLogSeller;
 					req.session.isUserLogged = true;
 					// cookies para vendedor

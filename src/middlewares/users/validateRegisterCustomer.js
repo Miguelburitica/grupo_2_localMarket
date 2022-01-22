@@ -16,7 +16,7 @@ const customers = require(path.resolve(__dirname, '../../data/customers.json'));
 const customersEmails = customers.map((item) => item.email);
 
 let validateRegisterCustomer = [
-	check('name')
+	check('names')
 		.notEmpty()
 		.withMessage('Trata ingresar tu nombre favorito :3 .')
 		.bail()
@@ -64,14 +64,14 @@ let validateRegisterCustomer = [
 		.bail()
 		.isMobilePhone(['es-CO'])
 		.withMessage('El número de celular debe ser un número de telefonía movil Colombiana.'),
-	check('profile_photo')
+	check('photo')
 		.custom((value, { req }) => {
 			let format = req.file.mimetype;
 			let formats = ['image/jpg', 'image/png', 'image/gif', 'image/jpeg'];
 			return formats.includes(format);
 		})
 		.withMessage('Sólo es permitido subir archivos jpg, png, jpeg y gif, srry :('),
-	check('pass')
+	check('password')
 		.notEmpty()
 		.withMessage('Trata ingresar una contraseña no tan fácil que puedas recordar Uwu.')
 		.bail()
@@ -79,7 +79,7 @@ let validateRegisterCustomer = [
 		.withMessage(
 			'La contraseña como minimo debe tener 8 caracteres entre ellos al menos un número, una mayúscula y una minúscula >n< .'
 		),
-	check('pass_confirm')
+	check('password_confirm')
 		.custom((value, { req }) => value === req.body.pass)
 		.withMessage('Debe ser igual que la contraseña que ingresaste'),
 	check('email')

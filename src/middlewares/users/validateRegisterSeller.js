@@ -26,7 +26,7 @@ const sellersEmails = sellers.map((item) => item.email);
 
 const validateRegisterSeller = [
 	check('user_name').notEmpty().withMessage('Trata ingresar el nombre por el cual quieres que te reconozcan O.o .'),
-	check('name')
+	check('names')
 		.notEmpty()
 		.withMessage('Trata ingresar tu nombre favorito :3 .')
 		.bail()
@@ -74,7 +74,7 @@ const validateRegisterSeller = [
 		.bail()
 		.isMobilePhone(['es-CO'])
 		.withMessage('El número de celular debe ser un número de telefonía movil Colombiana.'),
-	check('profile_photo')
+	check('photo')
 		.custom((value, { req }) => {
 			let format = req.file.mimetype;
 			console.log(req.file);
@@ -82,7 +82,7 @@ const validateRegisterSeller = [
 			return formats.includes(format);
 		})
 		.withMessage('Sólo es permitido subir archivos jpg, png, jpeg y gif, srry :('),
-	check('pass')
+	check('password')
 		.notEmpty()
 		.withMessage('Trata ingresar una contraseña no tan fácil que puedas recordar Uwu.')
 		.bail()
@@ -90,7 +90,7 @@ const validateRegisterSeller = [
 		.withMessage(
 			'La contraseña debe contener mayúsculas, minúsculas con al menos 8 caracteres y máximo 50 caracteres >n< .'
 		),
-	check('pass_confirm')
+	check('password_confirm')
 		.custom((value, { req }) => value === req.body.pass)
 		.withMessage('Debe ser igual que la contraseña que ingresaste'),
 	check('email')
