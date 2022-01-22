@@ -1,9 +1,9 @@
-let env = process.env
-env.USER ='root' 
-env.DATABASE_PASSWORD = '1234'
-env.DATABASE_NAME = 'LocalMarket'
-env.DATABASE_HOST = '127.0.0.1'
-env.DATABASE_PORT = '3307'
+// let env = process.env
+// env.USER ='root' 
+// env.DATABASE_PASSWORD = '1234'
+// env.DATABASE_NAME = 'LocalMarket'
+// env.DATABASE_HOST = '127.0.0.1'
+// env.DATABASE_PORT = '3307'
 
 const path = require('path');
 // const fs = require('fs');
@@ -12,19 +12,6 @@ const path = require('path');
 
 const db=require(path.resolve(__dirname,'../database/models'));
 
-// class User {
-//     constructor(id,user_name,name, surname,email,phone,password,photo){
-//         this.id=id;
-//         this.user_name=user_name;
-//         this.name=name;
-//         this.surname=surname;
-//         this.email=email;
-//         this.phone=phone;
-//         this.password=password;
-//         this.photo=photo;
-//         this.rols_id=2;
-//     }
-// }
 const model ={
     
     getCustomers: async function() {
@@ -55,16 +42,13 @@ const model ={
     }
     },
     //falta
-    updateCustomers: function(customers) {
-        fs.writeFileSync(customerFilePath, JSON.stringify(customers, null, 4));
-    },
-
+    
     createCustomer: async function(user){
        try{
         let newuser={
-            id:user.id,
+            user_name:user.email,
             names:user.names,
-            surname:null,
+            surname:user.surname,
             email:user.email,
             phone:user.phone,
             password:user.password,
@@ -78,31 +62,49 @@ const model ={
        } 
     },
 
-    newCustomerId: async function() {
-        let ultimo = 0;
-        let customers= await this.getCustomers()
-        customers.forEach((seller) => {
-            if (seller.id > ultimo) {
-                ultimo = seller.id;
-            }
-        });
-        return ultimo + 1;
-    }
+    updateCustomer: async function(id, user) {
+        // fs.writeFileSync(customerFilePath, JSON.stringify(customers, null, 4));
+        try{
+            console.log(user)
+            let updateuser={
+                user_name:user.email,
+                names:user.names,
+                surname:user.surname,
+                email:user.email,
+                phone:user.phone,
+                password:user.password,
+                photo:user.photo,
+                }
+                await db.User.update(updateuser,{where:{id:id}})
+        }catch(err){
+            console.log(err)
+            return err;
+        }
+    },
+
+    deleteCustomer: async function (id) {
+		try {
+			await db.User.destroy({ where: { id: id } });
+		} catch (err) {
+			console.log(err);
+		}
+	},
+
 }
 
-// module.exports = model;
+module.exports = model;
 
-let a={
-    names:'maryo sasas',
-    surname:'sosa',
-    email:'dmnn@gmail.com',
-    phone:'005679494',
-    password:'12345676',
-    photo:'user.photo', 
-}
-async function Mostrar(){
-  let x= await model.createCustomer(a)
-  console.log(x)
-}
+// let a={
+//     names:'FFFFudate',
+//     surname:'sosa1',
+//     email:'Fa@gmail.com',
+//     phone:'0056479494',
+//     password:'1245676',
+//     photo:'user.photo', 
+// }
+// async function Mostrar(){
+//   let x= await model.deleteCustomer(14)
+//   console.log(x)
+// }
 
-Mostrar()
+// Mostrar()

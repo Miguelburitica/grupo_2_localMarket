@@ -1,10 +1,10 @@
-// let env = process.env
+let env = process.env
 
-// env.USER = 'root'
-// env.DATABASE_PASSWORD = '1234'
-// env.DATABASE_NAME = 'LocalMarket'
-// env.DATABASE_HOST = '127.0.0.1'
-// env.DATABASE_PORT = '3307'
+env.USER = 'root'
+env.DATABASE_PASSWORD = '1234'
+env.DATABASE_NAME = 'LocalMarket'
+env.DATABASE_HOST = '127.0.0.1'
+env.DATABASE_PORT = '3307'
 
 const path = require('path');
 
@@ -80,11 +80,11 @@ const model = {
 // module.exports = model;
 let newuser =
 {
-user_name:'dianita',
-names:'Diana',
-surname:'Dominguez',
-email:'dianita@gmail.com',
-phone:'125643987',
+user_name:'dianitas',
+names:'Dianas',
+surname:'Dominguezs',
+email:'dianitsa@gmail.com',
+phone:'125623987',
 password:'D1234567890z',
 photo:'user.photo',
 }

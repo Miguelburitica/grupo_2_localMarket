@@ -1,6 +1,6 @@
 const path = require('path');
-const dataSellers = require('../data/sellers.json');
-const dataCustomers = require('../data/customers.json');
+// const dataSellers = require('../data/sellers.json');
+// const dataCustomers = require('../data/customers.json');
 const fs = require('fs');
 const bcryptjs = require('bcryptjs');
 const { validationResult } = require('express-validator');
@@ -23,7 +23,7 @@ const controller = {
 	// Eliminar vendedor
 	deleteSeller: function (req, res) {
 		const idToDelete = req.params.id;
-		const sellers = sellerModel.getSellers();
+		const sellers = sellerModel.getSellers(); 
 		const newSellerList = sellers.filter((seller) => seller.id != idToDelete);
 		sellerModel.updateSellers(newSellerList);
 		// console.log(newSellerList);
@@ -38,12 +38,15 @@ const controller = {
 		res.render(pathViews('sign-in-customer'));
 	},
 	// Eliminar comprador
-	deleteCustomer: function (req, res) {
+	deleteCustomer: async function (req, res) {
+		try{
 		const idToDelete = req.params.id;
-		const customers = customerModel.getCustomers();
-		const newCustomerList = customers.filter((customer) => customer.id != idToDelete);
-		customerModel.updateCustomers(newCustomerList);
+		await customerModel.deleteCustomer(idToDelete);
 		res.redirect('/');
+		}catch(err){
+            console.log(err)
+            return err;
+        }	
 	},
 	// 	Crea usuario vendedor o comprador
 	addUser: function (req, res) {

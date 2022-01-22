@@ -7,6 +7,7 @@ module.exports = (sequelize, dataType) => {
 		},
 		user_name: {
 			type: dataType.STRING,
+			allowNull: false,
 		},
 		names: {
 			type: dataType.STRING,
@@ -14,7 +15,6 @@ module.exports = (sequelize, dataType) => {
 		},
 		surname: {
 			type: dataType.STRING,
-			allowNull: false,
 		},
 		email: {
 			type: dataType.STRING,
