@@ -21,13 +21,18 @@ const controller = {
 		res.render(pathViews('sign-in-seller'));
 	},
 	// Eliminar vendedor
-	deleteSeller: function (req, res) {
-		const idToDelete = req.params.id;
-		const sellers = sellerModel.getSellers(); 
-		const newSellerList = sellers.filter((seller) => seller.id != idToDelete);
-		sellerModel.updateSellers(newSellerList);
-		// console.log(newSellerList);
-		res.redirect('/');
+	deleteSeller: async function (req, res) {
+		try {
+			const idToDelete = req.params.id;
+			await sellerModel.deleteSeller(idToDelete)
+			// const sellers = sellerModel.getSellers();
+			// const newSellerList = sellers.filter((seller) => seller.id != idToDelete);
+			// sellerModel.updateSellers(newSellerList);
+			// // console.log(newSellerList);
+			res.redirect('/');
+			}catch(err){
+            console.log(err);
+        	}
 	},
 	// Mostrar perfil de comprador
 	getCustomerProfile: function (req, res) {
@@ -49,37 +54,32 @@ const controller = {
         }	
 	},
 	// 	Crea usuario vendedor o comprador
-	addUser: function (req, res) {
-		// trae los errores del form
-		let errors = validationResult(req);
-		console.log(errors.mapped());
+	addUser: async function (req, res) {
+		try {
+			// trae los errores del form
+			let errors = validationResult(req);
+			console.log(errors.mapped());
 		// Comprueba que los datos que vienen del form, vienen ok y si sí, hace esto
-		if (errors.isEmpty()) {
+			if (errors.isEmpty()) {
 			// Es encapsulado en una variable el objeto usuario
 			const user = {
 				...req.body,
 				agree_data: req.body.agree_data === undefined ? 'off' : req.body.agree_data,
 				agree_terms_conditions:
 					req.body.agree_terms_conditions === undefined ? 'off' : req.body.agree_terms_conditions,
-				pass: bcryptjs.hashSync(req.body.pass, 10),
+				password: bcryptjs.hashSync(req.body.password, 10),
 				pass_confirm: null,
 				photo: req.file !== undefined ? req.file.filename : 'default.jpg',
 			};
-			let users = [];
+			// let users = [];
 			// separo el sign-in dependiendo del formulario que sea
 			// customer, debido a que un customer no tiene user-name
 			if (user.user_name === undefined) {
-				user.id = customerModel.newCustomerId();
-				users = customerModel.getCustomers();
-				users.push(user);
-				customerModel.updateCustomers(users);
+				await customerModel.createCustomer(user);
 				// Seller, debido a que sólo hay dos tipos posibles
 			} else {
 				user.products = [];
-				user.id = sellerModel.newSellerId();
-				users = sellerModel.getSellers();
-				users.push(user);
-				sellerModel.updateSellers(users);
+				await sellerModel.createSeller(user);
 			}
 			res.redirect('/users/login');
 			// En caso de que hayan errores, devuelve la vista con los errores
@@ -91,6 +91,9 @@ const controller = {
 				res.render(pathViews('sign-in-seller'), { errors: errors.mapped(), old: req.body });
 			}
 		}
+		}catch(err){
+            console.log(err);
+        }
 	},
 	// Login vendedor o comprador
 	getLogin: function (req, res) {

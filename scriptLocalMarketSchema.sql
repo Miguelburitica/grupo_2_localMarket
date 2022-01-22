@@ -60,7 +60,7 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LocalMarket`.`users` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `user_name` VARCHAR(45) NOT NULL,
+  `user_name` VARCHAR(45) NULL DEFAULT NULL,
   `names` VARCHAR(45) NOT NULL,
   `surname` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,

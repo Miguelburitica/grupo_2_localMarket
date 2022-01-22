@@ -41,10 +41,7 @@ const model = {
         return err;
 	}
 },
-	// Actualizar el JSON de sellers
-	updateSellers: function (sellers) {
-		fs.writeFileSync(sellerFilePath, JSON.stringify(sellers, null, 4));
-	},
+	// Crear seller
 	createSeller: async function(user){
 	try {
 	let newUser =
@@ -56,41 +53,56 @@ const model = {
         phone:user.phone,
         password:user.password,
         photo:user.photo,
-        rols_id:1
+        rols_id:3
 		}
 	await db.User.create(newUser)
 	} catch (err){
 		console.log(err)
         return err;
 	}
+	},	
+	// Actualizar seller
+	updateSeller: async function(id, user){
+		try{
+		console.log(user)
+		let updateUser =
+			{
+			user_name:user.user_name,
+			names:user.names,
+			surname:user.surname,
+			email:user.email,
+			phone:user.phone,
+			password:user.password,
+			photo:user.photo,
+			}
+            await db.User.update(updateUser, {where: {id:id}})
+        }catch(err){
+            console.log(err);
+        }
 	},
-
-	//Obtener el nuevo ID seller
-	// newSellerId: function () {
-	// 	let ultimo = 0;
-	// 	this.getSellers().forEach((seller) => {
-	// 		if (seller.id > ultimo) {
-	// 			ultimo = seller.id;
-	// 		}
-	// 	});
-	// 	return ultimo + 1;
-	// },
+	deleteSeller: async function(id){
+		try {
+			await db.User.destroy({where: {id:id}})
+		}catch(err){
+            console.log(err);
+        }
+	}
 };
 
-// module.exports = model;
-let newuser =
-{
-user_name:'dianitas',
-names:'Dianas',
-surname:'Dominguezs',
-email:'dianitsa@gmail.com',
-phone:'125623987',
-password:'D1234567890z',
-photo:'user.photo',
-}
-async function Mostrar(){
-	let x= await model.createSeller(newuser)
-	console.log(x)
-  }
+module.exports = model;
+// let newuser =
+// {
+// user_name:'Maria2 Mulata',
+// names:'Lisa1',
+// surname:'Romo1',
+// email:'mulata@gmail.com',
+// phone:'125643987',
+// password:'D1234567890z',
+// photo:'user.photo'
+// }
+// async function Mostrar(){
+// 	let x= await model.deleteSeller(2)
+// 	console.log(x)
+//   }
   
-  Mostrar()
+//   Mostrar()
