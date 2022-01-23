@@ -90,6 +90,16 @@ const model ={
 		}
 	},
 
+    getOne: async function (id) {
+		let user = await db.User.findByPk(id, {
+			include: ['rol'], 
+            where:{
+                rols_id:2,
+            }
+		});
+		return user;
+	},
+
 }
 
 module.exports = model;

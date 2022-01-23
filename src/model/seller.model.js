@@ -86,7 +86,16 @@ const model = {
 		}catch(err){
             console.log(err);
         }
-	}
+	},
+	getOne: async function (id) {
+		let user = await db.User.findByPk(id, {
+			include: ['rol'],
+			where:{
+				rols_id:1,
+			}
+		});
+		return user;
+	},
 };
 
 module.exports = model;
