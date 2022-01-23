@@ -4,8 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const bcryptjs = require('bcryptjs');
 const { validationResult } = require('express-validator');
-const { sellerModel } = require('../model');
-const { customerModel } = require('../model');
+const { customerModel, sellerModel } = require('../model');
 
 const pathViews = function (nameView) {
 	return path.resolve(__dirname, '../views/users/' + nameView + '.ejs');

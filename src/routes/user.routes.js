@@ -40,7 +40,7 @@ router.post('/sign-in-customer', uploadFile.single('photo'), validateRegisterCus
 // Get Sign-in page vendedor
 router.get('/sign-in-seller', guestMiddleware, userController.getSignInSeller);
 // Enviar datos de registro de comprador
-router.post('/sign-in-seller', uploadFile.single('profile_photo'), validateRegisterSeller, userController.addUser);
+router.post('/sign-in-seller', uploadFile.single('photo'), validateRegisterSeller, userController.addUser);
 
 //Get Cerrar sesión
 router.get('/logout', userController.logout);

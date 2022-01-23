@@ -44,7 +44,7 @@ const model = {
 	// Crear seller
 	createSeller: async function(user){
 	try {
-	let newUser =
+	let newuser =
 		{
         user_name:user.user_name,
         names:user.names,
@@ -55,7 +55,7 @@ const model = {
         photo:user.photo,
         rols_id:3
 		}
-	await db.User.create(newUser)
+	await db.User.create(newuser)
 	} catch (err){
 		console.log(err)
         return err;

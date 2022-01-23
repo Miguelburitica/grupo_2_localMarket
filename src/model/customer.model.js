@@ -53,7 +53,7 @@ const model ={
             phone:user.phone,
             password:user.password,
             photo:user.photo,
-            rols_id:2,
+            rols_id:4,
             }
             await db.User.create(newuser)
        } catch(err){

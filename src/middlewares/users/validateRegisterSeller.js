@@ -71,9 +71,9 @@ const validateRegisterSeller = [
 		.withMessage(
 			'Trata ingresar un número de celular, número del que estés pendiente para atender cualquier novedad >.< .'
 		)
-		.bail()
-		.isMobilePhone(['es-CO'])
-		.withMessage('El número de celular debe ser un número de telefonía movil Colombiana.'),
+		.bail(),
+		// .isMobilePhone(['es-CO'])
+		// .withMessage('El número de celular debe ser un número de telefonía movil Colombiana.'),
 	check('photo')
 		.custom((value, { req }) => {
 			let format = req.file.mimetype;
@@ -91,7 +91,7 @@ const validateRegisterSeller = [
 			'La contraseña debe contener mayúsculas, minúsculas con al menos 8 caracteres y máximo 50 caracteres >n< .'
 		),
 	check('password_confirm')
-		.custom((value, { req }) => value === req.body.pass)
+		.custom((value, { req }) => value === req.body.password)
 		.withMessage('Debe ser igual que la contraseña que ingresaste'),
 	check('email')
 		.notEmpty()

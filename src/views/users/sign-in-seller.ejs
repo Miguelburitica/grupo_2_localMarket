@@ -161,17 +161,17 @@
 				class="text-box <%= locals.errors !== undefined ? locals.errors && errors.password === undefined ? 'correct' : 'incorrect' : ''%>"
 				type="password"
 				name="password"
-				id="pass"
+				id="password"
 				placeholder="Contraseña"
 				minlength="10"
 				required
 			/>
 				<% if (locals.errors && errors.password) { %>
-					<label class="checked" for="pass">
+					<label class="checked" for="password">
 						<i class="fas fa-times" style="color: #cc0000"></i>
 					</label>
 				<% } else if(locals.errors){ %>
-					<label class="checked" for="pass">
+					<label class="checked" for="password">
 						<i class="fas fa-check" style="color: #5fab70"></i>
 					</label>
 				<% } else {%>
@@ -184,27 +184,27 @@
 			<% } %>
 			<div class="input-container">
 				<input
-					class="text-box <%= locals.errors !== undefined ? locals.errors && errors.pass_confirm === undefined ? 'correct' : 'incorrect' : ''%>"
+					class="text-box <%= locals.errors !== undefined ? locals.errors && errors.password_confirm === undefined ? 'correct' : 'incorrect' : ''%>"
 					type="password"
-					name="pass_confirm"
-					id="pass_confirm"
+					name="password_confirm"
+					id="password_confirm"
 					placeholder="Confirma tu contraseña"
 					minlength="10"
 					required
 				/>
-				<% if (locals.errors && errors.pass_confirm) { %>
-					<label class="checked" for="pass_confirm">
+				<% if (locals.errors && errors.password_confirm) { %>
+					<label class="checked" for="password_confirm">
 						<i class="fas fa-times" style="color: #cc0000"></i>
 					</label>
 				<% } else if(locals.errors){ %>
-					<label class="checked" for="pass_confirm">
+					<label class="checked" for="password_confirm">
 						<i class="fas fa-check" style="color: #5fab70"></i>
 					</label>
 				<% } else {%>
 				<% } %>  
 			</div>
-				<% if (locals.errors && errors.pass_confirm) { %>
-					<span class="error"><%= errors.pass_confirm.msg %> </span>
+				<% if (locals.errors && errors.password_confirm) { %>
+					<span class="error"><%= errors.password_confirm.msg %> </span>
 				<% } else {%>
 					<span class="error" style="color: inherit;"></span>
 				<% } %>

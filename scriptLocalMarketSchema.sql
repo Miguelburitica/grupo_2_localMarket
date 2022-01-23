@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `LocalMarket`.`users` (
   `surname` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `phone` BIGINT NOT NULL,
-  `password` VARCHAR(50) NOT NULL,
+  `password` LONGTEXT NOT NULL,
   `photo` VARCHAR(45) NOT NULL,
   `agree_terms` VARCHAR(45) NULL DEFAULT NULL,
   `agree_data` VARCHAR(45) NULL DEFAULT NULL,
