@@ -100,17 +100,17 @@ const controller = {
 		res.render(pathViews('login'));
 	},
 	// Enviar los datos
-	processLogin: function (req, res) {
-		// validaciones
-		let resultValidation = validationResult(req);
+	processLogin: async function (req, res) {
+		try{
+			let resultValidation = validationResult(req);
 		if (resultValidation.errors.length > 0) {
 			return res.render(pathViews('login'), {
 				errors: resultValidation.mapped(),
 				oldData: req.body,
 			});
 		} else {
-			const userToLogCustomer = customerModel.findByEmailCustomer(req.body.email);
-			const userToLogSeller = sellerModel.findByEmailSeller(req.body.email); //buscamos los usuarios en cada DB
+			const userToLogCustomer = await customerModel.findByEmailCustomer(req.body.email);
+			const userToLogSeller = await sellerModel.findByEmailSeller(req.body.email); //buscamos los usuarios en cada DB
 			req.session.isUserLogged = false;
 			if (userToLogCustomer) {
 				const passwordOk = bcryptjs.compareSync(req.body.password, userToLogCustomer.password); // Hasheo de la contraseña
@@ -145,6 +145,28 @@ const controller = {
 					},
 				});
 			}
+		}
+		}catch(err){
+            console.log(err);
+        }
+		// validaciones
+		
+	},
+
+	editUser: async (req,res)=>{
+		try{
+		let customer = await customerModel.findOne(parseInt(req.params.id))
+		let seller= await sellerModel.findOne(parseInt(req.params.id))
+
+		if(customer){
+			res.render(pathViews('edit-customer'),{customer:user});
+		}else if(seller){
+			res.render(pathViews('edit-seller'),{seller:user});
+		}else{
+			res.send('Chic@ no deberías estar viendo esto >:°');
+		}
+		}catch(err){
+			console.log(err);
 		}
 	},
 

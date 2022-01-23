@@ -34,8 +34,11 @@ router.post('/login', validateLogin, userController.processLogin);
 
 // Get Sign-in page comprador
 router.get('/sign-in-customer', guestMiddleware, userController.getSignInCustomer);
-// Enviar datos de registre de vendedor
+// Enviar datos de registro de comprador
 router.post('/sign-in-customer', uploadFile.single('photo'), validateRegisterCustomer, userController.addUser);
+
+//Get edit customer
+router.get('/edit-customer', guestMiddleware, userController.editUser);
 
 // Get Sign-in page vendedor
 router.get('/sign-in-seller', guestMiddleware, userController.getSignInSeller);
