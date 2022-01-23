@@ -61,9 +61,9 @@ let validateRegisterCustomer = [
 		.withMessage(
 			'Trata ingresar un número de celular, número del que estés pendiente para atender cualquier novedad >.< .'
 		)
-		.bail()
-		.isMobilePhone(['es-CO'])
-		.withMessage('El número de celular debe ser un número de telefonía movil Colombiana.'),
+		.bail(),
+		// .isMobilePhone(['es-CO'])
+		// .withMessage('El número de celular debe ser un número de telefonía movil Colombiana.'),
 	check('photo')
 		.custom((value, { req }) => {
 			let format = req.file.mimetype;
@@ -80,7 +80,7 @@ let validateRegisterCustomer = [
 			'La contraseña como minimo debe tener 8 caracteres entre ellos al menos un número, una mayúscula y una minúscula >n< .'
 		),
 	check('password_confirm')
-		.custom((value, { req }) => value === req.body.pass)
+		.custom((value, { req }) => value === req.body.password)
 		.withMessage('Debe ser igual que la contraseña que ingresaste'),
 	check('email')
 		.notEmpty()

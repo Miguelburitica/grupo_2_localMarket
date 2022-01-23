@@ -69,7 +69,7 @@ const controller = {
 					req.body.agree_terms_conditions === undefined ? 'off' : req.body.agree_terms_conditions,
 				password: bcryptjs.hashSync(req.body.password, 10),
 				password_confirm: null,
-				photo: req.file !== undefined ? req.file.filename : 'default.jpg',
+				photo: req.file != undefined ? req.file.filename: 'default.jpg'
 			};
 			console.log(user)
 			// let users = [];
