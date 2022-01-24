@@ -9,11 +9,11 @@
 		</div>
 		<div class="profile-seller-right">
 			<h2>
-				Hola <%= userLogged.name + ' ' + userLogged.surname %> , <br />
+				Hola <%= userLogged.names + ' ' + userLogged.surname %> , <br />
 				¿Qué quieres hacer hoy?
 			</h2>
 			<div>
-				<a href="/edit-seller"> <i class="fas fa-user-edit"></i> Editar mis datos </a>
+				<a href="../users/edit-seller/<%= userLogged.id %>"> <i class="fas fa-user-edit"></i> Editar mis datos </a>
 			</div>
 			<div>
 				<a href="/products/list"> <i class="far fa-edit"></i> Ir a mis productos</a>

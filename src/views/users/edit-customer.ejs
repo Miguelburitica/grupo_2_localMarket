@@ -3,7 +3,7 @@
 	<%- include('../partials/header') %>
 	<main class="signin-main">
 		<h2 class="titulo">¡Edita tus datos!</h2>
-		<form action="/users/edit-customer<%= user.id %>?_method=PUT" method="post" class="formulario" enctype="multipart/form-data">
+		<form action="/users/edit-customer/:<%= user.id %>?_method=PUT" method="post" class="formulario" enctype="multipart/form-data">
 			<div class="input-container">
 				<input
 					class="text-box <%= locals.errors !== undefined ? locals.errors && errors.names === undefined ? 'correct' : 'incorrect' : ''%> "

@@ -155,19 +155,61 @@ const controller = {
 
 	editUser: async (req,res)=>{
 		try{
-		let customer = await customerModel.findOne(parseInt(req.params.id))
-		let seller= await sellerModel.findOne(parseInt(req.params.id))
-
+		const id=req.params.id;
+		let user = {};
+		let customer = await customerModel.getOne(id)
+		let seller= await sellerModel.getOne(id)
 		if(customer){
-			res.render(pathViews('edit-customer'),{customer:user});
+			user = customer
+			res.render(pathViews('edit-customer'),{user:user});
 		}else if(seller){
-			res.render(pathViews('edit-seller'),{seller:user});
+			user = seller
+			res.render(pathViews('edit-seller'),{user:user});
 		}else{
 			res.send('Chic@ no deberías estar viendo esto >:°');
 		}
 		}catch(err){
 			console.log(err);
 		}
+	},
+
+	updateUser: async (req, res) =>{
+		try {
+			// trae los errores del form
+			let errors = validationResult(req);
+			console.log(errors.mapped());
+		// Comprueba que los datos que vienen del form, vienen ok y si sí, hace esto
+			if (errors.isEmpty()) {
+			// Es encapsulado en una variable el objeto usuario
+			const id = parseInt(req.params.id);
+			console.log('este es el req.body',req.body)
+			const user = {
+				...req.body,
+				password: bcryptjs.hashSync(req.body.password, 10),
+				password_confirm: null,
+				photo: req.file != undefined ? req.file.filename: 'default.jpg'
+			}
+			console.log('este es el user req.body', user)
+			if (user.user_name === undefined ) {
+				console.log('este es el user del if', user)
+				await customerModel.updateCustomer(id,user);
+			} else {
+				// user.products = [];
+				await sellerModel.updateSeller(id,user);
+			}
+			res.redirect('/users/login');
+			// En caso de que hayan errores, devuelve la vista con los errores
+		} else {
+			console.log(`error: ${errors.mapped()}`);
+			if (req.body.user_name === undefined ) {
+				res.render(pathViews('edit-customer/'+ req.params.id), { errors: errors.mapped() });
+			} else {
+				res.render(pathViews('edit-seller/'+ req.params.id), { errors: errors.mapped() });
+			}
+		}
+		}catch(err){
+            console.log(err);
+        }
 	},
 
 	logout: (req, res) => {

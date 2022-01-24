@@ -38,12 +38,19 @@ router.get('/sign-in-customer', guestMiddleware, userController.getSignInCustome
 router.post('/sign-in-customer', uploadFile.single('photo'), validateRegisterCustomer, userController.addUser);
 
 //Get edit customer
-router.get('/edit-customer', guestMiddleware, userController.editUser);
+router.get('/edit-customer/:id', userController.editUser);
+//Enviar formulario edit customer
+router.put('/edit-customer/:id', uploadFile.single('photo'), userController.updateUser);
 
 // Get Sign-in page vendedor
 router.get('/sign-in-seller', guestMiddleware, userController.getSignInSeller);
-// Enviar datos de registro de comprador
+// Enviar datos de registro de vendedor
 router.post('/sign-in-seller', uploadFile.single('photo'), validateRegisterSeller, userController.addUser);
+
+//Get edit seller
+router.get('/edit-seller/:id', userController.editUser);
+//Enviar formulario edit seller
+router.put('/edit-seller/:id', uploadFile.single('photo'), userController.updateUser);
 
 //Get Cerrar sesión
 router.get('/logout', userController.logout);

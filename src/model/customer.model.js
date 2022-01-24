@@ -20,7 +20,7 @@ const model ={
            let customers = await db.User.findAll({
         include:['rol'],
         where:{
-            rols_id:2,
+            rols_id:4,
         }
     });
     return customers;
@@ -63,10 +63,9 @@ const model ={
     },
 
     updateCustomer: async function(id, user) {
-        // fs.writeFileSync(customerFilePath, JSON.stringify(customers, null, 4));
         try{
-            console.log(user)
-            let updateuser={
+            console.log('recibí ' + id + user)
+            let updateuser = {
                 user_name:user.email,
                 names:user.names,
                 surname:user.surname,
@@ -94,7 +93,7 @@ const model ={
 		let user = await db.User.findByPk(id, {
 			include: ['rol'], 
             where:{
-                rols_id:2,
+                rols_id:4,
             }
 		});
 		return user;
@@ -102,19 +101,19 @@ const model ={
 
 }
 
-module.exports = model;
+ module.exports = model;
 
 // let a={
-//     names:'FFFFudate',
-//     surname:'sosa1',
-//     email:'Fa@gmail.com',
+//     names:'Chabe',
+//     surname:'Romito',
+//     email:'chabe@gmail.com',
 //     phone:'0056479494',
 //     password:'1245676',
 //     photo:'user.photo', 
 // }
 // async function Mostrar(){
-//   let x= await model.deleteCustomer(14)
+//   let x= await model.updateCustomer(2, a)
 //   console.log(x)
 // }
 
-// Mostrar()
+//  Mostrar()
