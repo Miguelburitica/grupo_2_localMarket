@@ -37,7 +37,7 @@ const model = {
 		try {
 			// return  JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 			let productos = await db.Product.findAll({
-				include: ['category', 'market'],
+				include: ['category', 'market', 'seller'],
 			});
 			return productos;
 		} catch (err) {
@@ -50,7 +50,7 @@ const model = {
 		try {
 			// return this.getProducts().filter(callBack);
 			let productos = await db.Product.findAll({
-				include: ['category', 'market'],
+				include: ['category', 'market', 'seller'],
 			});
 			let newProducts = productos.filter(callBack);
 			return newProducts;
@@ -66,6 +66,7 @@ const model = {
 						[Op.substring]: [query],
 					},
 				},
+				include: ['category', 'market', 'seller'],
 			});
 			return results;
 		} catch (err) {
@@ -75,7 +76,7 @@ const model = {
 	// get just one product
 	getOne: async function (id) {
 		let product = await db.Product.findByPk(id, {
-			include: ['category', 'market'],
+			include: ['category', 'market', 'seller'],
 		});
 		return product;
 	},

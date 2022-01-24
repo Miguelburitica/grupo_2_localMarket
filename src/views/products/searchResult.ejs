@@ -18,25 +18,29 @@
             </div>
         <% }) %>
     </div>
-    <div class="desktop">
+    <div class="no-mobile">
+        <h2>Las busquedas asociadas con "<%= query %>" son las siguientes </h2>
         <ul class="search">
             <% results.forEach(product => { %>
                 <li class='card'>
-                        <div class='left'>
-                            <img src="/images/<%= product.image %>" alt="Imagen del/l@s <%= product.name %>">
-                        </div>
-                        <div class='center'>
-                            <h3><%= product.name %></h3>
-                            <p>
-                                <% if (product.wayToSell == 1) { %>
-                                    <%= product.unit %> 
-                                <% } else { %>
-                                    <%= product.kilo %> 
-                                <% }%> 
-                            </p>
-                        </div>
-                        <div class='right'>
+                    <div class='left'>
+                        <img src="/images/<%= product.image %>" alt="Imagen del/l@s <%= product.name %>">
                     </div>
+                    <div class='center'>
+                        <h3><%= product.name %></h3>
+                        <button class="btn">$
+                            <% if (product.wayToSell == 1) { %>
+                                <%= product.unit %> 
+                            <% } else { %>
+                                <%= product.kilo %> 
+                            <% }%> 
+                        </button>
+                    </div>
+                    <div class='right'>
+                        <img src="/images/users/<%= product.seller.photo %> " alt="foto de pepo">
+                        <div>Traido desde al campo a tu mesa por <strong><%= product.seller.user_name %> </strong>, ARRODILLAOS MUGGLES!!</div>
+                    </div>
+                    <a href="/products/detail/<%= product.id %>"></a>
                 </li>
             <% }) %>
         </ul>

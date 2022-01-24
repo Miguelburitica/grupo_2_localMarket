@@ -14,14 +14,14 @@
 						/>
 					</div>
 					<div class="supplier-info">
-						<% if (seller != undefined) { %>
+						<% if (product.seller != undefined) { %>
 							<div class="image-supplier">
 								<img
-									src="/images/users/<%= seller.photo %> "
-									alt="vendedor <%= seller.user_name %> "
+									src="/images/users/<%= product.seller.photo %> "
+									alt="vendedor <%= product.seller.user_name %> "
 								/>
 							</div>
-							<h5 class="supplier-name"><%= seller.user_name %> </h5>
+							<h5 class="supplier-name"><%= product.seller.user_name %> </h5>
 						<% } else { %>
 							<div class="image-supplier">
 								<img
