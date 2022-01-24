@@ -21,7 +21,7 @@ const model = {
 			let seller = await db.User.findAll({
 				include:['rol'],
 				where:{
-					rols_id:1,
+					rols_id:3,
 				}
 			});
 			return seller;
@@ -91,7 +91,7 @@ const model = {
 		let user = await db.User.findByPk(id, {
 			include: ['rol'],
 			where:{
-				rols_id:1,
+				rols_id:3,
 			}
 		});
 		return user;
