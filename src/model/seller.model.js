@@ -92,7 +92,7 @@ const model = {
 				rols_id: 1,
 			},
 		});
-		return user;
+		return oneUser;
 	},
 };
 
