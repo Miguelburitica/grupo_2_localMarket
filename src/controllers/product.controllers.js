@@ -58,8 +58,12 @@ const controller = {
 	},
 
 	updateItem: async function (req, res) {
-		await productModel.editProduct(req);
-		res.redirect('/products/detail/' + req.params.id);
+		try {
+			await productModel.editProduct(req);
+			res.redirect('/products/detail/' + req.params.id);
+		} catch (err) {
+			console.log(err);
+		}
 	},
 
 	getAdd: function (req, res) {

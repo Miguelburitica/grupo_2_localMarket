@@ -3,7 +3,7 @@ const db = require(path.resolve(__dirname, '../database/models'));
 const { Op } = require('sequelize');
 
 class Product {
-	constructor(id, name, wayToSell, kilo, unidad, discount, category, market, image) {
+	constructor(id, name, wayToSell, kilo, unidad, discount, category, market, image, user_id) {
 		this.id = id;
 		this.name = name;
 		this.wayToSell = wayToSell;
@@ -13,7 +13,7 @@ class Product {
 		this.categories_id = category;
 		this.markets_id = market;
 		this.image = image;
-		this.users_id = 1;
+		this.users_id = user_id;
 	}
 }
 
@@ -87,10 +87,12 @@ const model = {
 			let body = req.body;
 
 			// make an array with the components of the product object on the specified order that need the class
-			let components = [id, body.name, wts, kiloValue, unitValue, body.discount, body.category, body.market];
+			let components = [id, body.name, wts, body.kilo, body.unit, body.discount, body.category, body.market];
 
 			// Choose the correct name for the image associated with the product, if it doesn't exist left a default image, if it exists add the image
 			req.file != undefined ? components.push(req.file.filename) : components.push('default.jpg');
+
+			components.push(req.session.sellerLogged.id);
 
 			// using the Product class and the components array, we make the new product that take the place of the last product with the same id
 			let product = new Product(...components);
@@ -105,6 +107,7 @@ const model = {
 
 	storeProduct: async function (req) {
 		try {
+			let id;
 			// get the value of the wayToSell
 			let wts = wayToSell(req);
 
@@ -116,6 +119,8 @@ const model = {
 
 			// Choose the correct name for the image associated with the product, if it doesn't exist left a default image, if it exists add the image
 			req.file != undefined ? components.push(req.file.filename) : components.push('default.jpg');
+
+			components.push(req.session.sellerLogged.id);
 
 			// using the Product class and the components array, we make the new product that will be added
 			let product = new Product(...components);

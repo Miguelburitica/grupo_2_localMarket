@@ -19,7 +19,7 @@
 						</tr>
 					</thead>
 					<tbody class="items-list">
-						<% if (locals.productos) { %> <% productos.forEach(product => { %>
+						<% if (locals.products) { %> <% products.forEach(product => { %>
 						<tr>
 							<td><%= product.id %></td>
 							<td><%= product.name %></td>
@@ -39,8 +39,8 @@
 							</td>
 						</tr>
 						<!-- <div class="detail">
-							<img src="images/<%= product.image %>" alt="<%= product.name %> ">
-							<p class="price">Price<%= product.price.kilo %> </p>
+							<img src="images/<%# product.image %>" alt="<%# product.name %> ">
+							<p class="price">Price<%# product.kilo %> </p>
 						</div> -->
 						<% }) %> <% } %>
 					</tbody>
