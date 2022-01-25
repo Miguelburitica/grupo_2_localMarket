@@ -1,5 +1,5 @@
 // let env = process.env
-// env.USER ='root' 
+// env.USER ='root'
 // env.DATABASE_PASSWORD = '1234'
 // env.DATABASE_NAME = 'LocalMarket'
 // env.DATABASE_HOST = '127.0.0.1'
@@ -10,78 +10,76 @@ const path = require('path');
 // const dataCustomers = require('../data/customers.json');
 // path Customer JSON
 
-const db=require(path.resolve(__dirname,'../database/models'));
+const db = require(path.resolve(__dirname, '../database/models'));
 
-const model ={
-    
-    getCustomers: async function() {
-        // return JSON.parse(fs.readFileSync(customerFilePath, 'utf-8'));
-       try{
-           let customers = await db.User.findAll({
-        include:['rol'],
-        where:{
-            rols_id:4,
-        }
-    });
-    return customers;
-} catch (err){
-        console.log(err)
-        return err;
-    }
-    },
+const model = {
+	getCustomers: async function () {
+		// return JSON.parse(fs.readFileSync(customerFilePath, 'utf-8'));
+		try {
+			let customers = await db.User.findAll({
+				include: ['rol'],
+				where: {
+					rols_id: 2,
+				},
+			});
+			return customers;
+		} catch (err) {
+			console.log(err);
+			return err;
+		}
+	},
 
-    findByEmailCustomer: async function(email) {
-       try{
-        const allCustomers = await this.getCustomers();
-        const foundCustomer = await allCustomers.find((item) => 
-        item.email === email);
-        return foundCustomer;
-    } catch (err){
-        console.log(err)
-        return err;
-    }
-    },
-    //falta
-    
-    createCustomer: async function(user){
-       try{
-        let newuser={
-            user_name:user.email,
-            names:user.names,
-            surname:user.surname,
-            email:user.email,
-            phone:user.phone,
-            password:user.password,
-            photo:user.photo,
-            rols_id:4,
-            }
-            await db.User.create(newuser)
-       } catch(err){
-        console.log(err)
-        return err;
-       } 
-    },
+	findByEmailCustomer: async function (email) {
+		try {
+			const allCustomers = await this.getCustomers();
+			const foundCustomer = await allCustomers.find((item) => item.email === email);
+			return foundCustomer;
+		} catch (err) {
+			console.log(err);
+			return err;
+		}
+	},
+	//falta
 
-    updateCustomer: async function(id, user) {
-        try{
-            console.log('recibí ' + id + user)
-            let updateuser = {
-                user_name:user.email,
-                names:user.names,
-                surname:user.surname,
-                email:user.email,
-                phone:user.phone,
-                password:user.password,
-                photo:user.photo,
-                }
-                await db.User.update(updateuser,{where:{id:id}})
-        }catch(err){
-            console.log(err)
-            return err;
-        }
-    },
+	createCustomer: async function (user) {
+		try {
+			let newuser = {
+				user_name: user.email,
+				names: user.names,
+				surname: user.surname,
+				email: user.email,
+				phone: user.phone,
+				password: user.password,
+				photo: user.photo,
+				rols_id: 2,
+			};
+			await db.User.create(newuser);
+		} catch (err) {
+			console.log(err);
+			return err;
+		}
+	},
 
-    deleteCustomer: async function (id) {
+	updateCustomer: async function (id, user) {
+		try {
+			console.log('recibí ' + id + user);
+			let updateuser = {
+				user_name: user.email,
+				names: user.names,
+				surname: user.surname,
+				email: user.email,
+				phone: user.phone,
+				password: user.password,
+				photo: user.photo,
+			};
+			await db.User.update(updateuser, { where: { id: id } });
+		} catch (err) {
+			console.log(err);
+			return err;
+		}
+	},
+
+	deleteCustomer: async function (id) {
 		try {
 			await db.User.destroy({ where: { id: id } });
 		} catch (err) {
@@ -89,27 +87,26 @@ const model ={
 		}
 	},
 
-    getOne: async function (id) {
+	getOne: async function (id) {
 		let user = await db.User.findByPk(id, {
-			include: ['rol'], 
-            where:{
-                rols_id:4,
-            }
+			include: ['rol'],
+			where: {
+				rols_id: 2,
+			},
 		});
 		return user;
 	},
+};
 
-}
-
- module.exports = model;
+module.exports = model;
 
 // let a={
 //     names:'Chabe',
 //     surname:'Romito',
 //     email:'chabe@gmail.com',
-//     phone:'0056479494',
+//     phone:'0056279494',
 //     password:'1245676',
-//     photo:'user.photo', 
+//     photo:'user.photo',
 // }
 // async function Mostrar(){
 //   let x= await model.updateCustomer(2, a)

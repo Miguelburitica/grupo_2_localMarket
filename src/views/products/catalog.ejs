@@ -41,13 +41,13 @@
 		<h3>Prueba con algunos condimentos que le puedan dar profundidad al sabor de tus comidas</h3>
 		<div class="products-space">
 			<div class="product-row">
-				<% for (let i = 0; i < condimentos.length && i < 4; i++) { %>
-				<a href="/products/detail/<%= condimentos[i].id %>">
+				<% for (let i = 0; i < hortalizas.length && i < 4; i++) { %>
+				<a href="/products/detail/<%= hortalizas[i].id %>">
 					<article class="control-article">
-						<img src="/images/<%= condimentos[i].image%>" alt="<%condimentos[i].name%>" />
-						<p class="product-name"><%= condimentos[i].name%></p>
+						<img src="/images/<%= hortalizas[i].image%>" alt="<%hortalizas[i].name%>" />
+						<p class="product-name"><%= hortalizas[i].name%></p>
 						<p Class="price">
-							Desde $<%= condimentos[i].wayToSell == 0 ? condimentos[i].kilo : condimentos[i].unidad%>
+							Desde $<%= hortalizas[i].wayToSell == 0 ? hortalizas[i].kilo : hortalizas[i].unidad%>
 						</p>
 						<button type="submit" class="">Agregar<i class="fas fa-plus-circle"></i></button>
 					</article>

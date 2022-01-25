@@ -11,88 +11,86 @@ const path = require('path');
 // const fs = require('fs');
 // const dataSellers = require('../data/sellers.json');
 
-const db = require( path.resolve(__dirname, '../database/models'));
+const db = require(path.resolve(__dirname, '../database/models'));
 
 const model = {
 	// Obtener todos los sellers
 	getSellers: async function () {
 		// return JSON.parse(fs.readFileSync(sellerFilePath), 'utf-8');
-		try{
+		try {
 			let seller = await db.User.findAll({
-				include:['rol'],
-				where:{
-					rols_id:3,
-				}
+				include: ['rol'],
+				where: {
+					rols_id: 1,
+				},
 			});
 			return seller;
-		}catch(err){
-			console.log(err)
-			return err
+		} catch (err) {
+			console.log(err);
+			return err;
 		}
 	},
 	// Encontrar un seller por email
 	findByEmailSeller: async function (email) {
 		try {
-		const allSellers = await this.getSellers();
-		const foundSeller = await allSellers.find((item) => item.email === email);
-		return foundSeller;
-	}catch (err){
-        console.log(err)
-        return err;
-	}
-},
-	// Crear seller
-	createSeller: async function(user){
-	try {
-	let newuser =
-		{
-        user_name:user.user_name,
-        names:user.names,
-        surname:user.surname,
-        email:user.email,
-        phone:user.phone,
-        password:user.password,
-        photo:user.photo,
-        rols_id:3
+			const allSellers = await this.getSellers();
+			const foundSeller = await allSellers.find((item) => item.email === email);
+			return foundSeller;
+		} catch (err) {
+			console.log(err);
+			return err;
 		}
-	await db.User.create(newuser)
-	} catch (err){
-		console.log(err)
-        return err;
-	}
-	},	
-	// Actualizar seller
-	updateSeller: async function(id, user){
-		try{
-		console.log(user)
-		let updateUser =
-			{
-			user_name:user.user_name,
-			names:user.names,
-			surname:user.surname,
-			email:user.email,
-			phone:user.phone,
-			password:user.password,
-			photo:user.photo,
-			}
-            await db.User.update(updateUser, {where: {id:id}})
-        }catch(err){
-            console.log(err);
-        }
 	},
-	deleteSeller: async function(id){
+	// Crear seller
+	createSeller: async function (user) {
 		try {
-			await db.User.destroy({where: {id:id}})
-		}catch(err){
-            console.log(err);
-        }
+			let newuser = {
+				user_name: user.user_name,
+				names: user.names,
+				surname: user.surname,
+				email: user.email,
+				phone: user.phone,
+				password: user.password,
+				photo: user.photo,
+				rols_id: 1,
+			};
+			await db.User.create(newuser);
+		} catch (err) {
+			console.log(err);
+			return err;
+		}
+	},
+	// Actualizar seller
+	updateSeller: async function (id, user) {
+		try {
+			console.log(user);
+			let updateUser = {
+				user_name: user.user_name,
+				names: user.names,
+				surname: user.surname,
+				email: user.email,
+				phone: user.phone,
+				password: user.password,
+				photo: user.photo,
+			};
+			await db.User.update(updateUser, { where: { id: id } });
+		} catch (err) {
+			console.log(err);
+		}
+	},
+	deleteSeller: async function (id) {
+		try {
+			await db.User.destroy({ where: { id: id } });
+		} catch (err) {
+			console.log(err);
+		}
 	},
 	getOne: async function (id) {
 		let user = await db.User.findByPk(id, {
-			include: ['rol'],
-			where:{
-				rols_id:3,
-			}
+			include: ['rol', 'products'],
+			where: {
+				rols_id: 1,
+			},
 		});
 		return user;
 	},
@@ -113,5 +111,5 @@ module.exports = model;
 // 	let x= await model.deleteSeller(2)
 // 	console.log(x)
 //   }
-  
+
 //   Mostrar()

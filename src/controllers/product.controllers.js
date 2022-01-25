@@ -1,6 +1,6 @@
 const path = require('path');
 const { validationResult } = require('express-validator');
-const { productModel } = require('../model');
+const { productModel, sellerModel } = require('../model');
 
 const pathViews = function (nameView) {
 	return path.resolve(__dirname, '../views/products/' + nameView + '.ejs');
@@ -8,11 +8,11 @@ const pathViews = function (nameView) {
 
 const controller = {
 	getList: async function (req, res) {
-		const productos = await productModel.getSomeProducts((product) =>
-			req.session.sellerLogged.products.includes(product.id)
-		);
+		let id = req.session.sellerLogged.id;
+		const user = await sellerModel.getOne(id);
+		let products = user.products;
 		res.render(pathViews('list'), {
-			productos,
+			products,
 		});
 	},
 
