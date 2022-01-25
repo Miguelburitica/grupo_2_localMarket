@@ -1,21 +1,10 @@
 const path = require('path');
-const fs = require('fs');
 const { validationResult } = require('express-validator');
 const { productModel } = require('../model');
 
 const pathViews = function (nameView) {
 	return path.resolve(__dirname, '../views/products/' + nameView + '.ejs');
 };
-
-// USERS prototype productModels
-const sellersFilePath = path.resolve(__dirname, '../data/sellers.json');
-function sellers() {
-	return JSON.parse(fs.readFileSync(sellersFilePath, 'utf-8'));
-}
-function updateSellers(sellers) {
-	let jsonSellers = JSON.stringify(sellers, null, 4);
-	fs.writeFileSync(sellersFilePath, jsonSellers);
-}
 
 const controller = {
 	getList: async function (req, res) {
@@ -29,29 +18,29 @@ const controller = {
 
 	getCatalog: async function (req, res) {
 		try {
+			// it will be a function in the future
 			const frutas = await productModel.getSomeProducts((product) => {
 				if (product.category.name == 'frutas') {
 					return product;
 				}
 			});
 
-			if (frutas.original) {
-				res.json(frutas);
-			}
 			const verduras = await productModel.getSomeProducts((product) => {
 				if (product.category.name == 'verduras') {
 					return product;
 				}
 			});
-			const condimentos = await productModel.getSomeProducts((product) => {
+
+			const hortalizas = await productModel.getSomeProducts((product) => {
 				if (product.category.name == 'hortalizas') {
 					return product;
 				}
 			});
+
 			res.render(pathViews('catalog'), {
 				frutas,
 				verduras,
-				condimentos,
+				hortalizas,
 			});
 		} catch (err) {
 			console.log(err);
@@ -86,38 +75,14 @@ const controller = {
 					// modelo que creará el nuevo producto en el JSON de productos
 					await productModel.storeProduct(req);
 
-					// Para ser implementado es necesario el modelo de users
-
-					// capturo el array de productos actuales del vendedor logueado
-					// let userProducts = req.session.sellerLogged.products;
-
-					// // le agredo el id que recien se ingresó
-					// userProducts.push(productModel.lastId());
-
-					// // capturo toda la lista de vendedores que hay
-					// let sellersList = sellers();
-
-					// // recorro el array de vendedores buscando el vendedor logueago
-					// sellersList.forEach((seller) => {
-					// 	// compruebo el vendedor por su email, ya que debe ser único
-					// 	if (seller.email === req.session.sellerLogged.email) {
-					// 		// remplazo el array de productos que tenía por el nuevo, el cual tiene agregado el nuevo producto
-					// 		seller.products = userProducts;
-					// 	}
-					// });
-
-					// // actualizo la lista de vendedores con el cambió al vendedor logueado en su array de productos
-					// updateSellers(sellersList);
-
 					// redirijo a la lista de productos
 					res.redirect('list');
 				} else {
 					// si llega a acabarse la sesión antes de crear el producto le enviará este mensaje de apoyo :3
-					res.send('Chic@ no deberías estar viendo esto >:°');
+					res.send('Chic@ no deberías estar viendo esto >:°, vuelve a iniciar sesión plz');
 				}
 				// en caso de que hayan errores, redirije al formulario de crear item, para crearlo bien
 			} else {
-				console.log(errors.mapped());
 				res.render(pathViews('add-item'), {
 					errors: errors.mapped(),
 					oldData: req.body,
@@ -154,13 +119,10 @@ const controller = {
 				extraSuggest.forEach((item) => {
 					suggestProducts.push(item);
 				});
-				// Hay que aplicar acá algun metodo del modelo de usuarios (¿cuál?)
-				const seller = sellers().find((sel) => sel.products.includes(id));
 
 				res.render(pathViews('detailCustomer'), {
 					product: product,
 					suggest: suggestProducts,
-					seller: seller,
 				});
 			} else {
 				// make a new array with just the items that I need suggest
@@ -183,13 +145,10 @@ const controller = {
 				extraSuggest.forEach((item) => {
 					suggestProducts.push(item);
 				});
-				// Hay que aplicar acá algun metodo del modelo de usuarios (¿cuál?)
-				const seller = sellers().find((sel) => sel.products.includes(id));
 
 				res.render(pathViews('detailCustomer'), {
 					product: product,
 					suggest: suggestProducts,
-					seller: seller,
 				});
 			}
 		} catch (err) {
@@ -199,8 +158,7 @@ const controller = {
 
 	deleteItem: async function (req, res) {
 		try {
-			const id = req.params.id;
-			productModel.deleteProduct(id);
+			productModel.deleteProduct(req.params.id);
 
 			res.redirect('list');
 		} catch (err) {
