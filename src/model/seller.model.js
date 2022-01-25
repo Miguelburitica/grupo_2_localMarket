@@ -21,7 +21,7 @@ const model = {
 			let seller = await db.User.findAll({
 				include:['rol'],
 				where:{
-					rols_id:3,
+					rols_id:1,
 				}
 			});
 			return seller;
@@ -53,7 +53,7 @@ const model = {
         phone:user.phone,
         password:user.password,
         photo:user.photo,
-        rols_id:3
+        rols_id:1
 		}
 	await db.User.create(newuser)
 	} catch (err){
@@ -64,7 +64,6 @@ const model = {
 	// Actualizar seller
 	updateSeller: async function(id, user){
 		try{
-		console.log(user)
 		let updateUser =
 			{
 			user_name:user.user_name,
@@ -88,13 +87,13 @@ const model = {
         }
 	},
 	getOne: async function (id) {
-		let user = await db.User.findByPk(id, {
+		let oneUser = await db.User.findByPk(id, {
 			include: ['rol'],
 			where:{
-				rols_id:3,
+				rols_id:1,
 			}
 		});
-		return user;
+		return oneUser;
 	},
 };
 

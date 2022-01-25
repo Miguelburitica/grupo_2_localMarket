@@ -20,7 +20,7 @@ const model ={
            let customers = await db.User.findAll({
         include:['rol'],
         where:{
-            rols_id:4,
+            rols_id:2,
         }
     });
     return customers;
@@ -53,7 +53,7 @@ const model ={
             phone:user.phone,
             password:user.password,
             photo:user.photo,
-            rols_id:4,
+            rols_id:2,
             }
             await db.User.create(newuser)
        } catch(err){
@@ -64,7 +64,7 @@ const model ={
 
     updateCustomer: async function(id, user) {
         try{
-            console.log('recibí ' + id + user)
+            console.log('recibí ' + id + user.names)
             let updateuser = {
                 user_name:user.email,
                 names:user.names,
@@ -90,13 +90,13 @@ const model ={
 	},
 
     getOne: async function (id) {
-		let user = await db.User.findByPk(id, {
+		let oneUser = await db.User.findByPk(id, {
 			include: ['rol'], 
             where:{
-                rols_id:4,
+                rols_id:2,
             }
 		});
-		return user;
+		return oneUser;
 	},
 
 }
@@ -112,8 +112,9 @@ const model ={
 //     photo:'user.photo', 
 // }
 // async function Mostrar(){
-//   let x= await model.updateCustomer(2, a)
-//   console.log(x)
-// }
+//   let x = await model.getOne(2)
+//   let y = await model.updateCustomer(2,x)
+//   console.log(y)
+//   }
 
 //  Mostrar()

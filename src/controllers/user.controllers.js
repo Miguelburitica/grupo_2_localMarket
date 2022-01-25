@@ -155,14 +155,16 @@ const controller = {
 
 	editUser: async (req,res)=>{
 		try{
-		const id=req.params.id;
+		let id=req.params.id;
+		console.log('este es el id del usuario '+ id)
 		let user = {};
 		let customer = await customerModel.getOne(id)
 		let seller= await sellerModel.getOne(id)
-		if(customer){
+		console.log({customer},{seller})
+		if(customer.rols_id==2){
 			user = customer
 			res.render(pathViews('edit-customer'),{user:user});
-		}else if(seller){
+		}else if(seller.rols_id==1){
 			user = seller
 			res.render(pathViews('edit-seller'),{user:user});
 		}else{
@@ -178,33 +180,40 @@ const controller = {
 			// trae los errores del form
 			let errors = validationResult(req);
 			console.log(errors.mapped());
-		// Comprueba que los datos que vienen del form, vienen ok y si sí, hace esto
+			// Comprueba que los datos que vienen del form, vienen ok y si sí, hace esto
 			if (errors.isEmpty()) {
 			// Es encapsulado en una variable el objeto usuario
-			const id = parseInt(req.params.id);
-			console.log('este es el req.body',req.body)
-			const user = {
+			// console.log('este es el req.body',req.body)
+			let user = {};
+			user = {
 				...req.body,
 				password: bcryptjs.hashSync(req.body.password, 10),
 				password_confirm: null,
 				photo: req.file != undefined ? req.file.filename: 'default.jpg'
 			}
-			console.log('este es el user req.body', user)
+			// console.log({user})
 			if (user.user_name === undefined ) {
-				console.log('este es el user del if', user)
+				let id = parseInt(req.session.customerLogged.id)
 				await customerModel.updateCustomer(id,user);
+				let newUser = await	customerModel.getOne(id)
+				req.session.customerLogged = newUser
+				delete req.session.customerLogged.password
 			} else {
 				// user.products = [];
+				let id = parseInt(req.session.sellerLogged.id)
 				await sellerModel.updateSeller(id,user);
+				let newUser = await	sellerModel.getOne(id)
+				req.session.sellerLogged = newUser
+				delete req.session.sellerLogged.password
 			}
 			res.redirect('/users/login');
 			// En caso de que hayan errores, devuelve la vista con los errores
 		} else {
 			console.log(`error: ${errors.mapped()}`);
 			if (req.body.user_name === undefined ) {
-				res.render(pathViews('edit-customer/'+ req.params.id), { errors: errors.mapped() });
+				res.render(pathViews('edit-customer'), { errors: errors.mapped() });
 			} else {
-				res.render(pathViews('edit-seller/'+ req.params.id), { errors: errors.mapped() });
+				res.render(pathViews('edit-seller'), { errors: errors.mapped() });
 			}
 		}
 		}catch(err){
