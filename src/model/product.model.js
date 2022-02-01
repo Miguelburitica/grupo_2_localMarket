@@ -107,7 +107,7 @@ const model = {
 
 	storeProduct: async function (req) {
 		try {
-			let id;
+			let id = null;
 			// get the value of the wayToSell
 			let wts = wayToSell(req);
 
@@ -117,14 +117,13 @@ const model = {
 			// make an array with the components of the product object on the specified order that need the class
 			let components = [id, body.name, wts, body.kilo, body.unit, body.discount, body.category, body.market];
 
-			// Choose the correct name for the image associated with the product, if it doesn't exist left a default image, if it exists add the image
+			// Choose the correct name for the image associated with the product, if it doesn't exist set a default image, if it exists add the image
 			req.file != undefined ? components.push(req.file.filename) : components.push('default.jpg');
 
 			components.push(req.session.sellerLogged.id);
 
 			// using the Product class and the components array, we make the new product that will be added
 			let product = new Product(...components);
-			delete product.id;
 
 			// Add the new product
 			await db.Product.create(product);
@@ -135,7 +134,11 @@ const model = {
 
 	deleteProduct: async function (id) {
 		try {
-			await db.Product.destroy({ where: { id: id } });
+			if (id !== undefined && id !== null) {
+				return await db.Product.destroy({ where: { id } });
+			} else {
+				throw new Error('Falta el id en el delete prro >:s');
+			}
 		} catch (err) {
 			console.log(err);
 		}
@@ -159,6 +162,11 @@ module.exports = model;
 // 	file: {
 // 		filename: 'redonion.jfif',
 // 	},
+// 	session: {
+// 		sellerLogged: {
+// 			id: 1,
+// 		},
+// 	},
 // };
 
-// model.editProduct(req);
+// model.storeProduct(req);

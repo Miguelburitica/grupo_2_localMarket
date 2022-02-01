@@ -1,6 +1,5 @@
 const path = require('path');
 const db = require(path.resolve(__dirname, '../database/models'));
-const { Op } = require('sequelize');
 
 class Market {
 	constructor(name, direction) {
@@ -20,7 +19,7 @@ const model = {
 	},
 	getSome: async function (callBack) {
 		try {
-			let markets = await db.Market.findAll({ include: ['products'] });
+			let markets = await db.Market.findAll({ include: ['products', 'users'] });
 			let allMarkets = markets.filter(callBack);
 			return allMarkets;
 		} catch (err) {
@@ -30,7 +29,7 @@ const model = {
 
 	getByPk: async function (pk) {
 		try {
-			let market = await db.Market.findByPk(pk, { include: ['products'] });
+			let market = await db.Market.findByPk(pk, { include: ['products', 'users'] });
 			return market;
 		} catch (err) {
 			console.log(err);

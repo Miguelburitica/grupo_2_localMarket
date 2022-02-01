@@ -1,6 +1,6 @@
 const path = require('path');
 const { validationResult } = require('express-validator');
-const { productModel, sellerModel } = require('../model');
+const { productModel, sellerModel, categoryModel, marketModel } = require('../model');
 
 const pathViews = function (nameView) {
 	return path.resolve(__dirname, '../views/products/' + nameView + '.ejs');
@@ -66,13 +66,17 @@ const controller = {
 		}
 	},
 
-	getAdd: function (req, res) {
-		res.render(pathViews('add-item'));
+	getAdd: async function (req, res) {
+		let categories = await categoryModel.getAll();
+		let markets = await marketModel.getAll();
+		res.render(pathViews('add-item'), { categories: categories, markets: markets });
 	},
 
 	createItem: async function (req, res) {
 		try {
-			const errors = validationResult(req); // validación de creación.
+			const errors = await validationResult(req); // validación de creación.
+			let categories = await categoryModel.getAll();
+			let markets = await marketModel.getAll();
 			if (errors.isEmpty()) {
 				// Aquí implementaré el cómo se agrega un producto teniendo en cuenta el usuario asociado
 				if (req.session.sellerLogged !== undefined) {
@@ -87,9 +91,12 @@ const controller = {
 				}
 				// en caso de que hayan errores, redirije al formulario de crear item, para crearlo bien
 			} else {
+				console.log(errors.mapped());
 				res.render(pathViews('add-item'), {
 					errors: errors.mapped(),
 					oldData: req.body,
+					categories,
+					markets,
 				});
 			}
 		} catch (err) {
