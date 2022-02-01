@@ -81,7 +81,7 @@ const model = {
 			const id = req.params.id;
 
 			// get the value of the wayToSell
-			let wts = wayToSell(req);
+			let = wayToSell(req);
 
 			// simplified the req.body to body
 			let body = req.body;
