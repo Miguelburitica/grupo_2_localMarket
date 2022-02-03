@@ -2,103 +2,246 @@
 <body>
 	<%- include('../partials/header') %>
 	<main class="main-add-item">
-		<h2 class="titulo">Edita este producto</h2>
-		<!-- <div class="image-product">
-			<img
-				src="/images/<%= product.image %>"
-				alt="ilustración del <%= product.name %>"
-			/>
-		</div> -->
 		<form
-		action="/products/edit-item/<%= product.id %>?_method=PUT"
-		class="formulario"
-		method="POST"
-		enctype="multipart/form-data"
+			action="/products/edit-item/<%= product.id %>?_method=PUT"
+			class="formulario"
+			method="POST"
+			enctype="multipart/form-data"
 		>
-			<div class="input-field">
-				<label>Producto:</label>
+		<h2 class="titulo">Edita este producto</h2>
+			<div class="input-container">
 				<input
-					class="text-box"
+					class="text-box <%= locals.errors !== undefined ? locals.errors && errors.name === undefined ? 'correct' : 'incorrect' : ''%> "
 					type="text"
 					name="name"
 					id="name"
 					placeholder="Nombre del producto"
 					minlength="2"
-					value= <%= product.name %>
 					required
+					<% if (locals.oldData && oldData.name && (locals.errors.name === undefined)) { %>
+						value="<%= oldData.name %>"
+					<% } else { %>
+						value="<%= product.name %>"
+					<% } %> 
 				/>
+				<% if (locals.errors && errors.name) { %>
+					<label class="checked" for="name">
+						<i class="fas fa-times" style="color: #cc0000"></i>
+					</label>
+				<% } else if(locals.errors){ %>
+					<label class="checked" for="name">
+						<i class="fas fa-check" style="color: #5fab70"></i>
+					</label>
+				<% } %> 
 			</div>
-			<div class="select-field input-field">
-				<label>Selecciona la categoría:</label>
-				<select
-					name="category"
-					class="control"
-					placeholder="Seleccione la categoria"
-				>
-					<option value="1">Frutas</option>
-					<option value="2">Hortalizas</option>
-					<option value="3">Plantas</option>
-					<option value="4">Granos</option>
-					<option value="5">Semillas</option>
-				</select>
-			</div>
-			<div class="input-field">
-				<label>Adjunta la imagen del producto: </label>
-				<input
-					class="text-box"
-					type="file"
-					name="image"
-					id="imagefile"
-					placeholder="Adjuntar imagen"
-				/>
-			</div>
+			<% if (locals.errors && errors.name) { %>
+				<span class="error"><%= errors.name.msg %> </span>
+			<% } else {%>
+			<% } %>
+			<div class="input-container ">
 
-			<h4>Opciones de compra</h4>
-			<div class="input-field">
-				<label>Precio kilo:</label>
-				<input
-					class="text-box"
-					type="number"
-					name="kilo"
-					id="price"
-					placeholder="Precio en pesos"
-					value= <%= product.kilo%>
-					required
-				/>
+				<select 
+					name="category"
+					class=" <%= locals.errors !== undefined ? locals.errors && errors.category === undefined ? 'correct' : 'incorrect' : ''%> "
+					placeholder="Seleccione la categoria" 
+					id="category"
+					>
+					<option value="">Elige una categoría</option>
+					<% categories.forEach(category => { %>
+						<% if (locals.product.category.name == category.name) { %>
+						<% } else if (locals.oldData && oldData.category && locals.errors.category === undefined) { %>
+							<option value="<%= category.id %>" selected>
+								<%= category.name %>
+							</option>
+						<% } else { %> 
+							<option value="<%= category.id %>">
+								<%= category.name %>
+							</option>
+						<% } %> 
+					<% }) %>
+						<option value="<%= product.category.id %>" selected>
+							<%= product.category.name %> 
+						</option>
+				</select>
+				<% if (locals.errors && errors.category) { %>
+					<label class="checked" for="category">
+						<i class="fas fa-times" style="color: #cc0000"></i>
+					</label>
+				<% } else if(locals.errors){ %>
+					<label class="checked" for="category">
+						<i class="fas fa-check" style="color: #5fab70"></i>
+					</label>
+				<% } %> 
 			</div>
-			<div class="input-field">
-				<label>Precio unidad:</label>
-				<input
-					class="text-box"
-					type="number"
-					name="unit"
-					id="price"
-					placeholder="Precio en pesos"
-					value= <%= product.unit%>
-					required
+			<% if (locals.errors && errors.category) { %>
+				<span class="error"><%= errors.category.msg %> </span>
+			<% } else {%>
+			<% } %>
+			
+			<input 
+				class="text-box file-field" 
+				type="file" 
+				name="image" 
+				id="image"
+				value="<%= locals.product.photo %>"
 				/>
+			<label 
+				for="image" 
+				class="text-box label-file <%= locals.errors !== undefined ? locals.errors && errors.image === undefined ? 'correct' : 'incorrect' : ''%> " 
+				   >
+					<i class="far fa-image"></i> Imagen del producto 
+			</label>
+			<% if (locals.errors && errors.image) { %>
+				<label class="checked" for="image">
+					<i class="fas fa-times" style="color: #cc0000"></i>
+				</label>
+			<% } else if(locals.errors){ %>
+				<label class="checked" for="image">
+					<i class="fas fa-check" style="color: #5fab70"></i>
+				</label>
+			<% } %>
+			<% if (locals.errors && errors.image) { %>
+				<span class="error"><%= errors.image.msg %> </span>
+			<% } else {%>
+			<% } %>
+			
+			<div class="input-container">
+				<label for="unit">Selecciona un precio por Unidad</label>
+				<input 
+					class="text-box <%= locals.errors !== undefined ? locals.errors && errors.unit === undefined ? 'correct' : 'incorrect' : ''%> " 
+					type="number" 
+					name="unit" 
+					id="unit" 
+					placeholder="Precio en pesos" 
+					min="0" 
+					<% if (locals.oldData && oldData.unit && (locals.errors.unit === undefined)) { %>
+						value="<%= oldData.unit %>"
+					<% } else { %>
+						value="<%= product.unit %>"" 
+					<% } %> 
+					/>
+				<% if (locals.errors && errors.unit) { %>
+					<label class="checked" for="unit">
+						<i class="fas fa-times" style="color: #cc0000"></i>
+					</label>
+				<% } else if(locals.errors){ %>
+					<label class="checked" for="unit">
+						<i class="fas fa-check" style="color: #5fab70"></i>
+					</label>
+				<% } %> 
 			</div>
-			<div class="select-field input-field">
-				<label>Selecciona un descuento:</label>
-				<select name="discount" class="control" placeholder="Seleccione descuento" id="discount">
+			<% if (locals.errors && errors.unit) { %>
+				<span class="error"><%= errors.unit.msg %> </span>
+			<% } else {%>
+			<% } %>
+			
+			<div class="input-container">
+				<label for="kilo">Selecciona un precio por Kilo</label>
+				<input 
+					class="text-box <%= locals.errors !== undefined ? locals.errors && errors.kilo === undefined ? 'correct' : 'incorrect' : ''%> " 
+					type="number" 
+					name="kilo" 
+					placeholder="Precio en pesos" 
+					id="kilo" 
+					min="0" 
+					<% if (locals.oldData && oldData.kilo && (locals.errors.kilo === undefined)) { %>
+						value="<%= oldData.kilo %>"
+					<% } else { %>
+						value="<%= product.kilo %>"" 
+					<% } %> 
+					/>
+				<% if (locals.errors && errors.kilo) { %>
+					<label class="checked" for="kilo">
+						<i class="fas fa-times" style="color: #cc0000"></i>
+					</label>
+				<% } else if(locals.errors){ %>
+					<label class="checked" for="kilo">
+						<i class="fas fa-check" style="color: #5fab70"></i>
+					</label>
+				<% } %> 
+			</div>
+			<% if (locals.errors && errors.kilo) { %>
+				<span class="error"><%= errors.kilo.msg %> </span>
+			<% } else {%>
+			<% } %>
+			
+			<div class="input-container">
+				<select 
+					name="discount" 
+					class=" <%= locals.errors !== undefined ? locals.errors && errors.discount === undefined ? 'correct' : 'incorrect' : ''%> " 
+					id="discount"
+					>
+					<option value="">Elige que tanto deseas descontar el precio de tu producto</option>
+					<% let j = 0; %> 
 					<% for( let i = 0; i < 50; i += 5 ) { %>
-						<option value="<%= i %> "><%= i %> %</option>
+						<% if (locals.product.discount == i && j < 1) { %>
+							<% j++ %> 
+						<% } else if (locals.oldData && oldData.discount && (locals.errors.discount === undefined)) { %>
+							<option value="<%= i %>" selected>
+								<%= i %> %
+							</option>
+						<% } else { %>
+							<option value="<%= i %>"><%= i %> %</option>
+						<% } %>
 					<% } %>
+					<option value="<%= product.discount %>" selected>
+						<%= product.discount %>  %
+					</option>
 				</select>
+				<% if (locals.errors && errors.discount) { %>
+					<label class="checked" for="discount">
+						<i class="fas fa-times" style="color: #cc0000"></i>
+					</label>
+				<% } else if(locals.errors){ %>
+					<label class="checked" for="discount">
+						<i class="fas fa-check" style="color: #5fab70"></i>
+					</label>
+				<% } %> 
 			</div>
-			<div class="select-field input-field">
-				<label>Selecciona Mercado campesino:</label>
-				<select
-					name="market"
-					class="control"
+			<% if (locals.errors && errors.discount) { %>
+				<span class="error"><%= errors.discount.msg %> </span>
+			<% } else {%>
+			<% } %>
+			
+			<div class="input-container <%= locals.errors && errors.market ? 'is-invalid' : null %>">
+				<select 
+					name="market" 
+					class=" <%= locals.errors !== undefined ? locals.errors && errors.market === undefined ? 'correct' : 'incorrect' : ''%> "
 					id="market"
-				>
-					<option value="1">Carlos E Restrepo</option>
-					<option value="2">Poblado</option>
-					<option value="3">Ciudad del Río</option>
+					>
+					<option value="">Elige el mercado donde deseas ofrecer tu producto</option>
+					<% markets.forEach(market => { %>
+						<% if (locals.product.market.name == market.name) { %>
+						<% } else if (locals.oldData && oldData.market && locals.errors.market === undefined) { %>
+							<option value="<%= market.id %>" selected>
+								<%= market.name %>
+							</option>
+						<% } else { %>
+							<option value="<%= market.id %>">
+								<%= market.name %>
+							</option>
+						<% } %> 
+					<% }) %>
+					<option value="<%= product.market.id %>" selected>
+						<%= product.market.name %> 
+					</option>
+						
 				</select>
+				<% if (locals.errors && errors.market) { %>
+					<label class="checked" for="market">
+						<i class="fas fa-times" style="color: #cc0000"></i>
+					</label>
+				<% } else if(locals.errors){ %>
+					<label class="checked" for="market">
+						<i class="fas fa-check" style="color: #5fab70"></i>
+					</label>
+				<% } %> 
 			</div>
-			<button type="submit" class="submit">Actualizar</button>
+			<% if (locals.errors && errors.market) { %>
+				<span class="error"><%= errors.market.msg %> </span>
+			<% } else {%>
+			<% } %>
+			<button type="submit" class="submit">Agregar</button>
 		</form>
 	</main>
 	<%- include('../partials/footer') %>

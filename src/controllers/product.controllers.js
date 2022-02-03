@@ -51,7 +51,9 @@ const controller = {
 		try {
 			const id = req.params.id;
 			const product = await productModel.getOne(id);
-			res.render(pathViews('edit-item'), { product });
+			const categories = await categoryModel.getAll();
+			const markets = await marketModel.getAll();
+			res.render(pathViews('edit-item'), { product, categories, markets });
 		} catch (err) {
 			console.log(err);
 		}
@@ -59,24 +61,49 @@ const controller = {
 
 	updateItem: async function (req, res) {
 		try {
-			await productModel.editProduct(req);
-			res.redirect('/products/detail/' + req.params.id);
+			const errors = await validationResult(req);
+			const categories = await categoryModel.getAll();
+			const markets = await marketModel.getAll();
+
+			// validación de Edición.
+			if (errors.isEmpty()) {
+				// Aquí implementaré el cómo se agrega un producto teniendo en cuenta el usuario asociado
+				if (req.session.sellerLogged !== undefined) {
+					// modelo que creará el nuevo producto en el JSON de productos
+					await productModel.editProduct(req);
+
+					// redirijo a la lista de productos
+					res.redirect('/products/detail/' + req.params.id);
+				} else {
+					// si llega a acabarse la sesión antes de crear el producto le enviará este mensaje de apoyo :3
+					res.send('Chic@ no deberías estar viendo esto >:°, vuelve a iniciar sesión plz');
+				}
+				// en caso de que hayan errores, redirije al formulario de crear item, para crearlo bien
+			} else {
+				console.log(errors.mapped());
+				res.render(pathViews('add-item'), {
+					errors: errors.mapped(),
+					oldData: req.body,
+					categories,
+					markets,
+				});
+			}
 		} catch (err) {
 			console.log(err);
 		}
 	},
 
 	getAdd: async function (req, res) {
-		let categories = await categoryModel.getAll();
-		let markets = await marketModel.getAll();
+		const categories = await categoryModel.getAll();
+		const markets = await marketModel.getAll();
 		res.render(pathViews('add-item'), { categories: categories, markets: markets });
 	},
 
 	createItem: async function (req, res) {
 		try {
 			const errors = await validationResult(req); // validación de creación.
-			let categories = await categoryModel.getAll();
-			let markets = await marketModel.getAll();
+			const categories = await categoryModel.getAll();
+			const markets = await marketModel.getAll();
 			if (errors.isEmpty()) {
 				// Aquí implementaré el cómo se agrega un producto teniendo en cuenta el usuario asociado
 				if (req.session.sellerLogged !== undefined) {
