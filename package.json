@@ -19,19 +19,21 @@
 	},
 	"homepage": "https://github.com/Miguelburitica/grupo_2_guavaMarket#readme",
 	"dependencies": {
-		"bcryptjs": "^2.4.3",
-		"cookie-parser": "^1.4.6",
-		"dotenv": "^14.2.0",
-		"ejs": "^3.1.6",
-		"express": "^4.17.1",
-		"express-session": "^1.17.2",
-		"express-validator": "^6.14.0",
-		"method-override": "^3.0.0",
-		"multer": "^1.4.3",
-		"mysql2": "^2.3.3",
-		"nodemon": "^2.0.15",
-		"prettier": "^2.4.1",
-		"sequelize": "^6.12.5",
-		"sequelize-cli": "^6.3.0"
+		"bcryptjs": "2.4.3",
+		"cookie-parser": "1.4.6",
+		"dotenv": "14.2.0",
+		"ejs": "3.1.6",
+		"express": "4.17.1",
+		"express-session": "1.17.2",
+		"express-validator": "6.14.0",
+		"method-override": "3.0.0",
+		"multer": "1.4.3",
+		"mysql2": "2.3.3",
+		"nodemon": "2.0.15",
+		"sequelize": "6.12.5",
+		"sequelize-cli": "6.3.0"
+	},
+	"devDependencies": {
+		"eslint": "8.8.0"
 	}
 }

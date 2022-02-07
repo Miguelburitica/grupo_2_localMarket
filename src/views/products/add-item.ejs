@@ -1,5 +1,5 @@
 <%- include('../partials/head') %>
-	<script src="../../js/add-item.js" defer></script>
+	<script src="../../js/add-itemTRUE.js" defer></script>
 </head>
 <body>
 	<%- include('../partials/header') %>
@@ -24,20 +24,15 @@
 							value="<%= oldData.name %>"
 						<% } %>
 					/>
-					<% if (locals.errors && errors.name) { %>
-						<label class="checked" for="name">
-							<i class="fas fa-times" style="color: #cc0000"></i>
-						</label>
-					<% } else if(locals.errors){ %>
-						<label class="checked" for="name">
-							<i class="fas fa-check" style="color: #5fab70"></i>
-						</label>
-					<% } %> 
+					<label class="<%= locals.errors && errors.name ? 'checked' : 'disabled' %>" for="name">
+						<i class="fas fa-times" style="color: #cc0000"></i>
+					</label>
+					<label class="<%= locals.errors && errors.name === undefined ? 'checked' : 'disabled' %>" for="name">
+						<i class="fas fa-check" style="color: #5fab70"></i>
+					</label>
+					<span class="<%= locals.errors && errors.name ? 'error' : 'disabled' %>"><%= locals.errors && errors.name ? errors.name.msg : '' %></span>
+					<span class="disabled"></span>
 				</div>
-				<% if (locals.errors && errors.name) { %>
-					<span class="error"><%= errors.name.msg %> </span>
-				<% } else {%>
-				<% } %>
 				<div class="input-container ">
 					<select 
 						name="category"
@@ -54,20 +49,15 @@
 							<% } %> 
 						<% }) %>
 					</select>
-					<% if (locals.errors && errors.category) { %>
-						<label class="checked" for="category">
-							<i class="fas fa-times" style="color: #cc0000"></i>
-						</label>
-					<% } else if(locals.errors){ %>
-						<label class="checked" for="category">
-							<i class="fas fa-check" style="color: #5fab70"></i>
-						</label>
-					<% } %> 
+					<label class="<%= locals.errors && errors.category ? 'checked' : 'disabled' %>" for="category">
+						<i class="fas fa-times" style="color: #cc0000"></i>
+					</label>
+					<label class="<%=locals.errors && errors.category === undefined ? 'checked' : 'disabled' %>" for="category">
+						<i class="fas fa-check" style="color: #5fab70"></i>
+					</label>
+					<span class="<%= locals.errors && errors.category ? 'error' : 'disabled' %>"><%= locals.errors && errors.category ? errors.category.msg : '' %></span>
+					<span class="disabled"></span>
 				</div>
-				<% if (locals.errors && errors.category) { %>
-					<span class="error"><%= errors.category.msg %> </span>
-				<% } else {%>
-				<% } %>
 				
 				<div class="input-container">
 					<input 
@@ -82,19 +72,14 @@
 						>
 							<i class="far fa-image"></i> Imagen del producto 
 					</label>
-					<% if (locals.errors && errors.image) { %>
-						<label class="checked" for="image">
-							<i class="fas fa-times" style="color: #cc0000"></i>
-						</label>
-					<% } else if(locals.errors){ %>
-						<label class="checked" for="image">
-							<i class="fas fa-check" style="color: #5fab70"></i>
-						</label>
-						<% } %>
-						<% if (locals.errors && errors.image) { %>
-							<span class="error"><%= errors.image.msg %> </span>
-						<% } else {%>
-						<% } %>
+					<label class="<%= locals.errors && errors.image ? 'checked' : 'disabled' %>" for="image">
+						<i class="fas fa-times" style="color: #cc0000"></i>
+					</label>
+					<label class="<%=locals.errors && errors.image === undefined ? 'checked' : 'disabled' %>" for="image">
+						<i class="fas fa-check" style="color: #5fab70"></i>
+					</label>
+					<span class="<%= locals.errors && errors.image ? 'error' : 'disabled' %>"><%= locals.errors && errors.image ? errors.image.msg : '' %></span>
+					<span class="disabled"></span>
 				</div>
 				
 				<div class="input-container">

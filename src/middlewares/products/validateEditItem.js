@@ -1,5 +1,5 @@
-const { check } = require('express-validator');
-const { categoryModel, marketModel } = require('../../model');
+const { check } = require('express-validator')
+// const { categoryModel, marketModel } = require('../../model')
 
 const validateEditItem = [
 	check('name')
@@ -24,16 +24,16 @@ const validateEditItem = [
 		.withMessage('El precio no puede sobrepasar los 6 digitos compa :D'),
 	check('image')
 		.custom((value, { req }) => {
-			let response;
+			let response
 			if (req.file === undefined) {
-				response = true;
+				response = true
 			} else {
-				let format = req.file.mimetype;
-				console.log(format);
-				let formats = ['image/jpg', 'image/png', 'image/gif', 'image/jpeg', undefined];
-				response = formats.includes(format);
+				let format = req.file.mimetype
+				console.log(format)
+				let formats = ['image/jpg', 'image/png', 'image/gif', 'image/jpeg', undefined]
+				response = formats.includes(format)
 			}
-			return response;
+			return response
 		})
 		.withMessage('Sólo es permitido subir archivos jpg, png, jpeg y gif, srry :('),
 	check('unit')
@@ -52,6 +52,6 @@ const validateEditItem = [
 		.bail()
 		.isInt()
 		.withMessage('Que carajos acabas de hacer?, como hiciste eso?, hey trata de no romperlo :P'),
-];
+]
 
-module.exports = validateEditItem;
+module.exports = validateEditItem
