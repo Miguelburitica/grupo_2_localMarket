@@ -25,13 +25,13 @@ const sellers = require(path.resolve(__dirname, '../../data/sellers.json'));
 const sellersEmails = sellers.map((item) => item.email);
 
 const validateRegisterSeller = [
-	check('user_name').notEmpty().withMessage('Trata ingresar el nombre por el cual quieres que te reconozcan O.o .'),
+	check('user_name').notEmpty().withMessage('Este campo no puede estar vacio'),
 	check('names')
 		.notEmpty()
-		.withMessage('Trata ingresar tu nombre favorito :3 .')
+		.withMessage('Este campo no puede estar vacio.')
 		.bail()
 		.isLength({ min: 2, max: 45 })
-		.withMessage('Tu nombre no puede tener menos de 3 letras :/, y como máximo puedo tener 45 UwU.')
+		.withMessage('Tu nombre no puede tener menos de 3 letras, y como máximo puedo tener 45.')
 		.bail()
 		.custom((value) => {
 			let numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -45,13 +45,13 @@ const validateRegisterSeller = [
 			});
 			return res;
 		})
-		.withMessage('Tu nombre no puede ser un número o contener alguno .-.'),
+		.withMessage('Tu nombre no puede ser un número o contener alguno.'),
 	check('surname')
 		.notEmpty()
-		.withMessage('Trata ingresar ambos apellidos para diferenciarte con claridad :D .')
+		.withMessage('Este campo no puede estar vacio.')
 		.bail()
 		.isLength({ min: 2, max: 45 })
-		.withMessage('Tu apellido no puede tener menos de 3 letras :/, y como máximo puedo tener 45 UwU.')
+		.withMessage('Tu apellido no puede tener menos de 3 letras, y como máximo puedo tener 45.')
 		.bail()
 		.custom((value) => {
 			let numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -65,11 +65,11 @@ const validateRegisterSeller = [
 			});
 			return res;
 		})
-		.withMessage('Tus apellidos no pueden ser un número o contener alguno .-.'),
+		.withMessage('Tus apellidos no pueden ser un número o contener alguno'),
 	check('phone')
 		.notEmpty()
 		.withMessage(
-			'Trata ingresar un número de celular, número del que estés pendiente para atender cualquier novedad >.< .'
+			'Este campo no puede estar vacio.'
 		)
 		.bail(),
 		// .isMobilePhone(['es-CO'])
@@ -81,14 +81,14 @@ const validateRegisterSeller = [
 			let formats = ['image/jpg', 'image/png', 'image/gif', 'image/jpeg'];
 			return formats.includes(format);
 		})
-		.withMessage('Sólo es permitido subir archivos jpg, png, jpeg y gif, srry :('),
+		.withMessage('Sólo es permitido subir archivos jpg, png, jpeg y gif.'),
 	check('password')
 		.notEmpty()
-		.withMessage('Trata ingresar una contraseña no tan fácil que puedas recordar Uwu.')
+		.withMessage('Este campo no puede estar vacio.')
 		.bail()
 		.isStrongPassword({ minSymbols: 0 })
 		.withMessage(
-			'La contraseña debe contener mayúsculas, minúsculas con al menos 8 caracteres y máximo 50 caracteres >n< .'
+			'La contraseña debe contener mayúsculas, minúsculas con al menos 8 caracteres y máximo 50 caracteres.'
 		),
 	check('password_confirm')
 		.custom((value, { req }) => value === req.body.password)
@@ -96,7 +96,7 @@ const validateRegisterSeller = [
 	check('email')
 		.notEmpty()
 		.withMessage(
-			'Trata ingresar tu correo, correo del que estés atento para estar al tanto de cualquier novedad. >_<'
+			'Este campo no puede estar vacio'
 		)
 		.bail()
 		.isEmail()
@@ -106,7 +106,7 @@ const validateRegisterSeller = [
 			// return emailExist(value)
 			return !sellersEmails.includes(value);
 		})
-		.withMessage('El correo que tratas de ingresar ya se encuentra registrado °n°'),
+		.withMessage('Este correo ya se encuentra registrado'),
 ];
 
 module.exports = validateRegisterSeller;

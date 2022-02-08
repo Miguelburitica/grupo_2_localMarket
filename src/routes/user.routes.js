@@ -55,4 +55,7 @@ router.put('/edit-seller/:id', uploadFile.single('photo'), userController.update
 //Get Cerrar sesión
 router.get('/logout', userController.logout);
 
+//Get página de error 404
+router.get('/error', userController.getError);
+
 module.exports = router;
