@@ -95,20 +95,15 @@
 							value="<%= oldData.unit %>"
 						<% } %>
 						/>
-					<% if (locals.errors && errors.unit) { %>
-						<label class="checked" for="unit">
-							<i class="fas fa-times" style="color: #cc0000"></i>
-						</label>
-					<% } else if(locals.errors){ %>
-						<label class="checked" for="unit">
-							<i class="fas fa-check" style="color: #5fab70"></i>
-						</label>
-					<% } %> 
+					<label class="<%= locals.errors && errors.unit ? 'checked' : 'disabled' %>" for="unit">
+						<i class="fas fa-times" style="color: #cc0000"></i>
+					</label>
+					<label class="<%= locals.errors && errors.unit === undefined ? 'checked' : 'disabled' %>" for="unit">
+						<i class="fas fa-check" style="color: #5fab70"></i>
+					</label>
+					<span class="<%= locals.errors && errors.unit ? 'error' : 'disabled' %>"><%= locals.errors && errors.unit ? errors.unit.msg : '' %></span>
+					<span class="disabled"></span>
 				</div>
-				<% if (locals.errors && errors.unit) { %>
-					<span class="error"><%= errors.unit.msg %> </span>
-				<% } else {%>
-				<% } %>
 				
 				<div class="input-container">
 					<label for="kilo" class="label">Selecciona un precio por Kilo</label>
@@ -123,20 +118,15 @@
 							value="<%= oldData.kilo %>"
 						<% } %>
 						/>
-					<% if (locals.errors && errors.kilo) { %>
-						<label class="checked" for="kilo">
-							<i class="fas fa-times" style="color: #cc0000"></i>
-						</label>
-					<% } else if(locals.errors){ %>
-						<label class="checked" for="kilo">
-							<i class="fas fa-check" style="color: #5fab70"></i>
-						</label>
-					<% } %> 
+					<label class="<%= locals.errors && errors.kilo ? 'checked' : 'disabled' %>" for="kilo">
+						<i class="fas fa-times" style="color: #cc0000"></i>
+					</label>
+					<label class="<%= locals.errors && errors.kilo === undefined ? 'checked' : 'disabled' %>" for="kilo">
+						<i class="fas fa-check" style="color: #5fab70"></i>
+					</label>
+					<span class="<%= locals.errors && errors.kilo ? 'error' : 'disabled' %>"><%= locals.errors && errors.kilo ? errors.kilo.msg : '' %></span>
+					<span class="disabled"></span>
 				</div>
-				<% if (locals.errors && errors.kilo) { %>
-					<span class="error"><%= errors.kilo.msg %> </span>
-				<% } else {%>
-				<% } %>
 				
 				<div class="input-container">
 					<select 
@@ -153,20 +143,15 @@
 							<% } %>
 						<% } %>
 					</select>
-					<% if (locals.errors && errors.discount) { %>
-						<label class="checked" for="discount">
-							<i class="fas fa-times" style="color: #cc0000"></i>
-						</label>
-					<% } else if(locals.errors){ %>
-						<label class="checked" for="discount">
-							<i class="fas fa-check" style="color: #5fab70"></i>
-						</label>
-					<% } %> 
+					<label class="<%= locals.errors && errors.discount ? 'checked' : 'disabled' %>" for="discount">
+						<i class="fas fa-times" style="color: #cc0000"></i>
+					</label>
+					<label class="<%=locals.errors && errors.discount === undefined ? 'checked' : 'disabled' %>" for="discount">
+						<i class="fas fa-check" style="color: #5fab70"></i>
+					</label>
+					<span class="<%= locals.errors && errors.discount ? 'error' : 'disabled' %>"><%= locals.errors && errors.discount ? errors.discount.msg : '' %></span>
+					<span class="disabled"></span>
 				</div>
-				<% if (locals.errors && errors.discount) { %>
-					<span class="error"><%= errors.discount.msg %> </span>
-				<% } else {%>
-				<% } %>
 				
 				<div class="input-container <%= locals.errors && errors.market ? 'is-invalid' : null %>">
 					<select 
@@ -183,20 +168,15 @@
 							<% } %> 
 						<% }) %>
 					</select>
-					<% if (locals.errors && errors.market) { %>
-						<label class="checked" for="market">
-							<i class="fas fa-times" style="color: #cc0000"></i>
-						</label>
-					<% } else if(locals.errors){ %>
-						<label class="checked" for="market">
-							<i class="fas fa-check" style="color: #5fab70"></i>
-						</label>
-					<% } %> 
+					<label class="<%= locals.errors && errors.market ? 'checked' : 'disabled' %>" for="market">
+						<i class="fas fa-times" style="color: #cc0000"></i>
+					</label>
+					<label class="<%=locals.errors && errors.market === undefined ? 'checked' : 'disabled' %>" for="market">
+						<i class="fas fa-check" style="color: #5fab70"></i>
+					</label>
+					<span class="<%= locals.errors && errors.market ? 'error' : 'disabled' %>"><%= locals.errors && errors.market ? errors.market.msg : '' %></span>
+					<span class="disabled"></span>
 				</div>
-				<% if (locals.errors && errors.market) { %>
-					<span class="error"><%= errors.market.msg %> </span>
-				<% } else {%>
-				<% } %>
 				<button type="submit" class="submit">Agregar</button>
 		</form>
 	</main>

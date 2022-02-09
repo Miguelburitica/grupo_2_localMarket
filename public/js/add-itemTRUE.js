@@ -17,6 +17,19 @@ const setIncorrect = (inputField) => {
 	}
 }
 
+const hasLetters = (value) => {
+	let digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+	let res = true
+
+	digits.forEach((number) => {
+		if (value.includes(number)) {
+			res = false
+			return res
+		}
+	})
+	return res
+}
+
 const setCorrect = (inputField) => {
 	const classes = inputField.classList
 	const isIncorrect = !classes.contains('correct') || classes.contains('incorrect')
@@ -38,18 +51,60 @@ const disableMessage = (spanError) => {
 	spanError.innerHTML = ''
 }
 
+// To do, Miguel, pilas con esto
+
+// const inputValudation = () => {}
+
+// const selectValidation = () => {}
+
+// const fileValidation = () => {}
+
 const errorsList = [
 	{
 		name: 'name',
 		errorMessages: {
 			'minLength': 'Amig@ el nombre debe tener al menos 5 caracteres :(',
-			'maxLength': 'Amig@ el nombre puede tener maximo 45 caracteres :('
+			'maxLength': 'Amig@ el nombre debe tener maximo 45 caracteres :('
 		}
 	},
 	{
 		name: 'category',
 		errorMessages: {
 			'notSelected': 'Es necesario que elijas una categoria querid@ :3',
+			'invalidValue': 'Hey, ese valor no es valido amig@u >:S'
+		}
+	},
+	{
+		name: 'image',
+		errorMessages: {
+			'invalidType': 'Querid@ ese tipo de dato no es valido, lo siento :('
+		}
+	},
+	{
+		name: 'unit',
+		errorMessages: {
+			'maxLength' : 'Hey, el precio debe tener como maximo 6 digitos, no creemos que necesites más °-°',
+			'mustBeNumbers' : 'Como esto es un precio, sólo debe contener numeros, el valor es en pesos :3'
+		}
+	},
+	{
+		name: 'kilo',
+		errorMessages: {
+			'maxLength' : 'Hey, el precio debe tener como maximo 6 digitos, no creemos que necesites más °-°',
+			'mustBeNumbers' : 'Como esto es un precio, sólo debe contener numeros, el valor es en pesos :3'
+		}
+	},
+	{
+		name: 'discount',
+		errorMessages: {
+			'notSelected': 'Es necesario que elijas un valor para el descuento querid@ :3, puede ser cero',
+			'invalidValue': 'Hey, ese valor no es valido amig@u >:S'
+		}
+	},
+	{
+		name: 'market',
+		errorMessages: {
+			'notSelected': 'Es necesario que elijas un mercado querid@ :3',
 			'invalidValue': 'Hey, ese valor no es valido amig@u >:S'
 		}
 	}
@@ -73,13 +128,14 @@ window.addEventListener('load', function() {
 	const validationList = {
 		'name' : function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, messages, keyUpEvent}) {
 			if (keyUpEvent) {
-				if (keyUpEvent.target.value.length < 5) {
+				let nameInput = keyUpEvent.target
+				if (nameInput.value.length < 5) {
 					disableIfNeed(backendErrorSpan, correctLabel)
 					setIncorrect(inputField)
 					enableLabel(incorrectLabel)
 					let messageError = messages['minLength']
 					enableMessage({spanError: frontendErrorSpan, message: messageError})
-				} else if (keyUpEvent.target.value.length > 45) {
+				} else if (nameInput.value.length > 45) {
 					disableIfNeed(backendErrorSpan, correctLabel)
 					setIncorrect(inputField)
 					enableLabel(incorrectLabel)
@@ -100,15 +156,15 @@ window.addEventListener('load', function() {
 				// An 1 to 5 array, that are the values of the posible categories
 				let validValues = [1, 2, 3, 4, 5]
 				
-				let currentField = changeEvent.target
+				let categoryInput = changeEvent.target
 	
-				if (currentField.value === '') {
+				if (categoryInput.value === '') {
 					disableIfNeed(backendErrorSpan,correctLabel)
 					setIncorrect(inputField)
 					enableLabel(incorrectLabel)
 					let messageError = messages['notSelected']
 					enableMessage({spanError: frontendErrorSpan, message: messageError})
-				} else if (!validValues.includes(parseInt(currentField.value))) {
+				} else if (!validValues.includes(parseInt(categoryInput.value))) {
 					disableIfNeed(backendErrorSpan, correctLabel)
 					setIncorrect(inputField)
 					enableLabel(incorrectLabel)
@@ -121,17 +177,156 @@ window.addEventListener('load', function() {
 					disableMessage(frontendErrorSpan)
 				}
 			}
-		}
+		},
+		'image': function({ incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, comodinLabel, messages, changeEvent }) {
+			if (changeEvent) {
+				let validMimeTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']
+
+				let imageInput = changeEvent.target
+	
+				let displayLabel = incorrectLabel
+				let incorrectImageLabel = correctLabel
+				let correctImageLabel = backendErrorSpan
+				let backendImageErrorSpan = frontendErrorSpan
+				let frontendImageErrorSpan = comodinLabel
+
+				if (!validMimeTypes.includes(imageInput.files[0].type)) {
+					disableIfNeed(backendImageErrorSpan, correctImageLabel)
+					setIncorrect(displayLabel)
+					enableLabel(incorrectImageLabel)
+					let messageError = messages['invalidType']
+					enableMessage({spanError: frontendImageErrorSpan, messageError: messageError})
+				} else {
+					disableIfNeed(backendImageErrorSpan, incorrectImageLabel)
+					setCorrect(displayLabel)
+					enableLabel(correctImageLabel)
+					disableMessage(frontendImageErrorSpan)
+				}
+			}
+		},
+		'unit': function({ inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, messages, keyUpEvent }) {
+			if (keyUpEvent) {
+				let unitInput = keyUpEvent.target
+				
+				let hasLetter = hasLetters(unitInput.value)
+
+				if (unitInput.value.length > 6) {
+					disableIfNeed(backendErrorSpan, correctLabel)
+					setIncorrect(inputField)
+					enableLabel(incorrectLabel)
+					let messageError = messages['maxLength']
+					enableMessage({spanError: frontendErrorSpan, message: messageError})
+				} else if (hasLetter) {
+					disableIfNeed(backendErrorSpan, correctLabel)
+					setIncorrect(inputField)
+					enableLabel(incorrectLabel)
+					let messageError = messages['mustBeNumbers']
+					enableMessage({spanError: frontendErrorSpan, message: messageError})
+					
+				} else {
+					disableIfNeed(backendErrorSpan, incorrectLabel)
+					setCorrect(inputField)
+					enableLabel(correctLabel)
+					disableMessage(frontendErrorSpan)
+				}
+			}
+		},
+		'kilo': function({ inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, messages, keyUpEvent }) {
+			if (keyUpEvent) {
+				let kiloInput = keyUpEvent.target
+				
+				let hasLetter = hasLetters(kiloInput.value)
+
+				if (kiloInput.value.length > 6) {
+					disableIfNeed(backendErrorSpan, correctLabel)
+					setIncorrect(inputField)
+					enableLabel(incorrectLabel)
+					let messageError = messages['maxLength']
+					enableMessage({spanError: frontendErrorSpan, message: messageError})
+				} else if (hasLetter) {
+					disableIfNeed(backendErrorSpan, correctLabel)
+					setIncorrect(inputField)
+					enableLabel(incorrectLabel)
+					let messageError = messages['mustBeNumbers']
+					enableMessage({spanError: frontendErrorSpan, message: messageError})
+					
+				} else {
+					disableIfNeed(backendErrorSpan, incorrectLabel)
+					setCorrect(inputField)
+					enableLabel(correctLabel)
+					disableMessage(frontendErrorSpan)
+				}
+			}
+		},
+		'discount': function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, messages, changeEvent}){
+
+			if (changeEvent) {
+				// An 1 to 5 array, that are the values of the posible categories
+				let validValues = []
+				
+				for( let i = 0; i < 50; i += 5 ) {
+					validValues.push(i)
+				}
+				let discountInput = changeEvent.target
+	
+				if (discountInput.value === '') {
+					disableIfNeed(backendErrorSpan,correctLabel)
+					setIncorrect(inputField)
+					enableLabel(incorrectLabel)
+					let messageError = messages['notSelected']
+					enableMessage({spanError: frontendErrorSpan, message: messageError})
+				} else if (!validValues.includes(parseInt(discountInput.value))) {
+					disableIfNeed(backendErrorSpan, correctLabel)
+					setIncorrect(inputField)
+					enableLabel(incorrectLabel)
+					let messageError = messages['invalidValue']
+					enableMessage({spanError: frontendErrorSpan, message: messageError})
+				} else {
+					disableIfNeed(backendErrorSpan, incorrectLabel)
+					setCorrect(inputField)
+					enableLabel(correctLabel)
+					disableMessage(frontendErrorSpan)
+				}
+			}
+		},
+		'market': function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, messages, changeEvent}){
+
+			if (changeEvent) {
+				// An 1 to 5 array, that are the values of the posible categories
+				let validValues = [1, 2, 3]
+				
+				let marketInput = changeEvent.target
+	
+				if (marketInput.value === '') {
+					disableIfNeed(backendErrorSpan,correctLabel)
+					setIncorrect(inputField)
+					enableLabel(incorrectLabel)
+					let messageError = messages['notSelected']
+					enableMessage({spanError: frontendErrorSpan, message: messageError})
+				} else if (!validValues.includes(parseInt(marketInput.value))) {
+					disableIfNeed(backendErrorSpan, correctLabel)
+					setIncorrect(inputField)
+					enableLabel(incorrectLabel)
+					let messageError = messages['invalidValue']
+					enableMessage({spanError: frontendErrorSpan, message: messageError})
+				} else {
+					disableIfNeed(backendErrorSpan, incorrectLabel)
+					setCorrect(inputField)
+					enableLabel(correctLabel)
+					disableMessage(frontendErrorSpan)
+				}
+			}
+		},
 	}
 
 	const executeEvaluation = ({keyUpEvent, changeEvent}) => {
 		let fieldName = keyUpEvent !== undefined ? keyUpEvent.target.name : changeEvent.target.name
-		console.log(fieldName)
 		let inputField = keyUpEvent !== undefined ? keyUpEvent.target : changeEvent.target
 		let incorrectLabel = inputField.nextElementSibling
 		let correctLabel = incorrectLabel.nextElementSibling
 		let backendErrorSpan = correctLabel.nextElementSibling
 		let frontendErrorSpan = backendErrorSpan.nextElementSibling
+		let comodinLabel = frontendErrorSpan.nextElementSibling
 		let messages = errorsList.find(error => error.name === inputField.name).errorMessages
 		
 		let data = {
@@ -142,7 +337,8 @@ window.addEventListener('load', function() {
 			frontendErrorSpan,
 			messages,
 			keyUpEvent,
-			changeEvent
+			changeEvent,
+			comodinLabel,
 		}
 
 		let validation = validationList[fieldName]
@@ -151,12 +347,10 @@ window.addEventListener('load', function() {
 	}
     
 	formulario.addEventListener('change', changeEvent => {
-		console.log('Soy un change')
 		executeEvaluation({changeEvent: changeEvent})
 	})
 
 	formulario.addEventListener('keyup', (keyUpEvent) => {
-		console.log('Soy un keyUp')
 		executeEvaluation({keyUpEvent:keyUpEvent})
 	})
 	formulario.addEventListener('submit', (submitEvent) => {

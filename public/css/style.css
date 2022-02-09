@@ -1477,6 +1477,7 @@ i {
 	transition: ease all 0.3s;
 }
 
+
 .formulario .incorrect {
 	box-shadow: inset 0 0 0 2px rgba(200, 100, 108, 0.3), 0 0 0 4px rgba(205, 125, 125, 0.2);
 	border-color: #80000030;
@@ -1512,7 +1513,6 @@ i {
 	border-color: #00800030;
 	transition: ease all 0.3s;
 }
-
 .formulario .check {
 	width: 100%;
 	display: flex;
@@ -2370,6 +2370,14 @@ h2 {
 	box-shadow: inset 0 0 0 2px rgba(87, 133, 108, 0.2), 0 0 0 6px rgba(185, 185, 185, 0.2);
 	transition: 0.3s ease all;
 }
+
+.formulario select.correct, .formulario select.incorrect {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
 
 /* Final estilos add-item */
 
