@@ -19,7 +19,7 @@ const model = {
 			let customers = await db.User.findAll({
 				include: ['rol'],
 				where: {
-					rols_id: 2,
+					rols_id:2,
 				},
 			});
 			return customers;
@@ -51,7 +51,7 @@ const model = {
 				phone: user.phone,
 				password: user.password,
 				photo: user.photo,
-				rols_id: 2,
+				rols_id:2,
 			};
 			await db.User.create(newuser);
 		} catch (err) {
@@ -84,17 +84,24 @@ const model = {
 			await db.User.destroy({ where: { id: id } });
 		} catch (err) {
 			console.log(err);
+			return err;
 		}
 	},
 
 	getOne: async function (id) {
-		let oneUser = await db.User.findByPk(id, {
-			include: ['rol'],
-			where: {
-				rols_id: 2,
-			},
-		});
-		return oneUser;
+		try{
+			let oneUser = await db.User.findByPk(id, {
+				include: ['rol'],
+				where: {
+					rols_id:2,
+				},
+			});
+			return oneUser;
+		}catch (err) {
+			console.log(err);
+			return err;
+		}
+
 	},
 };
 

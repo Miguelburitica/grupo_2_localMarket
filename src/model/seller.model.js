@@ -76,6 +76,7 @@ const model = {
 			await db.User.update(updateUser, { where: { id: id } });
 		} catch (err) {
 			console.log(err);
+			return err;
 		}
 	},
 	deleteSeller: async function (id) {
@@ -83,16 +84,22 @@ const model = {
 			await db.User.destroy({ where: { id: id } });
 		} catch (err) {
 			console.log(err);
+			return err;
 		}
 	},
 	getOne: async function (id) {
-		let user = await db.User.findByPk(id, {
-			include: ['rol', 'products'],
-			where: {
-				rols_id: 1,
-			},
-		});
-		return user;
+		try{
+			let user = await db.User.findByPk(id, {
+				include: ['rol', 'products'],
+				where: {
+					rols_id: 1,
+				},
+			});
+			return user;
+		}catch (err) {
+			console.log(err);
+			return err;
+		}
 	},
 };
 
@@ -100,7 +107,7 @@ module.exports = model;
 // let newuser =
 // {
 // user_name:'Maria2 Mulata',
-// names:'Lisa1',
+// names:'Lisa3',
 // surname:'Romo1',
 // email:'mulata@gmail.com',
 // phone:'125643987',

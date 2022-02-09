@@ -18,10 +18,10 @@ const customersEmails = customers.map((item) => item.email);
 let validateRegisterCustomer = [
 	check('names')
 		.notEmpty()
-		.withMessage('Trata ingresar tu nombre favorito :3 .')
+		.withMessage('Este campo no puede estar vacio.')
 		.bail()
 		.isLength({ min: 2, max: 45 })
-		.withMessage('Tu nombre no puede tener menos de 3 letras :/, y como máximo puedo tener 45 UwU.')
+		.withMessage('Tu nombre no puede tener menos de 3 letras, y como máximo puedo tener 45.')
 		.bail()
 		.custom((value) => {
 			let numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -35,13 +35,13 @@ let validateRegisterCustomer = [
 			});
 			return res;
 		})
-		.withMessage('Tu nombre no puede ser un número o contener alguno .-.'),
+		.withMessage('Tu nombre no puede ser un número o contener alguno'),
 	check('surname')
 		.notEmpty()
-		.withMessage('Trata ingresar ambos apellidos para diferenciarte con claridad :D .')
+		.withMessage('Este campo no puede estar vacio.')
 		.bail()
 		.isLength({ min: 2, max: 45 })
-		.withMessage('Tu apellido no puede tener menos de 3 letras :/, y como máximo puedo tener 45 UwU.')
+		.withMessage('Tu apellido no puede tener menos de 3 letras, y como máximo puedo tener 45.')
 		.bail()
 		.custom((value) => {
 			let numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -55,11 +55,11 @@ let validateRegisterCustomer = [
 			});
 			return res;
 		})
-		.withMessage('Tus apellidos no pueden ser un número o contener alguno .-.'),
+		.withMessage('Tus apellidos no pueden ser un número o contener alguno'),
 	check('phone')
 		.notEmpty()
 		.withMessage(
-			'Trata ingresar un número de celular, número del que estés pendiente para atender cualquier novedad >.< .'
+			'Este campo no puede estar vacio.'
 		)
 		.bail(),
 		// .isMobilePhone(['es-CO'])
@@ -70,14 +70,14 @@ let validateRegisterCustomer = [
 			let formats = ['image/jpg', 'image/png', 'image/gif', 'image/jpeg'];
 			return formats.includes(format);
 		})
-		.withMessage('Sólo es permitido subir archivos jpg, png, jpeg y gif, srry :('),
+		.withMessage('Sólo es permitido subir archivos jpg, png, jpeg y gif.'),
 	check('password')
 		.notEmpty()
-		.withMessage('Trata ingresar una contraseña no tan fácil que puedas recordar Uwu.')
+		.withMessage('Este campo no puede estar vacio.')
 		.bail()
 		.isStrongPassword({ minSymbols: 0 })
 		.withMessage(
-			'La contraseña como minimo debe tener 8 caracteres entre ellos al menos un número, una mayúscula y una minúscula >n< .'
+			'La contraseña como minimo debe tener 8 caracteres entre ellos al menos un número, una mayúscula y una minúscula.'
 		),
 	check('password_confirm')
 		.custom((value, { req }) => value === req.body.password)
@@ -85,7 +85,7 @@ let validateRegisterCustomer = [
 	check('email')
 		.notEmpty()
 		.withMessage(
-			'Trata ingresar tu correo, correo del que estés atento para estar al tanto de cualquier novedad. >_<'
+			'Este campo no puede estar vacio'
 		)
 		.bail()
 		.isEmail()
@@ -95,7 +95,7 @@ let validateRegisterCustomer = [
 			// return emailExist(value)
 			return !customersEmails.includes(value);
 		})
-		.withMessage('El correo que tratas de ingresar ya se encuentra registrado °n°'),
+		.withMessage('El correo que tratas de ingresar ya se encuentra registrado'),
 ];
 
 module.exports = validateRegisterCustomer;

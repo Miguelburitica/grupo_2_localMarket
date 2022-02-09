@@ -1,0 +1,71 @@
+<%- include('../partials/head') %>
+<body>
+	<%- include('../partials/header') %>
+	<main class="profile-seller-main">
+        <div>
+            Internal server error <br>
+            <div class="profile-seller-left">
+                <img src="../images/error404.jpeg" alt="imagen de error 404"> <br>
+                <a href="/">Volver a la página de inicio</a>
+            </div>
+
+        </div>
+		<!-- <div class="login-left">
+			<img src="../images/maybebanner.jfif" alt="" />
+			<p>Conectando campesinos con sus vecinos</p>
+		</div>
+		<div class="login-right">
+			<h2>Iniciar sesión</h2>
+			<p>
+				Ingresa si tienes una cuenta con nosotros, si no
+				<a href="/users/sign-in-customer">CREA UNA CUENTA</a>
+			</p>
+			<form action="/users/login"
+				class="formulario"
+				method="POST"
+				>
+				<input
+					class="text-box<%= locals.errors && errors.email ? 'is-invalid' : null %>"
+					type="email"
+					name="email"
+					id="email"
+					placeholder="Correo electrónico"
+					value="<%= locals.oldData && oldData.email ? oldData.email : null %>"
+					required
+				/>
+				<% if (locals.errors && errors.email) { %>
+					<span class="error"><%= errors.email.msg %> </span>
+					<% } else if(locals.errors){ %>
+						<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listo<i class="far fa-check-circle"></i></span>
+					<% } else {%>
+						<span class="error" style="color: inherit;"></span>
+						<% } %>  
+				<input
+					class="text-box"
+					type="password"
+					name="password"
+					id="password"
+					placeholder="Contraseña"
+					minlength="10"
+					required
+				/>
+				<div>
+					<input
+						class="slides"
+						type="checkbox"
+						name="remember_user"
+						id="agree-terms-conditions"
+					/>
+					<label for="agree-terms-conditions"
+						>Recordar mi usuario</label
+					>
+				</div>
+				<div class="login-button">
+					<button type="submit" class="button-form">Ingresar</button>
+				</div>
+				<a href="">¿Olvidó su contraseña?</a>
+			</form>
+		</div> -->
+	</main>
+	<%- include('../partials/footer') %>
+</body>

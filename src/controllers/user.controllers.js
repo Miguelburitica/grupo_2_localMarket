@@ -92,7 +92,8 @@ const controller = {
 			}
 		}
 		}catch(err){
-            console.log(err);
+            // console.log(err);
+			res.render(pathViews('error'))
         }
 	},
 	// Login vendedor o comprador
@@ -148,6 +149,7 @@ const controller = {
 		}
 		}catch(err){
             console.log(err);
+			res.render(pathViews('error'),{err})
         }
 		// validaciones
 		
@@ -168,10 +170,11 @@ const controller = {
 			user = seller
 			res.render(pathViews('edit-seller'),{user:user});
 		}else{
-			res.send('Chic@ no deberías estar viendo esto >:°');
+			res.send('Esta acción no es permitida');
 		}
 		}catch(err){
 			console.log(err);
+			res.render(pathViews('error'),{err})
 		}
 	},
 
@@ -218,6 +221,7 @@ const controller = {
 		}
 		}catch(err){
             console.log(err);
+			res.render(pathViews('error'),{err})
         }
 	},
 
@@ -226,6 +230,10 @@ const controller = {
 		req.session.destroy();
 		return res.redirect('/');
 	},
+
+	getError: (req, res) => {
+        res.render(pathViews('error'))
+    }
 };
 
 module.exports = controller;
