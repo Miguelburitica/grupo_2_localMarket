@@ -62,10 +62,28 @@ const disableMessage = (spanError) => {
 const errorsList = [
 	{
 		name: 'name',
-		errorMessages: {
-			'minLength': 'Amig@ el nombre debe tener al menos 5 caracteres :(',
-			'maxLength': 'Amig@ el nombre debe tener maximo 45 caracteres :('
-		}
+		errors: [
+			{
+				name: 'minLength',
+				message: 'Amig@ el nombre debe tener al menos 5 caracteres :(',
+				condition: (nameInput, properties) => {
+					if (nameInput.value.length < 5) {
+						let message = 'minLength'
+						itsAnError(properties, message)
+					}
+				} 
+			},
+			{
+				name: 'maxLength',
+				message: 'Amig@ el nombre debe tener maximo 45 caracteres :(',
+				condition: (nameInput, properties) => {
+					if (nameInput.value.length > 45) {
+						let message = 'minLength'
+						itsAnError(properties, message)
+					}
+				} 
+			}
+		]
 	},
 	{
 		name: 'category',
@@ -121,8 +139,6 @@ const disableIfNeed = (backendErrorSpan, label) => {
 	}
 }
 
-let errors = ['name', 'category', 'unit', 'kilo', 'discount', 'market']
-
 const deleteError = (name) => {
 	if (errors.includes(name)) {
 		let positionError = errors.indexOf(name)
@@ -138,11 +154,30 @@ const errorAdminstration = ({action, name}) => {
 	if (errors.includes(name) && action === 'delete') {
 		deleteError(name)
 	}
-
+	
 	if (!errors.includes(name) && action === 'push') {
 		newError(name)
 	}
 }
+
+const itsAnError = ({backendErrorSpan, correctLabel, incorrectLabel, inputField, frontendErrorSpan, messages, input}, error) => {
+	disableIfNeed(backendErrorSpan, correctLabel)
+	setIncorrect(inputField)
+	enableLabel(incorrectLabel)
+	let messageError = messages[error]
+	enableMessage({spanError: frontendErrorSpan, message: messageError})
+	errorAdminstration({action: 'push', name: input.name})
+}
+
+const itsNoError = ({backendErrorSpan, correctLabel, incorrectLabel, inputField, frontendErrorSpan, input}) => {
+	disableIfNeed(backendErrorSpan, incorrectLabel)
+	setCorrect(inputField)
+	enableLabel(correctLabel)
+	disableMessage(frontendErrorSpan)
+	errorAdminstration({action: 'delete', name: input.name})
+}
+
+let errors = ['name', 'category', 'unit', 'kilo', 'discount', 'market']
 
 window.addEventListener('load', function() {
 
@@ -152,26 +187,23 @@ window.addEventListener('load', function() {
 		'name' : function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, messages, keyUpEvent}) {
 			if (keyUpEvent) {
 				let nameInput = keyUpEvent.target
+				const properties = {
+					backendErrorSpan,
+					correctLabel,
+					inputField,
+					incorrectLabel,
+					messages,
+					frontendErrorSpan,
+					input: nameInput
+				} 
 				if (nameInput.value.length < 5) {
-					disableIfNeed(backendErrorSpan, correctLabel)
-					setIncorrect(inputField)
-					enableLabel(incorrectLabel)
-					let messageError = messages['minLength']
-					enableMessage({spanError: frontendErrorSpan, message: messageError})
-					errorAdminstration({action: 'push', name: nameInput.name})
+					let message = 'minLength'
+					itsAnError(properties, message)
 				} else if (nameInput.value.length > 45) {
-					disableIfNeed(backendErrorSpan, correctLabel)
-					setIncorrect(inputField)
-					enableLabel(incorrectLabel)
-					let messageError = messages['maxLength']
-					enableMessage({spanError: frontendErrorSpan, message: messageError})
-					errorAdminstration({action: 'push', name: nameInput.name})
+					let message = 'maxLength'
+					itsAnError(properties, message)
 				} else {
-					disableIfNeed(backendErrorSpan, incorrectLabel)
-					setCorrect(inputField)
-					enableLabel(correctLabel)
-					disableMessage(frontendErrorSpan)
-					errorAdminstration({action: 'delete', name: nameInput.name})
+					itsNoError(properties)
 				}
 			}
 		},
@@ -183,26 +215,24 @@ window.addEventListener('load', function() {
 				
 				let categoryInput = changeEvent.target
 	
+				const properties = {
+					inputField, 
+					incorrectLabel, 
+					correctLabel, 
+					backendErrorSpan, 
+					frontendErrorSpan, 
+					messages,
+					input: categoryInput
+				}
+
 				if (categoryInput.value === '') {
-					disableIfNeed(backendErrorSpan,correctLabel)
-					setIncorrect(inputField)
-					enableLabel(incorrectLabel)
-					let messageError = messages['notSelected']
-					enableMessage({spanError: frontendErrorSpan, message: messageError})
-					errorAdminstration({action: 'push', name: categoryInput.name})
+					let message = 'notSelected'
+					itsAnError(properties, message)
 				} else if (!validValues.includes(parseInt(categoryInput.value))) {
-					disableIfNeed(backendErrorSpan, correctLabel)
-					setIncorrect(inputField)
-					enableLabel(incorrectLabel)
-					let messageError = messages['invalidValue']
-					enableMessage({spanError: frontendErrorSpan, message: messageError})
-					errorAdminstration({action: 'push', name: categoryInput.name})
+					let message = 'invalidValue'
+					itsAnError(properties, message)
 				} else {
-					disableIfNeed(backendErrorSpan, incorrectLabel)
-					setCorrect(inputField)
-					enableLabel(correctLabel)
-					disableMessage(frontendErrorSpan)
-					errorAdminstration({action: 'delete', name: categoryInput.name})
+					itsNoError(properties)
 				}
 			}
 		},
@@ -212,25 +242,21 @@ window.addEventListener('load', function() {
 
 				let imageInput = changeEvent.target
 	
-				let displayLabel = incorrectLabel
-				let incorrectImageLabel = correctLabel
-				let correctImageLabel = backendErrorSpan
-				let backendImageErrorSpan = frontendErrorSpan
-				let frontendImageErrorSpan = comodinLabel
+				const properties = {
+					displayLabel: incorrectLabel, 
+					incorrectFileLabel: correctLabel,
+					correctFileLabel: backendErrorSpan,
+					backendFileErrorSpan: frontendErrorSpan,
+					frontendFileErrorSpan: comodinLabel,
+					messages,
+					input: imageInput
+				}
 
 				if (!validMimeTypes.includes(imageInput.files[0].type)) {
-					disableIfNeed(backendImageErrorSpan, correctImageLabel)
-					setIncorrect(displayLabel)
-					enableLabel(incorrectImageLabel)
-					let messageError = messages['invalidType']
-					enableMessage({spanError: frontendImageErrorSpan, messageError: messageError})
-					errorAdminstration({action: 'push', name: imageInput.name})
+					let message = 'invalidType'
+					itsAnError(properties, message)
 				} else {
-					disableIfNeed(backendImageErrorSpan, incorrectImageLabel)
-					setCorrect(displayLabel)
-					enableLabel(correctImageLabel)
-					disableMessage(frontendImageErrorSpan)
-					errorAdminstration({action: 'delete', name: imageInput.name})
+					itsNoError(properties)
 				}
 			}
 		},
@@ -240,26 +266,24 @@ window.addEventListener('load', function() {
 				
 				let hasLetter = hasLetters(unitInput.value)
 
+				const properties = {
+					inputField, 
+					incorrectLabel, 
+					correctLabel, 
+					backendErrorSpan, 
+					frontendErrorSpan, 
+					messages,
+					input: unitInput
+				}
+
 				if (unitInput.value.length > 6) {
-					disableIfNeed(backendErrorSpan, correctLabel)
-					setIncorrect(inputField)
-					enableLabel(incorrectLabel)
-					let messageError = messages['maxLength']
-					enableMessage({spanError: frontendErrorSpan, message: messageError})
-					errorAdminstration({action: 'push', name: unitInput.name})
+					let message = 'maxLength'
+					itsAnError(properties, message)
 				} else if (hasLetter) {
-					disableIfNeed(backendErrorSpan, correctLabel)
-					setIncorrect(inputField)
-					enableLabel(incorrectLabel)
-					let messageError = messages['mustBeNumbers']
-					enableMessage({spanError: frontendErrorSpan, message: messageError})
-					errorAdminstration({action: 'push', name: unitInput.name})
+					let message = 'mustBeNumbers'
+					itsAnError(properties, message)
 				} else {
-					disableIfNeed(backendErrorSpan, incorrectLabel)
-					setCorrect(inputField)
-					enableLabel(correctLabel)
-					disableMessage(frontendErrorSpan)
-					errorAdminstration({action: 'delete', name: unitInput.name})
+					itsNoError(properties)
 				}
 			}
 		},
@@ -269,26 +293,24 @@ window.addEventListener('load', function() {
 				
 				let hasLetter = hasLetters(kiloInput.value)
 
+				const properties = {
+					inputField, 
+					incorrectLabel, 
+					correctLabel, 
+					backendErrorSpan, 
+					frontendErrorSpan, 
+					messages,
+					input: kiloInput
+				}
+
 				if (kiloInput.value.length > 6) {
-					disableIfNeed(backendErrorSpan, correctLabel)
-					setIncorrect(inputField)
-					enableLabel(incorrectLabel)
-					let messageError = messages['maxLength']
-					enableMessage({spanError: frontendErrorSpan, message: messageError})
-					errorAdminstration({action: 'push', name: kiloInput.name})
+					let message = 'maxLength'
+					itsAnError(properties, message)
 				} else if (hasLetter) {
-					disableIfNeed(backendErrorSpan, correctLabel)
-					setIncorrect(inputField)
-					enableLabel(incorrectLabel)
-					let messageError = messages['mustBeNumbers']
-					enableMessage({spanError: frontendErrorSpan, message: messageError})
-					errorAdminstration({action: 'push', name: kiloInput.name})
+					let message = 'mustBeNumbers'
+					itsAnError(properties, message)
 				} else {
-					disableIfNeed(backendErrorSpan, incorrectLabel)
-					setCorrect(inputField)
-					enableLabel(correctLabel)
-					disableMessage(frontendErrorSpan)
-					errorAdminstration({action: 'delete', name: kiloInput.name})
+					itsNoError(properties)
 				}
 			}
 		},
@@ -302,27 +324,25 @@ window.addEventListener('load', function() {
 					validValues.push(i)
 				}
 				let discountInput = changeEvent.target
+
+				const properties = {
+					inputField, 
+					incorrectLabel, 
+					correctLabel, 
+					backendErrorSpan, 
+					frontendErrorSpan, 
+					messages,
+					input: discountInput
+				}
 	
 				if (discountInput.value === '') {
-					disableIfNeed(backendErrorSpan,correctLabel)
-					setIncorrect(inputField)
-					enableLabel(incorrectLabel)
-					let messageError = messages['notSelected']
-					enableMessage({spanError: frontendErrorSpan, message: messageError})
-					errorAdminstration({action: 'push', name: discountInput.name})
+					let message = 'notSelected'
+					itsAnError(properties, message)
 				} else if (!validValues.includes(parseInt(discountInput.value))) {
-					disableIfNeed(backendErrorSpan, correctLabel)
-					setIncorrect(inputField)
-					enableLabel(incorrectLabel)
-					let messageError = messages['invalidValue']
-					enableMessage({spanError: frontendErrorSpan, message: messageError})
-					errorAdminstration({action: 'push', name: discountInput.name})
+					let message = 'invalidValue'
+					itsAnError(properties, message)
 				} else {
-					disableIfNeed(backendErrorSpan, incorrectLabel)
-					setCorrect(inputField)
-					enableLabel(correctLabel)
-					disableMessage(frontendErrorSpan)
-					errorAdminstration({action: 'delete', name: discountInput.name})
+					itsNoError(properties)
 				}
 			}
 		},
@@ -333,33 +353,31 @@ window.addEventListener('load', function() {
 				let validValues = [1, 2, 3]
 				
 				let marketInput = changeEvent.target
+
+				const properties = {
+					inputField, 
+					incorrectLabel, 
+					correctLabel, 
+					backendErrorSpan, 
+					frontendErrorSpan, 
+					messages,
+					input: marketInput
+				}
 	
 				if (marketInput.value === '') {
-					disableIfNeed(backendErrorSpan,correctLabel)
-					setIncorrect(inputField)
-					enableLabel(incorrectLabel)
-					let messageError = messages['notSelected']
-					enableMessage({spanError: frontendErrorSpan, message: messageError})
-					errorAdminstration({action: 'push', name: marketInput.name})
+					let message = 'notSelected'
+					itsAnError(properties, message)
 				} else if (!validValues.includes(parseInt(marketInput.value))) {
-					disableIfNeed(backendErrorSpan, correctLabel)
-					setIncorrect(inputField)
-					enableLabel(incorrectLabel)
-					let messageError = messages['invalidValue']
-					enableMessage({spanError: frontendErrorSpan, message: messageError})
-					errorAdminstration({action: 'push', name: marketInput.name})
+					let message = 'invalidValue'
+					itsAnError(properties, message)
 				} else {
-					disableIfNeed(backendErrorSpan, incorrectLabel)
-					setCorrect(inputField)
-					enableLabel(correctLabel)
-					disableMessage(frontendErrorSpan)
-					errorAdminstration({action: 'delete', name: marketInput.name})
+					itsNoError(properties)
 				}
 			}
 		},
 	}
 
-	const executeEvaluation = ({keyUpEvent, changeEvent}) => {
+	const variables = ({keyUpEvent, changeEvent}) => {
 		let fieldName = keyUpEvent !== undefined ? keyUpEvent.target.name : changeEvent.target.name
 		let inputField = keyUpEvent !== undefined ? keyUpEvent.target : changeEvent.target
 		let incorrectLabel = inputField.nextElementSibling
@@ -367,7 +385,36 @@ window.addEventListener('load', function() {
 		let backendErrorSpan = correctLabel.nextElementSibling
 		let frontendErrorSpan = backendErrorSpan.nextElementSibling
 		let comodinLabel = frontendErrorSpan.nextElementSibling
-		let messages = errorsList.find(error => error.name === inputField.name).errorMessages
+		let messages = errorsList.find(error => error.name === inputField.name).errors
+		
+		let variables = {
+			fieldName, 
+			inputField,
+			incorrectLabel,
+			correctLabel,
+			backendErrorSpan,
+			frontendErrorSpan,
+			comodinLabel,
+			messages
+		}
+
+		return variables
+	}
+
+	const executeEvaluation = ({keyUpEvent, changeEvent}) => {
+
+		const events = {keyUpEvent, changeEvent}
+		
+		const {
+			fieldName, 
+			inputField, 
+			incorrectLabel, 
+			correctLabel, 
+			backendErrorSpan, 
+			frontendErrorSpan, 
+			comodinLabel, 
+			messages
+		} = variables(events)
 		
 		let data = {
 			inputField,
@@ -389,11 +436,11 @@ window.addEventListener('load', function() {
 	}
     
 	formulario.addEventListener('change', changeEvent => {
-		executeEvaluation({changeEvent: changeEvent})
+		executeEvaluation({ changeEvent })
 	})
 
 	formulario.addEventListener('keyup', (keyUpEvent) => {
-		executeEvaluation({keyUpEvent:keyUpEvent})
+		executeEvaluation({ keyUpEvent })
 	})
 	formulario.addEventListener('submit', (submitEvent) => {
 		if (errors.length > 0) {
