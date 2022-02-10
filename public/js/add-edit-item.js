@@ -1,6 +1,6 @@
-const disableLabel = (property) => {
-	property.classList.remove('checked')
-	property.classList.add('disabled')
+const disableLabel = (label) => {
+	label.classList.remove('checked')
+	label.classList.add('disabled')
 }
 
 const enableLabel = (property) => {
@@ -17,6 +17,11 @@ const setIncorrect = (inputField) => {
 	}
 }
 
+/**
+ * this function evaluate if the value of the field has any character/digit diferent to a number
+ * @param {String} value The value that has the input
+ * @returns {Boolean} this return true if the number/string has a any letter
+ */
 const hasLetters = (value) => {
 	let digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 	let res = true
@@ -51,6 +56,55 @@ const disableMessage = (spanError) => {
 	spanError.innerHTML = ''
 }
 
+const deleteError = (name) => {
+	if (arrayErrors.includes(name)) {
+		let positionError = arrayErrors.indexOf(name)
+		arrayErrors.splice(positionError, 1)
+	}
+}
+
+const newError = (name) => {
+	arrayErrors.push(name)
+}
+
+const errorAdminstration = ({action, name}) => {
+	if (arrayErrors.includes(name) && action === 'delete') {
+		deleteError(name)
+	}
+	
+	if (!arrayErrors.includes(name) && action === 'push') {
+		newError(name)
+	}
+}
+
+const isEnable = (spanError) => {
+	return !spanError.classList.contains('disabled')
+}
+
+const disableIfNeed = (backendErrorSpan, label) => {
+	if (isEnable(backendErrorSpan) || isEnable(label)) {
+		disableMessage(backendErrorSpan)
+		disableLabel(label)
+	}
+}
+
+const itsAnError = ({backendErrorSpan, correctLabel, incorrectLabel, inputField, frontendErrorSpan, input}, error) => {
+	disableIfNeed(backendErrorSpan, correctLabel)
+	setIncorrect(inputField)
+	enableLabel(incorrectLabel)
+	let messageError = error
+	enableMessage({spanError: frontendErrorSpan, message: messageError})
+	errorAdminstration({action: 'push', name: input.name})
+}
+
+const itsNoError = ({backendErrorSpan, correctLabel, incorrectLabel, inputField, frontendErrorSpan, input}) => {
+	disableIfNeed(backendErrorSpan, incorrectLabel)
+	setCorrect(inputField)
+	enableLabel(correctLabel)
+	disableMessage(frontendErrorSpan)
+	errorAdminstration({action: 'delete', name: input.name})
+}
+
 // To do, Miguel, pilas con esto
 
 // const inputValudation = () => {}
@@ -66,20 +120,24 @@ const errorsList = [
 			{
 				name: 'minLength',
 				message: 'Amig@ el nombre debe tener al menos 5 caracteres :(',
-				condition: (nameInput, properties) => {
-					if (nameInput.value.length < 5) {
-						let message = 'minLength'
+				condition: (input, properties) => {
+					if (input.value.length < 5) {
+						let thisErrror = properties.errors.find(error => error.name === 'minLength')
+						let message = thisErrror.message
 						itsAnError(properties, message)
+						return true
 					}
 				} 
 			},
 			{
 				name: 'maxLength',
 				message: 'Amig@ el nombre debe tener maximo 45 caracteres :(',
-				condition: (nameInput, properties) => {
-					if (nameInput.value.length > 45) {
-						let message = 'minLength'
+				condition: (input, properties) => {
+					if (input.value.length > 45) {
+						let thisErrror = properties.errors.find(error => error.name === 'maxLength')
+						let message = thisErrror.message
 						itsAnError(properties, message)
+						return true
 					}
 				} 
 			}
@@ -87,104 +145,195 @@ const errorsList = [
 	},
 	{
 		name: 'category',
-		errorMessages: {
-			'notSelected': 'Es necesario que elijas una categoria querid@ :3',
-			'invalidValue': 'Hey, ese valor no es valido amig@u >:S'
-		}
+		errors: [
+			{
+				name: 'notSelected',
+				message: 'Es necesario que elijas una categoria querid@ :3',
+				condition: (input, properties) => {
+					if (input.value === '') {
+						let thisErrror = properties.errors.find(error => error.name === 'notSelected')
+						let message = thisErrror.message
+						itsAnError(properties, message)
+						return true
+					} 
+				}
+			},
+			{
+				name: 'invalidValue',
+				message: 'Hey, ese valor no es valido amig@u >:S',
+				condition: (input, properties) => {
+					// An 1 to 5 array, that are the values of the posible categories
+					let validValues = ['', '1', '2', '3', '4', '5']
+
+					if (!validValues.includes(input.value)) {
+						let thisError = properties.errors.find(error => error.name === 'invalidValue')
+						let message = thisError.message
+						itsAnError(properties, message)
+						return true
+					}
+				} 
+			}
+		]
 	},
 	{
 		name: 'image',
-		errorMessages: {
-			'invalidType': 'Querid@ ese tipo de dato no es valido, lo siento :('
-		}
+		errors: [
+			{
+				name: 'invalidType',
+				message: 'Querid@ ese tipo de dato no es valido, lo siento :(',
+				condition: (input, properties) => {
+					let validMimeTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']
+
+					if (!validMimeTypes.includes(input.files[0].type)) {
+						let thisError = properties.errors.find(error => error.name === 'invalidType')
+						let message = thisError.message
+						itsAnError(properties, message)
+						return true
+					}
+				}
+			}
+		]
 	},
 	{
 		name: 'unit',
-		errorMessages: {
-			'maxLength' : 'Hey, el precio debe tener como maximo 6 digitos, no creemos que necesites más °-°',
-			'mustBeNumbers' : 'Como esto es un precio, sólo debe contener numeros, el valor es en pesos :3'
-		}
+		errors: [
+			{
+				name: 'maxLength',
+				message: 'Hey, el precio debe tener como maximo 6 digitos, no creemos que necesites más °-°',
+				condition: (input, properties) => {
+					if (input.value.length > 6) {
+						let thisErrror = properties.errors.find(error => error.name === 'maxLength')
+						let message = thisErrror.message
+						itsAnError(properties, message)
+						return true
+					}
+				}
+			},
+			{
+				name: 'mustBeNumbers',
+				message: 'Como esto es un precio, sólo debe contener numeros, el valor es en pesos :3',
+				condition: (input, properties) => {
+					let hasLetter = hasLetters(input.value)
+
+					if (hasLetter) {
+						let thisErrror = properties.errors.find(error => error.name === 'mustBeNumbers')
+						let message = thisErrror.message
+						itsAnError(properties, message)
+						return true
+					}
+				}
+			}
+		]
 	},
 	{
 		name: 'kilo',
-		errorMessages: {
-			'maxLength' : 'Hey, el precio debe tener como maximo 6 digitos, no creemos que necesites más °-°',
-			'mustBeNumbers' : 'Como esto es un precio, sólo debe contener numeros, el valor es en pesos :3'
-		}
+		errors: [
+			{
+				name: 'maxLength',
+				message: 'Hey, el precio debe tener como maximo 6 digitos, no creemos que necesites más °-°',
+				condition: (input, properties) => {
+					if (input.value.length > 6) {
+						let thisErrror = properties.errors.find(error => error.name === 'maxLength')
+						let message = thisErrror.message
+						itsAnError(properties, message)
+						return true
+					}
+				}
+			},
+			{
+				name: 'mustBeNumbers',
+				message: 'Como esto es un precio, sólo debe contener numeros, el valor es en pesos :3',
+				condition: (input, properties) => {
+					let hasLetter = hasLetters(input.value)
+
+					if (hasLetter) {
+						let thisErrror = properties.errors.find(error => error.name === 'mustBeNumbers')
+						let message = thisErrror.message
+						itsAnError(properties, message)
+						return true
+					}
+				}
+			}
+		]
 	},
 	{
 		name: 'discount',
-		errorMessages: {
-			'notSelected': 'Es necesario que elijas un valor para el descuento querid@ :3, puede ser cero',
-			'invalidValue': 'Hey, ese valor no es valido amig@u >:S'
-		}
+		errors: [
+			{
+				name: 'notSelected',
+				message: 'Es necesario que elijas un valor para el descuento querid@ :3, el valor puede ser cero ¬¬',
+				condition: (input, properties) => {
+					if (input.value === '') {
+						let thisErrror = properties.errors.find(error => error.name === 'notSelected')
+						let message = thisErrror.message
+						itsAnError(properties, message)
+						return true
+					} 
+				}
+			},
+			{
+				name: 'invalidValue',
+				message: 'Hey, ese valor no es valido amig@u >:S',
+				condition: (input, properties) => {
+					let validValues = ['', ]
+				
+					for( let i = 0; i < 50; i += 5 ) {
+						validValues.push(i.toString())
+					}
+
+					console.log(validValues)
+
+					if (!validValues.includes(input.value)) {
+						let thisError = properties.errors.find(error => error.name === 'invalidValue')
+						let message = thisError.message
+						itsAnError(properties, message)
+						return true
+					}
+				} 
+			}
+		]
 	},
 	{
 		name: 'market',
-		errorMessages: {
-			'notSelected': 'Es necesario que elijas un mercado querid@ :3',
-			'invalidValue': 'Hey, ese valor no es valido amig@u >:S'
-		}
+		errors: [
+			{
+				name: 'notSelected',
+				message: 'Es necesario que elijas un mercado querid@ :3',
+				condition: (input, properties) => {
+					if (input.value === '') {
+						let thisErrror = properties.errors.find(error => error.name === 'notSelected')
+						let message = thisErrror.message
+						itsAnError(properties, message)
+						return true
+					} 
+				}
+			},
+			{
+				name: 'invalidValue',
+				message: 'Hey, ese valor no es valido amig@u >:S',
+				condition: (input, properties) => {
+					let validValues = ['', '1', '2', '3']
+				
+					if (!validValues.includes(input.value)) {
+						let thisError = properties.errors.find(error => error.name === 'invalidValue')
+						let message = thisError.message
+						itsAnError(properties, message)
+						return true
+					}
+				} 
+			}
+		]
 	}
 ]
 
-const isEnable = (spanError) => {
-	return !spanError.classList.contains('disabled')
-}
-
-const disableIfNeed = (backendErrorSpan, label) => {
-	if (isEnable(backendErrorSpan) || isEnable(label)) {
-		disableMessage(backendErrorSpan)
-		disableLabel(label)
-	}
-}
-
-const deleteError = (name) => {
-	if (errors.includes(name)) {
-		let positionError = errors.indexOf(name)
-		errors.splice(positionError, 1)
-	}
-}
-
-const newError = (name) => {
-	errors.push(name)
-}
-
-const errorAdminstration = ({action, name}) => {
-	if (errors.includes(name) && action === 'delete') {
-		deleteError(name)
-	}
-	
-	if (!errors.includes(name) && action === 'push') {
-		newError(name)
-	}
-}
-
-const itsAnError = ({backendErrorSpan, correctLabel, incorrectLabel, inputField, frontendErrorSpan, messages, input}, error) => {
-	disableIfNeed(backendErrorSpan, correctLabel)
-	setIncorrect(inputField)
-	enableLabel(incorrectLabel)
-	let messageError = messages[error]
-	enableMessage({spanError: frontendErrorSpan, message: messageError})
-	errorAdminstration({action: 'push', name: input.name})
-}
-
-const itsNoError = ({backendErrorSpan, correctLabel, incorrectLabel, inputField, frontendErrorSpan, input}) => {
-	disableIfNeed(backendErrorSpan, incorrectLabel)
-	setCorrect(inputField)
-	enableLabel(correctLabel)
-	disableMessage(frontendErrorSpan)
-	errorAdminstration({action: 'delete', name: input.name})
-}
-
-let errors = ['name', 'category', 'unit', 'kilo', 'discount', 'market']
+let arrayErrors = ['name', 'category', 'unit', 'kilo', 'discount', 'market']
 
 window.addEventListener('load', function() {
 
 	const formulario = document.querySelector('.formulario')
 
 	const validationList = {
-		'name' : function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, messages, keyUpEvent}) {
+		'name' : function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, errors, keyUpEvent}) {
 			if (keyUpEvent) {
 				let nameInput = keyUpEvent.target
 				const properties = {
@@ -192,28 +341,29 @@ window.addEventListener('load', function() {
 					correctLabel,
 					inputField,
 					incorrectLabel,
-					messages,
+					errors,
 					frontendErrorSpan,
 					input: nameInput
-				} 
-				if (nameInput.value.length < 5) {
-					let message = 'minLength'
-					itsAnError(properties, message)
-				} else if (nameInput.value.length > 45) {
-					let message = 'maxLength'
-					itsAnError(properties, message)
-				} else {
+				}
+
+				let somethingWrong = []
+
+				errors.forEach(error => {
+					error.condition(inputField, properties) ? somethingWrong.push(true) : somethingWrong.push(false)
+				})
+
+				if (!somethingWrong.includes(true)) {
 					itsNoError(properties)
 				}
 			}
 		},
-		'category': function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, messages, changeEvent}){
+		'category': function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, errors, changeEvent}){
 
 			if (changeEvent) {
-				// An 1 to 5 array, that are the values of the posible categories
-				let validValues = [1, 2, 3, 4, 5]
 				
 				let categoryInput = changeEvent.target
+
+				let somethingWrong = []
 	
 				const properties = {
 					inputField, 
@@ -221,50 +371,53 @@ window.addEventListener('load', function() {
 					correctLabel, 
 					backendErrorSpan, 
 					frontendErrorSpan, 
-					messages,
+					errors,
 					input: categoryInput
 				}
 
-				if (categoryInput.value === '') {
-					let message = 'notSelected'
-					itsAnError(properties, message)
-				} else if (!validValues.includes(parseInt(categoryInput.value))) {
-					let message = 'invalidValue'
-					itsAnError(properties, message)
-				} else {
+
+				errors.forEach(error => {
+					error.condition(inputField, properties) ? somethingWrong.push(true) : somethingWrong.push(false)
+				})
+
+				if (!somethingWrong.includes(true)) {
 					itsNoError(properties)
 				}
 			}
 		},
-		'image': function({ incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, comodinLabel, messages, changeEvent }) {
+		'image': function({ incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, comodinLabel, errors, changeEvent }) {
 			if (changeEvent) {
-				let validMimeTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']
-
+				
 				let imageInput = changeEvent.target
-	
+				let displayLabel =  incorrectLabel 
+				let incorrectFileLabel = correctLabel
+				let correctFileLabel = backendErrorSpan
+				let backendFileErrorSpan = frontendErrorSpan
+				let frontendFileErrorSpan = comodinLabel
+
+				let somethingWrong = []
+
 				const properties = {
-					displayLabel: incorrectLabel, 
-					incorrectFileLabel: correctLabel,
-					correctFileLabel: backendErrorSpan,
-					backendFileErrorSpan: frontendErrorSpan,
-					frontendFileErrorSpan: comodinLabel,
-					messages,
+					inputField: displayLabel,
+					incorrectLabel: incorrectFileLabel,
+					correctLabel: correctFileLabel,
+					backendErrorSpan: backendFileErrorSpan,
+					frontendErrorSpan: frontendFileErrorSpan,
+					errors,
 					input: imageInput
 				}
 
-				if (!validMimeTypes.includes(imageInput.files[0].type)) {
-					let message = 'invalidType'
-					itsAnError(properties, message)
-				} else {
+				errors.forEach(error => {
+					error.condition(imageInput, properties) ? somethingWrong.push(true) : somethingWrong.push(false)
+				})
+				if (!somethingWrong.includes(true)) {
 					itsNoError(properties)
 				}
 			}
 		},
-		'unit': function({ inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, messages, keyUpEvent }) {
+		'unit': function({ inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, errors, keyUpEvent }) {
 			if (keyUpEvent) {
 				let unitInput = keyUpEvent.target
-				
-				let hasLetter = hasLetters(unitInput.value)
 
 				const properties = {
 					inputField, 
@@ -272,49 +425,47 @@ window.addEventListener('load', function() {
 					correctLabel, 
 					backendErrorSpan, 
 					frontendErrorSpan, 
-					messages,
+					errors,
 					input: unitInput
 				}
 
-				if (unitInput.value.length > 6) {
-					let message = 'maxLength'
-					itsAnError(properties, message)
-				} else if (hasLetter) {
-					let message = 'mustBeNumbers'
-					itsAnError(properties, message)
-				} else {
+				let somethingWrong = []
+
+				errors.forEach(error => {
+					error.condition(inputField, properties) ? somethingWrong.push(true) : somethingWrong.push(false)
+				})
+
+				if (!somethingWrong.includes(true)) {
 					itsNoError(properties)
 				}
 			}
 		},
-		'kilo': function({ inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, messages, keyUpEvent }) {
+		'kilo': function({ inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, errors, keyUpEvent }) {
 			if (keyUpEvent) {
 				let kiloInput = keyUpEvent.target
 				
-				let hasLetter = hasLetters(kiloInput.value)
-
 				const properties = {
 					inputField, 
 					incorrectLabel, 
 					correctLabel, 
 					backendErrorSpan, 
 					frontendErrorSpan, 
-					messages,
+					errors,
 					input: kiloInput
 				}
 
-				if (kiloInput.value.length > 6) {
-					let message = 'maxLength'
-					itsAnError(properties, message)
-				} else if (hasLetter) {
-					let message = 'mustBeNumbers'
-					itsAnError(properties, message)
-				} else {
+				let somethingWrong = []
+
+				errors.forEach(error => {
+					error.condition(inputField, properties) ? somethingWrong.push(true) : somethingWrong.push(false)
+				})
+
+				if (!somethingWrong.includes(true)) {
 					itsNoError(properties)
 				}
 			}
 		},
-		'discount': function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, messages, changeEvent}){
+		'discount': function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, errors, changeEvent}){
 
 			if (changeEvent) {
 				// An 1 to 5 array, that are the values of the posible categories
@@ -325,52 +476,51 @@ window.addEventListener('load', function() {
 				}
 				let discountInput = changeEvent.target
 
+				let somethingWrong = []
+
 				const properties = {
 					inputField, 
 					incorrectLabel, 
 					correctLabel, 
 					backendErrorSpan, 
 					frontendErrorSpan, 
-					messages,
+					errors,
 					input: discountInput
 				}
 	
-				if (discountInput.value === '') {
-					let message = 'notSelected'
-					itsAnError(properties, message)
-				} else if (!validValues.includes(parseInt(discountInput.value))) {
-					let message = 'invalidValue'
-					itsAnError(properties, message)
-				} else {
+				errors.forEach(error => {
+					error.condition(inputField, properties) ? somethingWrong.push(true) : somethingWrong.push(false)
+				})
+
+				if (!somethingWrong.includes(true)) {
 					itsNoError(properties)
 				}
 			}
 		},
-		'market': function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, messages, changeEvent}){
+		'market': function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, errors, changeEvent}){
 
 			if (changeEvent) {
 				// An 1 to 5 array, that are the values of the posible categories
-				let validValues = [1, 2, 3]
 				
 				let marketInput = changeEvent.target
 
+				let somethingWrong = []
+				
 				const properties = {
 					inputField, 
 					incorrectLabel, 
 					correctLabel, 
 					backendErrorSpan, 
 					frontendErrorSpan, 
-					messages,
+					errors,
 					input: marketInput
 				}
 	
-				if (marketInput.value === '') {
-					let message = 'notSelected'
-					itsAnError(properties, message)
-				} else if (!validValues.includes(parseInt(marketInput.value))) {
-					let message = 'invalidValue'
-					itsAnError(properties, message)
-				} else {
+				errors.forEach(error => {
+					error.condition(inputField, properties) ? somethingWrong.push(true) : somethingWrong.push(false)
+				})
+
+				if (!somethingWrong.includes(true)) {
 					itsNoError(properties)
 				}
 			}
@@ -385,8 +535,10 @@ window.addEventListener('load', function() {
 		let backendErrorSpan = correctLabel.nextElementSibling
 		let frontendErrorSpan = backendErrorSpan.nextElementSibling
 		let comodinLabel = frontendErrorSpan.nextElementSibling
-		let messages = errorsList.find(error => error.name === inputField.name).errors
-		
+		let errors = errorsList.find(error => error.name === inputField.name).errors
+
+		// console.log(errors)
+
 		let variables = {
 			fieldName, 
 			inputField,
@@ -395,13 +547,17 @@ window.addEventListener('load', function() {
 			backendErrorSpan,
 			frontendErrorSpan,
 			comodinLabel,
-			messages
+			errors
 		}
 
 		return variables
 	}
 
-	const executeEvaluation = ({keyUpEvent, changeEvent}) => {
+	/**
+ 	* 
+	* @param {*} param0 
+	*/
+	const executeEvaluation = ({keyUpEvent = undefined, changeEvent = undefined}) => {
 
 		const events = {keyUpEvent, changeEvent}
 		
@@ -413,7 +569,7 @@ window.addEventListener('load', function() {
 			backendErrorSpan, 
 			frontendErrorSpan, 
 			comodinLabel, 
-			messages
+			errors
 		} = variables(events)
 		
 		let data = {
@@ -422,7 +578,7 @@ window.addEventListener('load', function() {
 			correctLabel,
 			backendErrorSpan,
 			frontendErrorSpan,
-			messages,
+			errors,
 			keyUpEvent,
 			changeEvent,
 			comodinLabel,
@@ -431,19 +587,23 @@ window.addEventListener('load', function() {
 		let validation = validationList[fieldName]
 
 		validation(data)
-
-		console.log(errors)
 	}
     
 	formulario.addEventListener('change', changeEvent => {
-		executeEvaluation({ changeEvent })
+		let event = {
+			changeEvent: changeEvent
+		}
+		executeEvaluation(event)
 	})
 
 	formulario.addEventListener('keyup', (keyUpEvent) => {
-		executeEvaluation({ keyUpEvent })
+		let event = {
+			keyUpEvent: keyUpEvent
+		}
+		executeEvaluation(event)
 	})
 	formulario.addEventListener('submit', (submitEvent) => {
-		if (errors.length > 0) {
+		if (arrayErrors.length > 0) {
 			submitEvent.preventDefault()
 		}
 	})

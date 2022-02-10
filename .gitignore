@@ -5,3 +5,4 @@ volumenes
 .prettierrc
 .prettierignore
 .eslintrc.js
+jsconfig.json
