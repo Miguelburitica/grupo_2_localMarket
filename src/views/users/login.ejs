@@ -25,6 +25,10 @@
 					value="<%= locals.oldData && oldData.email ? oldData.email : null %>"
 					required
 				/>
+				<small class="focus_email">          
+				</small>
+				<small class="error_email">          
+				</small>
 				<% if (locals.errors && errors.email) { %>
 					<span class="error"><%= errors.email.msg %> </span>
 					<% } else if(locals.errors){ %>
@@ -32,6 +36,7 @@
 					<% } else {%>
 						<span class="error" style="color: inherit;"></span>
 						<% } %>  
+					
 				<input
 					class="text-box"
 					type="password"
@@ -60,4 +65,5 @@
 		</div>
 	</main>
 	<%- include('../partials/footer') %>
+	<script src="/js/login.js"></script>
 </body>
