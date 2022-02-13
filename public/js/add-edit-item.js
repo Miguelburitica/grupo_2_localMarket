@@ -17,6 +17,12 @@ const setIncorrect = (inputField) => {
 	}
 }
 
+const adjustNumberLabel = (label) => {
+	if (label) {
+		label.style.top = '25px'
+	}
+}
+
 /**
  * this function evaluate if the value of the field has any character/digit diferent to a number
  * @param {String} value The value that has the input
@@ -333,9 +339,9 @@ window.addEventListener('load', function() {
 	const formulario = document.querySelector('.formulario')
 
 	const validationList = {
-		'name' : function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, errors, keyUpEvent}) {
-			if (keyUpEvent) {
-				let nameInput = keyUpEvent.target
+		'name' : function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, errors, keyUpEvent, submitEvent}) {
+			if (keyUpEvent || submitEvent) {
+				let nameInput = keyUpEvent ? keyUpEvent.target : submitEvent.target
 				const properties = {
 					backendErrorSpan,
 					correctLabel,
@@ -429,6 +435,9 @@ window.addEventListener('load', function() {
 					input: unitInput
 				}
 
+				adjustNumberLabel(incorrectLabel)
+				adjustNumberLabel(correctLabel)
+
 				let somethingWrong = []
 
 				errors.forEach(error => {
@@ -454,6 +463,9 @@ window.addEventListener('load', function() {
 					input: kiloInput
 				}
 
+				adjustNumberLabel(incorrectLabel)
+				adjustNumberLabel(correctLabel)
+
 				let somethingWrong = []
 
 				errors.forEach(error => {
@@ -468,12 +480,6 @@ window.addEventListener('load', function() {
 		'discount': function ({inputField, incorrectLabel, correctLabel, backendErrorSpan, frontendErrorSpan, errors, changeEvent}){
 
 			if (changeEvent) {
-				// An 1 to 5 array, that are the values of the posible categories
-				let validValues = []
-				
-				for( let i = 0; i < 50; i += 5 ) {
-					validValues.push(i)
-				}
 				let discountInput = changeEvent.target
 
 				let somethingWrong = []
@@ -527,9 +533,12 @@ window.addEventListener('load', function() {
 		},
 	}
 
-	const variables = ({keyUpEvent, changeEvent}) => {
-		let fieldName = keyUpEvent !== undefined ? keyUpEvent.target.name : changeEvent.target.name
-		let inputField = keyUpEvent !== undefined ? keyUpEvent.target : changeEvent.target
+	const variables = ({keyUpEvent, changeEvent, submitEvent}) => {
+		let inputField = keyUpEvent  ? keyUpEvent.target  :
+						 changeEvent ? changeEvent.target :        //eslint-disable-line
+						 submitEvent ? submitEvent.target : ''	   //eslint-disable-line
+
+		let fieldName = inputField.name
 		let incorrectLabel = inputField.nextElementSibling
 		let correctLabel = incorrectLabel.nextElementSibling
 		let backendErrorSpan = correctLabel.nextElementSibling
@@ -557,9 +566,9 @@ window.addEventListener('load', function() {
  	* 
 	* @param {*} param0 
 	*/
-	const executeEvaluation = ({keyUpEvent = undefined, changeEvent = undefined}) => {
+	const executeEvaluation = ({keyUpEvent = undefined, changeEvent = undefined, submitEvent = undefined}) => {
 
-		const events = {keyUpEvent, changeEvent}
+		const events = {keyUpEvent, changeEvent, submitEvent}
 		
 		const {
 			fieldName, 
@@ -581,12 +590,20 @@ window.addEventListener('load', function() {
 			errors,
 			keyUpEvent,
 			changeEvent,
+			submitEvent,
 			comodinLabel,
 		}
 
 		let validation = validationList[fieldName]
 
-		validation(data)
+		if (submitEvent) {
+			validationList.forEach(validation => {
+				validation(data)
+			})
+		} else {
+			validation(data)
+		}
+
 	}
     
 	formulario.addEventListener('change', changeEvent => {
@@ -602,7 +619,13 @@ window.addEventListener('load', function() {
 		}
 		executeEvaluation(event)
 	})
+	
 	formulario.addEventListener('submit', (submitEvent) => {
+		let event = {
+			changeEvent: submitEvent
+		}
+		executeEvaluation(event)
+		
 		if (arrayErrors.length > 0) {
 			submitEvent.preventDefault()
 		}
