@@ -1,12 +1,11 @@
 window.addEventListener('load', function () {
-let form=document.querySelector('form')
+let form=document.querySelector('.formulario')
 let email = document.querySelector('#email');
 let focusEmail = document.querySelector('.focus_email');
 let errorEmail= document.querySelector('.error_email');
 let password = document.querySelector('#password');
 let focusPassword = document.querySelector('.focus_password');
 let errorPassword= document.querySelector('.error_password');
-let errores=[];
 
 function emailValidator(email){
     let emailReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -62,7 +61,20 @@ function emailValidator(email){
     }
   })
 
-form.addEventListener('submit',function(e){
+    form.addEventListener('submit',function(e) {
+         e.preventDefault()
+         let errores = []
+         errorPassword.innerHTML = ''
+        errorEmail.innerHTML = ''
+        if (emailValidator(email.value)||passwordValidator(password.value)){
+        errores.push('Las credenciales son inválidas')
+        errores.forEach(error => {
+          errorPassword.innerHTML += error
+        })
+        };
 
-})
-})
+        if(errores.length == 0) {
+        form.submit()
+        }
+    })
+});
