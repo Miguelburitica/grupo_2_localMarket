@@ -18,6 +18,9 @@ window.addEventListener('load', function () {
     let photo=document.querySelector('#photo');
     let focusPhoto = document.querySelector('.focus_photo');
     let errorPhoto= document.querySelector('.error_photo');
+    let passwordConfirm=document.querySelector('#password_confirm');
+    let focusPasswordConfirm = document.querySelector('.focus_password_confirm');
+    let errorPasswordConfirm= document.querySelector('.error_password_confirm');
 
     //Validaciones nombre
     names.addEventListener('focus',function(){
@@ -89,7 +92,7 @@ window.addEventListener('load', function () {
             focusPhone.innerHTML=''
             errorEmail.innerHTML = ''
             focusEmail.innerHTML= ''
-        if(surname.value.length<2){
+        if(phoneValidator(phone.value)){
             errores.push('El telefono no es válido, debe tener minimo 10 números');
             };
         if(errores.length>0){
@@ -99,8 +102,6 @@ window.addEventListener('load', function () {
         }
     })
 
-
-    
     //validaciones email
     function emailValidator(email){
         let emailReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -155,22 +156,65 @@ window.addEventListener('load', function () {
               })
         }
       })
-    
+
+      //validaciones password confirm
+      passwordConfirm.addEventListener('focus',function(){
+        errorPasswordConfirm.innerHTML = ''
+        focusPasswordConfirm.innerHTML='Escribe extactamente la misma contraseña del campo anterior'
+      })
+
+      passwordConfirm.addEventListener('blur',function(){
+        let errores = [];
+            errorPasswordConfirm.innerHTML = ''
+            focusPasswordConfirm.innerHTML= ''
+        if(password.value!=passwordConfirm.value){
+            errores.push('La contraseña no coincide');
+          };
+        if(errores.length>0){
+            errores.forEach(error => {
+                errorPasswordConfirm.innerHTML += error
+              })
+        }
+      })
+
       //validaciones form completo
         form.addEventListener('submit',function(e) {
-             e.preventDefault()
+            
              let errores = []
              errorPassword.innerHTML = ''
+             errorPasswordConfirm.innerHTML = ''
             errorEmail.innerHTML = ''
-            if (emailValidator(email.value)||passwordValidator(password.value)){
-            errores.push('Las credenciales son inválidas')
-            errores.forEach(error => {
-              errorPassword.innerHTML += error
-            })
-            };
-    
-            if(errores.length == 0) {
-            form.submit()
+            errorSurname.innerHTML = ''
+            errorNames.innerHTML = ''
+            errorPhone.innerHTML = ''
+            
+            if(photoValidator(image)){
+                errores.push('La foto no es válida')
+             }
+             if(names.value.length < 2){
+               errores.push('el nombre no es válido');
+             }
+             if(surname.value.length < 2){
+               errores.push('El apellido no es válido');
+             }
+             if(emailValidator(email.value)){
+               errores.push('El email no es váido');
+             };
+             if(password.value.length < 10){
+               errores.push('La contraseña es incorrecta');
+             }
+             if(phoneValidator(phone.value)){
+                errores.push('El télefono no es válido');   
+             }
+             if(password.value!=passwordConfirm.value){
+                errores.push('La contraseña no coincide');
+              }
+              
+             if(errores.length>0){
+                e.preventDefault()
+            errorPasswordConfirm.innerHTML += 'No es posible enviar el formulario hay errores en tus datos'
+             }else{ 
+                 form.submit()
             }
         })
     });
