@@ -75,7 +75,7 @@ window.addEventListener('load', function () {
         }}
     //Validación telefono
     function phoneValidator(phone){
-        let phoneReg =/(?=(.*[0-9]){10,})/;
+        let phoneReg = /^\d{10}$/;
         let valido = phoneReg.test(phone)
         if (!valido) {
           return true
@@ -132,7 +132,7 @@ window.addEventListener('load', function () {
     
       //validaciones password
       function passwordValidator(password){
-        let passwordReg =/^(?=(.*[a-zA-Z]){1,})(?=(.*[0-9]){2,}).{10,}$/;
+        let passwordReg =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}/;
         let valido = passwordReg.test(password)
         if (!valido) {
           return true
