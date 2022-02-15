@@ -64,7 +64,7 @@ function emailValidator(email){
     form.addEventListener('submit',function(e) {
          e.preventDefault()
          let errores = []
-         errorPassword.innerHTML = ''
+        errorPassword.innerHTML = ''
         errorEmail.innerHTML = ''
         if (emailValidator(email.value)||passwordValidator(password.value)){
         errores.push('Las credenciales son inválidas')
