@@ -17,6 +17,10 @@
 						value="<%= old.names %>"
 					<% } %>
 				/>
+				<small class="focus_names">          
+				</small>
+				<small class="error_names">          
+				</small>
 				<% if (locals.errors && errors.names) { %>
 					<label class="checked" for="names">
 						<i class="fas fa-times" style="color: #cc0000"></i>
@@ -28,6 +32,7 @@
 				<% } else {%>
 				<% } %>  
 			</div>
+			
 			<% if (locals.errors && errors.names) { %>
 				<span class="error"><%= errors.names.msg %> </span>
 			<% } else {%>
@@ -46,6 +51,10 @@
 						value="<%= old.surname %>"
 					<% } %>
 				/>
+				<small class="focus_surname">          
+				</small>
+				<small class="error_surname">          
+				</small>
 				<% if (locals.errors && errors.surname) { %>
 					<label class="checked" for="surname">
 						<i class="fas fa-times" style="color: #cc0000"></i>
@@ -82,6 +91,10 @@
 						value="<%= old.phone %>"
 					<% } %>
 				/>
+				<small class="focus_phone">          
+				</small>
+				<small class="error_phone">          
+				</small>
 				<% if (locals.errors && errors.phone) { %>
 					<label class="checked" for="phone">
 						<i class="fas fa-times" style="color: #cc0000"></i>
@@ -109,6 +122,10 @@
 					<% if (locals.old && old.email && (locals.errors.email === undefined)) { %>
 						value="<%= old.email %>"
 					<% } %> />
+					<small class="focus_email">          
+					</small>
+					<small class="error_email">          
+					</small>
 				<% if (locals.errors && errors.email) { %>
 					<label class="checked" for="email">
 						<i class="fas fa-times" style="color: #cc0000"></i>
@@ -135,6 +152,10 @@
 				minlength="10"
 				required
 			/>
+			<small class="focus_password">          
+			</small>
+			<small class="error_password">          
+			</small>
 				<% if (locals.errors && errors.password) { %>
 					<label class="checked" for="password">
 						<i class="fas fa-times" style="color: #cc0000"></i>
@@ -161,6 +182,10 @@
 					minlength="10"
 					required
 				/>
+				<small class="focus_password_confirm">          
+				</small>
+				<small class="error_password_confirm">          
+				</small>
 				<% if (locals.errors && errors.password_confirm) { %>
 					<label class="checked" for="password_confirm">
 						<i class="fas fa-times" style="color: #cc0000"></i>
@@ -190,4 +215,5 @@
 		</form>
 	</main>
 	<%- include('../partials/footer') %>
+	<script src="/js/sign-in-customer.js"></script>
 </body>
