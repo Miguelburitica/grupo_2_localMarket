@@ -6,6 +6,11 @@
 		<h3 class="sub-title">¡Hey! llevate unas cuantas frutas para asustar el hambre</h3>
 		<div class="products-space">
 			<div class="product-row">
+				<%  let frutasCategory = categories.find(category => {
+						return category.name === 'Frutas' ? category.products : ''
+					})
+					let frutas = frutasCategory.products 
+				%> 
 				<% for (let i = 0; i < frutas.length && i < 4; i++) { %>
 				<a href="/products/detail/<%= frutas[i].id %>">
 					<article class="control-article">
@@ -23,6 +28,11 @@
 		<h3>Que no se te olviden las verduras, importantes para crecer sano y fuerte</h3>
 		<div class="products-space">
 			<div class="product-row">
+				<%  let verdurasCategory = categories.find(category => {
+						return category.name === 'Verduras' ? category.products : ''
+					})
+					let verduras = verdurasCategory.products 
+				%>  
 				<% for (let i = 0; i < verduras.length && i < 4; i++) { %>
 				<a href="/products/detail/<%= verduras[i].id %>">
 					<article class="control-article">
@@ -41,6 +51,11 @@
 		<h3>Prueba con algunos condimentos que le puedan dar profundidad al sabor de tus comidas</h3>
 		<div class="products-space">
 			<div class="product-row">
+				<%  let hortalizasCategory = categories.find(category => {
+						return category.name === 'Hortalizas' ? category.products : ''
+					})
+					let hortalizas = hortalizasCategory.products 
+				%> 
 				<% for (let i = 0; i < hortalizas.length && i < 4; i++) { %>
 				<a href="/products/detail/<%= hortalizas[i].id %>">
 					<article class="control-article">
@@ -48,6 +63,52 @@
 						<p class="product-name"><%= hortalizas[i].name%></p>
 						<p Class="price">
 							Desde $<%= hortalizas[i].wayToSell == 0 ? hortalizas[i].kilo : hortalizas[i].unidad%>
+						</p>
+						<button type="submit" class="">Agregar<i class="fas fa-plus-circle"></i></button>
+					</article>
+				</a>
+				<% }%>
+			</div>
+		</div>
+
+		<h3>Hey deberías probar alguno de estos granos, claro, por lo sabrosos y diversos que son 😋</h3>
+		<div class="products-space">
+			<div class="product-row">
+				<%  let granosCategory = categories.find(category => {
+						return category.name === 'Granos' ? category.products : ''
+					})
+					let granos = granosCategory.products 
+				%> 
+				<% for (let i = 0; i < granos.length && i < 4; i++) { %>
+				<a href="/products/detail/<%= granos[i].id %>">
+					<article class="control-article">
+						<img src="/images/<%= granos[i].image%>" alt="<%granos[i].name%>" />
+						<p class="product-name"><%= granos[i].name%></p>
+						<p Class="price">
+							Desde $<%= granos[i].wayToSell == 0 ? granos[i].kilo : granos[i].unidad%>
+						</p>
+						<button type="submit" class="">Agregar<i class="fas fa-plus-circle"></i></button>
+					</article>
+				</a>
+				<% }%>
+			</div>
+		</div>
+
+		<h3> Un perfecto snack saludable para picar de vez en cuando, delicioso 😻</h3>
+		<div class="products-space">
+			<div class="product-row">
+				<%  let semillasCategory = categories.find(category => {
+						return category.name === 'Semillas' ? category.products : ''
+					})
+					let semillas = semillasCategory.products 
+				%> 
+				<% for (let i = 0; i < semillas.length && i < 4; i++) { %>
+				<a href="/products/detail/<%= semillas[i].id %>">
+					<article class="control-article">
+						<img src="/images/<%= semillas[i].image%>" alt="<%semillas[i].name%>" />
+						<p class="product-name"><%= semillas[i].name%></p>
+						<p Class="price">
+							Desde $<%= semillas[i].wayToSell == 0 ? semillas[i].kilo : semillas[i].unidad%>
 						</p>
 						<button type="submit" class="">Agregar<i class="fas fa-plus-circle"></i></button>
 					</article>

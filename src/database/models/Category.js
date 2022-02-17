@@ -9,21 +9,21 @@ module.exports = (sequelize, dataType) => {
 			type: dataType.STRING,
 			notNull: true,
 		},
-	};
+	}
 
 	let config = {
 		tableName: 'categories',
 		timestamps: false,
-	};
+	}
 
-	const Category = sequelize.define('Category', cols, config);
+	const Category = sequelize.define('Category', cols, config)
 
 	Category.associate = function (models) {
 		Category.hasMany(models.Product, {
 			as: 'products',
 			foreignKey: 'categories_id',
-		});
-	};
+		})
+	}
 
-	return Category;
-};
+	return Category
+}
