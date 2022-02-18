@@ -200,6 +200,7 @@ window.addEventListener('load', function () {
   })
 
   form.addEventListener('submit',function(e) {
+    e.preventDefault();
     let errores = []
     errorPassword.innerHTML = ''
     errorPasswordConfirm.innerHTML = ''
@@ -209,8 +210,11 @@ window.addEventListener('load', function () {
     errorNames.innerHTML = ''
     errorPhone.innerHTML = ''
 
-    if (photoValidator(image)) {
+    if (photo.value){
+      alert('entre a la validación de la foto')
+      if(photoValidator(photo)){
         errores.push('La foto no es válida')
+      }
     }
     if (names.value.length < 2) {
         errores.push('el nombre no es válido');
@@ -230,11 +234,11 @@ window.addEventListener('load', function () {
     if (password.value != passwordConfirm.value) {
         errores.push('La contraseña no coincide');
     }
-
     if (errores.length > 0) {
-        e.preventDefault();
+        alert('entré al error')
         errorPasswordConfirm.innerHTML += 'No es posible enviar el formulario hay errores en tus datos'
     } else {
+        alert('si envié')
         form.submit()
     }
   })
