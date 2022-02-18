@@ -73,6 +73,12 @@ window.addEventListener('load', function () {
             errores.push('La foto no es válida (solo se permiten archivos con formato JPG, JPEG, PNG o GIF)' );
             image.value = '';
         }}
+
+        photo.addEventListener('upload',function(){
+          if(image.value){
+            photoValidator(photo)
+          }
+        })
     //Validación telefono
     function phoneValidator(phone){
         let phoneReg = /^\d{10}$/;
@@ -188,8 +194,11 @@ window.addEventListener('load', function () {
         errorNames.innerHTML = ''
         errorPhone.innerHTML = ''
 
-        if (photoValidator(image)) {
-            errores.push('La foto no es válida')
+        if (photo.value) {
+            alert('llegue a validar la foto')
+            if(photoValidator(photo)){
+              errores.push('la foto no es válida')
+            }
         }
         if (names.value.length < 2) {
             errores.push('el nombre no es válido');
