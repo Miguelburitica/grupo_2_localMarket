@@ -1,5 +1,35 @@
 # Retrospectivas
 
+## Retrospectiva sprint 8
+
+### Comenzar a hacer:
+
+-   Trabajar a los estilos y a las vistas en general si se tiene el tiempo.
+-   Hacer weekly reports
+
+### Hacer más:
+
+-   Estar más atentos a los portales de comunicación en caso de de necesitar alguna ayuda.
+
+### Continuar haciendo:
+
+-   Comentarios que explique el código para comprender que hace el otro.
+-   Reconocer el trabajo que es opcional en los requerimientos.
+-   Ser más apegados a las fechas definidas para las entregas parciales.
+-   Seguir con la buena comunicación y el buen manejo de los errores/dificultades.
+-   Seguir usando Trello para tener un mejor seguimiento y ejecución de los pendientes.
+-   Avisar con tiempo la no disponibilidad para asistir a una daily.
+-   No esperar hasta las daily reports para comentar sugerencias en el trabajo de los demás.
+
+
+### Hacer menos:
+
+-   No aplica.
+
+### Dejar de hacer:
+
+-   No aplica.
+
 ## Retrospectiva sprint 7
 
 ### Comenzar a hacer:

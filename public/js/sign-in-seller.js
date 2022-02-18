@@ -57,12 +57,15 @@ window.addEventListener('load', function () {
   };
 
   function photoValidator(image) {
+    let errores = [];
     let imageFile = image.value;
     let extensions = /(.jpg|.jpeg|.png|.gif)$/i;
-    if (!extensions.exec(imageFile)) {
+    if (!imageFile.match(extensions)) {
       errores.push('La foto no es válida (solo se permiten archivos con formato JPG, JPEG, PNG o GIF)');
       image.value = '';
+      return true
     }
+    return false
   }
 
   //   Eventos
