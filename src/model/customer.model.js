@@ -13,6 +13,28 @@ const path = require('path');
 const db = require(path.resolve(__dirname, '../database/models'));
 
 const model = {
+
+	getAll: async function () {
+		// return JSON.parse(fs.readFileSync(customerFilePath, 'utf-8'));
+		try {
+			let users = await db.User.findAll();
+			return users;
+		} catch (err) {
+			console.log(err);
+			return err;
+		}
+	},
+
+	getOneuser: async function (id) {
+		try{
+			let oneUser = await db.User.findByPk(id);
+			return oneUser;
+		}catch (err) {
+			console.log(err);
+			return err;
+		}
+
+	},
 	getCustomers: async function () {
 		// return JSON.parse(fs.readFileSync(customerFilePath, 'utf-8'));
 		try {
@@ -116,9 +138,8 @@ module.exports = model;
 //     photo:'user.photo',
 // }
 // async function Mostrar(){
-//   let x = await model.getOne(2)
-//   let y = await model.updateCustomer(2,x)
-//   console.log(y)
+//   let x = await model.getAll()
+//   console.log(x)
 //   }
 
 //  Mostrar()

@@ -66,19 +66,18 @@ window.addEventListener('load', function () {
     })
 
     //Validaciones foto
-    function photoValidator(image){
-        let imageFile = image.value;
-        let extensions = /(.jpg|.jpeg|.png|.gif)$/i;
-        if(!extensions.exec(imageFile)){
-            errores.push('La foto no es válida (solo se permiten archivos con formato JPG, JPEG, PNG o GIF)' );
-            image.value = '';
-        }}
+    function photoValidator(image) {
+      let errores = [];
+      let imageFile = image.value;
+      let extensions = /(.jpg|.jpeg|.png|.gif)$/i;
+      if (!imageFile.match(extensions)) {
+        errores.push('La foto no es válida (solo se permiten archivos con formato JPG, JPEG, PNG o GIF)');
+        image.value = '';
+        return true
+      }
+      return false
+    }
 
-        photo.addEventListener('upload',function(){
-          if(image.value){
-            photoValidator(photo)
-          }
-        })
     //Validación telefono
     function phoneValidator(phone){
         let phoneReg = /^\d{10}$/;
@@ -195,7 +194,6 @@ window.addEventListener('load', function () {
         errorPhone.innerHTML = ''
 
         if (photo.value) {
-            alert('llegue a validar la foto')
             if(photoValidator(photo)){
               errores.push('la foto no es válida')
             }

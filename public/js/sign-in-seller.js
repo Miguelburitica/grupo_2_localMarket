@@ -214,7 +214,6 @@ window.addEventListener('load', function () {
     errorPhone.innerHTML = ''
 
     if (photo.value){
-      alert('entre a la validación de la foto')
       if(photoValidator(photo)){
         errores.push('La foto no es válida')
       }
@@ -238,10 +237,8 @@ window.addEventListener('load', function () {
         errores.push('La contraseña no coincide');
     }
     if (errores.length > 0) {
-        alert('entré al error')
         errorPasswordConfirm.innerHTML += 'No es posible enviar el formulario hay errores en tus datos'
     } else {
-        alert('si envié')
         form.submit()
     }
   })
