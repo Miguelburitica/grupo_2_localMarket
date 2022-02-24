@@ -25,7 +25,7 @@ const model = {
 		}
 	},
 
-	getOneuser: async function (id) {
+	getOneUser: async function (id) {
 		try{
 			let oneUser = await db.User.findByPk(id);
 			return oneUser;

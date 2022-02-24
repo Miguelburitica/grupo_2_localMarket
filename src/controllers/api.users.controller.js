@@ -1,6 +1,6 @@
 const { customerModel} = require('../model');
 
-const apiUsersController = {
+const controller = {
 
 	getUsers: async (req,res)=> {
 		try {
@@ -8,6 +8,7 @@ const apiUsersController = {
             let totalUsers = users.length;
             let usersAll = users.map((user) => {
                 return user = {
+				id:user.id,
                 user_name: user.email,
 				names: user.names,
 				surname: user.surname,
@@ -47,4 +48,4 @@ const apiUsersController = {
 	},
 };
 
-module.exports=apiUsersController
+module.exports= controller
