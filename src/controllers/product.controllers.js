@@ -18,8 +18,10 @@ const controller = {
 
 	getCatalog: async function (req, res) {
 		try {
-			const categories = await categoryModel.getAll()
-			res.render(pathViews('catalog'), { categories })
+			const allCategories = await categoryModel.getAll()
+			const justFullCategories = allCategories.filter(category => category.products !== undefined)
+
+			res.render(pathViews('catalog'), { categories: justFullCategories })
 		} catch (err) {
 			console.log(err)
 		}

@@ -7,9 +7,10 @@
 		<div class="products-space">
 			<div class="product-row">
 				<%  let frutasCategory = categories.find(category => {
+						if(!category) return
 						return category.name === 'Frutas' ? category.products : ''
 					})
-					let frutas = frutasCategory.products 
+					let frutas = frutasCategory ? frutasCategory.products : [] 
 				%> 
 				<% for (let i = 0; i < frutas.length && i < 4; i++) { %>
 				<a href="/products/detail/<%= frutas[i].id %>">
@@ -29,9 +30,10 @@
 		<div class="products-space">
 			<div class="product-row">
 				<%  let verdurasCategory = categories.find(category => {
+						if(!category) return
 						return category.name === 'Verduras' ? category.products : ''
 					})
-					let verduras = verdurasCategory.products 
+					let verduras = verdurasCategory ? verdurasCategory.products : []
 				%>  
 				<% for (let i = 0; i < verduras.length && i < 4; i++) { %>
 				<a href="/products/detail/<%= verduras[i].id %>">
@@ -52,9 +54,10 @@
 		<div class="products-space">
 			<div class="product-row">
 				<%  let hortalizasCategory = categories.find(category => {
+						if(!category) return
 						return category.name === 'Hortalizas' ? category.products : ''
 					})
-					let hortalizas = hortalizasCategory.products 
+					let hortalizas = hortalizasCategory ? hortalizasCategory.products : [] 
 				%> 
 				<% for (let i = 0; i < hortalizas.length && i < 4; i++) { %>
 				<a href="/products/detail/<%= hortalizas[i].id %>">
@@ -75,9 +78,10 @@
 		<div class="products-space">
 			<div class="product-row">
 				<%  let granosCategory = categories.find(category => {
+						if(!category) return
 						return category.name === 'Granos' ? category.products : ''
 					})
-					let granos = granosCategory.products 
+					let granos = granosCategory ? granosCategory.products : [] 
 				%> 
 				<% for (let i = 0; i < granos.length && i < 4; i++) { %>
 				<a href="/products/detail/<%= granos[i].id %>">
@@ -98,9 +102,10 @@
 		<div class="products-space">
 			<div class="product-row">
 				<%  let semillasCategory = categories.find(category => {
+						if(!category) return
 						return category.name === 'Semillas' ? category.products : ''
 					})
-					let semillas = semillasCategory.products 
+					let semillas = semillasCategory ? semillasCategory.products : [] 
 				%> 
 				<% for (let i = 0; i < semillas.length && i < 4; i++) { %>
 				<a href="/products/detail/<%= semillas[i].id %>">
