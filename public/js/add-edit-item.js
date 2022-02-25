@@ -287,8 +287,6 @@ const errorsList = [
 						validValues.push(i.toString())
 					}
 
-					console.log(validValues)
-
 					if (!validValues.includes(input.value)) {
 						let thisError = properties.errors.find(error => error.name === 'invalidValue')
 						let message = thisError.message
@@ -533,33 +531,55 @@ window.addEventListener('load', function() {
 		},
 	}
 
-	const variables = ({keyUpEvent, changeEvent, submitEvent}) => {
-		let inputField = keyUpEvent  ? keyUpEvent.target  :
-						 changeEvent ? changeEvent.target :        //eslint-disable-line
-						 submitEvent ? submitEvent.target : ''	   //eslint-disable-line
+	const variables = ({keyUpEvent, changeEvent, submitEvent, position = null}) => {
+		if (submitEvent) {
+			let inputFieldRough = (submitEvent.target).children
+			let inputField = []
+			for (let i = 0; i < inputFieldRough.length; i++) {
+				let field = inputFieldRough[i]
+				if(field.classList.contains('input-container')) { inputField.push(field) }
+			}
 
-		let fieldName = inputField.name
-		let incorrectLabel = inputField.nextElementSibling
-		let correctLabel = incorrectLabel.nextElementSibling
-		let backendErrorSpan = correctLabel.nextElementSibling
-		let frontendErrorSpan = backendErrorSpan.nextElementSibling
-		let comodinLabel = frontendErrorSpan.nextElementSibling
-		let errors = errorsList.find(error => error.name === inputField.name).errors
+			let fieldName = inputField.find((field, index) => {
+				return index === position ? field : ''
+			})
+			
 
-		// console.log(errors)
+			// let incorrectLabel = inputField.nextElementSibling
+			// let correctLabel = incorrectLabel.nextElementSibling
+			// let backendErrorSpan = correctLabel.nextElementSibling
+			// let frontendErrorSpan = backendErrorSpan.nextElementSibling
+			// let comodinLabel = frontendErrorSpan.nextElementSibling
+			// let errors = errorsList.find(error => error.name === inputField.name).errors
 
-		let variables = {
-			fieldName, 
-			inputField,
-			incorrectLabel,
-			correctLabel,
-			backendErrorSpan,
-			frontendErrorSpan,
-			comodinLabel,
-			errors
+		} else if(keyUpEvent || changeEvent){
+
+			let inputField = keyUpEvent  ? keyUpEvent.target  :
+							 changeEvent ? changeEvent.target : ''       //eslint-disable-line
+	
+			let fieldName = inputField.name
+			let incorrectLabel = inputField.nextElementSibling
+			let correctLabel = incorrectLabel.nextElementSibling
+			let backendErrorSpan = correctLabel.nextElementSibling
+			let frontendErrorSpan = backendErrorSpan.nextElementSibling
+			let comodinLabel = frontendErrorSpan.nextElementSibling
+			let errors = errorsList.find(error => error.name === inputField.name).errors
+	
+			// console.log(errors)
+	
+			let variables = {
+				fieldName, 
+				inputField,
+				incorrectLabel,
+				correctLabel,
+				backendErrorSpan,
+				frontendErrorSpan,
+				comodinLabel,
+				errors
+			}
+	
+			return variables
 		}
-
-		return variables
 	}
 
 	/**
@@ -567,42 +587,46 @@ window.addEventListener('load', function() {
 	* @param {*} param0 
 	*/
 	const executeEvaluation = ({keyUpEvent = undefined, changeEvent = undefined, submitEvent = undefined}) => {
-
-		const events = {keyUpEvent, changeEvent, submitEvent}
-		
-		const {
-			fieldName, 
-			inputField, 
-			incorrectLabel, 
-			correctLabel, 
-			backendErrorSpan, 
-			frontendErrorSpan, 
-			comodinLabel, 
-			errors
-		} = variables(events)
-		
-		let data = {
-			inputField,
-			incorrectLabel,
-			correctLabel,
-			backendErrorSpan,
-			frontendErrorSpan,
-			errors,
-			keyUpEvent,
-			changeEvent,
-			submitEvent,
-			comodinLabel,
-		}
-
-		let validation = validationList[fieldName]
-
-		if (submitEvent) {
-			validationList.forEach(validation => {
+		try {
+			
+			const events = {keyUpEvent, changeEvent, submitEvent}
+			
+			const {
+				fieldName, 
+				inputField, 
+				incorrectLabel, 
+				correctLabel, 
+				backendErrorSpan, 
+				frontendErrorSpan, 
+				comodinLabel, 
+				errors
+			} = variables(events)
+			
+			let data = {
+				inputField,
+				incorrectLabel,
+				correctLabel,
+				backendErrorSpan,
+				frontendErrorSpan,
+				errors,
+				keyUpEvent,
+				changeEvent,
+				submitEvent,
+				comodinLabel,
+			}
+	
+			let validation = validationList[fieldName]
+			const tempArray = ['name', 'cagegory', 'image', 'unit', 'kilo', 'discount', 'market']
+	
+			if (submitEvent) {
+				tempArray.forEach(field => {
+					data.position = tempArray.indexOf(field)
+					validationList[field](data)
+				})
+			} else {
 				validation(data)
-			})
-		} else {
-			validation(data)
-		}
+			}
+		} catch (err) {console.log(err)}
 
 	}
     
@@ -622,9 +646,10 @@ window.addEventListener('load', function() {
 	
 	formulario.addEventListener('submit', (submitEvent) => {
 		let event = {
-			changeEvent: submitEvent
+			submitEvent: submitEvent
 		}
 		executeEvaluation(event)
+		console.log(arrayErrors)
 		
 		if (arrayErrors.length > 0) {
 			submitEvent.preventDefault()
