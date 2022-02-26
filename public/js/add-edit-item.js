@@ -540,17 +540,9 @@ window.addEventListener('load', function() {
 				if(field.classList.contains('input-container')) { inputField.push(field) }
 			}
 
-			let fieldName = inputField.find((field, index) => {
+			let fieldName = inputField.find((field, index) => { // eslint-disable-line
 				return index === position ? field : ''
 			})
-			
-
-			// let incorrectLabel = inputField.nextElementSibling
-			// let correctLabel = incorrectLabel.nextElementSibling
-			// let backendErrorSpan = correctLabel.nextElementSibling
-			// let frontendErrorSpan = backendErrorSpan.nextElementSibling
-			// let comodinLabel = frontendErrorSpan.nextElementSibling
-			// let errors = errorsList.find(error => error.name === inputField.name).errors
 
 		} else if(keyUpEvent || changeEvent){
 
