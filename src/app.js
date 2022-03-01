@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const cookies = require('cookie-parser');
 const path = require('path');
+const cors = require('cors')
 
 const mainRoutes = require('./routes');
 
@@ -14,6 +15,7 @@ app.use(express.static(path.resolve(__dirname, '../public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride('_method'));
+app.use(cors())
 
 const { userLoggedMiddleware } = require('./middlewares');
 
