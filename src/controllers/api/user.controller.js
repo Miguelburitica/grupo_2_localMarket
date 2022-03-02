@@ -26,7 +26,7 @@ const controller = {
 		}
 	},
 
-	getCustomers: async (req,res)=> {
+	getCustomer: async (req,res)=> {
 		try {
 			let users = await customerModel.getCustomers()
 			let totalUsers = users.length
