@@ -1,4 +1,4 @@
-const { customerModel } = require('../../model')
+const { customerModel, sellerModel } = require('../../model')
 
 const controller = {
 
@@ -45,6 +45,30 @@ const controller = {
 			})
 			customersAll = [{count: totalUsers}, [...customersAll]]
 			res.json(customersAll)
+		} catch (err) {
+			res.json({error:'error 504'})
+		}
+	},
+
+	getSeller: async (req,res)=> {
+		try {
+			let users = await sellerModel.getSellers()
+			let totalUsers = users.length
+			let sellersAll = users.map((user) => {
+				return user = {
+					id:user.id,
+					user_name: user.email,
+					names: user.names,
+					surname: user.surname,
+					email: user.email,
+					phone: user.phone,
+					password: user.password,
+					photo: user.photo,
+					rols_id:user.rol,
+				}
+			})
+			sellersAll = [{count: totalUsers}, [...sellersAll]]
+			res.json(sellersAll)
 		} catch (err) {
 			res.json({error:'error 504'})
 		}
