@@ -29,7 +29,7 @@ function TotalUsers() {
                     <h3>
                         Total de usuarios registrados
                     </h3>
-                    <h4> numero de usuarios {total.count} </h4>
+                    <h4> {total.count} </h4>
                 </div>
             </div>
         </div>

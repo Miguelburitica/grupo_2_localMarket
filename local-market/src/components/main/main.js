@@ -1,7 +1,7 @@
 import TotalUsers from '../totalUsers/totalUsers'
 // import TotalSellers from '../totalSellers/totalSellers'
 // import TotalCustomers from '../totalCustomers/totalCustomers'
-// import AllUsers from '../allUsers/allUsers'
+import AllUser from '../allUser/allUser'
 
 function Main(){
     return(
@@ -12,7 +12,7 @@ function Main(){
                 <TotalCustomers/> */}
             </div>
             <div className="list-users">
-               {/* < AllUsers/> */}
+               < AllUser/>
             </div>
         </div>
     )

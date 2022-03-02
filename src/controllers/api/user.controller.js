@@ -26,6 +26,30 @@ const controller = {
 		}
 	},
 
+	getCustomers: async (req,res)=> {
+		try {
+			let users = await customerModel.getCustomers()
+			let totalUsers = users.length
+			let customersAll = users.map((user) => {
+				return user = {
+					id:user.id,
+					user_name: user.email,
+					names: user.names,
+					surname: user.surname,
+					email: user.email,
+					phone: user.phone,
+					password: user.password,
+					photo: user.photo,
+					rols_id:user.rol,
+				}
+			})
+			customersAll = [{count: totalUsers}, [...customersAll]]
+			res.json(customersAll)
+		} catch (err) {
+			res.json({error:'error 504'})
+		}
+	},
+
 	getOne: async (req,res)=>{
 		try{
 			let user = await customerModel.getOneUser(req.params.id)
