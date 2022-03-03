@@ -94,6 +94,25 @@ const controller = {
 		}
 
 	},
+
+	getLastUser: async (req, res) => {
+        try {
+            let user = await usersModel.lastUser();
+            newUser = {
+                user_name: user.email,
+				names: user.names,
+				surname: user.surname,
+				email: user.email,
+				phone: user.phone,
+				password: user.password,
+				photo: user.photo,
+				rols_id:user.rol,
+            }
+            res.json(newUser)
+        } catch (err) {
+            res.json({error: 'Error 404'})
+        }
+    }
 }
 
 module.exports= controller

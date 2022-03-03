@@ -1,21 +1,12 @@
-// let env = process.env
-// env.USER ='root'
-// env.DATABASE_PASSWORD = '1234'
-// env.DATABASE_NAME = 'LocalMarket'
-// env.DATABASE_HOST = '127.0.0.1'
-// env.DATABASE_PORT = '3307'
 
 const path = require('path');
-// const fs = require('fs');
-// const dataCustomers = require('../data/customers.json');
-// path Customer JSON
+
 
 const db = require(path.resolve(__dirname, '../database/models'));
 
 const model = {
 
 	getAll: async function () {
-		// return JSON.parse(fs.readFileSync(customerFilePath, 'utf-8'));
 		try {
 			let users = await db.User.findAll();
 			return users;
@@ -36,7 +27,6 @@ const model = {
 
 	},
 	getCustomers: async function () {
-		// return JSON.parse(fs.readFileSync(customerFilePath, 'utf-8'));
 		try {
 			let customers = await db.User.findAll({
 				include: ['rol'],
@@ -109,6 +99,24 @@ const model = {
 			return err;
 		}
 	},
+
+	lastUser: async function () {
+        try {
+            let users = await db.users.findAll();
+            let max = 0;
+            let lastuser = users.filter(user => {
+                if (user.id > max) {
+                    max = user.id;
+                }
+                return
+            });
+            let lastId= await db.users.findByPk(max);
+            return lastId;
+        } catch (err) {
+            console.log(err);
+        }
+    },
+
 
 	getOne: async function (id) {
 		try{
