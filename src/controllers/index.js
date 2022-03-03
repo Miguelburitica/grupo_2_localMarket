@@ -21,4 +21,6 @@ module.exports = {
 	productController,
 	apiUserController: api.userController,
 	apiProductController: api.productController,
+	apiCategoryController: api.categoryController,
+	apiMarketController: api.marketController,
 }
