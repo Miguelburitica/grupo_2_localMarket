@@ -14,6 +14,5 @@ router.use('/products', productRoutes)
 
 router.use('/api', api)
 
-// router.use('/api', apiRouter);
 
 module.exports = router
