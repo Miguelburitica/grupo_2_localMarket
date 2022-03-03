@@ -11,7 +11,7 @@ class Market {
 const model = {
 	getAll: async function () {
 		try {
-			let markets = await db.Market.findAll();
+			let markets = await db.Market.findAll({ include: ['products', 'users'] });
 			return markets;
 		} catch (err) {
 			return err;
