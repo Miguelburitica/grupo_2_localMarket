@@ -74,7 +74,6 @@ const model = {
 
 	updateCustomer: async function (id, user) {
 		try {
-			console.log('recibí ' + id + user.names);
 			let updateuser = {
 				user_name: user.email,
 				names: user.names,
@@ -102,7 +101,7 @@ const model = {
 
 	lastUser: async function () {
         try {
-            let users = await db.users.findAll();
+            let users = await db.User.findAll();
             let max = 0;
             let lastuser = users.filter(user => {
                 if (user.id > max) {
@@ -110,7 +109,7 @@ const model = {
                 }
                 return
             });
-            let lastId= await db.users.findByPk(max);
+            let lastId= await db.User.findByPk(max);
             return lastId;
         } catch (err) {
             console.log(err);
