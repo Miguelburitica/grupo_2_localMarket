@@ -97,7 +97,7 @@ const controller = {
 
 	getLastUser: async (req, res) => {
         try {
-            let user = await usersModel.lastUser();
+            let user = await customerModel.lastUser();
             newUser = {
                 user_name: user.email,
 				names: user.names,
@@ -110,7 +110,7 @@ const controller = {
             }
             res.json(newUser)
         } catch (err) {
-            res.json({error: 'Error 404'})
+            res.json({error: 'Error 405'})
         }
     }
 }
