@@ -8,4 +8,7 @@ router.get('/', apiProductController.getAll)
 // get just one product
 router.get('/:id', apiProductController.getOne)
 
+// get just one product
+router.put('/', apiProductController.updateOne)
+
 module.exports = router
