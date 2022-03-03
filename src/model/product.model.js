@@ -3,7 +3,7 @@ const db = require(path.resolve(__dirname, '../database/models'))
 const { Op } = require('sequelize')
 
 class Product {
-	constructor(id, name, wayToSell, kilo, unidad, discount, category, market, image, user_id) {
+	constructor(id, name = 'default', wayToSell = 0, kilo = 0, unidad = 0, discount = 0, category = 1, market = 1, image = 'default.jpg', user_id = 1) {
 		this.id = id
 		this.name = name
 		this.wayToSell = wayToSell
@@ -24,7 +24,7 @@ function getWayToSell(req) {
 	/*eslint-disable */
 	return (kiloValue == 0 && unitValue >  0) || (kiloValue == null && unitValue > 0) ? 1 :
 		   (kiloValue >  0 && unitValue == 0) || (kiloValue > 0 && unitValue == null) ? 0 :
-		   (kiloValue >  0 && unitValue >  0)                                         ? 2 : ''
+		   (kiloValue >  0 && unitValue >  0)                                         ? 2 : 0
 }
 	/*eslint-enable */
 
@@ -79,7 +79,8 @@ const model = {
 	// change a product making match trought its id
 	editProduct: async function (req) {
 		try {
-			const id = req.params.id
+			console.log(req);
+			const id = req.params.id !== undefined ? req.params.id : req.query.id
 
 			// get the value of the wayToSell
 			let wayToSell = getWayToSell(req)
@@ -102,9 +103,10 @@ const model = {
 			const oldProduct = await this.getOne(id)
 
 			// Choose the correct name for the image associated with the product, if it doesn't exist left a default image, if it exists add the image
-			req.file !== undefined ? components.push(req.file.filename) : components.push(oldProduct.photo)
+			req.file !== undefined ? components.push(req.file.filename) :
+			oldProduct !== null    ? components.push(oldProduct.photo)  : components.push('default.jpg')
 
-			components.push(req.session.sellerLogged.id)
+			req.session !== undefined ? components.push(req.session.sellerLogged.id) : 1
 
 			// using the Product class and the components array, we make the new product that take the place of the last product with the same id
 			let product = new Product(...components)

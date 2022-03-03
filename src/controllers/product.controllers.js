@@ -41,7 +41,7 @@ const controller = {
 
 	updateItem: async function (req, res) {
 		try {
-			const errors = await validationResult(req)
+			const errors = validationResult(req)
 			const categories = await categoryModel.getAll()
 			const markets = await marketModel.getAll()
 
